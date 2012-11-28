@@ -13,7 +13,7 @@ gem 'bootstrap-will_paginate', '0.0.6'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'acts_as_commentable_with_threading'
 gem 'jquery-rails'
-
+gem "ffaker", "~> 1.15.0"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -28,7 +28,6 @@ end
 
 group :development do
   gem 'annotate', '2.5.0'
-  gem "ffaker", "~> 1.15.0"
 end
 
 
