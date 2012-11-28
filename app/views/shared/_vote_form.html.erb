@@ -1,0 +1,26 @@
+<div class="vote_form">
+  <% if current_user && current_user.vote_for?(voteable) %>
+    <%= render partial: "shared/delete_vote",
+               locals: { voteable: voteable } %>
+  <% else %>
+    <span class="upvote">
+      <%= render partial: "shared/upvote_or_downvote",
+                 locals: { voteable: voteable, vote: 1, icon: "+" } %>
+    </span>
+  <% end %>
+
+  <span>
+    <%= voteable.plusminus %>
+  </span>
+
+  <% if current_user && current_user.vote_against?(voteable) %>
+    <%= render partial: "shared/delete_vote",
+               locals: { voteable: voteable } %>
+  <% else %>  
+    <span class="downvote">
+      <%= render partial: "shared/upvote_or_downvote",
+                 locals: { voteable: voteable, vote: 0, icon: "-" } %>
+    </span>
+  <% end %>
+
+</div>

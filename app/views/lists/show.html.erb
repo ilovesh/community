@@ -1,0 +1,16 @@
+<% provide(:title, 'List') %>
+<% content_for :left do %>
+  <%= render partial: "shared/list",
+             locals: { list: @list } %>
+  <%= render partial: "shared/comment_form",
+             locals: { commentable: @list } %>
+  <% if @comments.any? %>
+  <%= render partial: "shared/comments",
+             locals: { comments: @comments,
+                       commentable: @list } %>
+  <% end %>             
+<% end %>
+
+<% content_for :right do %>
+  place_holder
+<% end %>

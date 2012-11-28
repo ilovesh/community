@@ -1,0 +1,8 @@
+<% provide(:title, @user.username) %>
+<% content_for :left do %>
+  <h2><%= @user.username %></h2>
+<% end %>
+
+<% content_for :right do %>
+  place_holder
+<% end %>

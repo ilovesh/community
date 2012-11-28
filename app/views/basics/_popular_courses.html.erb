@@ -1,0 +1,27 @@
+<div id="popular_courses_container">
+  <h3 id="popular_courses_head">Popular Courses</h3>
+  <div id="popular_courses_body">
+    <div id="courses_status_btns">
+      <span class="courses_status segmented_first"  id="ongoing">Ongoing</span>
+      <span class="courses_status segmented_middle" id="upcoming">Upcoming</span>
+      <span class="courses_status segmented_last"   id="finished">Finished</span> 
+    </div>
+    <div id="5_popular_courses">
+      <div id="popular_ongoing_courses">
+        ongoing:</br>
+        <%= render partial: "basics/popular_course_list",
+                   locals: { courses: @popular_ongoing_courses } %>
+      </div>
+      <div id="popular_upcoming_courses">
+        upcoming:</br>
+        <%= render partial: "basics/popular_course_list",
+                   locals: { :courses => @popular_upcoming_courses } %>
+      </div>
+      <div id="popular_finished_courses">
+        finished:</br>
+        <%= render partial: "basics/popular_course_list",
+                   locals: { :courses => @popular_finished_courses } %>
+      </div>
+    </div>
+  </div>
+</div>

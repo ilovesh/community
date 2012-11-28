@@ -1,0 +1,5 @@
+<%= form_for(current_user.votes.find_by_voteable_type_and_voteable_id(
+                                     voteable.class.name, voteable.id),
+             html: { method: :delete, class: "delete_vote" }) do |f| %>
+  <%= f.submit "delete_vote", class: "btn" %>
+<% end %>

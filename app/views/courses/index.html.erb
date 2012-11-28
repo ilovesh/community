@@ -1,0 +1,13 @@
+<% provide(:title, 'All courses') %>
+<% content_for :left do %>
+  <h1>All courses</h1>
+  <ul class="courses">
+    <div><%= link_to "see all ongoing courses",  ongoing_courses_path %></div>
+    <div><%= link_to "see all upcoming courses", upcoming_courses_path %></div>
+    <div><%= link_to "see all finished courses", finished_courses_path %></div>
+  </ul>
+<% end %>
+
+<% content_for :right do %>
+  place_holder
+<% end %>

@@ -1,0 +1,26 @@
+<li id="<%= list.id %>">
+  <span class="list_name">
+    <h3>List: </h3>
+    <b><%= link_to list.title, list %></b>
+    <p>Description: <%= list.description %></p>
+  </span>
+  <span class="list_info">created <%= time_ago_in_words(list.created_at) %> ago by 
+    <%= link_to list.user.username, list.user %>
+  </span>
+  <% if current_user?(list.user) %>
+    <%= link_to "edit",   edit_list_path(list)  %>
+    <%= link_to "delete", list, 
+                          method: :delete,
+                          data: { confirm: "You sure?" },
+                          title: list.title %>
+  <% end %>
+
+  <% if list.courses.any? %>
+    <h3>Courses:</h3>
+    <ul class="courses">
+      <%= render partial: 'shared/course', collection: list.courses %>
+    </ul>
+  <% else %>
+    <h3>No courses in this list</h3>
+  <% end %>
+</li>

@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: lists
+#
+#  id          :integer          not null, primary key
+#  title       :string(255)
+#  user_id     :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  description :text
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  user_id: 1
+
+two:
+  name: MyString
+  user_id: 1

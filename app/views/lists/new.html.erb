@@ -1,0 +1,9 @@
+<% provide(:title, 'Create a list') %>
+<div class="row center">
+  <div class="span6 offset4">
+    <%= form_for(@list) do |f| %>
+      <%= render 'fields', f: f %>
+      <%= f.submit "create a list", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

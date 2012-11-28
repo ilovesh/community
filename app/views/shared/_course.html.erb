@@ -1,0 +1,30 @@
+<li id="course_<%= course.id %>">
+  <span class="course_image">
+    <%= image_tag("http://#{course.image_link}", class: "small_image") %>
+  </span>  
+  <span class="course_name">
+    <%= link_to course.full_name, course %>
+  </span>
+  <span class="course_provider">by
+    <%= link_to course.provider.name, "http://#{course.provider.website}" %>
+  </span>
+  <div class="count pull-right">
+    <% if course.progress == 2 %>
+      <%= render partial: "shared/count_of_taking_users",
+                 locals: { course: course } %>
+      <%= render partial: "shared/count_of_will_take_users",
+                 locals: { course: course } %>
+    <% elsif course.progress == 1 %>
+      <%= render partial: "shared/count_of_will_take_users",
+                 locals: { course: course } %>
+    <% elsif course.progress == 3 %>
+      <%= render partial: "shared/count_of_taking_users",
+                 locals: { course: course } %>
+      <%= render partial: "shared/count_of_will_take_users",
+                 locals: { course: course } %>
+      <%= render partial: "shared/count_of_taken_users",
+                 locals: { course: course } %>
+    <% end %>
+  </div>
+ 
+</li>

@@ -1,0 +1,16 @@
+<li id="<%= discussion.id %>">
+  <span class="discussion_title">
+    <%= link_to discussion.title, discussion %>
+  </span>
+  <span class="discussion_info">posted <%= time_ago_in_words(discussion.created_at) %> ago by 
+    <%= link_to discussion.user.username, discussion.user %>
+  </span>
+  <% if current_user?(discussion.user) %>
+    <%= link_to "edit",   edit_discussion_path(discussion.id) %>
+    <%= link_to "delete", discussion, 
+                          method: :delete,
+                          data: { confirm: "You sure?" },
+                          title: discussion.title %>
+  <% end %>
+ 
+</li>

@@ -1,0 +1,16 @@
+<div class="comments">
+  <ul>
+  <% commentable.comment_threads.each do |comment| %>
+    <li id="comment_<%= comment.id %>"> 
+      <%= render partial: "shared/vote_form",
+                 locals: { voteable: comment } %>
+      <%= comment.body %>
+      by <%= link_to comment.user.username, comment.user %>
+      <% if current_user?(comment.user) %>
+      <%= render partial: "shared/delete_comment",
+                 locals: { comment: comment } %>
+      <% end %>
+    </li>
+  <% end %>
+  </ul>
+</div>

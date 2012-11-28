@@ -1,0 +1,6 @@
+<%= form_for(Vote.new) do |f| %>
+  <%= f.hidden_field :voteable_type, value: voteable.class.name %>
+  <%= f.hidden_field :voteable_id,   value: voteable.id %>
+  <%= f.hidden_field :vote,          value: vote %>   
+  <%= f.submit "#{icon}", class: "btn" %>
+<% end %>

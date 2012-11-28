@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: listings
+#
+#  id          :integer          not null, primary key
+#  list_id     :integer
+#  course_id   :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  description :text
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  list_id: 1
+  course_id: 1
+
+two:
+  list_id: 1
+  course_id: 1

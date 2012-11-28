@@ -1,0 +1,14 @@
+<% provide(:title, 'All lists') %>
+<% content_for :left do %>
+  <h1>All lists</h1>
+  <%= link_to "create a list",  new_list_path %>
+  <%= will_paginate @lists %>
+  <ul class="lists">
+    <%= render partial: 'shared/list', collection: @lists %>
+  </ul>
+  <%= will_paginate @lists %>
+<% end %>
+
+<% content_for :right do %>
+  place_holder
+<% end %>

@@ -1,4 +1,30 @@
-Community::Application.routes.draw do
+Dragon::Application.routes.draw do
+  root to: 'basics#home'
+  resources :users, :votes
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :courses do
+    collection do
+      get 'ongoing'
+      get 'upcoming'
+      get 'finished'
+    end
+    resources :comments, only: [:create, :destroy]
+  end
+  
+  resources :lists do
+    resources :comments, only: [:create, :destroy]
+  end
+
+  resources :discussions do
+    resources :comments, only: [:create, :destroy]
+  end
+
+  match '/signup', to: 'users#new'
+  match '/login',  to: 'sessions#new'
+  match '/logout', to: 'sessions#destroy', via: :delete
+
+  get "votes/create"
+  get "votes/destroy"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

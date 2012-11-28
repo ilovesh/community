@@ -1,0 +1,30 @@
+<% if !logged_in? %>
+  <% content_for :left do %>
+    <%= render 'basics/popular_courses' %>
+    <%= render 'basics/recent_discussions' %>
+  <% end %>
+      
+  <% content_for :right do %>
+    <section>
+      <%= render 'shared/news' %>
+      News
+    </section>
+    <section>
+      <%= render 'shared/recent_activities' %>
+      recent_activities
+    </section>
+    <section>
+      <%= render 'shared/recent_tags' %>
+      recent_tags
+    </section>
+  <% end %>
+
+<% else %>
+  <% content_for :left do %>
+    Your courses
+  <% end %>
+  <% content_for :right do %>
+    place_holder
+  <% end %>
+
+<% end %>

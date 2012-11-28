@@ -1,0 +1,16 @@
+<% provide(:title, 'Course') %>
+<% content_for :left do %>
+  <%= render partial: "shared/course",
+             locals: { course: @course } %>
+  <%= render partial: "shared/comment_form",
+             locals: { commentable: @course } %>
+  <% if @comments.any? %>
+  <%= render partial: "shared/comments",
+             locals: { comments: @comments,
+                       commentable: @course } %>
+  <% end %>              
+<% end %>
+
+<% content_for :right do %>
+  place_holder
+<% end %>

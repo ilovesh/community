@@ -1,0 +1,10 @@
+<% provide(:title, 'All finished courses') %>
+<% content_for :left do %>
+  <h1>All finished courses</h1>
+  <%= render partial: "courses/courses",
+             locals: { courses: @finished_courses } %>
+<% end %>
+
+<% content_for :right do %>
+  place_holder
+<% end %>
