@@ -5,7 +5,8 @@
       <%= render partial: "shared/vote_form",
                  locals: { voteable: comment } %>
       <%= comment.body %>
-      by <%= link_to comment.user.username, comment.user %>
+      by <%= gravatar_for comment.user, size: 20 %>
+         <%= link_to comment.user.username, comment.user %>
       <% if current_user?(comment.user) %>
       <%= render partial: "shared/delete_comment",
                  locals: { comment: comment } %>

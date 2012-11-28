@@ -1,6 +1,7 @@
 <% provide(:title, @user.username) %>
 <% content_for :left do %>
-  <h2><%= @user.username %></h2>
+  <%= gravatar_for @user, size: 62 %>
+  <%= @user.username %>
 <% end %>
 
 <% content_for :right do %>
