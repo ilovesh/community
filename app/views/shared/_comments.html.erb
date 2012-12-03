@@ -1,5 +1,5 @@
-<div class="comments">
-  <ul>
+<div class="section-container">
+  <ul class="comments">
   <% commentable.comment_threads.each do |comment| %>
     <li id="comment_<%= comment.id %>"> 
       <%= render partial: "shared/vote_form",

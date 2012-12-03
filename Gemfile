@@ -16,6 +16,7 @@ gem 'acts_as_commentable_with_threading'
 gem 'jquery-rails'
 gem "ffaker", "~> 1.15.0"
 gem 'texticle', '~> 2.0', :require => 'texticle/rails'
+gem 'rails3-jquery-autocomplete'
 
 # Gems used only for assets and not required
 # in production environments by default.

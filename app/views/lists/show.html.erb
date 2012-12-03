@@ -1,10 +1,14 @@
 <% provide(:title, 'List') %>
 <% content_for :left do %>
   <h3>List: </h3>
-  <%= render partial: "shared/list",
-             locals: { list: @list } %>
-  <%= render partial: "shared/comment_form",
-             locals: { commentable: @list } %>
+  
+  <div class="section-container">
+	  <%= render partial: "shared/list",
+				 locals: { list: @list } %>
+	  <%= render partial: "shared/comment_form",
+				 locals: { commentable: @list } %>
+  </div>
+  
   <% if @comments.any? %>
   <%= render partial: "shared/comments",
              locals: { comments: @comments,

@@ -1,8 +1,8 @@
 <div class="section-container">
   <h3 class="section-title">Recent Lists</h3>
   <div class="section-content">
-    <ul>
-      <%= render partial: 'shared/list', collection: @lists %>
+    <ul class="recent_lists">
+      <%= render :partial => 'shared/list', :collection => @lists.last(4) %> 
     </ul>
   </div>
 </div>

@@ -1,6 +1,7 @@
 <% provide(:title, 'Create post') %>
 <div class="row center">
-  <div class="span6 offset4">
+  <div class="span6 offset2">
+  <h3>Create a new discussion </h3>
     <%= form_for(@discussion) do |f| %>
       <%= render 'fields', f: f %>
       <%= f.submit "create post", class: "btn btn-large btn-primary" %>

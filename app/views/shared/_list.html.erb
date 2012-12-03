@@ -1,11 +1,10 @@
-<li id="<%= list.id %>">
-  <span class="list_name">
-    <b><%= link_to list.title, list %></b>
-    <p>Description: <%= list.description %></p>
-  </span>
+<li id="<%= list.id %>" class="span3">
+  <span class="list_title"><b><%= link_to list.title, list %></b></span>
+  <p class="list_desp">Description: <%= list.description %></p>
   <span class="list_info">created <%= time_ago_in_words(list.created_at) %> ago by 
     <%= link_to list.user.username, list.user %>
   </span>
+  
   <% if current_user?(list.user) %>
     <%= link_to "edit",   edit_list_path(list)  %>
     <%= link_to "delete", list, 
@@ -14,12 +13,13 @@
                           title: list.title %>
   <% end %>
 
-  <% if list.courses.any? %>
+ <!--  <% if list.courses.any? %>
     <h3>Courses:</h3>
     <ul class="courses">
       <%= render partial: 'shared/course', collection: list.courses %>
     </ul>
   <% else %>
     <h3>No courses in this list</h3>
-  <% end %>
+  <% end %> -->
+  
 </li>
