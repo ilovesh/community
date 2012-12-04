@@ -1,9 +1,9 @@
 <% provide(:title, 'All lists') %>
 <% content_for :left do %>
   <h1>All lists</h1>
-  <%= link_to "create a list",  new_list_path %>
+  <%= link_to "create a list",  new_list_path, class: "btn btn-large btn-primary" %>
   <%= will_paginate @lists %>
-  <ul class="lists">
+  <ul class="all_lists">
     <%= render partial: 'shared/list', collection: @lists %>
   </ul>
   <%= will_paginate @lists %>

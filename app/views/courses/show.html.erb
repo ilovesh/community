@@ -1,9 +1,11 @@
 <% provide(:title, 'Course') %>
 <% content_for :left do %>
+<div class="section-container">
   <%= render partial: "shared/course",
              locals: { course: @course } %>
   <%= render partial: "shared/comment_form",
              locals: { commentable: @course } %>
+</div>
   <% if @comments.any? %>
   <%= render partial: "shared/comments",
              locals: { comments: @comments,

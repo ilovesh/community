@@ -3,7 +3,7 @@
   <div class="span4 offset4">
     <%= form_for(@user) do |f| %>
       <%= render 'fields', f: f %>
-      <%= f.submit "Join", class: "btn btn-large btn-primary" %>
+      <div><%= f.submit "Join", class: "btn btn-large btn-primary" %><div>
     <% end %>
   </div>
 </div>
