@@ -8,5 +8,9 @@ module ApplicationHelper
     else
       "#{base_title} | #{page_title}"
     end
-  end	
+  end
+
+  def course_names
+    Course.all.map(&:full_name)
+  end
 end

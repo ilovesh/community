@@ -7,6 +7,7 @@ Dragon::Application.routes.draw do
       get 'ongoing'
       get 'upcoming'
       get 'finished'
+      get :autocomplete_name
     end
     resources :comments, only: [:create, :destroy]
   end
