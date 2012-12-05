@@ -1,4 +1,6 @@
 class CoursesController < ApplicationController
+  autocomplete :name, full: true
+
   def index
   end
 
