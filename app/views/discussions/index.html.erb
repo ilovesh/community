@@ -1,11 +1,7 @@
 <% provide(:title, 'All discussions') %>
 <% content_for :left do %>
   <h1>All discussions</h1>
-<<<<<<< HEAD
-  <%= link_to "Create a post",  new_discussion_path, class: "btn btn-large btn-primary" %>
-=======
   <%= link_to "create a post",  new_discussion_path, class: "btn btn-large btn-primary" %>
->>>>>>> upstream/master
   <%= will_paginate @discussions %>
   <ul class="discussions">
     <%# Rails automatically looks for a partial called _post.html.erb  %>

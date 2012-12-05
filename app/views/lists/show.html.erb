@@ -3,17 +3,10 @@
   <h3>List: </h3>
   
   <div class="section-container">
-<<<<<<< HEAD
-	  <%= render partial: "shared/list",
-				 locals: { list: @list } %>
-	  <%= render partial: "shared/comment_form",
-				 locals: { commentable: @list } %>
-=======
     <%= render partial: "shared/list",
          locals: { list: @list } %>
     <%= render partial: "shared/comment_form",
          locals: { commentable: @list } %>
->>>>>>> upstream/master
   </div>
   
   <% if @comments.any? %>

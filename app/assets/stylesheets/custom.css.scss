@@ -20,11 +20,7 @@ section {
   overflow: auto;
 }
 .section-content{
-<<<<<<< HEAD
-	overflow: auto;
-=======
   overflow: auto;
->>>>>>> upstream/master
 }
 textarea {
   resize: vertical;
@@ -56,11 +52,7 @@ span {
     font-weight: bold;
     letter-spacing: -1px;
     margin: 9px 20px 0 60px;
-<<<<<<< HEAD
-	text-decoration:none;
-=======
   text-decoration:none;
->>>>>>> upstream/master
 }
 
 #top-navigation{
@@ -85,33 +77,14 @@ span {
     padding: 17px 14px 15px;
 }
 #top-navigation .nav > li > a:hover {
-<<<<<<< HEAD
-	background-color:#3BA3D0;
-	color: #fff
-=======
   background-color:#3BA3D0;
   color: #fff
->>>>>>> upstream/master
 }
 #top-navigation .nav.pull-right {
     float: right;
     margin-right: 100px;
 }
 .topnav-search{
-<<<<<<< HEAD
-	float:left;
-	margin-top:11px;
-	position:relative;
-	border-radius:15px;
-	font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
-	font-size:13px;
-	font-weight:normal;
-	line-height:1;
-	padding:0 10px;
-}
-form{
-	margin:0 0;
-=======
   float:left;
   margin-top:11px;
   position:relative;
@@ -124,7 +97,6 @@ form{
 }
 form{
   margin:0 0;
->>>>>>> upstream/master
 }
 /* list section */
 ul.popular_courses, 
@@ -134,15 +106,6 @@ ul.discussions,
 ul.comments,
 ul.recent_lists, 
 ul.all_lists{
-<<<<<<< HEAD
-	list-style:none;
-	margin-top:10px;
-	margin-left:0px;
-}
-ul.vote_form {
-	list-style:none;
-	float:right;
-=======
   list-style:none;
   margin-top:10px;
   margin-left:0px;
@@ -150,37 +113,12 @@ ul.vote_form {
 ul.vote_form {
   list-style:none;
   float:right;
->>>>>>> upstream/master
 }
 .popular_courses li, 
 .courses li, 
 .discussions li,
 .recent_discussions li,
 .comments li {
-<<<<<<< HEAD
-	list-style:none;
-	padding:5px 2px;
-}
-.comments li {
-	padding:25px 5px;
-	margin-bottom:25px;
-	border-bottom:1px solid #cccccc;
-}
-.recent_lists li, .all_lists li{
-	display:block;
-	height:240px;
-	margin:0 7px;
-}
-.vote_form li{
-	display:block;
-	float:left;
-	border:none;
-	padding:2px;
-	margin:0px;
-}
-p.list_desp{
-	height:140px;
-=======
   list-style:none;
   padding:5px 2px;
 }
@@ -203,7 +141,6 @@ p.list_desp{
 }
 p.list_desp{
   height:140px;
->>>>>>> upstream/master
 }
 
 /* miscellaneous */
@@ -218,21 +155,6 @@ p.list_desp{
 /* forms */
 
 input, textarea, select, .uneditable-input {
-<<<<<<< HEAD
-	border: 1px solid #bbb;
-	padding: 10px;
-	height: auto;
-	margin-bottom: 15px;
-	width:220px;
-	-webkit-box-shadow:rgba(0, 0, 0, 0.0745098) 0 1px 1px inset;
-	-webkit-transition:border 0.2s linear, box-shadow 0.2s linear;
-	background-color: #ffffff;
-	box-shadow:rgba(0, 0, 0, 0.0745098) 0 1px 1px inset;
-	display:inline-block;
-}
-.vote_form{
-	float:right;
-=======
   border: 1px solid #bbb;
   padding: 10px;
   height: auto;
@@ -246,7 +168,6 @@ input, textarea, select, .uneditable-input {
 }
 .vote_form{
   float:right;
->>>>>>> upstream/master
 }
 
 #error_explanation {

@@ -1,20 +1,7 @@
-
 <% provide(:title, @discussion.title) %>
 <% content_for :left do %>
   <h3>Discussion: </h3>
   <div class="section-container">
-<<<<<<< HEAD
-	  <%= render partial: "shared/discussion", locals: { discussion: @discussion } %>
-  
-	  <%= render partial: "shared/comment_form",
-				 locals: { commentable: @discussion } %>
-   </div>
-	  <% if @comments.any? %>
-	  <%= render partial: "shared/comments",
-				 locals: { comments:    @comments,
-						   commentable: @discussion } %>
-	  
-=======
     <%= render partial: "shared/discussion", locals: { discussion: @discussion } %>
   
     <%= render partial: "shared/comment_form",
@@ -25,7 +12,6 @@
          locals: { comments:    @comments,
                commentable: @discussion } %>
 
->>>>>>> upstream/master
   <% end %>
 <% end %>
 
