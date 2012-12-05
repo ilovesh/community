@@ -1,8 +1,13 @@
 <ul class="vote_form">
   <% if current_user && current_user.vote_for?(voteable) %>
   <li class="deletevote">
+<<<<<<< HEAD
 	  <%= render partial: "shared/delete_vote",
 				   locals: { voteable: voteable } %>
+=======
+    <%= render partial: "shared/delete_vote",
+           locals: { voteable: voteable } %>
+>>>>>>> upstream/master
   </li>
   <% else %>
   <li class="upvote">
@@ -17,7 +22,11 @@
 
   <% if current_user && current_user.vote_against?(voteable) %>
   <li class="deletevote">
+<<<<<<< HEAD
 	<%= render partial: "shared/delete_vote",
+=======
+  <%= render partial: "shared/delete_vote",
+>>>>>>> upstream/master
                locals: { voteable: voteable } %>
   </li>
   <% else %>  

@@ -13,13 +13,23 @@
                           title: list.title %>
   <% end %>
 
+<<<<<<< HEAD
  <!--  <% if list.courses.any? %>
+=======
+<% if current_page?(list) %>
+  <% if list.courses.any? %>
+>>>>>>> upstream/master
     <h3>Courses:</h3>
     <ul class="courses">
       <%= render partial: 'shared/course', collection: list.courses %>
     </ul>
   <% else %>
     <h3>No courses in this list</h3>
+<<<<<<< HEAD
   <% end %> -->
   
+=======
+  <% end %>
+<% end %>
+>>>>>>> upstream/master
 </li>
