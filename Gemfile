@@ -14,13 +14,14 @@ gem 'bootstrap-will_paginate', '0.0.6'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'acts_as_commentable_with_threading'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem "ffaker", "~> 1.15.0"
 gem 'texticle', '~> 2.0', :require => 'texticle/rails'
+gem 'gon'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  #gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
