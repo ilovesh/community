@@ -57,7 +57,7 @@ class Course < ActiveRecord::Base
     end
   end
 
-  def course_url
+  def course_path
     "/courses/#{self.id}"
   end
 

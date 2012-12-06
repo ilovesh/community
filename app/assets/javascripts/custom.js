@@ -6,7 +6,7 @@ $(document).ready(function(){
 	
 	//print courses in the console window
 	console.log(gon.global.courses);
-	console.log(gon.global.courses_with_url);
+	console.log(gon.global.courses_with_path);
 	
 	//call jQuery UI's auto-complete function
 	$( "#course_name" ).autocomplete({
