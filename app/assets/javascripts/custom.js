@@ -5,14 +5,14 @@ $(document).ready(function(){
 	});   */
 	
 	//print courses in the console window
-	console.log(gon.courses);
+	console.log(gon.global.courses);
 	
 	//call jQuery UI's auto-complete function
 	$( "#course_name" ).autocomplete({
 		//indicate that minimum input length should be 2
 		minLength: 2,
 		//the source of data
-		source: gon.courses
+		source: gon.global.courses
 	});
 		
 });

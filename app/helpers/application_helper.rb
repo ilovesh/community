@@ -10,7 +10,4 @@ module ApplicationHelper
     end
   end
 
-  def course_names
-    Course.all.map(&:full_name)
-  end
 end

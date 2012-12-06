@@ -1,6 +1,5 @@
 class CoursesController < ApplicationController
   def index
-	gon.courses =  Course.all.map(&:full_name)
   end
 
   def show
