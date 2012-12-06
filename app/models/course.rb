@@ -57,6 +57,10 @@ class Course < ActiveRecord::Base
     end
   end
 
+  def course_url
+    "/courses/#{self.id}"
+  end
+
   # return an array
   def tag_list
     Enrollment.where(course_id: id).tag_counts_on(:tags).order('count desc').map(&:name)
