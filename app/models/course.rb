@@ -17,8 +17,13 @@
 # 0 - rolling; 1 - coming; 2 - ing; 3 - end
 
 class Course < ActiveRecord::Base
+
   attr_accessible :name, :provider_id, :progress, :code, :image_link, :description
   acts_as_commentable
+
+  include PgSearch
+  pg_search_scope :search_by_full_name, against: [:code, :name], 
+                  using: {tsearch: {prefix: true}}
 
   validates :name,         presence: true
   validates :provider_id,  presence: true

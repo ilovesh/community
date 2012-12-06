@@ -9,6 +9,6 @@ class BasicsController < ApplicationController
 
   def search
   	query = params[:course_name]
-  	@courses = Course.search(query).paginate(page: params[:page])
+  	@courses = Course.search_by_full_name(query).paginate(page: params[:page])
   end
 end
