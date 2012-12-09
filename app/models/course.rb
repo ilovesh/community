@@ -2,15 +2,22 @@
 #
 # Table name: courses
 #
-#  id          :integer          not null, primary key
-#  name        :string(255)
-#  provider_id :integer
-#  progress    :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  code        :string(255)
-#  image_link  :string(255)
-#  description :text
+#  id            :integer          not null, primary key
+#  name          :string(255)
+#  provider_id   :integer
+#  progress      :integer
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  code          :string(255)
+#  image_link    :string(255)
+#  description   :text
+#  subtitle      :string(255)
+#  instructor    :string(255)
+#  prerequisites :text
+#  university    :string(255)
+#  course_url    :string(255)
+#  start_date    :date
+#  final_date    :date
 #
 
 # progress:
@@ -18,7 +25,9 @@
 
 class Course < ActiveRecord::Base
 
-  attr_accessible :name, :provider_id, :progress, :code, :image_link, :description
+  attr_accessible :name, :provider_id, :progress, :code, :image_link, 
+                  :description, :subtitle, :start_date, :final_date,
+                  :instructor, :prerequisites, :university, :course_url
   acts_as_commentable
 
   include PgSearch
@@ -27,10 +36,13 @@ class Course < ActiveRecord::Base
 
   validates :name,         presence: true
   validates :provider_id,  presence: true
-  validates :progress,     presence: true, inclusion: {in: (0..3)}
+#  validates :progress,     presence: true, inclusion: {in: (0..3)}
   validates :image_link,   presence: true
-  validates :code,         allow_blank: true, uniqueness: { scope: :provider_id, case_sensitive: false }
   validates :description,  presence: true
+  validates :code,         allow_blank: true, uniqueness: { scope: :provider_id, case_sensitive: false }
+  validates :prerequisites, presence: true
+  validates :instructor,   presence: true
+  validates :course_url,   presence: true
 
   belongs_to :provider
   has_many   :enrollments, dependent: :destroy

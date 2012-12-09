@@ -27,7 +27,7 @@ end
 
 def make_providers
   #Provider.create!(name: "SEE",        website: "see.stanford.edu")
-  #Provider.create!(name: "Codecademy",     website: "www.codecademy.com")  
+  Provider.create!(name: "Codecademy",     website: "www.codecademy.com")  
   Provider.create!(name: "KhanAcademy",    website: "www.khanacademy.org")
   Provider.create!(name: "Udacity",        website: "www.udacity.com")
   Provider.create!(name: "Coursera",       website: "www.coursera.org")

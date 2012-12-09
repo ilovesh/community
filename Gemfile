@@ -8,6 +8,7 @@ gem 'bcrypt-ruby', '3.0.1'
 gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'acts_as_commentable_with_threading'
 gem 'pg_search'
+gem 'nokogiri'
 
 # front-end
 gem 'sass-rails', '~> 3.2'
