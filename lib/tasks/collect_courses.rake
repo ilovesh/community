@@ -1,3 +1,6 @@
+require 'nokogiri'
+require 'open-uri'
+
 namespace :db do
   desc "Fill database with course providers' data"
   task providers: :environment do
@@ -11,8 +14,6 @@ end
 namespace :db do
   desc "Fill database with Udacity courses"
   task udacity: :environment do
-    require 'nokogiri'
-    require 'open-uri'
     provider = Provider.find(1)
     url = "http://www.udacity.com"
     doc = Nokogiri::HTML(open(url))
@@ -56,13 +57,12 @@ end
 namespace :db do
   desc "Fill database with edX courses"
   task edx: :environment do
-    require 'nokogiri'
-    require 'open-uri'
     provider = Provider.find(2)
     url = "https://edx.org"
     doc = Nokogiri::HTML(open(url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))
     doc.css(".university-column").each do |column|
       column.css("article").each do |course|
+		# Todo: should split the title from the <h2> content by removing the <span> tags
         name = course.at_css("h2").text.split("x ")[1]
 puts "BEGIN" + "*"*10 + name
         course_url = url + course.at_css("a")['href']
@@ -75,6 +75,7 @@ puts "BEGIN" + "*"*10 + name
         prerequisites = page.at_css(".prerequisites p").text
         start_date = Date.parse(page.at_css('.start-date').text)
         final_date = Date.parse(page.at_css('.final-date').text)
+		
         provider.courses.create!(course_url: course_url,
                                  name: name,
                                  code: code,
@@ -95,12 +96,37 @@ end
 namespace :db do
   desc "Fill database with Coursera courses"
   task coursera: :environment do
-    require 'nokogiri'
-    require 'open-uri'
     provider = Provider.find(2)
-    url = "https://www.coursera.org/courses"
-    doc = Nokogiri::HTML(open(url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))
-
-# TO-DO
+    url = "https://www.coursera.org"
+	
+	# Read data from a local html file => file located in "project root/db/"
+    doc = Nokogiri::HTML(File.open(Rails.root.join "db/coursera.html"))
+	doc.css(".coursera-course-listing-box").each do |course|
+      
+	  course_url = url + course.at_css(".coursera-course-listing-name a")['href']
+      #page = Nokogiri::HTML(open(course_url))
+      name = course.at_css("h3 a").text
+puts "BEGIN" + "*"*10 + " " + name + " " + course_url     
+      # code = page.at_css('').text
+      instructor = course.at_css('.coursera-course-listing-instructor').text
+      # description = page.at_css('').text
+      image_link = course.at_css('.coursera-course-listing-icon')['src']
+	  
+	  # prerequisites = page.at_css('').text
+        # start_date = Date.parse(page.at_css('').text)
+        # final_date = Date.parse(page.at_css('').text)
+		
+        # provider.courses.create!(course_url: course_url,
+                                 # name: name,
+                                 # code: code,
+                                 # university: university,
+                                 # instructor: instructor,
+                                 # description: description,
+                                 # image_link: image_link,
+                                 # prerequisites: prerequisites,
+                                 # start_date: start_date,
+                                 # final_date: final_date)
+puts "FINISH" + "*"*10 + " " + name   
+    end
   end
 end
