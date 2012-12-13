@@ -1,0 +1,103 @@
+[0.033][INFO]:      ChromeDriver 23.0.1240.0 /usr/bin/chromedriver
+[0.564][FINE]:      Initializing session with capabilities {
+   "browserName": "chrome",
+   "chrome.detach": true,
+   "chromeOptions": {
+      "detach": true
+   },
+   "cssSelectorsEnabled": true,
+   "javascriptEnabled": true,
+   "nativeEvents": false,
+   "platform": "ANY",
+   "rotatable": false,
+   "takesScreenshot": false,
+   "version": ""
+}
+
+[0.700][INFO]:      Using named testing interface
+[12.663][INFO]:     Connected to Chrome successfully. Version: 19.0.1084.56
+[12.890][FINE]:     Command received (/session/76b98114daa036d74a423a2d86466994)
+[12.890][FINE]:     Command finished (/session/76b98114daa036d74a423a2d86466994) with response {
+   "sessionId": "76b98114daa036d74a423a2d86466994",
+   "status": 0,
+   "value": {
+      "acceptSslCerts": false,
+      "applicationCacheEnabled": false,
+      "browserConnectionEnabled": false,
+      "browserName": "chrome",
+      "chrome.chromedriverVersion": "23.0.1240.0",
+      "chrome.nativeEvents": false,
+      "cssSelectorsEnabled": true,
+      "databaseEnabled": false,
+      "handlesAlerts": true,
+      "javascriptEnabled": true,
+      "locationContextEnabled": false,
+      "nativeEvents": true,
+      "platform": "linux",
+      "rotatable": false,
+      "takesScreenshot": true,
+      "version": "19.0.1084.56",
+      "webStorageEnabled": true
+   }
+}
+
+[12.968][FINE]:     Command received (/session/76b98114daa036d74a423a2d86466994/url)
+[12.968][FINER]:    Waiting for all views to stop loading...
+[12.968][FINER]:    Done waiting for all views to stop loading
+[13.023][FINER]:    Waiting for all views to stop loading...
+[13.023][FINER]:    Done waiting for all views to stop loading
+[13.023][FINE]:     Command finished (/session/76b98114daa036d74a423a2d86466994/url) with response {
+   "sessionId": "76b98114daa036d74a423a2d86466994",
+   "status": 0,
+   "value": "about:blank"
+}
+
+[13.103][FINE]:     Command received (/session/76b98114daa036d74a423a2d86466994/title)
+[13.104][FINER]:    Waiting for all views to stop loading...
+[13.104][FINER]:    Done waiting for all views to stop loading
+[13.110][FINER]:    Waiting for all views to stop loading...
+[13.111][FINER]:    Done waiting for all views to stop loading
+[13.111][FINE]:     Command finished (/session/76b98114daa036d74a423a2d86466994/title) with response {
+   "sessionId": "76b98114daa036d74a423a2d86466994",
+   "status": 0,
+   "value": "about:blank"
+}
+
+[25.504][FINE]:     Command received (/session/76b98114daa036d74a423a2d86466994/url) with params {
+   "url": "https://www.coursera.org/courses"
+}
+
+[25.504][FINER]:    Waiting for all views to stop loading...
+[25.505][FINER]:    Done waiting for all views to stop loading
+[32.724][FINER]:    Waiting for all views to stop loading...
+[32.747][FINER]:    Done waiting for all views to stop loading
+[32.747][FINE]:     Command finished (/session/76b98114daa036d74a423a2d86466994/url) with response {
+   "sessionId": "76b98114daa036d74a423a2d86466994",
+   "status": 0,
+   "value": {
+
+   }
+}
+
+[32.762][FINE]:     Command received (/session/76b98114daa036d74a423a2d86466994/url)
+[32.762][FINER]:    Waiting for all views to stop loading...
+[32.763][FINER]:    Done waiting for all views to stop loading
+[32.800][FINER]:    Waiting for all views to stop loading...
+[32.800][FINER]:    Done waiting for all views to stop loading
+[32.800][FINE]:     Command finished (/session/76b98114daa036d74a423a2d86466994/url) with response {
+   "sessionId": "76b98114daa036d74a423a2d86466994",
+   "status": 0,
+   "value": "https://www.coursera.org/courses"
+}
+
+[54.049][FINE]:     Command received (/session/76b98114daa036d74a423a2d86466994/source)
+[54.050][FINER]:    Waiting for all views to stop loading...
+[54.051][FINER]:    Done waiting for all views to stop loading
+[54.244][FINER]:    Waiting for all views to stop loading...
+[54.244][FINER]:    Done waiting for all views to stop loading
+[54.369][FINE]:     Command finished (/session/76b98114daa036d74a423a2d86466994/source) with response {
+   "sessionId": "76b98114daa036d74a423a2d86466994",
+   "status": 0,
+   "value": "\u003C!DOCTYPE html\u003E\u003Chtml xmlns:fb=\"http://ogp.me/ns/fb#\" itemtype=\"http://schema.org\"\u003E\u003Chead\u003E\u003Cmeta htt..."
+}
+

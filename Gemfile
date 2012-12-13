@@ -9,6 +9,7 @@ gem 'acts-as-taggable-on', '~> 2.3.1'
 gem 'acts_as_commentable_with_threading'
 gem 'pg_search'
 gem 'nokogiri'
+gem 'watir-webdriver'
 
 # front-end
 gem 'sass-rails', '~> 3.2'

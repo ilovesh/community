@@ -1,5 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
+require 'watir-webdriver'
+
 
 namespace :db do
   desc "Fill database with course providers' data"
@@ -14,7 +16,7 @@ end
 namespace :db do
   desc "Fill database with Udacity courses"
   task udacity: :environment do
-    provider = Provider.find(1)
+    provider = Provider.find_by_name("Udacity")
     url = "http://www.udacity.com"
     doc = Nokogiri::HTML(open(url))
     doc.css(".crs-lst > a").each do |link|
@@ -57,12 +59,12 @@ end
 namespace :db do
   desc "Fill database with edX courses"
   task edx: :environment do
-    provider = Provider.find(2)
+    provider = Provider.find_by_name("edX")
     url = "https://edx.org"
     doc = Nokogiri::HTML(open(url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))
     doc.css(".university-column").each do |column|
       column.css("article").each do |course|
-		# Todo: should split the title from the <h2> content by removing the <span> tags
+    # Todo: should split the title from the <h2> content by removing the <span> tags
         name = course.at_css("h2").text.split("x ")[1]
 puts "BEGIN" + "*"*10 + name
         course_url = url + course.at_css("a")['href']
@@ -75,7 +77,7 @@ puts "BEGIN" + "*"*10 + name
         prerequisites = page.at_css(".prerequisites p").text
         start_date = Date.parse(page.at_css('.start-date').text)
         final_date = Date.parse(page.at_css('.final-date').text)
-		
+
         provider.courses.create!(course_url: course_url,
                                  name: name,
                                  code: code,
@@ -92,10 +94,86 @@ puts "FINISH" + "*"*10 + name
   end
 end
 
+# Fetch Cousera data from Coursetalk
+namespace :db do
+  desc "Fill database with Coursera courses"
+  task coursera_from_coursetalk: :environment do
+    provider = Provider.find_by_name("Coursera")
+    url = "http://coursetalk.org"
+    coursera_path = "/coursera"
+    doc = Nokogiri::HTML(open(url + coursera_path))
+    doc.css(".course_list td:nth-child(2) a:nth-child(1)").each do |course|
+      course_page_url = url + course['href']
+      page = Nokogiri::HTML(open(course_url))
+      course_name_element = page.at_css("h2 a")
+      name = course_name_element.text
+      # format is like: "/redirect/110/https://www.coursera.org/course/design"
+      course_url = "https:" + course_name_element['href'].split(":")
+      university = page.at_css("h5 a").text
+      instructor = page.at_css(".course_box strong").text
+      #description = 
+      #image_link = 
+      provider.courses.create!(course_url: course_url,
+                               name: name,
+                               university: university,
+                               instructor: instructor)
+    end
+  end
+end
+
+
+
+####################################################################
+
 # Fetch Coursera data
 namespace :db do
   desc "Fill database with Coursera courses"
   task coursera: :environment do
+    provider = Provider.find_by_name("Coursera")
+    browser = Watir::Browser.new :chrome
+    url = "https://www.coursera.org"
+    courses_path = "/courses"
+    courses_url = url + courses_path
+puts "going to courses_url"    
+    browser.goto courses_url
+    sleep(20)
+    courses_page = Nokogiri::HTML.parse(browser.html)    
+    courses_page.css(".coursera-course-listing-name .internal-home") do |course|
+      ['href']
+    university = courses_page.at_css(".coursera-course-listing-university span").text
+puts university    
+    course_url = url + course_path
+puts "going to open course page"    
+    browser.goto course_url
+    sleep(20)
+    page = Nokogiri::HTML.parse(browser.html)
+    name = page.at_css("h1").text
+puts "BEGIN" + "*"*10 + name   
+    instructor = page.at_css(".instructor-name").text
+    description = page.at_css(".span6 p").text
+    image_link = page.at_css(".coursera-course-logo img")["src"]
+    start_date = Date.parse(page.at_css('.coursera-course-listing span:nth-child(1)').text)
+    # format is like: " \n(10 weeks long)"
+    duration = page.at_css(".coursera-course-listing span:nth-child(2)").text.split("\n")[1][1...-1]
+puts "Incerting db"
+    provider.courses.create!(course_url: course_url,
+                             name: name,
+                             university: university,
+                             instructor: instructor,
+                             description: description,
+                             image_link: image_link,
+                             start_date: start_date,
+                             duration: duration)
+puts "FINISH" + "*"*10 + name
+  end
+end
+end
+
+
+# Fetch Coursera data from file
+namespace :db do
+  desc "Fill database with Coursera courses"
+  task coursera_from_html_file: :environment do
     provider = Provider.find(2)
     url = "https://www.coursera.org"
 	
@@ -130,3 +208,15 @@ puts "FINISH" + "*"*10 + " " + name
     end
   end
 end
+
+
+private
+  def add_university!(name)
+    university = University.find_by_name(name)
+    if university.nil?
+      u = University.create!(name: name)
+      u.id
+    else
+      university.id
+    end
+  end

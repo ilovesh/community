@@ -14,10 +14,10 @@
 #  subtitle      :string(255)
 #  instructor    :string(255)
 #  prerequisites :text
-#  university    :string(255)
 #  course_url    :string(255)
 #  start_date    :date
 #  final_date    :date
+#  duration      :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
