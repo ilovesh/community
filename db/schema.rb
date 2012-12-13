@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121213042909) do
+ActiveRecord::Schema.define(:version => 20121213052053) do
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",   :default => 0
@@ -47,13 +47,6 @@ ActiveRecord::Schema.define(:version => 20121213042909) do
   end
 
   add_index "courses", ["name"], :name => "index_courses_on_name"
-
-  create_table "courses_universities", :id => false, :force => true do |t|
-    t.integer "course_id",     :null => false
-    t.integer "university_id", :null => false
-  end
-
-  add_index "courses_universities", ["course_id", "university_id"], :name => "index_courses_universities_on_course_id_and_university_id", :unique => true
 
   create_table "discussions", :force => true do |t|
     t.string   "title"
@@ -111,6 +104,13 @@ ActiveRecord::Schema.define(:version => 20121213042909) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "teachings", :force => true do |t|
+    t.integer  "university_id"
+    t.integer  "course_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "universities", :force => true do |t|

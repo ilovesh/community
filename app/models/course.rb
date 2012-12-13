@@ -55,7 +55,8 @@ class Course < ActiveRecord::Base
              source: :user, conditions: ["enrollments.status = ?", 3]
   has_many :listings, dependent: :destroy
   has_many :lists,    through: :listings
-  has_and_belongs_to_many :universities
+  has_many :teachings, dependent: :destroy
+  has_many :universities,    through: :teachings
 #  has_many :comments, dependent: :destroy
 
   scope :ongoing,  where("progress = ?", 2)

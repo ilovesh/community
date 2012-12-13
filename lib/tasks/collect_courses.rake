@@ -2,6 +2,8 @@ require 'nokogiri'
 require 'open-uri'
 require 'watir-webdriver'
 
+### NOTE: 3 TODOs ###
+
 
 namespace :db do
   desc "Fill database with course providers' data"
@@ -12,7 +14,9 @@ namespace :db do
   end
 end
 
+###########################
 # Fetch Udacity data
+###########################
 namespace :db do
   desc "Fill database with Udacity courses"
   task udacity: :environment do
@@ -29,7 +33,7 @@ puts "BEGIN" + "*"*10 + name
       description = page.at_css('.course-overview-description-body p').text
       image_link = page.at_css('img.course-icon')['src']
       prerequisites = page.at_css('.course-overview-give p').text
-=begin # cannot find '.overviewButtons p' via Nokogiri
+=begin # TODO: cannot find '.overviewButtons p' via Nokogiri
       start_date = page.at_css('.overviewButtons p')
       if start_date
         progress = 1
@@ -55,7 +59,9 @@ puts "FINISH" + "*"*10 + name
   end
 end
 
+###########################
 # Fetch edX data
+###########################
 namespace :db do
   desc "Fill database with edX courses"
   task edx: :environment do
@@ -64,7 +70,7 @@ namespace :db do
     doc = Nokogiri::HTML(open(url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))
     doc.css(".university-column").each do |column|
       column.css("article").each do |course|
-    # Todo: should split the title from the <h2> content by removing the <span> tags
+    # TODO: should split the title from the <h2> content by removing the <span> tags
         name = course.at_css("h2").text.split("x ")[1]
 puts "BEGIN" + "*"*10 + name
         course_url = url + course.at_css("a")['href']
@@ -78,54 +84,26 @@ puts "BEGIN" + "*"*10 + name
         start_date = Date.parse(page.at_css('.start-date').text)
         final_date = Date.parse(page.at_css('.final-date').text)
 
-        provider.courses.create!(course_url: course_url,
+        course = provider.courses.create!(course_url: course_url,
                                  name: name,
                                  code: code,
-                                 university: university,
                                  instructor: instructor,
                                  description: description,
                                  image_link: image_link,
                                  prerequisites: prerequisites,
                                  start_date: start_date,
                                  final_date: final_date)
+        add_university!(university)
+        @university.teach!(course)
 puts "FINISH" + "*"*10 + name
       end      
     end
   end
 end
 
-# Fetch Cousera data from Coursetalk
-namespace :db do
-  desc "Fill database with Coursera courses"
-  task coursera_from_coursetalk: :environment do
-    provider = Provider.find_by_name("Coursera")
-    url = "http://coursetalk.org"
-    coursera_path = "/coursera"
-    doc = Nokogiri::HTML(open(url + coursera_path))
-    doc.css(".course_list td:nth-child(2) a:nth-child(1)").each do |course|
-      course_page_url = url + course['href']
-      page = Nokogiri::HTML(open(course_url))
-      course_name_element = page.at_css("h2 a")
-      name = course_name_element.text
-      # format is like: "/redirect/110/https://www.coursera.org/course/design"
-      course_url = "https:" + course_name_element['href'].split(":")
-      university = page.at_css("h5 a").text
-      instructor = page.at_css(".course_box strong").text
-      #description = 
-      #image_link = 
-      provider.courses.create!(course_url: course_url,
-                               name: name,
-                               university: university,
-                               instructor: instructor)
-    end
-  end
-end
-
-
-
-####################################################################
-
+###########################
 # Fetch Coursera data
+###########################
 namespace :db do
   desc "Fill database with Coursera courses"
   task coursera: :environment do
@@ -134,43 +112,79 @@ namespace :db do
     url = "https://www.coursera.org"
     courses_path = "/courses"
     courses_url = url + courses_path
-puts "going to courses_url"    
+puts "open #{courses_url}"    
     browser.goto courses_url
     sleep(20)
     courses_page = Nokogiri::HTML.parse(browser.html)    
-    courses_page.css(".coursera-course-listing-name .internal-home") do |course|
-      ['href']
-    university = courses_page.at_css(".coursera-course-listing-university span").text
-puts university    
-    course_url = url + course_path
-puts "going to open course page"    
-    browser.goto course_url
-    sleep(20)
-    page = Nokogiri::HTML.parse(browser.html)
-    name = page.at_css("h1").text
-puts "BEGIN" + "*"*10 + name   
-    instructor = page.at_css(".instructor-name").text
-    description = page.at_css(".span6 p").text
-    image_link = page.at_css(".coursera-course-logo img")["src"]
-    start_date = Date.parse(page.at_css('.coursera-course-listing span:nth-child(1)').text)
-    # format is like: " \n(10 weeks long)"
-    duration = page.at_css(".coursera-course-listing span:nth-child(2)").text.split("\n")[1][1...-1]
-puts "Incerting db"
-    provider.courses.create!(course_url: course_url,
-                             name: name,
-                             university: university,
-                             instructor: instructor,
-                             description: description,
-                             image_link: image_link,
-                             start_date: start_date,
-                             duration: duration)
+    courses_page.css(".coursera-course-listing-box-wide").each_with_index do |course, index|
+      course_path = course.at_css(".coursera-course-listing-name .internal-home")['href']
+      university_list = []
+      course.css(".coursera-course-listing-university span").each do |university|
+        university_list << university.text
+      end
+puts "#{index+1} => #{course_path}" 
+      course_url = url + course_path
+      # In case of any TimeoutError, check duplication before scraping.
+      c = provider.courses.find_by_course_url(course_url)
+      if c.nil? 
+        browser.goto course_url
+        sleep(20)
+        page = Nokogiri::HTML.parse(browser.html)
+        name = page.at_css("h1").text
+puts "BEGIN" + "*"*10 + name
+        # TODO: seperate multiple instructors  e.g: https://www.coursera.org/course/gametheory   
+        instructor = page.at_css(".instructor-name").text
+        description = page.at_css(".span6 p").text
+        image = page.at_css(".coursera-course-logo img")
+        if image.nil?
+          image_link = page.at_css(".coursera-course-logo-no-video img")["src"]
+        else
+          image_link = image["src"]
+        end
+        start_date_span = page.at_css('.coursera-course-listing span:nth-child(1)')
+        if start_date_span.nil?
+          start_date = nil
+        else
+          begin
+            start_date = Date.parse(start_date_span.text)
+          rescue
+            start_date = nil
+          end
+        end
+        # format is like: " \n(10 weeks long)"
+        duration_span = page.at_css(".coursera-course-listing span:nth-child(2)")
+        if duration_span.nil?
+          duration = nil
+        else
+          duration = duration_span.text.split("\n")[1][1...-1]
+        end
+        @course = provider.courses.create!(course_url:  course_url,
+                                           name:        name,
+                                           instructor:  instructor,
+                                           description: description,
+                                           image_link:  image_link,
+                                           start_date:  start_date,
+                                           duration:    duration)     
+        university_list.each do |university|      
+          add_university!(university)
+          @university.teach!(@course)
+        end
 puts "FINISH" + "*"*10 + name
+      end # check duplication
+    end
   end
 end
-end
 
 
+
+################################################################
+# Backup
+################################################################
+
+
+################################
 # Fetch Coursera data from file
+################################
 namespace :db do
   desc "Fill database with Coursera courses"
   task coursera_from_html_file: :environment do
@@ -209,14 +223,42 @@ puts "FINISH" + "*"*10 + " " + name
   end
 end
 
+######################################
+# Fetch Cousera data from Coursetalk
+######################################
+namespace :db do
+  desc "Fill database with Coursera courses"
+  task coursera_from_coursetalk: :environment do
+    provider = Provider.find_by_name("Coursera")
+    url = "http://coursetalk.org"
+    coursera_path = "/coursera"
+    doc = Nokogiri::HTML(open(url + coursera_path))
+    doc.css(".course_list td:nth-child(2) a:nth-child(1)").each do |course|
+      course_page_url = url + course['href']
+      page = Nokogiri::HTML(open(course_url))
+      course_name_element = page.at_css("h2 a")
+      name = course_name_element.text
+      # format is like: "/redirect/110/https://www.coursera.org/course/design"
+      course_url = "https:" + course_name_element['href'].split(":")
+      university = page.at_css("h5 a").text
+      instructor = page.at_css(".course_box strong").text
+      #description = 
+      #image_link = 
+      provider.courses.create!(course_url: course_url,
+                               name: name,
+                               university: university,
+                               instructor: instructor)
+    end
+  end
+end
+
 
 private
   def add_university!(name)
     university = University.find_by_name(name)
     if university.nil?
-      u = University.create!(name: name)
-      u.id
+      @university = University.create!(name: name)
     else
-      university.id
+      @university = university
     end
   end

@@ -11,6 +11,12 @@
 class University < ActiveRecord::Base
   attr_accessible :name
   validates :name, presence: true, uniqueness: { case_sensitive: false }
-  has_and_belongs_to_many :courses
+  has_many :teachings, dependent: :destroy
+  has_many :courses,    through: :teachings
+
+
+  def teach!(course)
+    teachings.create!(course_id: course.id)
+  end
   
 end
