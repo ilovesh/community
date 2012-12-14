@@ -5,7 +5,6 @@
 #  id            :integer          not null, primary key
 #  name          :string(255)
 #  provider_id   :integer
-#  progress      :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  code          :string(255)
@@ -17,7 +16,7 @@
 #  course_url    :string(255)
 #  start_date    :date
 #  final_date    :date
-#  duration      :string(255)
+#  duration      :integer
 #
 
 require 'test_helper'

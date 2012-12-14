@@ -8,14 +8,14 @@ class CoursesController < ApplicationController
   end
 
   def ongoing
-    @ongoing_courses = Course.ongoing.paginate(page: params[:page])
+    @ongoing_courses = Course.of_status(:ongoing).paginate(page: params[:page])
   end
 
   def upcoming
-    @upcoming_courses = Course.upcoming.paginate(page: params[:page])
+    @upcoming_courses = Course.of_status(:upcoming).paginate(page: params[:page])
   end
 
   def finished
-    @finished_courses = Course.finished.paginate(page: params[:page])
+    @finished_courses = Course.of_status(:finished).paginate(page: params[:page])
   end
 end

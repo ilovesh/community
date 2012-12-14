@@ -2,14 +2,16 @@ namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
     make_users
-    make_providers
-    make_courses
+    #make_providers
+    #make_universities
+    #make_courses
     make_enrollments
     make_discussions
     make_lists
     make_comments
   end
 end
+
 
 def make_users
   user = User.create!(username: "Example User",
@@ -41,23 +43,42 @@ def make_providers
   Provider.create!(name: "10gen",          website: "education.10gen.com") 
 end
 
+def make_universities
+  10.times do
+    University.create!(name: Faker::Education.school)
+  end
+end
+
 def make_courses
   providers = Provider.all
   providers.each do |provider|
     15.times do |n|
-      name        = Faker::Education.major
-      progress    = 1 + SecureRandom.random_number(3)
-      code        = 100 + n
-      image_link  = "lorempixel.com/120/120/"
-      description = Faker::Lorem.paragraph
-      course      = provider.courses.create!(name:        name,
-                                             progress:    progress,
-                                             code:        code,
-                                             image_link:  image_link,
-                                             description: description)
+      name          = Faker::Education.major
+      code          = 100 + n
+      image_link    = "lorempixel.com/120/120/"
+      description   = Faker::Lorem.paragraph
+      subtitle      = Faker::Lorem.words(3).join(' ')
+      instructor    = Faker::Name.name
+      prerequisites = Faker::Lorem.sentence
+      course_url    = "https://www.coursera.org/course/compfinance"
+      dates         = ["Nov 1, 2012", "Feb 10, 2013"]
+      start_date    = Date.parse(dates.sample)
+      duration      = [0, 99, 5, 15].sample
+      course      = provider.courses.create!(name:          name,
+                                             code:          code,
+                                             image_link:    image_link,
+                                             description:   description,
+                                             subtitle:      subtitle,
+                                             instructor:    instructor,
+                                             prerequisites: prerequisites,
+                                             course_url:    course_url,
+                                             start_date:    start_date,
+                                             duration:      duration)
+      University.all.sample.teach!(course)
     end
   end
 end
+
 
 def make_enrollments
   users = User.all

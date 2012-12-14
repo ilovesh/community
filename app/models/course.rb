@@ -5,7 +5,6 @@
 #  id            :integer          not null, primary key
 #  name          :string(255)
 #  provider_id   :integer
-#  progress      :integer
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  code          :string(255)
@@ -17,17 +16,20 @@
 #  course_url    :string(255)
 #  start_date    :date
 #  final_date    :date
-#  duration      :string(255)
+#  duration      :integer
 #
 
-# progress:
-# 0 - rolling; 1 - coming; 2 - ing; 3 - end
+# duration(week):
+# 0 - rolling; 99 - N/A(upcoming);
+# start_date.nil? && duration == 0  => Udacity rolling
+# start_date.nil? && (duration.nil? || duration != 0)  => Coursera upcoming
+
 
 class Course < ActiveRecord::Base
 
-  attr_accessible :name, :provider_id, :progress, :code, :image_link, 
+  attr_accessible :name, :provider_id, :code, :image_link, 
                   :description, :subtitle, :start_date, :final_date,
-                  :instructor, :prerequisites, :university, :course_url, :duration
+                  :instructor, :prerequisites, :course_url, :duration
   acts_as_commentable
 
   include PgSearch
@@ -36,7 +38,6 @@ class Course < ActiveRecord::Base
 
   validates :name,         presence: true
   validates :provider_id,  presence: true
-#  validates :progress,     presence: true, inclusion: {in: (0..3)}
   validates :image_link,   presence: true
   validates :description,  presence: true
   validates :code,         allow_blank: true, uniqueness: { scope: :provider_id, case_sensitive: false }
@@ -59,9 +60,7 @@ class Course < ActiveRecord::Base
   has_many :universities,    through: :teachings
 #  has_many :comments, dependent: :destroy
 
-  scope :ongoing,  where("progress = ?", 2)
-  scope :upcoming, where("progress = ?", 1)
-  scope :finished, where("progress = ?", 3)
+  scope :of_status, lambda{ |status| all.select{ |course| course.status == status.to_sym } }
 
   def full_name
   	if code
@@ -79,5 +78,22 @@ class Course < ActiveRecord::Base
   def tag_list
     Enrollment.where(course_id: id).tag_counts_on(:tags).order('count desc').map(&:name)
   end
+
+  def status
+    today = Date.today
+    if self.start_date
+      if self.final_date.nil? && self.duration
+        self.final_date = self.start_date + self.duration.weeks
+      end
+      return :upcoming if self.start_date > today
+      return :ongoing  if today > self.start_date && today < self.final_date
+      return :finished
+    else
+      return :rolling if self.duration == 0
+      return :upcoming
+    end
+  end
+
+
 
 end

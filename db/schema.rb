@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121213052053) do
+ActiveRecord::Schema.define(:version => 20121214150155) do
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",   :default => 0
@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(:version => 20121213052053) do
   create_table "courses", :force => true do |t|
     t.string   "name"
     t.integer  "provider_id"
-    t.integer  "progress"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.string   "code"
@@ -43,7 +42,7 @@ ActiveRecord::Schema.define(:version => 20121213052053) do
     t.string   "course_url"
     t.date     "start_date"
     t.date     "final_date"
-    t.string   "duration"
+    t.integer  "duration"
   end
 
   add_index "courses", ["name"], :name => "index_courses_on_name"
