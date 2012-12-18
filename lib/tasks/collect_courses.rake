@@ -7,10 +7,10 @@ require 'watir-webdriver'
 namespace :db do
   desc "Fetch source data"
   task fetch: :environment do
-    create_providers
-    fetch_from_udacity
+    #create_providers
+    #fetch_from_udacity
     fetch_from_edx
-    fetch_from_coursera
+    #fetch_from_coursera
   end
 end
 
@@ -30,40 +30,44 @@ puts "*"*5 + "Udacity" + "*"*5
   doc = Nokogiri::HTML(open(url))
   doc.css(".crs-lst > a").each do |link|
     course_url = url + link['href']
-    coming_soon_span = link.at_css('.crs-coming-soon')
-    # SEMI-TODO: below is a temporary solution
-    #            cannot find '.overviewButtons p' via Nokogiri in the course page
-    if coming_soon_span
-      start_date = Date.parse("Dec 31, 2013")
-      duration = 99
-    else
-      start_date = nil
-      duration = 0
+    # In case of any TimeoutError, check duplication before scraping.
+    c = provider.courses.find_by_course_url(course_url)
+    if c.nil?
+      coming_soon_span = link.at_css('.crs-coming-soon')
+      # SEMI-TODO: below is a temporary solution
+      #            cannot find '.overviewButtons p' via Nokogiri in the course page
+      if coming_soon_span
+        start_date = Date.parse("Dec 31 2013 00:00:00 PST")
+        duration = 99
+      else
+        start_date = nil
+        duration = 0
+      end
+      page = Nokogiri::HTML(open(course_url))
+      name = page.at_css("h1").text.split('(')[0].strip
+  puts "BEGIN" + "*"*10 + name        
+      code          = page.at_css('h1 span').text
+      instructor    = page.at_css(".course-overview-instructor:nth-child(1) .course-overview-instructor-name").text
+      description   = page.at_css('.course-overview-description-body p').text
+      image_link    = page.at_css('img.course-icon')['src']
+      prerequisites = page.at_css('.course-overview-give p').text
+      subtitle_span = page.at_css('.course-icon-desc-container h2')
+      if subtitle_span
+        subtitle = subtitle_span.text
+      end
+      provider.courses.create!(course_url:    course_url,
+                               name:          name,
+                               code:          code,
+                               instructor:    instructor,
+                               description:   description,
+                               image_link:    image_link,
+                               subtitle:      subtitle,
+                               prerequisites: prerequisites,
+                               start_date:    start_date,
+                               duration:      duration)
+  puts "FINISH" + "*"*10 + name      
     end
-    page = Nokogiri::HTML(open(course_url))
-    name = page.at_css("h1").text.split('(')[0].strip
-puts "BEGIN" + "*"*10 + name        
-    code          = page.at_css('h1 span').text
-    instructor    = page.at_css(".course-overview-instructor:nth-child(1) .course-overview-instructor-name").text
-    description   = page.at_css('.course-overview-description-body p').text
-    image_link    = page.at_css('img.course-icon')['src']
-    prerequisites = page.at_css('.course-overview-give p').text
-    subtitle_span = page.at_css('.course-icon-desc-container h2')
-    if subtitle_span
-      subtitle = subtitle_span.text
-    end
-    provider.courses.create!(course_url:    course_url,
-                             name:          name,
-                             code:          code,
-                             instructor:    instructor,
-                             description:   description,
-                             image_link:    image_link,
-                             subtitle:      subtitle,
-                             prerequisites: prerequisites,
-                             start_date:    start_date,
-                             duration:      duration)
-puts "FINISH" + "*"*10 + name      
-  end
+  end  
 puts "*"*5 + "Udacity OK" + "*"*5 
 end
 
@@ -81,28 +85,32 @@ puts "*"*5 + "edX" + "*"*5
       name          = course.at_css("h2").text.split("x ")[1]
 puts "BEGIN" + "*"*10 + name
       course_url    = url + course.at_css("a")['href']
-      page          = Nokogiri::HTML(open(course_url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))
-      code          = page.at_css("span.course-number").text
-      university    = page.at_css(".intro h1 a").text
-      instructor    = page.at_css(".teacher h3").text
-      description   = page.at_css(".about p").text
-      image_link    = url + page.at_css(".hero img")["src"]
-      prerequisites = page.at_css(".prerequisites p").text
-      start_date    = Date.parse(page.at_css('.start-date').text)
-      final_date    = Date.parse(page.at_css('.final-date').text)
-      course = provider.courses.create!(course_url:    course_url,
-                                        name:          name,
-                                        code:          code,
-                                        instructor:    instructor,
-                                        description:   description,
-                                        image_link:    image_link,
-                                        prerequisites: prerequisites,
-                                        start_date:    start_date,
-                                        final_date:    final_date)
-      add_university!(university)
-      @university.teach!(course)
-puts "FINISH" + "*"*10 + name
-    end      
+      # In case of any TimeoutError, check duplication before scraping.
+      c = provider.courses.find_by_course_url(course_url)
+      if c.nil?
+        page          = Nokogiri::HTML(open(course_url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))
+        code          = page.at_css("span.course-number").text
+        university    = page.at_css(".intro h1 a").text
+        instructor    = page.at_css(".teacher h3").text
+        description   = page.at_css(".about p").text
+        image_link    = url + page.at_css(".hero img")["src"]
+        prerequisites = page.at_css(".prerequisites p").text
+        start_date    = page.at_css('.start-date').text + START_TIME + EST
+        final_date    = page.at_css('.final-date').text + FINAL_TIME + EST
+        course = provider.courses.create!(course_url:    course_url,
+                                          name:          name,
+                                          code:          code,
+                                          instructor:    instructor,
+                                          description:   description,
+                                          image_link:    image_link,
+                                          prerequisites: prerequisites,
+                                          start_date:    start_date,
+                                          final_date:    final_date)
+        add_university!(university)
+        @university.teach!(course)
+  puts "FINISH" + "*"*10 + name
+      end
+    end        
   end
 puts "*"*5 + "edX OK" + "*"*5   
 end
@@ -151,7 +159,7 @@ puts "BEGIN" + "*"*10 + name
         start_date = nil
       else
         begin
-          start_date = Date.parse(start_date_span.text)
+          start_date = start_date_span.text + START_TIME + PST
         rescue
           start_date = nil
         end

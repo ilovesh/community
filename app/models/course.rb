@@ -14,8 +14,8 @@
 #  instructor    :string(255)
 #  prerequisites :text
 #  course_url    :string(255)
-#  start_date    :date
-#  final_date    :date
+#  start_date    :datetime
+#  final_date    :datetime
 #  duration      :integer
 #
 
@@ -80,13 +80,13 @@ class Course < ActiveRecord::Base
   end
 
   def status
-    today = Date.today
+    time = Time.now.utc
     if self.start_date
       if self.final_date.nil? && self.duration
         self.final_date = self.start_date + self.duration.weeks
       end
-      return :upcoming if self.start_date > today
-      return :ongoing  if today > self.start_date && today < self.final_date
+      return :upcoming if self.start_date > time
+      return :ongoing  if time > self.start_date && time < self.final_date
       return :finished
     else
       return :rolling if self.duration == 0
