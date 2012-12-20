@@ -83,7 +83,7 @@ class Course < ActiveRecord::Base
     time = Time.now.utc
     if self.start_date
       if self.final_date.nil? && self.duration
-        self.final_date = self.start_date + self.duration.weeks
+        self.final_date = self.start_date + self.duration.weeks + 23.hour + 59.minute + 59.second
       end
       return :upcoming if self.start_date > time
       return :ongoing  if time > self.start_date && time < self.final_date

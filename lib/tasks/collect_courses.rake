@@ -7,10 +7,10 @@ require 'watir-webdriver'
 namespace :db do
   desc "Fetch source data"
   task fetch: :environment do
-    #create_providers
-    #fetch_from_udacity
+    create_providers
+    fetch_from_udacity
     fetch_from_edx
-    #fetch_from_coursera
+    fetch_from_coursera
   end
 end
 
