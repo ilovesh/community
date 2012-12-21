@@ -13,7 +13,7 @@
 #  subtitle      :string(255)
 #  instructor    :string(255)
 #  prerequisites :text
-#  course_url    :string(255)
+#  url           :string(255)
 #  start_date    :datetime
 #  final_date    :datetime
 #  duration      :integer

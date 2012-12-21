@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121218120154) do
+ActiveRecord::Schema.define(:version => 20121220210800) do
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",   :default => 0
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20121218120154) do
     t.string   "subtitle"
     t.string   "instructor"
     t.text     "prerequisites"
-    t.string   "course_url"
+    t.string   "url"
     t.datetime "start_date"
     t.datetime "final_date"
     t.integer  "duration"
