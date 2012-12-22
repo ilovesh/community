@@ -74,15 +74,19 @@ class Course < ActiveRecord::Base
 
   def status
     time = Time.now.utc
-    if self.start_date
-      if self.final_date.nil? && self.duration
-        self.final_date = self.start_date + self.duration.weeks + 23.hour + 59.minute + 59.second
+    start_date = self.start_date
+    final_date = self.final_date
+    duration   = self.duration
+    if start_date
+      if final_date.nil? && duration
+        final_date = start_date + duration.weeks + 23.hour + 59.minute + 59.second
       end
-      return :upcoming if self.start_date > time
-      return :ongoing  if time > self.start_date && time < self.final_date
+      return :upcoming if start_date > time
+      return :ongoing  if final_date && time > start_date && time < final_date
+      return :rolling  if final_date.nil? && time > start_date # in case of such a weird situation
       return :finished
     else
-      return :rolling if self.duration == 0
+      return :rolling if duration == 0
       return :upcoming
     end
   end

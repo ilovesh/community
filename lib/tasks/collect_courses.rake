@@ -12,16 +12,16 @@ namespace :db do
   desc "Fetch source data"
   task fetch: :environment do
                           start1 = Time.now
-    create_providers
+    #create_providers
                           puts "Providers: #{(Time.now - start1)}" + " seconds"
                           start2 = Time.now
-    fetch_from_udacity
+    #fetch_from_udacity
                           puts "Udacity: #{(Time.now - start2)/60}" + " minutes"
                           start3 = Time.now    
     fetch_from_edx
                           puts "edX: #{(Time.now - start3)/60}" + " minutes"
                           start4 = Time.now
-    fetch_from_coursera
+    #fetch_from_coursera
                           puts "Coursera: #{(Time.now - start3)/60}" + " minutes"    
   end
 end
@@ -96,22 +96,23 @@ def fetch_from_edx
                                                                                       puts "*"*5 + "edX" + "*"*5  
   provider = Provider.find_by_name("edX")
   website = "https://www.edx.org"
-  doc = Nokogiri::HTML(open(website, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))
-  doc.css(".university-column").each_with_index do |column, index|
-                                                                                      puts "Column: #{index+1}"     
-    column.css("article").each_with_index do |course, number|
-      name_span = course.at_css("h2")
-      name      = name_span.text.split("x ")[1] if name_span
-                                                                                      puts "*"*5 + "#{number+1}: " + name
+  courses_path = "/courses"
+  courses_url = website + courses_path
+  doc = Nokogiri::HTML(open(courses_url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))
+  doc.css(".courses-listing-item").each_with_index do |course, index|
       url    = website + course.at_css("a")['href']
+      name_span = course.at_css(".course-preview h2")
+      name      = name_span.text.strip.split("x ")[1] if name_span
+      description_span = course.at_css(".desc p")
+      description      = description_span.text.strip if description_span
+                                                                                      puts "*"*5 + "#{index+1}: " + name
+      
       c = provider.courses.find_by_url(url) # In case of any TimeoutError, check duplication before scraping.
       if c.nil?
         page               = Nokogiri::HTML(open(url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))      
         code_span          = page.at_css("span.course-number")
         university_span    = page.at_css(".intro h1 a")
         instructor_span    = page.css(".teacher h3")
-        description_span   = page.at_css(".about p:nth-child(2)")
-        description_span   = page.at_css(".about p") if description_span.nil?
         image_span         = page.at_css(".hero img")
         prerequisites_side_span = page.at_css(".prerequisites .start-date")
         prerequisites_span = page.css(".Prerequisites p")
@@ -121,8 +122,7 @@ def fetch_from_edx
 
         code          = code_span.text.strip if code_span
         university    = university_span.text.strip if university_span
-        description   = description_span.text.strip if description_span
-        image_link    = url + image_span["src"] if image_span
+        image_link    = website + image_span["src"] if image_span
         instructor    = fetch_instructor_list(instructor_span)
 
         prerequisites_side = prerequisites_side_span.text.strip if prerequisites_side_span
@@ -167,9 +167,7 @@ def fetch_from_edx
         add_university_and_teaching!(university, course)
                                                                                       puts "FINISH"
       end # check duplication
-    end # each course in the same column
-                                                                                      puts "Done Column: #{index+1}"         
-  end # each column
+  end # each course
                                                                                       puts "*"*5 + "edX OK" + "*"*5   
 end
 
@@ -214,10 +212,18 @@ def fetch_from_coursera
       duration    = duration_span.text[/[0-9\.]+/].strip if duration_span # format is like: " \n(10 weeks long)"
 
       unless start_date_span.nil?
-        begin
-          start_date = start_date_span.text.strip + START_TIME + PST
-        rescue
-          start_date = nil
+        start_date_span_text = start_date_span.text.strip
+        start_date = nil
+        if start_date_span_text == "Self study"
+          duration = 0
+        elsif start_date_span_text == "Date to be announced"
+          duration = 99
+        else
+          begin
+            start_date = start_date_span_text + START_TIME + PST
+          rescue
+            start_date = nil
+          end
         end
       end
 
