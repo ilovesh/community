@@ -8,16 +8,26 @@ class VotesController < ApplicationController
     @upvote_or_downvote = params[:vote][:vote] == "1"
     @vote = current_user.vote!(@upvote_or_downvote, @voteable_type, @voteable_id)
     if @vote
-      redirect_to @vote.voteable.commentable
+      @voteable = @vote.voteable
+      if @voteable_type == "Comment"
+        redirect_to @voteable.commentable
+      else
+        redirect_to @voteable
+      end
     else
       render 'new'
     end
   end
 
   def destroy
+    vote = @vote
   	@voteable = @vote.voteable
     if @vote.destroy
-      redirect_to @voteable.commentable
+      if vote.voteable_type == "Comment"
+        redirect_to @voteable.commentable
+      else
+        redirect_to @voteable
+      end
     end
   end
 

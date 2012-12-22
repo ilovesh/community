@@ -1,4 +1,4 @@
-<!-- <li id="<%= list.id %>" class="span3">
+<li id="<%= list.id %>" class="span3">
   <span class="list_title"><b><%= link_to list.title, list %></b></span>
   <p class="list_desp">Description: <%= list.description %></p>
   <span class="list_info">created <%= time_ago_in_words(list.created_at) %> ago by 
@@ -22,17 +22,4 @@
     <h3>No courses in this list</h3>
   <% end %>
 <% end %>
-</li> -->
-
-<li id="<%= list.id %>">
-  <%= link_to list.title, list %>
-    <div class="matte-media-box v3" style="-webkit-transform: rotate(-3.8294289326295257deg) 
-                                    translateX(-3.4756936631165445px) translateY(-1.0878166565671563px); ">
-    </div>
-    <div class="matte-media-box v2" style="-webkit-transform: rotate(2.92358176689595deg)
-                                    translateX(-3.502495428547263px) translateY(-5.14340062905103px); ">
-    </div>
-    <div class="matte-media-box">
-      <%= image_tag(list.courses.sample.image_link, class: "medium-image") %>
-    </div>
 </li>

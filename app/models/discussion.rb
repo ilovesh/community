@@ -13,7 +13,10 @@
 class Discussion < ActiveRecord::Base
   attr_accessible :content, :title
   acts_as_commentable
-  
+  acts_as_taggable
+  has_many :votes, dependent: :destroy, as: :voteable
+  include Voteable
+
   validates :title,   presence: true
   validates :user_id, presence: true
 

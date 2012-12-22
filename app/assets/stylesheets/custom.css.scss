@@ -94,6 +94,25 @@ form{
 }
 
 /* list section */
+ul {
+  list-style: none;
+  .tags {
+    padding-left: 0;
+    margin-left: 0;
+  }
+  .discussion-item {
+    overflow: auto;
+    padding: 5px 0;
+    border-top: 1px solid $grayLighter;
+    &:first-child {
+      border: 0;
+    }
+  }
+  .tag-name {
+    display: inline-block;
+  }
+}
+
 ul.popular_courses, 
 ul.recent_discussions, 
 ul.courses,
@@ -105,10 +124,7 @@ ul.all_lists{
   margin-top:10px;
   margin-left:0px;
 }
-ul.vote_form {
-  list-style:none;
-  float:right;
-}
+
 .popular_courses li, 
 .courses li, 
 .discussions li,
@@ -161,8 +177,9 @@ input, textarea, select, .uneditable-input {
   box-shadow:rgba(0, 0, 0, 0.0745098) 0 1px 1px inset;
   display:inline-block;
 }
+
 .vote_form{
-  float:right;
+  float: left;
 }
 
 #error_explanation {
@@ -257,4 +274,17 @@ border-radius: 10px;
   .count_of_taking_users { color: green; }
   .count_of_will_take_users { color: orange; }
   .count_of_taken_users { color: red; }
+}
+
+/* discussions */
+.summary {
+  display: inline-block;
+  float: right;
+  margin-left: 10px;
+  width: 80%;
+}
+
+.vote-comment-count {
+  display: inline-block;
+  overflow: hidden;
 }

@@ -27,4 +27,6 @@ class Vote < ActiveRecord::Base
    where(["created_at > ?", (args.first || 2.weeks.ago)])
   }
 
+
+
 end

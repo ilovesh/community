@@ -1,14 +1,14 @@
 namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
-    make_users
+    #make_users
     #make_providers
     #make_universities
     #make_courses
-    make_enrollments
+    #make_enrollments
     make_discussions
     make_lists
-    make_comments
+    #make_comments
   end
 end
 
@@ -90,48 +90,48 @@ def make_enrollments
 end
 
 def make_discussions
-  users = User.all(limit: 6)
-  50.times do
+  users = User.all(limit: 60)
+  users.each do |user|
     title = Faker::Lorem.sentence
     content = Faker::Lorem.paragraph
-    users.each do |user|
-      discussion = user.discussions.create!(title: title, content: content)
-    end
+    discussion = user.discussions.create!(title: title, content: content)
+    discussion.tag_list = "#{Faker::Lorem.word},#{Faker::Lorem.word},#{Faker::Lorem.word}"
+    discussion.save
   end
 end
 
 def make_lists
   users = User.all(limit: 6)
-  5.times do
-    users.each do |user|
-      title = Faker::Lorem.sentence
-      description = Faker::Lorem.paragraph
-      list = user.lists.create!(title: title, description: description)
-      5.times do |n|
-        course = Course.find(n+2)
-        description = Faker::Lorem.sentence
-        list.listings.create!(course_id: course.id, description: description)
-      end
+  users.each do |user|
+    title = Faker::Lorem.sentence
+    description = Faker::Lorem.paragraph
+    list = user.lists.create!(title: title, description: description)
+    list.tag_list = "#{Faker::Lorem.word},#{Faker::Lorem.word},#{Faker::Lorem.word}"
+    list.save
+    5.times do |n|
+      course = Course.find(n+2)
+      description = Faker::Lorem.sentence
+      list.listings.create!(course_id: course.id, description: description)
     end
   end
 end
 
 def make_comments
-  courses = Course.all
+  courses = Course.all(limit: 100)
   courses.each do |course|
     5.times do
       comment = User.all.sample.comment!(course, Faker::Lorem.sentence)
       comment.save
     end
   end
-  discussions = Discussion.all
+  discussions = Discussion.all(limit: 50)
   discussions.each do |discussion|
     5.times do
       comment = User.all.sample.comment!(discussion, Faker::Lorem.sentence)
       comment.save
     end
   end
-  lists = List.all
+  lists = List.all(limit: 50)
   lists.each do |list|
     5.times do
       comment = User.all.sample.comment!(list, Faker::Lorem.sentence)

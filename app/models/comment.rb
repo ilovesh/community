@@ -17,6 +17,7 @@
 class Comment < ActiveRecord::Base
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
   has_many :votes, dependent: :destroy, as: :voteable
+  include Voteable
 
   validates_presence_of :body
   validates_presence_of :user
@@ -56,16 +57,5 @@ class Comment < ActiveRecord::Base
   end
 
 
-  def plusminus
-    upvote_count - downvote_count
-  end
-
-  def upvote_count
-    votes.where(vote: true).count
-  end
-
-  def downvote_count
-    votes.where(vote: false).count
-  end
 
 end
