@@ -56,6 +56,7 @@ class Course < ActiveRecord::Base
   has_many :teachings, dependent: :destroy
   has_many :universities,    through: :teachings
 #  has_many :comments, dependent: :destroy
+  has_many :notes, dependent: :destroy
 
   scope :of_status, lambda{ |status| all.select{ |course| course.status == status.to_sym } }
 

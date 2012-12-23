@@ -37,13 +37,10 @@ class User < ActiveRecord::Base
   has_many :lists,          dependent: :destroy
   has_many :comments,       dependent: :destroy
   has_many :votes,          dependent: :destroy
+  has_many :notes,          dependent: :destroy
 
   def enroll!(course, status, *arg)
-    if arg
-      tag_list = arg[0]
-    else
-      tag_list = []
-    end
+    tag_list = arg[0] if arg
     enrollments.create!(course_id: course.id,
                         status:    status,
                         tag_list:  tag_list)
@@ -98,6 +95,12 @@ class User < ActiveRecord::Base
     end
   end
 
+  def take_note!(course, body, *arg)
+    title = arg[0] if arg
+    notes.create!(course_id: course.id,
+                  body:      body,
+                  title:     title)
+  end
 
   private
   	def create_remember_token

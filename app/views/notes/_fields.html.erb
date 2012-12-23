@@ -1,0 +1,3 @@
+      <%= f.text_field :title, :row => 1, :cols => 40, placeholder: "Title (optional)" %> <br/>
+      <%= f.text_area  :body, :row => 20, :cols => 60, placeholder: "Content" %> <br/>
+      <%= render 'shared/error_messages', object: f.object %>

@@ -1,0 +1,10 @@
+<% provide(:title, 'Write a note') %>
+<div class="row center">
+  <div class="span6 offset4">
+    <h3>Write a note</h3>
+    <%= form_for [@course, @note] do |f| %>
+      <%= render 'fields', f: f %>
+      <%= f.submit "Add note", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>

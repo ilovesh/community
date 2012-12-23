@@ -5,6 +5,7 @@
              locals: { course: @course } %>
   <%= render partial: "shared/comment_form",
              locals: { commentable: @course } %>
+  <%= link_to "Write a note",  new_course_note_path(@course), class: "btn btn-large btn-primary" %>
 </div>
   <% if @comments.any? %>
   <%= render partial: "shared/comments",

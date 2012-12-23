@@ -26,6 +26,4 @@ private
     @comment = current_user.comments.find_by_id(params[:id])
     redirect_to root_url if @comment.nil?
   end
-
-
 end

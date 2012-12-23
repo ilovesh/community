@@ -1,0 +1,10 @@
+<% provide(:title, 'Edit note') %>
+<div class="row center">
+  <div class="span6 offset4">
+    <h3>Edit the note</h3>
+    <%= form_for [@course, @note] do |f| %>
+      <%= render 'fields', f: f %>
+      <%= f.submit "update", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
