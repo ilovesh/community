@@ -1,22 +1,37 @@
-<div id="header">
-	<div id="logo"><%= link_to "Dragon", root_path, id: "logo" %></div>
-	<div id="top-navigation">
-	  <nav>
-		<ul class="nav">
-		  <li><%= link_to "Courses",     courses_path %></li>
-		  <li><%= link_to "Discussions", discussions_path %></li>
-		  <li><%= link_to "Lists",       lists_path %></li>
-		</ul>
-		<ul class="nav pull-right">
-			<%= render 'layouts/search_form' %>
-		  
-		  <% unless logged_in? %>
-			<li><%= link_to "Log in",  login_path %></li>
-			<li><%= link_to "Sign up", signup_path %></li>
-		  <% else %>
-			<li><%= link_to "Log out", logout_path, method: "delete" %></li>
-		  <% end %>
-		</ul>
-	  </nav>
+<header class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+    <div class="container">
+ 
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <!-- Be sure to leave the brand out there if you want it shown -->
+      <%= link_to "Dragon", root_path, id: "logo" %>
+
+      <!-- Everything you want hidden at 940px or less, place within here -->
+      <div class="nav-collapse collapse">
+		    <nav>
+					<ul class="nav">
+					  <li><%= link_to "Courses",     courses_path %></li>
+					  <li><%= link_to "Discussions", discussions_path %></li>
+					  <li><%= link_to "Lists",       lists_path %></li>
+					</ul>
+					<ul class="nav pull-right">
+					  <% unless logged_in? %>
+							<li><%= link_to "Log in",  login_path %></li>
+							<li><%= link_to "Sign up", signup_path %></li>
+					  <% else %>
+						  <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+					  <% end %>
+					</ul>
+					<%= render 'layouts/search_form' %>
+			  </nav>
+      </div>
+
+    </div>
 	</div>
-</div>
+</header>

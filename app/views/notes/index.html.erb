@@ -1,0 +1,13 @@
+<% provide(:title, 'Notes') %>
+<% content_for :left do %>
+  <%= link_to @course.full_name,  @course %>
+  <h1><%= pluralize(@notes.count, 'note') %></h1>
+  <ul class="note-items">
+    <%= render @notes %>
+  </ul>
+  <%= will_paginate @notes %>
+<% end %>
+
+<% content_for :right do %>
+  place_holder
+<% end %>

@@ -4,7 +4,7 @@
   <%= link_to "create a post",  new_discussion_path, class: "btn btn-large btn-primary" %>
   <%= will_paginate @discussions %>
   <ul class="discussions">
-    <%# Rails automatically looks for a partial called _post.html.erb  %>
+    <%# Rails automatically looks for a partial called _discussion.html.erb  %>
     <%= render partial: 'shared/discussion', collection: @discussions %>
   </ul>
   <%= will_paginate @discussions %>

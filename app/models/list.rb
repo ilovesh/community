@@ -24,13 +24,8 @@ class List < ActiveRecord::Base
 
   default_scope order: 'lists.created_at DESC'
 
-  def add!(*args)
-  	course = args[0]
-  	if args[1]
-  	  description = args[1]
-    else
-      description = nil
-  	end
+  def add!(course, *arg)
+    description = arg if arg
     listings.create!(course_id: course.id, description: description)
   end
 

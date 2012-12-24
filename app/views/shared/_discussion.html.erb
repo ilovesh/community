@@ -1,34 +1,35 @@
-<li class="discussion-item" id="<%= discussion.id %>">
-  <% if current_page?(discussion) %>
-    <%= render partial: "shared/vote_form",
-               locals: { voteable: discussion } %>
-  <% else %>
-    <div class="vote-comment-count pull-left">
-      <div class="votes-count"><%= pluralize(discussion.plusminus, "vote") %></div>
-      <div class="comments-count"><%= pluralize(discussion.comment_threads.count, "comment") %></div>
-    </div>
-  <% end %>
-
-  <div class="summary">
-    <h4><%= link_to discussion.title, discussion %></h4>
-    <% unless discussion.tag_list.blank? %>
-      <ul class="tags">
-        <% discussion.tag_list.each do |tag| %>
-          <li class="tag-name"><%= tag%> </li>
-        <% end %>
-      </ul>
-    <% end %>
-
-    <div class="discussion-info pull-right">
-      <span class="post-time"><%= time_ago_in_words(discussion.created_at) %> ago</span>
-      <%= link_to discussion.user.username, discussion.user %>
-      <% if current_user?(discussion.user) %>
-        <%= link_to "edit",   edit_discussion_path(discussion.id) %>
-        <%= link_to "delete", discussion, 
-                          method: :delete,
-                          data: { confirm: "You sure?" },
-                          title: discussion.title %>
+<li class="discussion-item" id="discussion-<%= discussion.id %>">
+  <div class="row-fluid">
+    <div class="span2 discussion-count"> 
+      <% if current_page?(discussion) %>
+        <%= render partial: "shared/vote_form",
+                   locals: { voteable: discussion } %>
+      <% else %>
+          <div class="votes-count"><%= pluralize(discussion.plusminus, "vote") %></div>
+          <div class="comments-count"><%= pluralize(discussion.comment_threads.count, "comment") %></div>
       <% end %>
+    </div>
+
+    <div class="span10">
+      <h3><%= link_to discussion.title, discussion %></h3>
+      <% unless discussion.tag_list.blank? %>
+        <ul class="inline">
+          <% discussion.tag_list.each do |tag| %>
+            <li class="tag-name label label-info"><%= tag%></li>
+          <% end %>
+        </ul>
+      <% end %>
+      <div class="discussion-info pull-right">
+        <span class="muted"><%= time_ago_in_words(discussion.created_at) %> ago</span>
+        <%= link_to discussion.user.username, discussion.user %>
+        <% if current_user?(discussion.user) %>
+          <%= link_to "edit",   edit_discussion_path(discussion.id) %>
+          <%= link_to "delete", discussion, 
+                      method: :delete,
+                      data: { confirm: "You sure?" },
+                      title: discussion.title %>
+        <% end %>
+      </div>
     </div>
   </div>
 </li>

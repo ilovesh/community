@@ -1,5 +1,4 @@
 @import "bootstrap";
-@import "bootstrap-responsive";
 
 @mixin box_sizing {
   -moz-box-sizing: border-box; 
@@ -13,7 +12,7 @@ html {
   overflow-y: scroll;
 }
 body{
-  padding-top:75px;
+  padding-top: 60px;
 }
 section {
   overflow: auto;
@@ -30,88 +29,60 @@ span {
 
 
 /* header */
-#header {
-  background: none repeat scroll 0 0 #0772A1/* more bright color : #FF9300 #3C2415 */;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
-  width: 100%;
-  top:0;
-  position:fixed;
-  height: auto;
-}
+//header.navbar {
+  // background: none repeat scroll 0 0 #0772A1/* more bright color : #FF9300 #3C2415 */;
+  // box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
+  // width: 100%;
+  // top:0;
+  // position:fixed;
+  // height: auto;
+//}
 
 #logo{
-  color: #FFFFFF;
+  color: black;
   float: left;
-  font-size: 1.4em;
+  font-size: 2.3em;
   font-weight: bold;
   letter-spacing: -1px;
-  margin: 9px 20px 0 60px;
+  padding-top: 10px;
   text-decoration:none;
 }
 
-#top-navigation{
-  padding:0px 30px;
-}
-#top-navigation ul{
-  display: block;
-    float: left;
-    font-size: 1.15em;
-    list-style: none outside none;
-    margin: 0 10px;
-    position: relative;
-}
-#top-navigation .nav > li {
-    float: left;
-    line-height: 20px;
-}
-#top-navigation .nav > li > a {
-    color: #FFFFFF;
-    font-size: 1em;
-    font-weight: bold;
-    padding: 17px 14px 15px;
-}
-#top-navigation .nav > li > a:hover {
-  background-color:#3BA3D0;
-  color: #fff
-}
-#top-navigation .nav.pull-right {
-    float: right;
-    margin-right: 100px;
-}
-.topnav-search{
-  float:left;
-  margin-top:11px;
-  position:relative;
-  border-radius:15px;
-  font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size:13px;
-  font-weight:normal;
-  line-height:1;
-  padding:0 10px;
-}
-form{
-  margin:0 0;
+ul.nav {
+  font-size: 1.15em;
+  font-weight: bold;
+  color: #FFFFFF;
+  &:hover {
+    // background-color:#3BA3D0;
+    color: #fff
+  }
 }
 
+
 /* list section */
-ul {
+ul.inline,
+ol.inline {
+  margin-left: 0;
   list-style: none;
-  .tags {
-    padding-left: 0;
-    margin-left: 0;
-  }
-  .discussion-item {
-    overflow: auto;
-    padding: 5px 0;
-    border-top: 1px solid $grayLighter;
-    &:first-child {
-      border: 0;
-    }
-  }
-  .tag-name {
-    display: inline-block;
-  }
 }
+
+ul.inline > li,
+ol.inline > li {
+  display: inline-block;
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+ul.seperate > li,
+ol.seperate > li {
+  overflow: auto;
+  border-top: 1px solid $grayLighter;
+  &:first-child {
+    border: 0;
+  }
+  padding-bottom: 10px;
+}
+
 
 ul.popular_courses, 
 ul.recent_discussions, 
@@ -120,7 +91,6 @@ ul.discussions,
 ul.comments,
 ul.recent_lists, 
 ul.all_lists{
-  list-style:none;
   margin-top:10px;
   margin-left:0px;
 }
@@ -130,7 +100,6 @@ ul.all_lists{
 .discussions li,
 .recent_discussions li,
 .comments li {
-  list-style:none;
   padding:5px 2px;
 }
 .comments li {
@@ -221,51 +190,13 @@ border-radius: 10px;
   }
 }
 
-.segmented_first {
-  border-radius: 3px 0 0 3px;
-  -moz-border-radius: 3px 0 0 3px;
-  -webkit-border-top-left-radius: 3px;
-  -webkit-border-top-right-radius: 0;
-  -webkit-border-bottom-right-radius: 0;
-  -webkit-border-bottom-left-radius: 3px;
-  margin: 0;
+/* image */
+.img-medium {
+  width: 150px;
 }
 
-.segmented_middle { 
-  border-radius: 0 0 0 0;
-  -moz-border-radius: 0 0 0 0;
-  -webkit-border-top-left-radius: 0;
-  -webkit-border-top-right-radius: 0;
-  -webkit-border-bottom-right-radius: 0;
-  -webkit-border-bottom-left-radius: 0;
-  border-left: 0;
-  margin: 0;  
-}
-
-.segmented_last {
-  border-radius: 0 3px 3px 0;
-  -moz-border-radius: 0 3px 3px 0;
-  -webkit-border-top-left-radius: 0;
-  -webkit-border-top-right-radius: 3px;
-  -webkit-border-bottom-right-radius: 3px;
-  -webkit-border-bottom-left-radius: 0;
-  border-left: 0;
-  margin: 0;  
-}
-
-/* courses */
-.small-image {
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+.img-small {
   width: 70px;
-}
-
-.medium-image {
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  width: 100px;
 }
 
 .count {
@@ -276,15 +207,21 @@ border-radius: 10px;
   .count_of_taken_users { color: red; }
 }
 
-/* discussions */
-.summary {
-  display: inline-block;
-  float: right;
-  margin-left: 10px;
-  width: 80%;
+/* typography */
+h3 {
+  font-size: 18px;
+  margin: 0;
 }
 
-.vote-comment-count {
-  display: inline-block;
-  overflow: hidden;
+/* discussion */
+.discussion-count {
+  margin-top: 10px;
 }
+
+.block {
+  display: block;
+}
+
+
+// load at last, otherwise body > padding-top still exists.
+@import "bootstrap-responsive";

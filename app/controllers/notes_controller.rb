@@ -11,15 +11,19 @@ class NotesController < ApplicationController
   	@course = Course.find(params[:course_id])
     @note = @current_user.take_note!(@course, params[:note][:body], params[:note][:title])
     if @note.save
-      redirect_to [@course, @note]
+      redirect_to @note
     else
       render 'new'
     end
   end
 
+  def index
+    @course = Course.find(params[:course_id])
+    @notes = @course.notes.paginate(page: params[:page])
+  end
+
   def show
     @note = Note.find(params[:id])
-    @course = @note.course
   end
 
   def edit
@@ -29,7 +33,7 @@ class NotesController < ApplicationController
   def update
     if @note.update_attributes(params[:note])
       flash[:success] = "Note updated"
-      redirect_to [@note.course, @note]
+      redirect_to @note
     else
       render 'edit'
     end

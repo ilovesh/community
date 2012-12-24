@@ -6,9 +6,10 @@ namespace :db do
     #make_universities
     #make_courses
     #make_enrollments
-    make_discussions
-    make_lists
+    #make_discussions
+    #make_lists
     #make_comments
+    make_notes
   end
 end
 
@@ -137,5 +138,12 @@ def make_comments
       comment = User.all.sample.comment!(list, Faker::Lorem.sentence)
       comment.save
     end
+  end
+end
+
+def make_notes
+  60.times do
+    User.all.sample.take_note!(Course.all.sample, Faker::Lorem.paragraph)
+    User.all.sample.take_note!(Course.all.sample, Faker::Lorem.paragraph, Faker::Lorem.sentence) 
   end
 end

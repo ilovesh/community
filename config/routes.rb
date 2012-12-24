@@ -14,8 +14,9 @@ Dragon::Application.routes.draw do
       get :autocomplete_name
     end
     resources :comments, only: [:create, :destroy]
-    resources :notes,    only: [:create, :destroy, :show, :new, :edit, :update]
+    resources :notes,    only: [:new, :create, :index]
   end
+  resources :notes, only: [:show, :edit, :update, :destroy]
   
   resources :lists do
     resources :comments, only: [:create, :destroy]
