@@ -1,0 +1,8 @@
+<div class="section-container">
+  <h2 class="section-title">Interesting Lists</h2>
+  <div class="section-content">
+    <ul class="unstyled recent_lists thumbnails">
+      <%= render partial: 'shared/list', collection: @lists.last(4) %>
+    </ul>
+  </div>
+</div>

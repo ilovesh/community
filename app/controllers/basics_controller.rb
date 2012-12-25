@@ -1,10 +1,18 @@
 class BasicsController < ApplicationController
   def home
-    @popular_ongoing_courses = Course.of_status(:ongoing).sort_by{ |c| -c.taking_users.count }[0..4]
-    @popular_upcoming_courses = Course.of_status(:upcoming).sort_by{ |c| -c.will_take_users.count }[0..4]
-    @popular_finished_courses = Course.of_status(:finished).sort_by{ |c| -c.taken_users.count }[0..4]
+    @ongoing = Course.of_status(:ongoing).sort_by{ |c| -c.taking_users.count }[0..20].sample(6)
+    @upcoming = Course.of_status(:upcoming).sort_by{ |c| -c.will_take_users.count }[0..20].sample(6)
+    #tag_list = Enrollment.tag_counts_on(:tags).order('count desc').map(&:name)
+    #tags = tag_list[0..4]
+    #tags = ["et", "ut", "aut", "voluptatem", "qui"]
+    @et = Course.tagged_with("et").sort_by {|c| -c.users.count }[0..5]
+    @ut = Course.tagged_with("ut").sort_by {|c| -c.users.count }[0..5]
+    @aut = Course.tagged_with("aut").sort_by {|c| -c.users.count }[0..5]
+    @voluptatem = Course.tagged_with("voluptatem").sort_by {|c| -c.users.count }[0..5]
+    @qui = Course.tagged_with("qui").sort_by {|c| -c.users.count }[0..5]
     @discussions = Discussion.all(limit: 5)
     @lists       = List.all(limit: 5)
+
   end
 
   def search

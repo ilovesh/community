@@ -17,16 +17,12 @@ body{
 section {
   overflow: auto;
 }
-.section-content{
-  overflow: auto;
-}
 textarea {
   resize: vertical;
 }
 span {
   text-align: center;
 }
-
 
 /* header */
 //header.navbar {
@@ -48,16 +44,14 @@ span {
   text-decoration:none;
 }
 
-ul.nav {
+ul#top-nav {
   font-size: 1.15em;
   font-weight: bold;
-  color: #FFFFFF;
-  &:hover {
-    // background-color:#3BA3D0;
-    color: #fff
-  }
 }
 
+.sidebar-tabs > li > a {
+  line-height: 10px;
+}
 
 /* list section */
 ul.inline,
@@ -166,11 +160,11 @@ input, textarea, select, .uneditable-input {
 
 /* Section */
 .section-container{
-padding:15px 27px;
-margin: 15px 0;
-border: 1px solid #DDDDDD;
--moz-border-colors: none;
-border-radius: 10px;
+  padding:15px 15px 0 15px;
+  margin: 10px 0;
+  border: 1px solid #DDDDDD;
+  -moz-border-colors: none;
+  border-radius: 10px;
 }
 
 
@@ -192,11 +186,15 @@ border-radius: 10px;
 
 /* image */
 .img-medium {
-  width: 150px;
+  height: 75px;
 }
 
 .img-small {
   width: 70px;
+}
+
+.img-medium-large {
+  height: 90px;
 }
 
 .count {
@@ -208,18 +206,105 @@ border-radius: 10px;
 }
 
 /* typography */
+h2 {
+  font-size: 25px;
+  line-height: 30px;
+}
+
 h3 {
   font-size: 18px;
+}
+
+h2, h3 {
   margin: 0;
 }
 
-/* discussion */
+
+/* homepage: course */
+aside {
+  float: left;
+  margin: 15px 10px 0 0;
+}
+aside > label {
+  font-size: 12px;
+  font-weight: bold;
+}
+aside > li {
+  font-size: 11px;
+}
+
+ul.popular_courses li:nth-child(3n+1) {  
+  margin-left: 0;
+}
+
+legend.course-item {
+  font-size: 12px;
+  font-weight: bold;
+  color: inherit;
+  border: 0;
+  border-top: 1px solid #E5E5E5;
+  line-height: 12px;
+  padding-top: 5px;
+  text-align: center;
+}
+
+img.course-item {
+  margin-bottom: 5px;
+}
+
+.span4 > a.thumbnail {
+  height: 130px;
+}
+
+.span5 > a.thumbnail {
+  height: 250px;
+}
+
+ul.thumbnails {
+  margin: 0;
+}
+
+.tab-content .course-grid {
+  padding: 0;
+}
+
+.circle {
+
+  -webkit-border-radius: 999px;
+  -moz-border-radius: 999px;
+  border-radius: 999px;
+
+  width: 3px;
+  height: 3px;
+  padding: 3px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.ongoing-color { background-color: green; }
+.upcoming-color { background-color: yellow; }
+
+/* homepage: discussion */
 .discussion-count {
   margin-top: 10px;
 }
 
 .block {
   display: block;
+}
+
+.badge {
+  margin: 3px;
+}
+
+.label-tag {
+  background-color: lightSkyBLue;
+}
+
+/* homepage: list */
+.list-like {
+  border: 0;
+  border-bottom: 1px solid #E5E5E5;
 }
 
 

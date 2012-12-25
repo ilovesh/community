@@ -13,7 +13,7 @@ gem 'watir-webdriver'
 
 # front-end
 gem 'sass-rails', '~> 3.2'
-gem 'bootstrap-sass', '~> 2.2.1.1'
+gem 'bootstrap-sass', '~> 2.2.2.0'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'jquery-rails'
