@@ -11,18 +11,32 @@
 html {
   overflow-y: scroll;
 }
+
 body{
   padding-top: 60px;
   background: repeat url("notepad.jpg");
 }
+
 section {
   overflow: auto;
 }
+
 textarea {
   resize: vertical;
 }
+
 span {
   text-align: center;
+}
+
+.section-container{
+  padding: 15px;
+  margin-bottom: 12px;
+  border: 1px solid #DDDDDD;
+  -moz-border-colors: none;
+  border-radius: 10px;
+  background-color: white;
+  overflow: hidden;
 }
 
 /* header */
@@ -50,11 +64,9 @@ ul#top-nav {
   font-weight: bold;
 }
 
-.sidebar-tabs > li > a {
-  line-height: 10px;
-}
 
-/* list section */
+
+/* list */
 ul.inline,
 ol.inline {
   margin-left: 0;
@@ -79,21 +91,7 @@ ol.seperate > li {
 }
 
 
-ul.popular_courses, 
-ul.recent_discussions, 
-ul.courses,
-ul.discussions,
-ul.comments,
-ul.recent_lists, 
-ul.all_lists{
-  margin-top:10px;
-  margin-left:0px;
-}
 
-.popular_courses li, 
-.courses li, 
-.discussions li,
-.recent_discussions li,
 .comments li {
   padding:5px 2px;
 }
@@ -159,17 +157,6 @@ input, textarea, select, .uneditable-input {
   @extend .error;
  }
 
-/* Section */
-.section-container{
-  padding:15px 15px 0 15px;
-  margin: 5px 0;
-  border: 1px solid #DDDDDD;
-  -moz-border-colors: none;
-  border-radius: 10px;
-  background-color: white;
-}
-
-
 .courses_status {
   display: inline-block;
   float: left;
@@ -188,15 +175,11 @@ input, textarea, select, .uneditable-input {
 
 /* image */
 .img-medium {
-  height: 75px;
+  height: 97px;
 }
 
-.img-small {
-  width: 70px;
-}
-
-.img-medium-large {
-  height: 90px;
+.img-large {
+  height: 173px;
 }
 
 .count {
@@ -211,128 +194,98 @@ input, textarea, select, .uneditable-input {
 h2 {
   font-size: 25px;
   line-height: 30px;
+  margin: 5px 0;
 }
 
 h3 {
   font-size: 18px;
   line-height: 25px;
-}
-
-h2, h3 {
   margin: 0;
 }
 
+
+/* homepage */
+.view-all {
+  font-weight: bold;
+  font-size: 12px;
+  text-shadow: white 1px 1px 0px;
+}
 
 /* homepage: course */
 aside {
   float: left;
   margin: 15px 10px 0 0;
-}
-aside > label {
-  font-size: 12px;
-  font-weight: bold;
-}
-aside > li {
-  font-size: 11px;
-}
-
-ul.popular_courses li:nth-child(3n+1) {  
-  margin-left: 0;
-}
-
-legend.course-item {
-  font-size: 12px;
-  font-weight: bold;
-  color: inherit;
-  border: 0;
-  border-top: 1px solid #E5E5E5;
-  line-height: 12px;
-  padding-top: 5px;
-  text-align: center;
+  a {
+    line-height: 10px;
+    font-size: 12px;
+  }
+  .circle {
+    -webkit-border-radius: 999px;
+    -moz-border-radius: 999px;
+    border-radius: 999px;
+    width: 3px;
+    height: 3px;
+    padding: 3px;
+    margin-right: 10px;
+    display: inline-block;
+  }
+  .circle-ongoing { background-color: green; }
+  .circle-upcoming { background-color: yellow; }
 }
 
-img.course-item {
-  margin-bottom: 5px;
-}
-
-.span4 > a.thumbnail {
-  height: 130px;
-}
-
-
-
-ul.thumbnails {
-  margin: 10px;
-}
-
-.tab-content .course-grid {
-  padding: 0;
-}
-
-.circle {
-
-  -webkit-border-radius: 999px;
-  -moz-border-radius: 999px;
-  border-radius: 999px;
-
-  width: 3px;
-  height: 3px;
-  padding: 3px;
-  margin-right: 10px;
-  display: inline-block;
-}
-
-.ongoing-color { background-color: green; }
-.upcoming-color { background-color: yellow; }
-
-/* homepage: discussion */
-.discussion-count {
+ul.course-items {
   margin-top: 10px;
-}
-
-.block {
-  display: block;
-}
-
-.badge {
-  margin: 3px;
-}
-
-.label-tag {
-  background-color: lightSkyBLue;
-}
-
-/* homepage: list */
-.interesting-lists {
-  margin-left: 0 auto;
-  margin-right: 0 auto;
-}
-
-.list-column {
-  li {
-    position: relative;
-    margin: 5px;
+  li:nth-child(3n+1) {  
+    margin-left: 0;
+  }
+  li.course-item > .thumbnail {
+    height: 147px;
+    legend {
+      font-size: 12px;
+      font-weight: bold;
+      color: inherit;
+      border: 0;
+      border-top: 1px solid #E5E5E5;
+      line-height: 12px;
+      padding-top: 5px;
+      margin-top: 10px;
+      text-align: center;
+    }
   }
 }
 
-.row-fluid > li {
-  margin-left: 0 auto;
-  margin-right: 0 auto;
+/* homepage: discussion */
+li.discussion-item {
+  .badge { margin: 3px;}
+  .icon-count { margin-right: 2px; }
 }
 
-.list-info {
-  text-align: right;
-  margin-bottom: 0;
+/* homepage: list */
+ul.list-items {
+  li:nth-child(2n+1) {  
+    margin-left: 0;
+  }
+  li.list-item {
+    margin-bottom: 10px;
+    .thumbnail {
+      height: 445px;
+    }
+    .list-info {
+      text-align: right;
+      margin-bottom: 0;
+    }
+    .small-img-container {
+      margin: 18px 0 16px 35px;
+      width: 309px;
+      height: 164px;
+    }
+    .img-center {
+      margin-left: 0 auto;
+      margin-right: 0 auto;
+    }
+  }
 }
 
-.view-all {
-  text-align: right;
-}
-
-.list-controll {
-  float: right;
-  position: relative;
-}
 
 // load at last, otherwise body > padding-top still exists.
 @import "bootstrap-responsive";

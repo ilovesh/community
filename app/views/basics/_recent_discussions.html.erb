@@ -1,9 +1,7 @@
 <div class="section-container">
-  <h2 class="section-title">Recent Discussions</h2>
-  <div class="section-content">
-    <ul class="unstyled seperate">
-      <%= render partial: 'shared/discussion', collection: @discussions %>
-    </ul>
-    <%= link_to "View all discussions »", discussions_path, {class: "view-all"} %>
-  </div>
+  <h2>Recent Discussions</h2>
+  <ul class="unstyled seperate">
+    <%= render partial: 'shared/discussion', collection: @discussions %>
+  </ul>
+  <%= link_to "View all discussions »", discussions_path, { class: "pull-right view-all" } %>
 </div>

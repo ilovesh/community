@@ -1,26 +1,8 @@
-<li id="list_<%= list.id %>" class="span11 list-item">
+<li class="span6 list-item" id="list_<%= list.id %>">
   <div class="thumbnail">
-    <div class="list-controll">
-      <i class="icon-star-empty icon-large"></i>
-    </div>
-    <% unless (c = list.courses.find_by_provider_id([2,3].sample)).nil? %>
-      <%= link_to image_tag(c.image_link, alt: "course image", class: ".img-medium-large"), list %>
-    <% else %>
-      <%= link_to image_tag(list.courses.sample.image_link, alt: "course image", class: ".img-medium-large"), list %>
-    <% end %>
-    <div class="caption">
-      <h3><%= link_to list.title, list %></h3>
-      <p><%= list.description %></p>
-      <% unless list.tag_list.blank? %>
-        <ul class="inline">
-          <% list.tag_list.each do |tag| %>
-            <li class="tag-name label label-info"><%= tag%></li>
-          <% end %>
-        </ul>
-      <% end %>
-      <p class="muted list-info">created <%= time_ago_in_words(list.created_at) %> ago</p> 
-      <p class="list-info"><%= gravatar_for list.user, size: 20 %> <%= link_to list.user.username, list.user %></p>
-    </div>
+    <%= render 'shared/list_controll' %>
+    <%= render partial: 'shared/list_image', locals: { list: list } %>
+    <%= render partial: 'shared/list_summary', locals: { list: list } %>
   </div>
 
   <% if current_page?(list) %>

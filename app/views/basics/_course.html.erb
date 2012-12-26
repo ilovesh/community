@@ -1,6 +1,6 @@
-<li id="course-<%=course.id%>" class="span4">
+<li class="course-item span4" id="course-<%=course.id%>">
   <%= link_to course, {class: "thumbnail"} do %>
-    <%= image_tag(course.image_link, class: "img-medium course-item") %>
-    <legend class="course-item"><%= course.full_name %></legend>
+    <%= image_tag(course.image_link, class: "img-medium") %>
+    <legend><%= course.full_name %></legend>
   <% end %>
 </li>

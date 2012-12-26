@@ -1,52 +1,10 @@
 <div class="section-container">
-  <h2 class="section-title">Popular Courses</h2>  
-	<!-- Popular Course Tab -->
-	<div class="section-content">
-		<aside class="tabbable tabs-left">
-			<ul class="nav nav-tabs sidebar-tabs" id="status">
-			  <li class="active"><a href="#ongoing" data-toggle="tab">
-			  	<div class="circle ongoing-color"></div>ongoing</a></li>
-			  <li><a href="#upcoming" data-toggle="tab">
-			  	<div class="circle upcoming-color"></div>upcoming</a></li>
-			  <li><a href="#et" data-toggle="tab"><i class="icon-tag"></i> et</a></li>
-			  <li><a href="#ut" data-toggle="tab"><i class="icon-tag"></i> ut</a></li>
-			  <li><a href="#aut" data-toggle="tab"><i class="icon-tag"></i> aut</a></li>
-			  <li><a href="#voluptatem" data-toggle="tab"><i class="icon-tag"></i> voluptatem</a></li>
-			  <li><a href="#qui" data-toggle="tab"><i class="icon-tag"></i> qui</a></li>
-			</ul>
-			<%= link_to "View all courses »", courses_path %>
-		</aside>
-
-	  <div class="tab-content course-grid">
-		  <div class="tab-pane active" id="ongoing">
-			  <%= render partial: "basics/popular_course_list",
-					         locals: { courses: @ongoing } %>
-		  </div>
-		  <div class="tab-pane fade" id="upcoming">
-				<%= render partial: "basics/popular_course_list",
-						       locals: { :courses => @upcoming } %>
-		  </div>
-		  <div class="tab-pane fade" id="et">	
-				<%= render partial: "basics/popular_course_list",
-						       locals: { :courses => @et } %>
-		  </div>
-		  <div class="tab-pane fade" id="ut">	
-				<%= render partial: "basics/popular_course_list",
-						       locals: { :courses => @ut } %>
-		  </div>
-		  <div class="tab-pane fade" id="aut">	
-				<%= render partial: "basics/popular_course_list",
-						       locals: { :courses => @aut } %>
-		  </div>
-		  <div class="tab-pane fade" id="voluptatem">	
-				<%= render partial: "basics/popular_course_list",
-						       locals: { :courses => @voluptatem } %>
-		  </div>
-		  <div class="tab-pane fade" id="qui">	
-				<%= render partial: "basics/popular_course_list",
-						       locals: { :courses => @qui } %>
-		  </div>		  		  	  
-		</div>
+  <h2>Popular Courses</h2>  
+	<aside class="tabbable tabs-left">
+    <%= render "tabs" %>
+		<%= link_to "View all courses »", courses_path, { class: "view-all" } %>
+	</aside>
+	<div class="tab-content">
+    <%= render "tab_content" %>
 	</div>
-
 </div>

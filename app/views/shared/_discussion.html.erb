@@ -1,35 +1,6 @@
 <li class="discussion-item" id="discussion-<%= discussion.id %>">
-  <div class="row-fluid">
-    <div class="span1 discussion-count"> 
-      <% if current_page?(discussion) %>
-        <%= render partial: "shared/vote_form",
-                   locals: { voteable: discussion } %>
-      <% else %>
-          <div class="badge badge-important"><i class="icon-thumbs-up icon-white"></i> <%= discussion.plusminus%></div>
-          <div class="badge"><i class="icon-comment icon-white"></i> <%= discussion.comment_threads.count %></div>
-      <% end %>
-    </div>
-
-    <div class="span11">
-      <h3><%= link_to discussion.title, discussion %></h3>
-      <% unless discussion.tag_list.blank? %>
-        <ul class="inline">
-          <% discussion.tag_list.each do |tag| %>
-            <li class="tag-name label label-info"><%= tag%></li>
-          <% end %>
-        </ul>
-      <% end %>
-      <div class="discussion-info pull-right">
-        <span class="muted"><%= time_ago_in_words(discussion.created_at) %> ago</span>
-        <%= link_to discussion.user.username, discussion.user %>
-        <% if current_user?(discussion.user) %>
-          <%= link_to "edit",   edit_discussion_path(discussion.id) %>
-          <%= link_to "delete", discussion, 
-                      method: :delete,
-                      data: { confirm: "You sure?" },
-                      title: discussion.title %>
-        <% end %>
-      </div>
-    </div>
+  <div class="row-fluid"> 
+    <%= render partial: 'shared/discussion_count', locals: { discussion: discussion } %>
+    <%= render partial: 'shared/discussion_summary', locals: { discussion: discussion } %>
   </div>
 </li>

@@ -1,0 +1,15 @@
+    <div class="span1">
+      <% if current_page?(discussion) %>
+        <%= render partial: "shared/vote_form",
+                   locals: { voteable: discussion } %>
+      <% else %>
+        <div class="badge badge-important">
+          <i class="icon-thumbs-up icon-white icon-count"></i>
+          <%= discussion.plusminus %>
+        </div>
+        <div class="badge">
+          <i class="icon-comment icon-white icon-count"></i>
+          <%= discussion.comment_threads.count %>
+        </div>
+      <% end %>
+    </div>

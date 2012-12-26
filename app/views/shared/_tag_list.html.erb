@@ -1,9 +1,7 @@
-<div class="tag_list">
-  <ul>
-  <% tag_list.each do |tag| %>
-    <li> 
-      tag
-    </li>
-  <% end %>
-  </ul>
-</div>
+      <% unless taggable.tag_list.blank? %>
+        <ul class="inline">
+          <% taggable.tag_list.each do |tag| %>
+            <li class="label label-info"><%=tag%></li>
+          <% end %>
+        </ul>
+      <% end %>

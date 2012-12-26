@@ -22,6 +22,7 @@ class List < ActiveRecord::Base
   has_many :listings, dependent: :destroy
   has_many :courses,  through: :listings
 
+  scope :non_empty, lambda{ all.select{ |list| list.courses.any? } }
   default_scope order: 'lists.created_at DESC'
 
   def add!(course, *arg)
@@ -37,4 +38,6 @@ class List < ActiveRecord::Base
     self.tag_list = tag_list
     self.save
   end
+
+
 end
