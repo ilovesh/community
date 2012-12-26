@@ -11,7 +11,7 @@ class BasicsController < ApplicationController
     @voluptatem = Course.tagged_with("voluptatem").sort_by {|c| -c.users.count }[0..5]
     @qui = Course.tagged_with("qui").sort_by {|c| -c.users.count }[0..5]
     @discussions = Discussion.all(limit: 5)
-    @lists       = List.all(limit: 5)
+    @lists       = List.all(limit: 4)
 
   end
 

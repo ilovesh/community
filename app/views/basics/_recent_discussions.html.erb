@@ -4,5 +4,6 @@
     <ul class="unstyled seperate">
       <%= render partial: 'shared/discussion', collection: @discussions %>
     </ul>
+    <%= link_to "View all discussions »", discussions_path, {class: "view-all"} %>
   </div>
 </div>

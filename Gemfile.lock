@@ -41,7 +41,7 @@ GEM
     awesome_nested_set (2.1.5)
       activerecord (>= 3.0.0)
     bcrypt-ruby (3.0.1)
-    bootstrap-sass (2.2.1.1)
+    bootstrap-sass (2.2.2.0)
       sass (~> 3.2)
     bootstrap-will_paginate (0.0.6)
       will_paginate
@@ -149,7 +149,7 @@ DEPENDENCIES
   acts_as_commentable_with_threading
   annotate (= 2.5.0)
   bcrypt-ruby (= 3.0.1)
-  bootstrap-sass (~> 2.2.1.1)
+  bootstrap-sass (~> 2.2.2.0)
   bootstrap-will_paginate (= 0.0.6)
   coffee-rails (~> 3.2.1)
   ffaker (~> 1.15.0)

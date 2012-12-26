@@ -13,6 +13,7 @@ html {
 }
 body{
   padding-top: 60px;
+  background: repeat url("notepad.jpg");
 }
 section {
   overflow: auto;
@@ -161,10 +162,11 @@ input, textarea, select, .uneditable-input {
 /* Section */
 .section-container{
   padding:15px 15px 0 15px;
-  margin: 10px 0;
+  margin: 5px 0;
   border: 1px solid #DDDDDD;
   -moz-border-colors: none;
   border-radius: 10px;
+  background-color: white;
 }
 
 
@@ -213,6 +215,7 @@ h2 {
 
 h3 {
   font-size: 18px;
+  line-height: 25px;
 }
 
 h2, h3 {
@@ -256,12 +259,10 @@ img.course-item {
   height: 130px;
 }
 
-.span5 > a.thumbnail {
-  height: 250px;
-}
+
 
 ul.thumbnails {
-  margin: 0;
+  margin: 10px;
 }
 
 .tab-content .course-grid {
@@ -302,11 +303,36 @@ ul.thumbnails {
 }
 
 /* homepage: list */
-.list-like {
-  border: 0;
-  border-bottom: 1px solid #E5E5E5;
+.interesting-lists {
+  margin-left: 0 auto;
+  margin-right: 0 auto;
 }
 
+.list-column {
+  li {
+    position: relative;
+    margin: 5px;
+  }
+}
+
+.row-fluid > li {
+  margin-left: 0 auto;
+  margin-right: 0 auto;
+}
+
+.list-info {
+  text-align: right;
+  margin-bottom: 0;
+}
+
+.view-all {
+  text-align: right;
+}
+
+.list-controll {
+  float: right;
+  position: relative;
+}
 
 // load at last, otherwise body > padding-top still exists.
 @import "bootstrap-responsive";
