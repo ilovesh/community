@@ -1,7 +1,3 @@
-require 'nokogiri'
-require 'open-uri'
-require 'watir-webdriver'
-
 ### NOTE: 1 TODO; 1 SEMI-TODO ###
 # TODO: unknown characters in below courses' prerequisites:
 # Udacity: "Artificial Intelligence for Robotics"
@@ -11,6 +7,10 @@ require 'watir-webdriver'
 namespace :db do
   desc "Fetch source data"
   task fetch: :environment do
+    Rails.env = 'development'
+    require 'nokogiri'
+    require 'open-uri'
+    require 'watir-webdriver'
                           start1 = Time.now
     #create_providers
                           puts "Providers: #{(Time.now - start1)}" + " seconds"
