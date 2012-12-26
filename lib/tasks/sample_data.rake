@@ -5,10 +5,10 @@ namespace :db do
     #make_providers
     #make_universities
     #make_courses
-    #make_enrollments
-    #make_discussions
-    #make_lists
-    #make_comments
+    make_enrollments
+    make_discussions
+    make_lists
+    make_comments
     make_notes
   end
 end
