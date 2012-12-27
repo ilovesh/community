@@ -1,0 +1,6 @@
+<li class="course-item span4" id="course-<%=course.id%>">
+  <%= link_to course, {class: "thumbnail"} do %>
+    <%= image_tag(course.image_link, class: "img-medium") %>
+    <legend><%= course.full_name %></legend>
+  <% end %>
+</li>

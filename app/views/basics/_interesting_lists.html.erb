@@ -1,7 +1,7 @@
 <div class="section-container">
   <h2>Interesting Lists</h2>
     <ul class="thumbnails list-items">
-      <%= render partial: 'shared/list', collection: @lists %>
+      <%= render partial: 'lists/list', collection: @lists %>
     </ul>
   <%= link_to "View all lists »", lists_path, {class: "pull-right view-all"} %>
 </div>

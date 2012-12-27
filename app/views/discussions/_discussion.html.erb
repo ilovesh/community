@@ -1,0 +1,6 @@
+<li class="discussion-item" id="discussion-<%= discussion.id %>">
+  <div class="row-fluid"> 
+    <%= render partial: 'discussions/discussion_count', locals: { discussion: discussion } %>
+    <%= render partial: 'discussions/discussion_summary', locals: { discussion: discussion } %>
+  </div>
+</li>

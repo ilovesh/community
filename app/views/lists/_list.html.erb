@@ -1,8 +1,8 @@
 <li class="span6 list-item" id="list_<%= list.id %>">
   <div class="thumbnail">
-    <%= render partial: 'shared/list_controll', locals: { list: list } %>
-    <%= render partial: 'shared/list_image', locals: { list: list } %>
-    <%= render partial: 'shared/list_summary', locals: { list: list } %>
+    <%= render partial: 'lists/list_controll', locals: { list: list } %>
+    <%= render partial: 'lists/list_image', locals: { list: list } %>
+    <%= render partial: 'lists/list_summary', locals: { list: list } %>
   </div>
 
   <% if current_page?(list) %>

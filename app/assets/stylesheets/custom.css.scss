@@ -274,9 +274,13 @@ ul.list-items {
   }
   li.list-item {
     margin-bottom: 10px;
-    .btn-like {
-      border: none;
-      background: none;
+    form {
+      margin: 0;
+      padding: 0;
+      button {
+        border: none;
+        background: none; 
+      }
     }
     .thumbnail {
       height: 349px;
