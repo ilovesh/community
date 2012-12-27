@@ -21,7 +21,8 @@ class List < ActiveRecord::Base
   belongs_to :user
   has_many :listings, dependent: :destroy
   has_many :courses,  through: :listings
-
+  has_many :likes, dependent: :destroy, as: :likeable
+  
   scope :non_empty, lambda{ all.select{ |list| list.courses.any? } }
   default_scope order: 'lists.created_at DESC'
 

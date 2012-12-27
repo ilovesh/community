@@ -38,6 +38,7 @@ class User < ActiveRecord::Base
   has_many :comments,       dependent: :destroy
   has_many :votes,          dependent: :destroy
   has_many :notes,          dependent: :destroy
+  has_many :likes,          dependent: :destroy
 
   def enroll!(course, status, *arg)
     tag_list = arg[0] if arg
@@ -100,6 +101,10 @@ class User < ActiveRecord::Base
     notes.create!(course_id: course.id,
                   body:      body,
                   title:     title)
+  end
+
+  def like?(likeable_type, likeable_id)
+    likes.find_by_likeable_type_and_likeable_id(likeable_type, likeable_id)
   end
 
   private

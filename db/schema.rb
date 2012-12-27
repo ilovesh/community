@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121223082609) do
+ActiveRecord::Schema.define(:version => 20121227171728) do
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",   :default => 0
@@ -62,6 +62,18 @@ ActiveRecord::Schema.define(:version => 20121223082609) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "likes", :force => true do |t|
+    t.boolean  "like",          :default => false, :null => false
+    t.integer  "likeable_id",                      :null => false
+    t.string   "likeable_type",                    :null => false
+    t.integer  "user_id"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  add_index "likes", ["likeable_id", "likeable_type"], :name => "index_likes_on_likeable_id_and_likeable_type"
+  add_index "likes", ["user_id", "likeable_id", "likeable_type"], :name => "fk_one_like_per_user_per_entity", :unique => true
 
   create_table "listings", :force => true do |t|
     t.integer  "list_id"

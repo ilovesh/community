@@ -1,6 +1,6 @@
 <li class="span6 list-item" id="list_<%= list.id %>">
   <div class="thumbnail">
-    <%= render 'shared/list_controll' %>
+    <%= render partial: 'shared/list_controll', locals: { list: list } %>
     <%= render partial: 'shared/list_image', locals: { list: list } %>
     <%= render partial: 'shared/list_summary', locals: { list: list } %>
   </div>

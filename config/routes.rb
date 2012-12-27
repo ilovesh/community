@@ -1,4 +1,8 @@
 Dragon::Application.routes.draw do
+  get "likes/create"
+
+  get "likes/destroy"
+
   get "notes/create"
 
   get "notes/destroy"
@@ -21,6 +25,8 @@ Dragon::Application.routes.draw do
   resources :lists do
     resources :comments, only: [:create, :destroy]
   end
+
+  resources :likes, only: [:create, :destroy]
 
   resources :discussions do
     resources :comments, only: [:create, :destroy]

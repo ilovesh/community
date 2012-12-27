@@ -1,0 +1,3 @@
+$("#like-form-list-<%=@like.likeable_id%>").
+         html("<%= escape_javascript(render(partial: 'shared/like', 
+	                                       locals: {likeable: @like.find_likeable})) %>");
