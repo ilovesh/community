@@ -2,7 +2,7 @@
 <html>
   <head>
     <title><%= full_title(yield(:title)) %></title>
-	<%= include_gon %>
+	  <%= include_gon %>
     <%= stylesheet_link_tag    "application", media: "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
@@ -12,11 +12,11 @@
   <body>
     <%= render 'layouts/header' %>
     <div class="container-fluid">
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>      
+      <% end %>
       <div class="row-fluid">
         <%= yield %>
-          <% flash.each do |key, value| %>
-            <div class="alert alert-<%= key %>"><%= value %></div>      
-          <% end %>
         <div class="left-column span7 offset1">
           <%= yield :left %>
         </div>      

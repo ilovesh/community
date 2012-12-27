@@ -14,7 +14,8 @@ html {
 
 body{
   padding-top: 60px;
-  background: repeat url("notepad.jpg");
+  //background: repeat url("notepad.jpg");
+  background-color: #F1EEE5;
 }
 
 section {
@@ -37,6 +38,15 @@ span {
   border-radius: 10px;
   background-color: white;
   overflow: hidden;
+  -webkit-box-shadow: #AAA 0px 3px 3px 0px;
+  -moz-box-shadow: #aaa 0px 3px 3px 0px;
+  box-shadow: #AAA 0px 3px 3px 0px;
+}
+
+.thumbnail {
+  -moz-box-shadow: 0 1px 0 #b9b6aa;
+  -webkit-box-shadow: 0 1px 0 #B9B6AA;
+  box-shadow: 0 1px 0 #B9B6AA;
 }
 
 /* header */
@@ -50,7 +60,7 @@ span {
 //}
 
 #logo{
-  color: black;
+  color: #B31B1B;
   float: left;
   font-size: 2.3em;
   font-weight: bold;
@@ -87,7 +97,7 @@ ol.seperate > li {
   &:first-child {
     border: 0;
   }
-  padding-bottom: 10px;
+  padding: 5px 0;
 }
 
 
@@ -194,6 +204,7 @@ input, textarea, select, .uneditable-input {
 h2 {
   font-size: 25px;
   line-height: 30px;
+  color: #777;
   margin: 5px 0;
 }
 
@@ -215,10 +226,6 @@ h3 {
 aside {
   float: left;
   margin: 15px 10px 0 0;
-  a {
-    line-height: 10px;
-    font-size: 12px;
-  }
   .circle {
     -webkit-border-radius: 999px;
     -moz-border-radius: 999px;
@@ -268,11 +275,11 @@ ul.list-items {
   li.list-item {
     margin-bottom: 10px;
     .thumbnail {
-      height: 445px;
+      height: 349px;
     }
     .list-info {
       text-align: right;
-      margin-bottom: 0;
+      p { margin-bottom: 0; }
     }
     .small-img-container {
       margin: 18px 0 16px 35px;
