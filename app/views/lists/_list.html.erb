@@ -1,4 +1,4 @@
-<li class="span6 list-item" id="list_<%= list.id %>">
+<li class="span4 list-item" id="list_<%= list.id %>">
   <div class="thumbnail">
     <%= render partial: 'lists/list_controll', locals: { list: list } %>
     <%= render partial: 'lists/list_image', locals: { list: list } %>
@@ -6,14 +6,6 @@
   </div>
 
   <% if current_page?(list) %>
-    <% if current_user?(list.user) %>
-    <%= link_to "edit",   edit_list_path(list)  %>
-    <%= link_to "delete", list, 
-                method: :delete,
-                data: { confirm: "You sure?" },
-                title: list.title %>
-    <% end %>
-
     <% if list.courses.any? %>
       <h3>Courses:</h3>
       <ul class="courses">

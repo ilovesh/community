@@ -1,5 +1,8 @@
     <div class="span11">
       <h3><%= link_to discussion.title, discussion %></h3>
+      <% unless current_page?(root_path) %>
+      <p><%= truncate(discussion.content, length: 140) %></p>
+      <% end %>
       <%= render partial: 'shared/tag_list', locals: { taggable: discussion } %>
       <div class="pull-right">
         <%= render partial: 'shared/timestamp', locals: { post: discussion } %>

@@ -1,11 +1,12 @@
 <% provide(:title, 'All courses') %>
 <% content_for :left do %>
-  <h1>All courses</h1>
-  <ul class="courses">
-    <div><%= link_to "see all ongoing courses",  ongoing_courses_path %></div>
-    <div><%= link_to "see all upcoming courses", upcoming_courses_path %></div>
-    <div><%= link_to "see all finished courses", finished_courses_path %></div>
-  </ul>
+  <h2>All Courses</h2>
+  <div class="section-container">
+    <ul class="course-items thumbnails">
+      <%= render partial: 'courses/grid_course_item', collection: @courses, as: :course %>
+    </ul>
+    <%= will_paginate @courses %>
+  </div>
 <% end %>
 
 <% content_for :right do %>

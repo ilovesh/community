@@ -32,7 +32,7 @@ span {
 
 .section-container{
   padding: 15px;
-  margin-bottom: 12px;
+  margin: 10px 0;
   border: 1px solid #DDDDDD;
   -moz-border-colors: none;
   border-radius: 10px;
@@ -94,6 +94,9 @@ ul.seperate > li,
 ol.seperate > li {
   overflow: auto;
   border-top: 1px solid $grayLighter;
+  -webkit-box-shadow: 0px 1px 1px #aaa;
+  -moz-box-shadow: 0px 1px 1px #aaa;
+  box-shadow: 0px 1px 1px #aaa;
   &:first-child {
     border: 0;
   }
@@ -184,8 +187,17 @@ input, textarea, select, .uneditable-input {
 }
 
 /* image */
+.img-small {
+  height: 38.3px;
+}
+
 .img-medium {
   height: 97px;
+}
+
+.img-medium-large {
+  height: 115px;
+  width: 216px;
 }
 
 .img-large {
@@ -269,7 +281,7 @@ li.discussion-item {
 
 /* homepage: list */
 ul.list-items {
-  li:nth-child(2n+1) {  
+  li:nth-child(3n+1) {  
     margin-left: 0;
   }
   li.list-item {
@@ -282,17 +294,27 @@ ul.list-items {
         background: none; 
       }
     }
+    h3 {
+      font-size: 13px;
+      line-height: 15px;
+    }
     .thumbnail {
-      height: 349px;
+      height: 260px;
     }
     .list-info {
       text-align: right;
-      p { margin-bottom: 0; }
+      p { 
+        margin: 0;
+        &:first-child {
+          margin-top: 10px;
+        }
+      }
     }
-    .small-img-container {
-      margin: 18px 0 16px 35px;
-      width: 309px;
-      height: 164px;
+    .img-container {
+      margin: 23px 0 10px 20px;
+    }
+    .img-row {
+      height: 38px;
     }
     .img-center {
       margin-left: 0 auto;
@@ -301,6 +323,13 @@ ul.list-items {
   }
 }
 
+// .list-summary > li > .thumbnail {
+//   height: 240px;
+// }
+/* index pages */
+.index-title > h2 { display: inline; }
+
+.thumbnail {overflow: hidden}
 
 // load at last, otherwise body > padding-top still exists.
 @import "bootstrap-responsive";

@@ -58,6 +58,7 @@ class Course < ActiveRecord::Base
 #  has_many :comments, dependent: :destroy
   has_many :notes, dependent: :destroy
 
+  default_scope order: 'courses.start_date DESC'
   scope :of_status, lambda{ |status| all.select{ |course| course.status == status.to_sym } }
 
   def self.tagged_with(tag)

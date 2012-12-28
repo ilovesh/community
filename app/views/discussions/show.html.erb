@@ -2,7 +2,7 @@
 <% content_for :left do %>
   <h3>Discussion: </h3>
   <div class="section-container">
-    <%= render partial: "shared/discussion", locals: { discussion: @discussion } %>
+    <%= render partial: "discussions/discussion", locals: { discussion: @discussion } %>
   
     <%= render partial: "shared/comment_form",
          locals: { commentable: @discussion } %>

@@ -56,23 +56,13 @@ class User < ActiveRecord::Base
   end
 
   def vote!(vote, voteable_type, voteable_id)
-    if vote
-      vote_for!(voteable_type, voteable_id)
-    else
-      vote_against!(voteable_type, voteable_id)
+    unless voteable_type.constantize.find(voteable_id).nil?
+      if vote
+        vote_for!(voteable_type, voteable_id)
+      else
+        vote_against!(voteable_type, voteable_id)
+      end
     end
-  end
-
-  def vote_for!(voteable_type, voteable_id)
-    votes.create!(vote:          true, 
-                  voteable_type: voteable_type,
-                  voteable_id:   voteable_id)
-  end
-
-  def vote_against!(voteable_type, voteable_id)
-    votes.create!(vote:          false, 
-                  voteable_type: voteable_type,
-                  voteable_id:   voteable_id)
   end
 
   def vote_for?(voteable)
@@ -114,5 +104,17 @@ class User < ActiveRecord::Base
 
     def find_vote(voteable)
       votes.find_by_voteable_type_and_voteable_id(voteable.class.base_class.name, voteable.id)
+    end
+
+    def vote_for!(voteable_type, voteable_id)
+      votes.create!(vote:          true, 
+                    voteable_type: voteable_type,
+                    voteable_id:   voteable_id)
+    end
+
+    def vote_against!(voteable_type, voteable_id)
+      votes.create!(vote:          false, 
+                    voteable_type: voteable_type,
+                    voteable_id:   voteable_id)
     end
 end

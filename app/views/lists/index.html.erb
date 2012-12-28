@@ -1,12 +1,17 @@
 <% provide(:title, 'All lists') %>
 <% content_for :left do %>
-  <h1>All lists</h1>
-  <%= link_to "create a list",  new_list_path, class: "btn btn-large btn-primary" %>
-  <%= will_paginate @lists %>
-  <ul class="all_lists">
-    <%= render partial: 'shared/list', collection: @lists %>
-  </ul>
-  <%= will_paginate @lists %>
+  <div class="index-title">
+    <h2>All Lists</h2>
+    <%= link_to "<i class=\"icon-list icon-white\"></i> create a list".html_safe, 
+                new_list_path, 
+                class: "btn btn-medium btn-primary pull-right" %>
+  </div>
+  <div class="section-container">
+    <ul class="list-items thumbnails">
+      <%= render partial: 'lists/list', collection: @lists %>
+    </ul>
+    <%= will_paginate @lists %>
+  </div>
 <% end %>
 
 <% content_for :right do %>

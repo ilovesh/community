@@ -36,7 +36,7 @@ class ListsController < ApplicationController
   end
 
   def index
-    @lists = List.paginate(page: params[:page])
+    @lists = List.non_empty.paginate(page: params[:page])
   end
 
   def destroy

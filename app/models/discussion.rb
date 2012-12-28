@@ -23,4 +23,6 @@ class Discussion < ActiveRecord::Base
   belongs_to :user
 
   default_scope order: 'discussions.created_at DESC'
+
+  scope :of_status, lambda{ |status| all.select{ |course| course.status == status.to_sym } }
 end

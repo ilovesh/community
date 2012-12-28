@@ -36,7 +36,9 @@ class DiscussionsController < ApplicationController
   end
 
   def index
-    @discussions = Discussion.paginate(page: params[:page])
+    @newest = Discussion.paginate(page: params[:newest_page])
+    @votes = Discussion.find(:all, include: :votes).sort_by { |d| -d.plusminus }.paginate(page: params[:votes_page])
+    @comments = Discussion.all.sort_by { |d| -d.comment_threads.count }.paginate(page: params[:comments_page])  
   end
 
   def destroy
