@@ -7,8 +7,8 @@ namespace :db do
     #make_users
     #make_enrollments
     #make_discussions
-    make_lists
-    #make_comments
+    #make_lists
+    make_comments
     #make_notes
   end
 end

@@ -1,23 +1,33 @@
 <% provide(:title, 'Course') %>
+<% provide(:background, 'no-bg') %>
 <% content_for :left do %>
-<div class="section-container">
-  <%= render partial: "shared/course",
-             locals: { course: @course } %>
+
+<div class="course">
+  <%= render 'course_head' %>
+  <div class="row-fluid">
+    <div class="course-info span8">
+      <div class="span5">
+        <%= image_tag(@course.image_link) %>
+        <%= link_to "Go to the course »", @course.url%>        
+      </div>
+      <%= render 'course_details' %>
+    </div>
+    <%= render 'enrollment' %>
+  </div>
+  <%= render 'description_and_prerequisites' %>
+  <%= render 'tags' %>
+  <%= render 'new_review_note' %>
+  <%= render 'notes' %>
+  <%= render 'reviews' %>
+</div>
+
+
+
+
   <%= render partial: "shared/comment_form",
              locals: { commentable: @course } %>
-<div>
-  <% if @course.notes.any? %>
-    <%= link_to pluralize(@course.notes.count, 'note'), course_notes_path(@course) %>
-  <% end %>
-</div>
-  <%= link_to "Write a note", new_course_note_path(@course), class: "btn btn-large btn-primary" %>
 
-</div>
-  <% if @comments.any? %>
-  <%= render partial: "shared/comments",
-             locals: { comments: @comments,
-                       commentable: @course } %>
-  <% end %>              
+
 <% end %>
 
 <% content_for :right do %>

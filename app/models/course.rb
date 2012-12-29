@@ -45,7 +45,7 @@ class Course < ActiveRecord::Base
   belongs_to :provider
   has_many   :enrollments, dependent: :destroy
   has_many   :users,       through: :enrollments
-  has_many   :will_take_users, through: :enrollments,
+  has_many   :interested_users, through: :enrollments,
              source: :user, conditions: ["enrollments.status = ?", 1]
   has_many   :taking_users,    through: :enrollments,
              source: :user, conditions: ["enrollments.status = ?", 2]            

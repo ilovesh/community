@@ -1,7 +1,7 @@
 class BasicsController < ApplicationController
   def home
     @ongoing = Course.of_status(:ongoing).sort_by{ |c| -c.taking_users.count }[0..20].sample(6)
-    @upcoming = Course.of_status(:upcoming).sort_by{ |c| -c.will_take_users.count }[0..20].sample(6)
+    @upcoming = Course.of_status(:upcoming).sort_by{ |c| -c.interested_users.count }[0..20].sample(6)
     #tag_list = Enrollment.tag_counts_on(:tags).order('count desc').map(&:name)
     #tags = tag_list[0..4]
     #tags = ["et", "ut", "aut", "voluptatem", "qui"]

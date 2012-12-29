@@ -51,6 +51,20 @@ class User < ActiveRecord::Base
     enrollments.find_by_course_id(course.id).destroy
   end
 
+  def enroll?(course)
+    !enrollments.find_by_course_id(course.id).nil?
+  end
+
+  def my_tags(course)
+    enrollment = enrollments.find_by_course_id(course.id)
+    enrollment.tag_list.to_s if enrollment
+  end
+
+  def status(course)
+    enrollment = enrollments.find_by_course_id(course.id)
+    enrollment.status if enrollment
+  end
+
   def comment!(commentable, content)
     Comment.build_from(commentable, id, content)
   end
@@ -91,6 +105,12 @@ class User < ActiveRecord::Base
     notes.create!(course_id: course.id,
                   body:      body,
                   title:     title)
+  end
+
+  def like!(likeable)
+    likes.create!(like: true,
+                  likeable_type: likeable.class.name,
+                  likeable_id: likeable.id)
   end
 
   def like?(likeable_type, likeable_id)

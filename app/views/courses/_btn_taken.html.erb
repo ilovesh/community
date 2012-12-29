@@ -1,0 +1,6 @@
+<% if current_user.status(@course) == 3 %>
+  <a class="btn btn-small btn-enroll btn-danger" href="#taken" data-toggle="modal">Taken</a>
+<% else %>
+  <a class="btn btn-small btn-enroll" href="#taken" data-toggle="modal">Taken</a>
+<% end %>
+<%= render partial: 'social_count', locals: { users: @course.taken_users } %>

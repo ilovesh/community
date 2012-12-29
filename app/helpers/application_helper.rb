@@ -10,5 +10,7 @@ module ApplicationHelper
     end
   end
 
-
+  def body_bg(no_bg)
+    return "no-bg" if no_bg == "no-bg"
+  end
 end

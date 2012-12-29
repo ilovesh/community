@@ -16,4 +16,5 @@ class Note < ActiveRecord::Base
   validates :body, presence: true
   belongs_to :user
   belongs_to :course
+  has_many :likes, dependent: :destroy, as: :likeable  
 end

@@ -1,0 +1,22 @@
+<% if @notes.any? %>
+  <h3><%= pluralize(@notes.count, "note")%></h3>
+  <div class="tabbable">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#top-notes" data-toggle="tab">top</a></li>
+      <li><a href="#newest-notes" data-toggle="tab">newest</a></li>
+    </ul>
+  </div>
+  <div class="tab-content">
+    <div class="tab-pane active" id="top-notes">
+      <ul class="unstyled seperate">
+        <%= render partial: 'notes/note', collection: @notes_by_like %>
+      </ul>
+    </div> 
+    <div class="tab-pane" id="newest-notes">
+      <ul class="unstyled seperate">
+        <%= render partial: 'notes/note', collection: @notes_by_date %>
+      </ul>
+    </div>
+  </div>
+  <%= link_to "View all notes »", course_notes_path(@course), { class: "view-all pull-right" } %>
+<% end %>

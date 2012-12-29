@@ -1,3 +1,5 @@
 <% content_for :left do %>
-  <%= render partial: 'courses/courses', locals: { courses: @courses } %>
+  <div class="section-container">
+    <%= render partial: 'popular_course_list', locals: { courses: @courses } %>
+  </div>
 <% end %>

@@ -1,7 +1,8 @@
 Dragon::Application.routes.draw do
-  get "likes/create"
 
-  get "likes/destroy"
+  post "likes/create"
+
+  post "likes/destroy"
 
   get "notes/create"
 
@@ -17,7 +18,7 @@ Dragon::Application.routes.draw do
       get 'finished'
       get :autocomplete_name
     end
-    resources :comments, only: [:create, :destroy]
+    resources :comments#, only: [:create, :destroy]
     resources :notes,    only: [:new, :create, :index]
   end
   resources :notes, only: [:show, :edit, :update, :destroy]
@@ -27,6 +28,7 @@ Dragon::Application.routes.draw do
   end
 
   resources :likes, only: [:create, :destroy]
+  resources :enrollments
 
   resources :discussions do
     resources :comments, only: [:create, :destroy]

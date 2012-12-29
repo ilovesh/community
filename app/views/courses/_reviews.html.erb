@@ -1,0 +1,22 @@
+<% if @reviews.any? %>
+  <h3><%= pluralize(@reviews.count, "review")%></h3>
+  <div class="tabbable">
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#top-reviews" data-toggle="tab">top</a></li>
+      <li><a href="#newest-reviews" data-toggle="tab">newest</a></li>
+    </ul>
+  </div>
+  <div class="tab-content">
+    <div class="tab-pane active" id="top-reviews">
+      <ul class="unstyled seperate">
+        <%= render partial: 'shared/comment', collection: @reviews_by_vote %>
+      </ul>
+    </div> 
+    <div class="tab-pane" id="newest-reviews">
+      <ul class="unstyled seperate">
+        <%= render partial: 'shared/comment', collection: @reviews_by_date %>
+      </ul>
+    </div>
+  </div>
+  <%= link_to "View all reviews »", course_comments_path(@course), { class: "view-all pull-right" } %>
+<% end %>

@@ -18,6 +18,8 @@ body{
   background-color: #F1EEE5;
 }
 
+body.no-bg { background-color: white; }
+
 section {
   overflow: auto;
 }
@@ -94,9 +96,6 @@ ul.seperate > li,
 ol.seperate > li {
   overflow: auto;
   border-top: 1px solid $grayLighter;
-  -webkit-box-shadow: 0px 1px 1px #aaa;
-  -moz-box-shadow: 0px 1px 1px #aaa;
-  box-shadow: 0px 1px 1px #aaa;
   &:first-child {
     border: 0;
   }
@@ -235,9 +234,7 @@ h3 {
 }
 
 /* homepage: course */
-aside {
-  float: left;
-  margin: 15px 10px 0 0;
+
   .circle {
     -webkit-border-radius: 999px;
     -moz-border-radius: 999px;
@@ -249,7 +246,13 @@ aside {
     display: inline-block;
   }
   .circle-ongoing { background-color: green; }
-  .circle-upcoming { background-color: yellow; }
+  .circle-upcoming { background-color: gold; }
+  .circle-finished { background-color: red; }
+  .prev {background-color: white;}
+
+aside {
+  float: left;
+  margin: 15px 10px 0 0;
 }
 
 ul.course-items {
@@ -323,13 +326,95 @@ ul.list-items {
   }
 }
 
-// .list-summary > li > .thumbnail {
-//   height: 240px;
-// }
 /* index pages */
 .index-title > h2 { display: inline; }
 
 .thumbnail {overflow: hidden}
+
+.all-courses {background-color: white;}
+
+/* course show page */
+label { 
+  display: inline-block;
+  color: #666;
+}
+
+.course > p {
+  text-align: justify;
+}
+
+.course-head {
+  margin-bottom: 15px;
+}
+
+#img-go > a {
+  margin-top: 10px;
+}
+
+.course-info > div {
+  display: inline-block;
+  float: left;
+  #details { margin-left: 15px; }
+
+}
+
+#enrollment {
+  display: inline-block;
+  .btn-enroll { width: 70px; }
+  .btn-row { margin-bottom: 1px; }
+}
+
+
+.btn-count {
+  font-weight: bold;
+  padding: 2px 5px;
+  margin-left: 5px;
+  position: relative;
+}
+
+.btn-count::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 6px solid #D4D4D4;
+  border-color: transparent #D4D4D4 transparent transparent;
+  position: absolute;
+  right: 100%;
+  margin-right: 0;
+  top: 50%;
+  margin-top: -6px;
+}
+
+.btn-count::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 6px solid #FAFAFA;
+  border-color: transparent #FAFAFA transparent transparent;
+  position: absolute;
+  right: 100%;
+  margin-right: -1px;
+  top: 50%;
+  margin-top: -6px;
+}
+
+.enrollment {
+  text-align: right;
+}
+
+ul.notes > li > h4 {
+  margin: 0;
+  margin-bottom: 5px;
+  font-size: 14px;
+  line-height: 15px;
+}
+
+dl {
+  span { margin-right: 3px; }
+}
+
 
 // load at last, otherwise body > padding-top still exists.
 @import "bootstrap-responsive";

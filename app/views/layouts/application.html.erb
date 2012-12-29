@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <%= render 'layouts/shim' %>
   </head>
-  <body>
+  <body class="<%= body_bg(yield(:background)) %>">
     <%= render 'layouts/header' %>
     <div class="container-fluid">
       <% flash.each do |key, value| %>

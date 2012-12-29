@@ -1,0 +1,20 @@
+<%= form_for(Enrollment.new) do |f| %>
+  <%= f.hidden_field :course_id, value: @course.id %>
+  <%= f.hidden_field :status, value: status %>
+  <div class="modal-body">
+    <label for="enrollment_tags">Tags</label>
+    <%= f.text_field :tags, value: current_user.my_tags(@course), class: "xlarge" %>
+    <% if @top_tags.blank? %>      
+      <p><span class="badge badge-info"><i class="icon-tags icon-white"></i></span>
+        Nobody has tagged this course yet. Be the first to add some useful tags!</p>
+    <% else %>
+      <dl>
+        <dt>Top tags for this course:</dt>
+        <dd><% @top_tags.each do |tag| %><span class="btn btn-info btn-tag"><%= tag %></span><% end %></dd>
+      </dl>
+    <% end %>
+  </div>
+  <div class="modal-footer">
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  </div>
+<% end %>

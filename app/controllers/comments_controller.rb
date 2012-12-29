@@ -2,6 +2,9 @@ class CommentsController < ApplicationController
   before_filter :loggedin_user, only: [:new, :create, :destroy]
   before_filter :correct_user,  only: :destroy
 
+  def new
+  end
+
   def create
     # constantize converts String to Model name
     @commentable = params[:comment][:commentable_type].constantize.find(params[:comment][:commentable_id])

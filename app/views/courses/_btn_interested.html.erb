@@ -1,0 +1,6 @@
+<% if current_user.status(@course) == 1 %>
+  <a class="btn btn-small btn-enroll btn-warning edit-interested" href="#edit-interested" data-toggle="modal">Interested</a>
+<% else %>
+  <a class="btn btn-small btn-enroll" href="#interested" data-toggle="modal">Interested</a>
+<% end %>
+<%= render partial: 'social_count', locals: { users: @course.interested_users } %>

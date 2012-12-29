@@ -1,0 +1,9 @@
+    <li id="comment-<%= comment.id %>"> 
+      <%= gravatar_for comment.user, size: 20 %>
+      <%= link_to comment.user.username, comment.user %>
+      <% if current_user?(comment.user) %>
+      <%= render partial: "shared/delete_comment",
+                 locals: { comment: comment } %>
+      <% end %>
+      <p><%= comment.body %></p>
+    </li>

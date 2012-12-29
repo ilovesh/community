@@ -1,0 +1,21 @@
+<div class="span3" id="enrollment">
+  <div class="btn-row">
+    <%= render 'btn_interested' %>
+  </div>
+  <div class="btn-row">
+    <%= render 'btn_taking' %>    
+  </div>
+  <div class="btn-row">
+    <%= render 'btn_taken' %>
+  </div>
+
+
+  <%= render partial: 'modal', locals: { status: "taking",
+                                         title: "I'm taking this course!" } %>
+  <%= render partial: 'modal', locals: { status: "taken",
+                                         title: "I have finished this course!" } %>
+  <%= render partial: 'modal', locals: { status: "interested",
+                                         title: "I'm interested in this course!" } %>
+  <%= render partial: 'modal', locals: { status: "edit-interested",
+                                         title: "I'm interested in this course!" } %>
+</div>

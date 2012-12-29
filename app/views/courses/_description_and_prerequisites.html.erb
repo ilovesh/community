@@ -1,0 +1,13 @@
+  <% if @course.description %>
+  <div>
+    <h3>Description</h3>
+    <p><%= @course.description %></p>
+  </div>
+  <% end %>
+
+  <% if @course.prerequisites %>
+  <div>
+    <h3>Prerequisites</h3>
+    <p><%= @course.prerequisites %></p>
+  </div>
+  <% end %>

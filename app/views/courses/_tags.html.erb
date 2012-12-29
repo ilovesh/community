@@ -1,0 +1,6 @@
+<% unless @course.tag_list.blank? %>
+  <div>
+    <h3>Tags</h3>
+    <%= render partial: 'shared/tag_list', locals: { taggable: @course } %>
+  </div>
+<% end %>

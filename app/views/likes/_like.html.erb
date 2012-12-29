@@ -1,7 +1,7 @@
 <%= form_for(Like.new,
              remote: true) do |f| %>
   <%= f.hidden_field :likeable_type, value: likeable.class.name %>
-  <%= f.hidden_field :likeable_id,   value: likeable.id %>
+  <%= f.hidden_field :likeable_id, value: likeable.id %>
   <%= button_tag(type: 'submit') do %>
     <i class="icon-star-empty"></i>
   <% end %>
