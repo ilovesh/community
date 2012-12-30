@@ -1,5 +1,9 @@
 <% if @reviews.any? %>
-  <h3><%= pluralize(@reviews.count, "review")%></h3>
+<div class="course-info-container">
+  <h4 class="inline-header"><%= pluralize(@reviews.count, "review")%></h4>
+  <% if @reviews.count > 10 %>
+  <%= link_to "View all reviews »", course_comments_path(@course), { class: "view-all view-all-inline" } %>
+  <% end %>
   <div class="tabbable">
     <ul class="nav nav-tabs">
       <li class="active"><a href="#top-reviews" data-toggle="tab">top</a></li>
@@ -18,5 +22,8 @@
       </ul>
     </div>
   </div>
+  <% if @reviews.count > 10 %>
   <%= link_to "View all reviews »", course_comments_path(@course), { class: "view-all pull-right" } %>
+  <% end %>
+</div>
 <% end %>

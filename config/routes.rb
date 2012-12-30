@@ -1,11 +1,6 @@
 Dragon::Application.routes.draw do
 
-  post "likes/create"
-
-  post "likes/destroy"
-
   get "notes/create"
-
   get "notes/destroy"
 
   root to: 'basics#home'
@@ -28,7 +23,7 @@ Dragon::Application.routes.draw do
   end
 
   resources :likes, only: [:create, :destroy]
-  resources :enrollments
+  resources :enrollments, only: [:create, :destroy]
 
   resources :discussions do
     resources :comments, only: [:create, :destroy]

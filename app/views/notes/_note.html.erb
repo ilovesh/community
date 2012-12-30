@@ -3,7 +3,7 @@
   <%= link_to note.user.username, note.user %>
   <%= render partial: 'shared/timestamp', locals: { post: note } %>
   <% if note.title %>
-    <h4><%= note.title %></h4>
+    <h5><%= note.title %></h5>
   <% end %>
   <p><%= truncate(note.body, length: 280) %></p>
 </li>

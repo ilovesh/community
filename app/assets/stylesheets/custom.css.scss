@@ -62,7 +62,7 @@ span {
 //}
 
 #logo{
-  color: #B31B1B;
+  color: fireBrick;//#B31B1B;
   float: left;
   font-size: 2.3em;
   font-weight: bold;
@@ -76,6 +76,10 @@ ul#top-nav {
   font-weight: bold;
 }
 
+
+.label-info {
+  background-color: lightSlateGray;
+}
 
 
 /* list */
@@ -225,6 +229,18 @@ h3 {
   margin: 0;
 }
 
+h4 {
+  margin: 3px 0;
+}
+
+.inline-header { 
+  display: inline-block; 
+  margin-bottom: 10px;
+}
+
+.course-header > h3 {
+  color: deepGrey;
+}
 
 /* homepage */
 .view-all {
@@ -232,6 +248,8 @@ h3 {
   font-size: 12px;
   text-shadow: white 1px 1px 0px;
 }
+
+.view-all-inline { margin-left: 5px; }
 
 /* homepage: course */
 
@@ -361,7 +379,17 @@ label {
 #enrollment {
   display: inline-block;
   .btn-enroll { width: 70px; }
-  .btn-row { margin-bottom: 1px; }
+  .btn-row { 
+    margin-bottom: 1px;
+  }
+}
+
+.delete-enrollment {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  float: left;
+  margin-left: -12px;
 }
 
 
@@ -415,6 +443,26 @@ dl {
   span { margin-right: 3px; }
 }
 
+.course-info-container {
+  margin: 5px 0;
+  h3 { color: #777; }
+}
 
+.new-buttons {
+  margin: 10px 0;
+}
+
+.course-info-img {
+  display: block;
+}
+
+.help-block {
+  text-align: left;
+}
+
+.note-review-block {
+  border-bottom: 1px solid #cccccc;
+  overflow: hidden;
+}
 // load at last, otherwise body > padding-top still exists.
 @import "bootstrap-responsive";

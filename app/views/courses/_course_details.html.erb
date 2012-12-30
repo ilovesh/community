@@ -1,7 +1,7 @@
 <div class="span7" id="details">
   <div id="provider">
     <label>Provider: </label>
-    <span><%= @course.provider.name %></span>
+    <%= link_to @provider.name, @provider.website, target: "_blank" %>
   </div>
   <% if @course.universities.any? %>
     <div id="university">
@@ -31,7 +31,7 @@
       <% end %>
     </div>
   <% end %>
-  <% if @course.start_date && @course.duration != (0 && 99) %>
+  <% if @course.start_date && @course.duration != 0 && @course.duration != 99 %>
     <div id="start">
       <label>Classes Start: </label>
       <span><%= @course.start_date.to_date.to_formatted_s(:long_ordinal) %></span>
@@ -43,7 +43,7 @@
       <span><%= @course.final_date.to_date.to_formatted_s(:long_ordinal) %></span>
     </div>
   <% end %>
-  <% if @course.duration && @course.duration != (0 && 99) %>
+  <% if @course.duration && @course.duration != 0 && @course.duration != 99 %>
     <div id="duration">
       <label>Duration: </label>
       <span><%= pluralize(@course.duration, "week") %></span>

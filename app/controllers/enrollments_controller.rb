@@ -19,6 +19,10 @@ class EnrollmentsController < ApplicationController
   end
 
   def destroy
+    @enrollment = Enrollment.find(params[:id])
+    @course = @enrollment.course
+    @enrollment.destroy
+    redirect_to @course
   end
 
 private

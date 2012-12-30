@@ -2,24 +2,26 @@
 <% provide(:background, 'no-bg') %>
 <% content_for :left do %>
 
-<div class="course">
-  <%= render 'course_head' %>
-  <div class="row-fluid">
+<div class="course-info-container section-container">
+  <%= render 'course_header' %>
+  <div class="row-fluid course-info-container">
     <div class="course-info span8">
       <div class="span5">
-        <%= image_tag(@course.image_link) %>
-        <%= link_to "Go to the course »", @course.url%>        
+        <%= image_tag @course.image_link, class: "course-info-img" %>
+        <%= link_to "Go to the course »", @course.url, target: "_blank" %>        
       </div>
       <%= render 'course_details' %>
     </div>
+  <div id="#enroll-block">
     <%= render 'enrollment' %>
+  </div>
   </div>
   <%= render 'description_and_prerequisites' %>
   <%= render 'tags' %>
-  <%= render 'new_review_note' %>
+</div>
+  <%= render 'new_buttons' %>
   <%= render 'notes' %>
   <%= render 'reviews' %>
-</div>
 
 
 

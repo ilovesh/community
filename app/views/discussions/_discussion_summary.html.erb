@@ -11,7 +11,7 @@
           <%= link_to "edit",   edit_discussion_path(discussion.id) %>
           <%= link_to "delete", discussion,
                       method: :delete,
-                      data: { confirm: "You sure?" },
+                      data: { confirm: "Are you sure to delete this post?" },
                       title: discussion.title %>
         <% end %>
       </div>

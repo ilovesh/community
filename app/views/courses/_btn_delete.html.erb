@@ -1,0 +1,9 @@
+<span>
+  <%= form_for(current_user.enrollments.find_by_course_id(@course.id),
+               remote: true,
+               html: { method: :delete, class: "delete-enrollment" }) do |f| %>
+    <%= button_tag(type: 'submit', class: "close") do %>
+     ×
+    <% end %>
+  <% end %>
+</span>

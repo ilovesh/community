@@ -1,6 +1,8 @@
-<% if current_user.status(@course) == 2 %>
-  <a class="btn btn-small btn-enroll btn-success" href="#taking" data-toggle="modal">Taking</a>
-<% else %>
-  <a class="btn btn-small btn-enroll" href="#taking" data-toggle="modal">Taking</a>
-<% end %>
-<%= render partial: 'social_count', locals: { users: @course.taking_users } %>
+<div class="btn-row">  
+  <% if current_user.taking?(@course) %>  
+    <a class="btn btn-small btn-enroll btn-success" href="#taking" data-toggle="modal">Taking</a>
+  <% else %>
+    <a class="btn btn-small btn-enroll" href="#taking" data-toggle="modal">Taking</a>
+  <% end %>
+  <%= render partial: 'courses/social_count', locals: { users: @course.taking_users } %>
+</div>

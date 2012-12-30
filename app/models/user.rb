@@ -48,21 +48,33 @@ class User < ActiveRecord::Base
   end
 
   def unenroll!(course)
-    enrollments.find_by_course_id(course.id).destroy
+    enrollment = find_enrollment(course)
+    enrollment.destroy if enrollment
   end
 
   def enroll?(course)
-    !enrollments.find_by_course_id(course.id).nil?
+    enrollment = find_enrollment(course)
+    !enrollment.nil?
+  end
+
+  def interested?(course)
+    enrollment = find_enrollment(course)
+    enrollment && enrollment.status == 1
+  end
+
+  def taking?(course)
+    enrollment = find_enrollment(course)
+    enrollment && enrollment.status == 2
+  end
+
+  def taken?(course)
+    enrollment = find_enrollment(course)
+    enrollment && enrollment.status == 3
   end
 
   def my_tags(course)
     enrollment = enrollments.find_by_course_id(course.id)
     enrollment.tag_list.to_s if enrollment
-  end
-
-  def status(course)
-    enrollment = enrollments.find_by_course_id(course.id)
-    enrollment.status if enrollment
   end
 
   def comment!(commentable, content)
@@ -136,5 +148,9 @@ class User < ActiveRecord::Base
       votes.create!(vote:          false, 
                     voteable_type: voteable_type,
                     voteable_id:   voteable_id)
+    end
+
+    def find_enrollment(course)
+      @enrollment = enrollments.find_by_course_id(course.id)
     end
 end

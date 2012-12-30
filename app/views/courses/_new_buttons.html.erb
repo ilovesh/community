@@ -1,0 +1,8 @@
+  <div class="new-buttons">
+    <%= link_to "<i class=\"icon-file icon-white\"></i> write a note".html_safe, 
+                new_course_note_path(@course),
+                class: "btn btn-medium btn-primary" %>
+    <%= link_to "<i class=\"icon-comment icon-white\"></i> post a review".html_safe, 
+                new_course_comment_path(@course),
+                class: "btn btn-medium btn-primary" %>
+  </div>

@@ -1,5 +1,9 @@
 <% if @notes.any? %>
-  <h3><%= pluralize(@notes.count, "note")%></h3>
+<div class="course-info-container note-review-block">
+  <h4 class="inline-header"><%= pluralize(@notes.count, "note")%></h4>
+  <% if @notes.count > 3 %>
+  <%= link_to "View all notes »", course_notes_path(@course), { class: "view-all view-all-inline" } %>
+  <% end %>
   <div class="tabbable">
     <ul class="nav nav-tabs">
       <li class="active"><a href="#top-notes" data-toggle="tab">top</a></li>
@@ -18,5 +22,8 @@
       </ul>
     </div>
   </div>
+  <% if @notes.count > 3 %>
   <%= link_to "View all notes »", course_notes_path(@course), { class: "view-all pull-right" } %>
+  <% end %>
+</div>
 <% end %>

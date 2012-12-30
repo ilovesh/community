@@ -4,10 +4,12 @@
   <div class="modal-body">
     <label for="enrollment_tags">Tags</label>
     <%= f.text_field :tags, value: current_user.my_tags(@course), class: "xlarge" %>
-    <% if @top_tags.blank? %>      
-      <p><span class="badge badge-info"><i class="icon-tags icon-white"></i></span>
+    <span class="help-block"><i class="icon-info-sign"></i>
+      Please seperate the tags by comma.</br>e.g.: programming, beginner-level, interactive</span>
+    <% if @top_tags.blank? %>
+    <p><span class="badge badge-info"><i class="icon-tags icon-white"></i></span>
         Nobody has tagged this course yet. Be the first to add some useful tags!</p>
-    <% else %>
+    <% else %>        
       <dl>
         <dt>Top tags for this course:</dt>
         <dd><% @top_tags.each do |tag| %><span class="btn btn-info btn-tag"><%= tag %></span><% end %></dd>
@@ -15,6 +17,12 @@
     <% end %>
   </div>
   <div class="modal-footer">
+    <% if delete %>
+    <%= link_to "delete", current_user.enrollments.find_by_course_id(@course.id),
+                      method: :delete,
+                      class: "btn",
+                      title: @course.name %>
+    <% end %>
     <%= f.submit "Save", class: "btn btn-primary" %>
   </div>
 <% end %>

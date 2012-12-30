@@ -27,9 +27,9 @@ namespace :db do
 end
 
 def create_providers
-  Provider.create!(name: "Udacity",  website: "www.udacity.com")
-  Provider.create!(name: "Coursera", website: "www.coursera.org")
-  Provider.create!(name: "edX",      website: "www.edx.org")
+  Provider.create!(name: "Udacity",  website: "http://www.udacity.com")
+  Provider.create!(name: "Coursera", website: "http://www.coursera.org")
+  Provider.create!(name: "edX",      website: "http://www.edx.org")
 end
 
 ###########################
