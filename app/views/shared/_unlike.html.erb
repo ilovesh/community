@@ -1,8 +1,0 @@
-<%= form_for(current_user.likes.find_by_likeable_type_and_likeable_id(
-                                        likeable.class.name, likeable.id),
-            remote: true, 
-            html: { method: :delete }) do |f| %>
-  <%= button_tag(type: 'submit', class: "btn-like") do %>
-    <i class="icon-star"></i>
-  <% end %>
-<% end %>

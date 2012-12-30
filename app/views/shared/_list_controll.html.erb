@@ -1,9 +1,0 @@
-    <div class="pull-right">
-      <span id="like-form-list-<%=list.id%>">
-      <% if current_user && current_user.like?(list.class.name, list.id) %>
-        <%= render partial: 'shared/unlike', locals: { likeable: list } %>
-      <% else %>
-        <%= render partial: 'shared/like', locals: { likeable: list } %>
-      <% end %>
-      </span>
-    </div>
