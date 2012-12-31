@@ -10,6 +10,7 @@ gem 'acts_as_commentable_with_threading'
 gem 'pg_search'
 gem 'nokogiri'
 gem "ffaker", "~> 1.15.0"
+gem 'best_in_place'
 
 # front-end
 gem 'bootstrap-sass', '~> 2.2.2.0'
@@ -18,6 +19,7 @@ gem 'bootstrap-will_paginate', '0.0.6'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'gon'
+gem 'font-awesome-sass-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -25,7 +27,6 @@ group :assets do
   #gem 'coffee-rails', '~> 3.2.1'
   gem 'sass-rails', '~> 3.2'
   gem 'uglifier', '>= 1.0.3'
-  gem 'font-awesome-sass-rails'
 end
 
 group :development do
