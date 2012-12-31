@@ -1,3 +1,4 @@
-$("#like-form-list-<%=@like.likeable_id%>").
+$("#like-form-<%=@like.likeable_type.downcase%>-<%=@like.likeable_id%>").
          html("<%= escape_javascript(render(partial: 'likes/like', 
-	                                       locals: {likeable: @like.find_likeable})) %>");
+	                                       locals: {likeable: @like.find_likeable,
+	                                                icon_name: @icon_name})) %>");

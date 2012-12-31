@@ -18,7 +18,7 @@
   </div>
   <div class="modal-footer">
     <% if delete %>
-    <%= link_to "delete", current_user.enrollments.find_by_course_id(@course.id),
+    <%= link_to "Delete", current_user.enrollments.find_by_course_id(@course.id),
                       method: :delete,
                       class: "btn",
                       title: @course.name %>

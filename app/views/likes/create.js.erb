@@ -1,3 +1,4 @@
-$("#like-form-list-<%=@likeable.id%>").
+$("#like-form-<%=@likeable.class.name.downcase%>-<%=@likeable.id%>").
          html("<%= escape_javascript(render(partial: 'likes/unlike', 
-	                                       locals: {likeable: @likeable})) %>");
+	                                       locals: {likeable: @likeable,
+	                                                icon_name: @icon_name})) %>");

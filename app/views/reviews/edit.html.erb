@@ -1,8 +1,8 @@
-<% provide(:title, 'Edit note') %>
+<% provide(:title, 'Edit review') %>
 <div class="row center">
   <div class="span7 offset4">
-    <h3>Edit the note</h3>
-    <%= form_for @note do |f| %>
+    <h3>Edit the review</h3>
+    <%= form_for @review do |f| %>
       <%= render 'fields', f: f %>
       <%= f.submit "update", class: "btn btn-medium btn-primary" %>
     <% end %>

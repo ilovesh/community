@@ -1,8 +1,4 @@
 Dragon::Application.routes.draw do
-
-  get "notes/create"
-  get "notes/destroy"
-
   root to: 'basics#home'
   resources :users, :votes
   resources :sessions, only: [:new, :create, :destroy]
@@ -13,11 +9,12 @@ Dragon::Application.routes.draw do
       get 'finished'
       get :autocomplete_name
     end
-    resources :comments#, only: [:create, :destroy]
+    resources :reviews,  only: [:new, :create, :index]
     resources :notes,    only: [:new, :create, :index]
   end
+  resources :reviews, only: [:show, :edit, :update, :destroy]
   resources :notes, only: [:show, :edit, :update, :destroy]
-  
+
   resources :lists do
     resources :comments, only: [:create, :destroy]
   end

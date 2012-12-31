@@ -8,8 +8,9 @@ namespace :db do
     #make_enrollments
     #make_discussions
     #make_lists
-    make_comments
+    #make_comments
     #make_notes
+    make_reviews
   end
 end
 
@@ -118,13 +119,6 @@ def make_lists
 end
 
 def make_comments
-  courses = Course.all(limit: 100)
-  courses.each do |course|
-    5.times do
-      comment = User.all.sample.comment!(course, Faker::Lorem.sentence)
-      comment.save
-    end
-  end
   discussions = Discussion.all(limit: 50)
   discussions.each do |discussion|
     5.times do
@@ -142,8 +136,21 @@ def make_comments
 end
 
 def make_notes
-  60.times do
-    User.all.sample.take_note!(Course.all.sample, Faker::Lorem.paragraph)
-    User.all.sample.take_note!(Course.all.sample, Faker::Lorem.paragraph, Faker::Lorem.sentence) 
+  courses = Course.all(limit: 10)
+  courses.each do |course|
+    20.times do
+      User.all.sample.take_note!(course, Faker::Lorem.paragraph+Faker::Lorem.paragraph)
+      User.all.sample.take_note!(course, Faker::Lorem.paragraph+Faker::Lorem.paragraph, Faker::Lorem.sentence)
+    end
+  end
+end
+
+def make_reviews
+  courses = Course.all(limit: 10)
+  courses.each do |course|
+    20.times do
+      User.all.sample.review!(course, Faker::Lorem.paragraph)
+      User.all.sample.review!(course, Faker::Lorem.paragraph+Faker::Lorem.paragraph, Faker::Lorem.sentence)
+    end
   end
 end

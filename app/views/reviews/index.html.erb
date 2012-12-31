@@ -1,12 +1,12 @@
-<% provide(:title, 'Notes') %>
+<% provide(:title, 'Reviews') %>
 <% content_for :left do %>
 <div class="section-container">
   <%= link_to "<< go back to course: " + @course.full_name,  @course %>
-  <h1><%= pluralize(@notes.count, 'note') %></h1>
+  <h1><%= pluralize(@reviews.count, 'review') %></h1>
   <ul class="unstyled seperate">
-    <%= render @notes %>
+    <%= render @reviews %>
   </ul>
-  <%= will_paginate @notes %>
+  <%= will_paginate @reviews %>
 <% end %>
 </div>
 

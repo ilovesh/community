@@ -2,7 +2,7 @@
                                         likeable.class.name, likeable.id),
             remote: true, 
             html: { method: :delete }) do |f| %>
-  <%= button_tag(type: 'submit') do %>
-    <i class="icon-star"></i>
+  <%= button_tag(type: 'submit', class: 'btn-like') do %>
+    <i class="icon-<%=icon_name%>"></i>
   <% end %>
 <% end %>

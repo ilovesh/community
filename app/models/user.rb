@@ -39,6 +39,7 @@ class User < ActiveRecord::Base
   has_many :votes,          dependent: :destroy
   has_many :notes,          dependent: :destroy
   has_many :likes,          dependent: :destroy
+  has_many :reviews,        dependent: :destroy
 
   def enroll!(course, status, *arg)
     tag_list = arg[0] if arg
@@ -77,8 +78,19 @@ class User < ActiveRecord::Base
     enrollment.tag_list.to_s if enrollment
   end
 
-  def comment!(commentable, content)
-    Comment.build_from(commentable, id, content)
+  def comment!(commentable, body, *title)
+    title = title[0] if title
+    comments.create!(commentable_type: commentable.class.name,
+                     commentable_id: commentable.id,
+                     body:      body,
+                     title:     title)
+  end
+
+  def review!(course, body, *title)
+    title = title[0] if title
+    reviews.create!( course_id: course.id,
+                     body:      body,
+                     title:     title)
   end
 
   def vote!(vote, voteable_type, voteable_id)

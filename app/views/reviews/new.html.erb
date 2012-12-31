@@ -1,8 +1,8 @@
-<% provide(:title, 'Write a note') %>
+<% provide(:title, 'Post a review') %>
 <div class="row center">
   <div class="span6 offset4">
-    <h3>Write a note</h3>
-    <%= form_for [@course, @note] do |f| %>
+    <h3>Post a review</h3>
+    <%= form_for [@course, @review] do |f| %>
       <%= render 'fields', f: f %>
       <%= f.submit "post", class: "btn btn-medium btn-primary" %>
     <% end %>

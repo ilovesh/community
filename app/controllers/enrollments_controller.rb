@@ -1,8 +1,5 @@
 class EnrollmentsController < ApplicationController
-  before_filter :loggedin_user, only: [:create, :destroy]  
-  
-  def new
-  end
+  before_filter :loggedin_user, only: [:create, :destroy]
 
   def create
     @course = Course.find(params[:enrollment][:course_id])

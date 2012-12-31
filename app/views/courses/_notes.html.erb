@@ -1,29 +1,31 @@
 <% if @notes.any? %>
-<div class="course-info-container note-review-block">
-  <h4 class="inline-header"><%= pluralize(@notes.count, "note")%></h4>
-  <% if @notes.count > 3 %>
-  <%= link_to "View all notes »", course_notes_path(@course), { class: "view-all view-all-inline" } %>
-  <% end %>
-  <div class="tabbable">
-    <ul class="nav nav-tabs">
-      <li class="active"><a href="#top-notes" data-toggle="tab">top</a></li>
-      <li><a href="#newest-notes" data-toggle="tab">newest</a></li>
-    </ul>
-  </div>
-  <div class="tab-content">
-    <div class="tab-pane active" id="top-notes">
-      <ul class="unstyled seperate">
-        <%= render partial: 'notes/note', collection: @notes_by_like %>
-      </ul>
-    </div> 
-    <div class="tab-pane" id="newest-notes">
-      <ul class="unstyled seperate">
-        <%= render partial: 'notes/note', collection: @notes_by_date %>
+<div class="row-fluid course-info-container note-review-block">
+  <div class="span11">
+    <h4 class="inline-header"><%= pluralize(@notes.count, "note")%></h4>
+    <% if @notes.count > 3 %>
+    <%= link_to "View all notes »", course_notes_path(@course), { class: "view-all view-all-inline" } %>
+    <% end %>
+    <div class="tabbable">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#top-notes" data-toggle="tab">top</a></li>
+        <li><a href="#newest-notes" data-toggle="tab">newest</a></li>
       </ul>
     </div>
+    <div class="tab-content">
+      <div class="tab-pane active" id="top-notes">
+        <ul class="unstyled seperate">
+          <%= render partial: 'notes/note', collection: @notes_by_like %>
+        </ul>
+      </div> 
+      <div class="tab-pane" id="newest-notes">
+        <ul class="unstyled seperate">
+          <%= render partial: 'notes/note', collection: @notes_by_date %>
+        </ul>
+      </div>
+    </div>
+    <% if @notes.count > 3 %>
+    <%= link_to "View all notes »", course_notes_path(@course), { class: "view-all pull-right" } %>
+    <% end %>
   </div>
-  <% if @notes.count > 3 %>
-  <%= link_to "View all notes »", course_notes_path(@course), { class: "view-all pull-right" } %>
-  <% end %>
 </div>
 <% end %>

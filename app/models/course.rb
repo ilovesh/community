@@ -29,7 +29,6 @@ class Course < ActiveRecord::Base
   attr_accessible :name, :code, :image_link, :url, 
                   :description, :subtitle, :start_date, :final_date,
                   :instructor, :prerequisites, :duration
-  acts_as_commentable
 
   include PgSearch
   pg_search_scope :search_by_full_name, against: [:code, :name], 
@@ -55,8 +54,8 @@ class Course < ActiveRecord::Base
   has_many :lists,    through: :listings
   has_many :teachings, dependent: :destroy
   has_many :universities,    through: :teachings
-#  has_many :comments, dependent: :destroy
   has_many :notes, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   default_scope order: 'courses.start_date DESC'
   scope :of_status, lambda{ |status| all.select{ |course| course.status == status.to_sym } }
@@ -96,7 +95,5 @@ class Course < ActiveRecord::Base
       return :upcoming
     end
   end
-
-
 
 end

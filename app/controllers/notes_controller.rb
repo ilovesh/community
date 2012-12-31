@@ -1,5 +1,5 @@
 class NotesController < ApplicationController
-  before_filter :loggedin_user, only: [:new, :create, :destroy]
+  before_filter :loggedin_user, only: [:new, :create]
   before_filter :correct_user,  only: [:edit, :update, :destroy]
 
   def new
@@ -24,6 +24,7 @@ class NotesController < ApplicationController
 
   def show
     @note = Note.find(params[:id])
+    @course = @note.course
   end
 
   def edit

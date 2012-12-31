@@ -310,10 +310,6 @@ ul.list-items {
     form {
       margin: 0;
       padding: 0;
-      button {
-        border: none;
-        background: none; 
-      }
     }
     h3 {
       font-size: 13px;
@@ -464,5 +460,14 @@ dl {
   border-bottom: 1px solid #cccccc;
   overflow: hidden;
 }
+
+
+/* likes */
+.btn-like {
+  border: none;
+  background: none;
+  float: left;
+}
+
 // load at last, otherwise body > padding-top still exists.
 @import "bootstrap-responsive";

@@ -1,0 +1,41 @@
+<% unless current_page? review %>
+<li id="review-<%= review.id %>">
+<% end %>
+
+<span id="like-form-review-<%=review.id%>">
+  <% if current_user && current_user.like?(review.class.name, review.id) %>
+    <%= render partial: 'likes/unlike', locals: { likeable: review,
+                                                  icon_name: "chevron-down" } %>
+  <% else %>
+    <%= render partial: 'likes/like', locals: { likeable: review,
+                                                icon_name: "chevron-up" } %>
+  <% end %>
+</span>
+
+<%= render partial: 'shared/timestamp', locals: { post: review } %>
+<%= gravatar_for review.user, size: 20 %>
+<%= link_to review.user.username, review.user %>
+<% if current_user?(review.user) %>
+  <%= link_to "edit",   edit_note_path(review) %>
+  <%= link_to "delete", review,
+              method: :delete,
+              data: { confirm: "Are you sure to delete this review?" },
+              title: review.body %>
+<% end %>
+
+<% if review.title %>
+  <h5><%= review.title %></h5>
+<% end %>
+
+<% if current_page? review %>
+  <p><%= review.body %></p>
+<% else %>
+  <p><%= raw(truncate(h(review.body),
+             length: 280,
+             omission: link_to("...read more", review))) %>
+  </p>
+<% end %>
+
+<% unless current_page? review %>
+</li>  
+<% end %>

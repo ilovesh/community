@@ -1,9 +1,39 @@
+<% unless current_page? note %>
 <li id="note-<%= note.id %>">
-  <%= gravatar_for note.user, size: 20 %>
-  <%= link_to note.user.username, note.user %>
-  <%= render partial: 'shared/timestamp', locals: { post: note } %>
-  <% if note.title %>
-    <h5><%= note.title %></h5>
+<% end %>
+
+<span id="like-form-note-<%=note.id%>">
+  <% if current_user && current_user.like?(note.class.name, note.id) %>
+    <%= render partial: 'likes/unlike', locals: { likeable: note,
+                                                  icon_name: "star" } %>
+  <% else %>
+    <%= render partial: 'likes/like', locals: { likeable: note,
+                                                icon_name: "star-empty" } %>
   <% end %>
-  <p><%= truncate(note.body, length: 280) %></p>
-</li>
+</span>
+
+<%= render partial: 'shared/timestamp', locals: { post: note } %>
+<%= gravatar_for note.user, size: 20 %>
+<%= link_to note.user.username, note.user %>
+<% if current_user?(note.user) %>
+  <%= link_to "edit",   edit_note_path(note) %>
+  <%= link_to "delete", note,
+              method: :delete,
+              data: { confirm: "Are you sure to delete this note?" },
+              title: note.body %>
+<% end %>
+
+<% if note.title %>
+  <h5><%= note.title %></h5>
+<% end %>
+
+<% if current_page? note %>
+  <p><%= note.body %></p>
+<% else %>
+  <p><%= truncate(h(note.body), length: 280) %>
+     <%= link_to ' read this note', note %></p>
+<% end %>
+
+<% unless current_page? note %>
+</li>  
+<% end %>

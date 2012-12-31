@@ -1,0 +1,11 @@
+<% provide(:title, 'Review') %>
+<% content_for :left do %>
+<h2>Review</h2><%= link_to "<< go back to course: " + @course.full_name,  @course %>
+<div class="section-container">
+<%= render 'note', note: @review %>
+</div>
+<% end %>
+
+<% content_for :right do %>
+  place_holder
+<% end %>
