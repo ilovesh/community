@@ -1,0 +1,35 @@
+<li id="comment-<%= comment.id %>">
+
+<div class="row-fluid">
+  <div class="span1">
+    <div class="comment-vote-container">
+      <span id="like-form-comment-<%=comment.id%>">
+        <% if current_user && current_user.like?(comment) %>
+          <%= render partial: 'likes/unlike', locals: { likeable: comment,
+                                                        icon_name: VOTED } %>
+        <% else %>
+          <%= render partial: 'likes/like', locals: { likeable: comment,
+                                                      icon_name: VOTE_UP } %>
+        <% end %>
+      </span>
+    </div>
+  </div>
+
+  <div class="span11">
+    <p><%= comment.body %></p>
+
+    <div class="pull-right">
+      <%= render partial: 'shared/timestamp', locals: { post: comment } %>
+      <%= gravatar_for comment.user, size: 20 %>
+      <%= link_to comment.user.username, comment.user %>
+      <% if current_user?(comment.user) %>
+        <%= link_to "delete", [comment.commentable, comment],
+                    method: :delete,
+                    remote: true,
+                    data: { confirm: "Are you sure to delete this comment?" },
+                    title: comment.body %>
+      <% end %>
+    </div>
+  </div>
+</div>
+</li>

@@ -1,11 +1,20 @@
     <div class="span1">
       <% if current_page?(discussion) %>
-        <%= render partial: "shared/vote_form",
-                   locals: { voteable: discussion } %>
+        <div class="discussion-vote-container">
+          <span id="like-form-discussion-<%=discussion.id%>" class="discussion-vote">
+            <% if current_user && current_user.like?(discussion) %>
+              <%= render partial: "likes/unlike",
+                         locals: { likeable: discussion, icon_name: VOTED } %>
+            <% else %>
+              <%= render partial: "likes/like",
+                         locals: { likeable: discussion, icon_name: VOTE_UP } %>
+            <% end %>
+          </span>    
+        </div>
       <% else %>
         <div class="badge badge-important">
-          <i class="icon-chevron-up icon-white icon-count"></i>
-          <%= discussion.plusminus %>
+          <i class="icon-<%= VOTE_UP %> icon-white icon-count"></i>
+          <%= discussion.likes.count %>
         </div>
         <div class="badge">
           <i class="icon-comment icon-white icon-count"></i>

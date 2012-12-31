@@ -1,37 +1,34 @@
 class CommentsController < ApplicationController
-  before_filter :loggedin_user, only: [:new, :create, :destroy]
-  before_filter :correct_user,  only: [:edit, :update, :destroy]
-
-  def new
-    @course = Course.find(params[:course_id])
-    @review = Comment.new
-  end
+  before_filter :loggedin_user, only: [:create]
+  before_filter :correct_user, only: [:destroy]
 
   def create
-    @course = Course.find(params[:course_id])
-    @comment = current_user.comment!(@course, params[:comment][:body], params[:comment][:title])
+    #@course = Course.find(params[:course_id])
+    @commentable_type = params[:comment][:commentable_type]
+    @commentable_id = params[:comment][:commentable_id]
+    @comment = current_user.comment!(@commentable_type, @commentable_id, params[:comment][:body])
+    @commentable = @comment.commentable
+    @comments = @commentable.comment_threads
     if @comment.save
-      redirect_to @comment
+      respond_to do |format|
+        format.html { redirect_to @commentable }
+        format.js
+      end
     else
       render 'new'
     end
   end
 
-  def show
-    @course = Course.find(params[:course_id])
-    @review = Comment.find(params[:id])
-  end
-
-  def index
-    @course = Course.find(params[:course_id])
-    @reviews = @course.comment_threads.paginate(page: params[:page])
-  end
-
-
   def destroy
   	@commentable = @comment.commentable
+    @commentable_type = @comment.commentable_type
+    @commentable_id = @comment.commentable_id
+    @comments = @commentable.comment_threads
     if @comment.destroy
-      redirect_to @commentable
+      respond_to do |format|
+        format.html { redirect_to @commentable }
+        format.js
+      end
     end
   end
 

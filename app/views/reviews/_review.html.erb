@@ -2,13 +2,14 @@
 <li id="review-<%= review.id %>">
 <% end %>
 
+<div class="review-info">
 <span id="like-form-review-<%=review.id%>">
-  <% if current_user && current_user.like?(review.class.name, review.id) %>
+  <% if current_user && current_user.like?(review) %>
     <%= render partial: 'likes/unlike', locals: { likeable: review,
-                                                  icon_name: "chevron-down" } %>
+                                                  icon_name: VOTED } %>
   <% else %>
     <%= render partial: 'likes/like', locals: { likeable: review,
-                                                icon_name: "chevron-up" } %>
+                                                icon_name: VOTE_UP } %>
   <% end %>
 </span>
 
@@ -16,12 +17,13 @@
 <%= gravatar_for review.user, size: 20 %>
 <%= link_to review.user.username, review.user %>
 <% if current_user?(review.user) %>
-  <%= link_to "edit",   edit_note_path(review) %>
+  <%= link_to "edit",   edit_review_path(review) %>
   <%= link_to "delete", review,
               method: :delete,
               data: { confirm: "Are you sure to delete this review?" },
               title: review.body %>
 <% end %>
+</div>
 
 <% if review.title %>
   <h5><%= review.title %></h5>

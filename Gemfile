@@ -10,8 +10,8 @@ gem 'acts_as_commentable_with_threading'
 gem 'pg_search'
 gem 'nokogiri'
 gem "ffaker", "~> 1.15.0"
+
 # front-end
-gem 'sass-rails', '~> 3.2'
 gem 'bootstrap-sass', '~> 2.2.2.0'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
@@ -22,12 +22,13 @@ gem 'gon'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'coffee-rails', '~> 3.2.1'
+  #gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails', '~> 3.2'
   gem 'uglifier', '>= 1.0.3'
+  gem 'font-awesome-sass-rails'
 end
 
 group :development do
   gem 'annotate', '2.5.0'
-
   gem 'watir-webdriver'
 end

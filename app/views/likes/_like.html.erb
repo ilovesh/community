@@ -2,7 +2,12 @@
              remote: true) do |f| %>
   <%= f.hidden_field :likeable_type, value: likeable.class.name %>
   <%= f.hidden_field :likeable_id, value: likeable.id %>
-  <%= button_tag(type: 'submit', class: 'btn-like') do %>
-    <i class="icon-<%=icon_name%>"></i>
+  <%= button_tag(type: 'submit', class: "btn-like") do %>
+    <i class="icon-<%=icon_name%> icon-large icon-pre"></i>
   <% end %>
+<% end %>
+<% if likeable.class.name == "Discussion" || likeable.class.name == "Comment"  %>
+<div id="vote-count-<%=likeable.class.name.downcase%>-<%=likeable.id%>">
+  <%= likeable.likes.count %>
+</div>
 <% end %>

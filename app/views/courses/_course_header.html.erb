@@ -1,4 +1,3 @@
-  <div class="course-header">
   <% if @course.status == :upcoming %><span class="badge badge-warning">upcoming</span>
   <% elsif @course.status == :ongoing %><span class="badge badge-success">ongoing</span>
   <% elsif @course.status == :finished %><span class="badge badge-important">finished</span>
@@ -8,4 +7,3 @@
   <% if @course.subtitle %>
     <h3><%= @course.subtitle %></h3>
   <% end %>
-  </div>

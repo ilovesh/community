@@ -17,8 +17,7 @@
 class Comment < ActiveRecord::Base
   attr_accessible :commentable_type, :commentable_id, :body, :title
   acts_as_nested_set :scope => [:commentable_id, :commentable_type]
-  has_many :votes, dependent: :destroy, as: :voteable
-  include Voteable
+  has_many :likes, dependent: :destroy, as: :likeable
 
   validates_presence_of :body
   validates_presence_of :user

@@ -1,5 +1,5 @@
 <% if @notes.any? %>
-<div class="row-fluid course-info-container note-review-block">
+<div class="row-fluid course-info-container course-notes">
   <div class="span11">
     <h4 class="inline-header"><%= pluralize(@notes.count, "note")%></h4>
     <% if @notes.count > 3 %>

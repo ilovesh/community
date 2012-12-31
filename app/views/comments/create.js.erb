@@ -1,0 +1,6 @@
+$("#<%=@commentable_type.downcase%>-<%=@commentable_id%>-comments").
+         html("<%= escape_javascript(render(partial: 'comments/comment', 
+	                                        collection: @comments)) %>");
+$(".comment-form").
+         html("<%= escape_javascript(render(partial: 'comments/comment_form', 
+	                                        locals: { commentable: @commentable })) %>");

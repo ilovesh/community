@@ -1,11 +1,18 @@
-    <div class="span11">
+    <div class="span11 discussion-body">
       <h3><%= link_to discussion.title, discussion %></h3>
       <% unless current_page?(root_path) %>
-      <p><%= truncate(discussion.content, length: 140) %></p>
+        <% if current_page? discussion %>
+          <p><%= discussion.content %></p>
+        <% else %>
+          <p><%= truncate(discussion.content, length: 140) %></p>
+        <% end %>
       <% end %>
       <%= render partial: 'shared/tag_list', locals: { taggable: discussion } %>
       <div class="pull-right">
         <%= render partial: 'shared/timestamp', locals: { post: discussion } %>
+        <% if current_page? discussion %>
+        <%= gravatar_for discussion.user, size: 20 %>
+        <% end %>
         <%= link_to discussion.user.username, discussion.user %>
         <% if current_user?(discussion.user) %>
           <%= link_to "edit",   edit_discussion_path(discussion.id) %>

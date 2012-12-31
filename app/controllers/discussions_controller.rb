@@ -18,7 +18,7 @@ class DiscussionsController < ApplicationController
 
   def show
     @discussion = Discussion.find(params[:id])
-    @comments   = Comment.find_comments_for_commentable("Discussion", @discussion.id)
+    @comments   = @discussion.comment_threads
   end
 
   def edit
@@ -37,7 +37,7 @@ class DiscussionsController < ApplicationController
 
   def index
     @newest = Discussion.paginate(page: params[:newest_page])
-    @votes = Discussion.find(:all, include: :votes).sort_by { |d| -d.plusminus }.paginate(page: params[:votes_page])
+    @votes = Discussion.all.sort_by { |d| -d.likes.count }.paginate(page: params[:votes_page])
     @comments = Discussion.all.sort_by { |d| -d.comment_threads.count }.paginate(page: params[:comments_page])  
   end
 

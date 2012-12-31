@@ -3,3 +3,8 @@
            EST = " Eastern Time (US & Canada)"
            #PST = " Pacific Time (US & Canada)"
            PST = " PST"
+
+     VOTE_UP = "chevron-up"
+     VOTED = "chevron-up"
+     LIKE = "star-empty"
+     LIKED = "star" 

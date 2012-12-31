@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import 'font-awesome';
 
 @mixin box_sizing {
   -moz-box-sizing: border-box; 
@@ -7,31 +8,25 @@
 }
 
 /* universal */
-
-html {
-  overflow-y: scroll;
-}
+html { overflow-y: scroll; }
 
 body{
   padding-top: 60px;
-  //background: repeat url("notepad.jpg");
   background-color: #F1EEE5;
 }
 
 body.no-bg { background-color: white; }
 
-section {
-  overflow: auto;
-}
+section { overflow: auto; }
 
-textarea {
-  resize: vertical;
-}
+textarea { resize: vertical; }
 
-span {
-  text-align: center;
-}
+span { text-align: center; }
 
+
+.block { display: block; }
+
+/* container */
 .section-container{
   padding: 15px;
   margin: 10px 0;
@@ -49,18 +44,10 @@ span {
   -moz-box-shadow: 0 1px 0 #b9b6aa;
   -webkit-box-shadow: 0 1px 0 #B9B6AA;
   box-shadow: 0 1px 0 #B9B6AA;
+  overflow: hidden;
 }
 
 /* header */
-//header.navbar {
-  // background: none repeat scroll 0 0 #0772A1/* more bright color : #FF9300 #3C2415 */;
-  // box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
-  // width: 100%;
-  // top:0;
-  // position:fixed;
-  // height: auto;
-//}
-
 #logo{
   color: fireBrick;//#B31B1B;
   float: left;
@@ -75,12 +62,6 @@ ul#top-nav {
   font-size: 1.15em;
   font-weight: bold;
 }
-
-
-.label-info {
-  background-color: lightSlateGray;
-}
-
 
 /* list */
 ul.inline,
@@ -100,11 +81,79 @@ ul.seperate > li,
 ol.seperate > li {
   overflow: auto;
   border-top: 1px solid $grayLighter;
-  &:first-child {
-    border: 0;
-  }
   padding: 5px 0;
+  &:first-child { border: 0; }
 }
+
+/* image */
+.img-small { height: 38.3px; }
+
+.img-medium { height: 97px; }
+
+.img-medium-large {
+  height: 115px;
+  width: 216px;
+}
+
+.img-large { height: 173px; }
+
+.circle {
+  -webkit-border-radius: 999px;
+  -moz-border-radius: 999px;
+  border-radius: 999px;
+  width: 3px;
+  height: 3px;
+  padding: 3px;
+  margin-right: 10px;
+  display: inline-block;
+}
+.circle-ongoing { background-color: green; }
+.circle-upcoming { background-color: gold; }
+.circle-finished { background-color: red; }
+
+/* typography */
+h2 {
+  font-size: 25px;
+  line-height: 30px;
+  color: #777;
+  margin: 5px 0;
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 25px;
+  color: #777;
+  margin: 0;
+}
+
+h4 {
+  margin: 3px 0;
+}
+
+.inline-header { 
+  display: inline-block; 
+  margin-bottom: 10px;
+}
+
+.index-header > h2 { display: inline; }
+
+.view-all {
+  font-weight: bold;
+  font-size: 12px;
+  text-shadow: white 1px 1px 0px;
+}
+
+.view-all-inline { margin-left: 5px; }
+
+
+
+
+.label-info {
+  background-color: lightSlateGray;
+}
+
+
+
 
 
 
@@ -132,142 +181,12 @@ p.list_desp{
   height:140px;
 }
 
-/* miscellaneous */
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  @include box_sizing;
-}
 
-/* forms */
 
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  padding: 10px;
-  height: auto;
-  margin-bottom: 15px;
-  width:220px;
-  -webkit-box-shadow:rgba(0, 0, 0, 0.0745098) 0 1px 1px inset;
-  -webkit-transition:border 0.2s linear, box-shadow 0.2s linear;
-  background-color: #ffffff;
-  box-shadow:rgba(0, 0, 0, 0.0745098) 0 1px 1px inset;
-  display:inline-block;
-}
 
-.vote_form{
-  float: left;
-}
 
-#error_explanation {
-  color: #f00;
-  ul {
-    list-style: none;
-    margin: 0 0 18px 0;
-  }
-}
-
-.field_with_errors {
-  @extend .control-group;
-  @extend .error;
- }
-
-.courses_status {
-  display: inline-block;
-  float: left;
-  width: 33.2%;
-  border: 1px solid #B7CFDF;
-  line-height: 20px;
-  font-weight: bold;
-  text-shadow: white 1px 1px 0px;
-  text-decoration: none;
-  color: #6E788B;
-  &:hover {
-    color: Black;
-    opacity: 0.7;
-  }
-}
-
-/* image */
-.img-small {
-  height: 38.3px;
-}
-
-.img-medium {
-  height: 97px;
-}
-
-.img-medium-large {
-  height: 115px;
-  width: 216px;
-}
-
-.img-large {
-  height: 173px;
-}
-
-.count {
-  margin-right: 10px;
-  font-size: 1.5em;
-  .count_of_taking_users { color: green; }
-  .count_of_will_take_users { color: orange; }
-  .count_of_taken_users { color: red; }
-}
-
-/* typography */
-h2 {
-  font-size: 25px;
-  line-height: 30px;
-  color: #777;
-  margin: 5px 0;
-}
-
-h3 {
-  font-size: 18px;
-  line-height: 25px;
-  margin: 0;
-}
-
-h4 {
-  margin: 3px 0;
-}
-
-.inline-header { 
-  display: inline-block; 
-  margin-bottom: 10px;
-}
-
-.course-header > h3 {
-  color: deepGrey;
-}
-
-/* homepage */
-.view-all {
-  font-weight: bold;
-  font-size: 12px;
-  text-shadow: white 1px 1px 0px;
-}
-
-.view-all-inline { margin-left: 5px; }
 
 /* homepage: course */
-
-  .circle {
-    -webkit-border-radius: 999px;
-    -moz-border-radius: 999px;
-    border-radius: 999px;
-    width: 3px;
-    height: 3px;
-    padding: 3px;
-    margin-right: 10px;
-    display: inline-block;
-  }
-  .circle-ongoing { background-color: green; }
-  .circle-upcoming { background-color: gold; }
-  .circle-finished { background-color: red; }
-  .prev {background-color: white;}
-
 aside {
   float: left;
   margin: 15px 10px 0 0;
@@ -340,127 +259,69 @@ ul.list-items {
   }
 }
 
-/* index pages */
-.index-title > h2 { display: inline; }
-
-.thumbnail {overflow: hidden}
-
-.all-courses {background-color: white;}
 
 /* course show page */
-label { 
-  display: inline-block;
-  color: #666;
-}
-
-.course > p {
-  text-align: justify;
-}
-
-.course-head {
-  margin-bottom: 15px;
-}
-
-#img-go > a {
-  margin-top: 10px;
-}
-
-.course-info > div {
-  display: inline-block;
-  float: left;
-  #details { margin-left: 15px; }
-
-}
-
-#enrollment {
-  display: inline-block;
-  .btn-enroll { width: 70px; }
-  .btn-row { 
-    margin-bottom: 1px;
+.course-info-container {
+  margin: 5px 0;
+  #details {
+    label { 
+      display: inline-block;
+      color: #777;
+    }
+  }
+  #enrollment {
+    display: inline-block;
+    .btn-enroll { width: 55px }
+    .btn-row { margin-bottom: 1px; }
+    .enroll-count {
+      font-weight: bold;
+      padding: 2px 5px;
+      margin-left: 5px;
+      position: relative;
+    }
+    .enroll-count::before {
+      content: "";
+      display: block;
+      width: 0;
+      height: 0;
+      border: 6px solid #D4D4D4;
+      border-color: transparent #D4D4D4 transparent transparent;
+      position: absolute;
+      right: 100%;
+      margin-right: 0;
+      top: 50%;
+      margin-top: -6px;
+    }
+    .enroll-count::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 0;
+      border: 6px solid #FAFAFA;
+      border-color: transparent #FAFAFA transparent transparent;
+      position: absolute;
+      right: 100%;
+      margin-right: -1px;
+      top: 50%;
+      margin-top: -6px;
+    }
   }
 }
 
-.delete-enrollment {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  float: left;
-  margin-left: -12px;
+.modal {
+  dl {
+    dd { margin-left: 0; }
+    span { margin-right: 3px; }
+  }
+  .help-block { text-align: left; }
 }
 
+.new-buttons { margin: 10px 0; }
 
-.btn-count {
-  font-weight: bold;
-  padding: 2px 5px;
-  margin-left: 5px;
-  position: relative;
-}
-
-.btn-count::before {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border: 6px solid #D4D4D4;
-  border-color: transparent #D4D4D4 transparent transparent;
-  position: absolute;
-  right: 100%;
-  margin-right: 0;
-  top: 50%;
-  margin-top: -6px;
-}
-
-.btn-count::after {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border: 6px solid #FAFAFA;
-  border-color: transparent #FAFAFA transparent transparent;
-  position: absolute;
-  right: 100%;
-  margin-right: -1px;
-  top: 50%;
-  margin-top: -6px;
-}
-
-.enrollment {
-  text-align: right;
-}
-
-ul.notes > li > h4 {
-  margin: 0;
-  margin-bottom: 5px;
-  font-size: 14px;
-  line-height: 15px;
-}
-
-dl {
-  span { margin-right: 3px; }
-}
-
-.course-info-container {
-  margin: 5px 0;
-  h3 { color: #777; }
-}
-
-.new-buttons {
-  margin: 10px 0;
-}
-
-.course-info-img {
-  display: block;
-}
-
-.help-block {
-  text-align: left;
-}
-
-.note-review-block {
+.course-notes {
   border-bottom: 1px solid #cccccc;
   overflow: hidden;
 }
-
 
 /* likes */
 .btn-like {
@@ -468,6 +329,88 @@ dl {
   background: none;
   float: left;
 }
+
+.icon-like { color: fireBrick; }
+
+.icon-pre { color: grey; }
+
+/* notes */
+.note-info { margin-bottom: 5px; }
+.review-info { margin-bottom: 5px; }
+
+/* discussions */
+#discussion-vote-count {
+  font-color: grey;
+  text-shadow: 0 1px 0 white;
+}
+
+.discussion-vote-container {
+  font-size: 18px;
+  margin-left: 0;
+  position: absolute;
+  text-align: center;
+  button {
+    font-size: 24px;
+  }
+  form { margin: 0; }
+}
+
+.comment-vote-container {
+  position: absolute;
+  text-align: center;
+  form { margin: 0; }
+}
+
+
+.discussion-vote {
+  font-size: 24px;
+}
+
+/* comments */
+.comment-form {
+  textarea {
+    width: 450px;
+    height: 80px;
+    margin: 0;
+    vertical-align: bottom;
+  }
+  button { vertical-align: bottom; }
+}
+
+
+
+
+/* miscellaneous */
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
+
+/*********************/
+/* forms */
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
+ }
+
+
+
+
+
+
+
 
 // load at last, otherwise body > padding-top still exists.
 @import "bootstrap-responsive";

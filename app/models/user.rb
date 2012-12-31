@@ -78,12 +78,10 @@ class User < ActiveRecord::Base
     enrollment.tag_list.to_s if enrollment
   end
 
-  def comment!(commentable, body, *title)
-    title = title[0] if title
-    comments.create!(commentable_type: commentable.class.name,
-                     commentable_id: commentable.id,
-                     body:      body,
-                     title:     title)
+  def comment!(commentable_type, commentable_id, body)
+    comments.create!(commentable_type: commentable_type,
+                     commentable_id: commentable_id,
+                     body:      body)
   end
 
   def review!(course, body, *title)
@@ -137,7 +135,9 @@ class User < ActiveRecord::Base
                   likeable_id: likeable.id)
   end
 
-  def like?(likeable_type, likeable_id)
+  def like?(likeable)
+    likeable_type = likeable.class.name
+    likeable_id = likeable.id
     likes.find_by_likeable_type_and_likeable_id(likeable_type, likeable_id)
   end
 

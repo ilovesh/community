@@ -3,6 +3,11 @@
             remote: true, 
             html: { method: :delete }) do |f| %>
   <%= button_tag(type: 'submit', class: 'btn-like') do %>
-    <i class="icon-<%=icon_name%>"></i>
+    <i class="icon-<%=icon_name%> icon-large icon-like"></i>
   <% end %>
+<% end %>
+<% if likeable.class.name == "Discussion" || likeable.class.name == "Comment"  %>
+<div id="vote-count-<%=likeable.class.name.downcase%>-<%=likeable.id%>">
+  <%= likeable.likes.count %>
+</div>
 <% end %>

@@ -1,21 +1,20 @@
-<% provide(:title, @discussion.title) %>
-<% content_for :left do %>
-  <h3>Discussion: </h3>
-  <div class="section-container">
-    <%= render partial: "discussions/discussion", locals: { discussion: @discussion } %>
-  
-    <%= render partial: "shared/comment_form",
-         locals: { commentable: @discussion } %>
-   </div>
-    <% if @comments.any? %>
-    <%= render partial: "shared/comments",
-         locals: { comments:    @comments,
-               commentable: @discussion } %>
+<% provide(:title, "Discussion") %>
+<% provide(:background, 'no-bg') %>
 
+<% content_for :left do %>
+  <h2>Discussion</h2>
+  <%= render partial: "discussions/discussion", locals: { discussion: @discussion } %>
+  <div class="comment-form">
+    <%= render partial: "comments/comment_form", locals: { commentable: @discussion } %>
+  </div>
+  <% if @comments.any? %>
+    <ul class="unstyled seperate" id="discussion-<%=@discussion.id%>-comments">
+      <%= render partial: "comments/comment", collection: @comments %>
+    </ul>
   <% end %>
 <% end %>
 
 
 <% content_for :right do %>
-  place_holder
+  <%= render 'btn_create' %>
 <% end %>
