@@ -19,7 +19,7 @@ body.no-bg { background-color: white; }
 
 section { overflow: auto; }
 
-textarea { resize: vertical; }
+h1, h2, h3, h4, h5, p { word-wrap: break-word; }
 
 span { text-align: center; }
 
@@ -330,7 +330,7 @@ ul.list-items {
   float: left;
 }
 
-.icon-like { color: fireBrick; }
+.icon-like { color: fireBrick;}//#BFA27E; }
 
 .icon-pre { color: grey; }
 
@@ -377,7 +377,13 @@ ul.list-items {
   button { vertical-align: bottom; }
 }
 
+.edit-comment {
+  cursor: pointer;
+}
 
+.comment-body {
+  p { padding-right: 12px; }
+}
 
 
 /* miscellaneous */

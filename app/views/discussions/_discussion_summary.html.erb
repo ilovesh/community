@@ -7,7 +7,9 @@
           <p><%= truncate(discussion.content, length: 140) %></p>
         <% end %>
       <% end %>
-      <%= render partial: 'shared/tag_list', locals: { taggable: discussion } %>
+      <% if discussion.tag_list.any? %>
+      <%= render partial: 'shared/tag_list', locals: { tag_list: discussion.tag_list } %>
+      <% end %>
       <div class="pull-right">
         <%= render partial: 'shared/timestamp', locals: { post: discussion } %>
         <% if current_page? discussion %>

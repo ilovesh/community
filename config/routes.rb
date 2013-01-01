@@ -23,7 +23,7 @@ Dragon::Application.routes.draw do
   resources :enrollments, only: [:create, :destroy]
 
   resources :discussions do
-    resources :comments, only: [:create, :destroy]
+    resources :comments, only: [:create, :update, :destroy]
   end
 
   match '/signup', to: 'users#new'

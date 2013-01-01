@@ -12,7 +12,10 @@ class EnrollmentsController < ApplicationController
     else
       current_user.enroll!(@course, status, tags)
     end
-    redirect_to @course
+    respond_to do |format|
+      format.html { redirect_to @course }
+      format.js
+    end
   end
 
   def destroy

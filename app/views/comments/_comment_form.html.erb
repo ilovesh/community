@@ -4,5 +4,5 @@
       <%= f.text_area :body, placeholder: "Compose a new comment..." %>
       <%= f.hidden_field :commentable_type, value: commentable.class.name %>
       <%= f.hidden_field :commentable_id, value: commentable.id %>
-  <%= f.submit "save", class: "btn btn-small btn-primary" %>
+  <%= f.submit "post", class: "btn btn-small btn-primary" %>
   <% end %>

@@ -3,7 +3,7 @@
   <%= f.hidden_field :status, value: status %>
   <div class="modal-body">
     <label for="enrollment_tags">Tags</label>
-    <%= f.text_field :tags, value: current_user.my_tags(@course), class: "xlarge" %>
+    <%= f.text_field :tags, value: current_user.my_tags(@course), class: "input-xlarge" %>
     <span class="help-block"><i class="icon-info-sign"></i>
       Please seperate the tags by comma.</br>e.g.: programming, beginner-level, interactive</span>
     <% if @top_tags.blank? %>

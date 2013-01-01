@@ -1,7 +1,9 @@
 class CommentsController < ApplicationController
   before_filter :loggedin_user, only: [:create]
-  before_filter :correct_user, only: [:destroy]
+  before_filter :correct_user, only: [:update, :destroy]
 
+  respond_to :html, :json
+  
   def create
     #@course = Course.find(params[:course_id])
     @commentable_type = params[:comment][:commentable_type]
@@ -17,6 +19,11 @@ class CommentsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def update
+    @comment.update_attributes(params[:comment])
+    respond_with @comment
   end
 
   def destroy

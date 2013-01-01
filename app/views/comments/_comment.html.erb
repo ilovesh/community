@@ -15,14 +15,16 @@
     </div>
   </div>
 
-  <div class="span11">
-    <p><%= comment.body %></p>
+  <div class="span11 comment-body">
 
+    <p><%= best_in_place_if current_user?(comment.user), [comment.commentable, comment], :body, 
+           type: :textarea, activator: "#edit-comment-#{comment.id}" %></p>
     <div class="pull-right">
       <%= render partial: 'shared/timestamp', locals: { post: comment } %>
       <%= gravatar_for comment.user, size: 20 %>
       <%= link_to comment.user.username, comment.user %>
       <% if current_user?(comment.user) %>
+        <a class="edit-comment" id="edit-comment-<%= comment.id %>">edit</a>
         <%= link_to "delete", [comment.commentable, comment],
                     method: :delete,
                     remote: true,

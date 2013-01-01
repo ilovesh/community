@@ -22,22 +22,25 @@ $(document).ready(function(){
     input.focus();
 	});
 
-  // check if the tag is already used to toggle the btn color
-  var modal = $(this).find('.modal');
-  var input = modal.find('form').find('.modal-body').find('input');
-  var currentValue = input.val();
-  var currentTags = currentValue.split(',');
-  var spans = input.next().next().find('span');
-  spans.each(function(){
-    var span = $(this);
-    var tag = span.text().trim();
-    for (var i = 0; i < currentTags.length; i++) {
-      if(tag == currentTags[i].trim()){
-        span.removeClass('btn-info');
-        return;
+  $('.modal').ready(function() {
+    // check if the tag is already used to toggle the btn color
+    var modal = $(this).find('.modal');
+    var input = modal.find('form').find('.modal-body').find('input');
+    var currentValue = input.val();
+    var currentTags = currentValue.split(',');
+    var spans = input.next().next().find('span');
+    spans.each(function(){
+      var span = $(this);
+      var tag = span.text().trim();
+      for (var i = 0; i < currentTags.length; i++) {
+        if(tag == currentTags[i].trim()){
+          span.removeClass('btn-info');
+          return;
+        };
       };
-    };
+    });
   });
+
 
   // tag selection
 	$('.btn-tag').click(function() {
@@ -63,6 +66,7 @@ $(document).ready(function(){
       input.val(result);
 	  };
   });
-    
+
+  $('.best_in_place').best_in_place();
 
 });
