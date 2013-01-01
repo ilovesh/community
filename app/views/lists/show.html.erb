@@ -3,19 +3,45 @@
 
 <% content_for :left do %>
   <h2>List</h2>
-  
-  <div class="section-container">
-    <%= render partial: "shared/list",
-         locals: { list: @list } %>
-    <%= render partial: "shared/comment_form",
-         locals: { commentable: @list } %>
+  <div class="row-fluid">
+    <div class="span1 offset10">
+      <span id="like-form-list-<%=@list.id%>">
+        <% if current_user && current_user.like?(@list) %>
+          <%= render partial: 'likes/unlike', locals: { likeable: @list,
+                                                        icon_name: LIKED } %>
+        <% else %>
+          <%= render partial: 'likes/like', locals: { likeable: @list,
+                                                      icon_name: LIKE } %>
+        <% end %>
+      </span>
+    </div>
+    <h3 class="span12"><%= @list.title %></h3>
+
+    <div class="span12">
+      <%= gravatar_for @list.user, size: 20 %>
+      <%= link_to @list.user.username, @list.user %>
+      created <%= render partial: 'shared/timestamp', locals: { post: @list } %>
+      <% if current_user?(@list.user) %>
+        <%= link_to "edit",   edit_list_path(@list.id) %>
+        <%= link_to "delete", @list,
+                    method: :delete,
+                    data: { confirm: "Are you sure to delete this list?" },
+                    title: @list.title %>
+      <% end %>
+    </div>
+    <% if @list.description? %>
+      <p class="span12"><%= @list.description %></p>
+    <% end %>
   </div>
-  
-  <% if @comments.any? %>
-  <%= render partial: "shared/comments",
-             locals: { comments: @comments,
-                       commentable: @list } %>
-  <% end %>             
+
+  <% if @courses.any? %>
+  <h4><%= pluralize(@courses.count, "course") %></h4>
+  <ol>
+    <%= render partial: 'lists/list_course_item', collection: @courses, as: :course %>
+  </ol>
+  <% end %>
+
+            
 <% end %>
 
 <% content_for :right do %>

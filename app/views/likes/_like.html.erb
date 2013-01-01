@@ -6,7 +6,7 @@
     <i class="icon-<%=icon_name%> icon-large icon-pre"></i>
   <% end %>
 <% end %>
-<% if likeable.class.name == "Discussion" || likeable.class.name == "Comment"  %>
+<% if likeable.class.name == "Discussion" || likeable.class.name == "Comment" || likeable.class.name == "List" %>
 <div id="vote-count-<%=likeable.class.name.downcase%>-<%=likeable.id%>">
   <%= likeable.likes.count %>
 </div>

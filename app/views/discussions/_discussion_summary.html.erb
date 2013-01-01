@@ -1,5 +1,9 @@
     <div class="span11 discussion-body">
+      <% if current_page? discussion %>
+      <h3><%= discussion.title %></h3>
+      <% else %>
       <h3><%= link_to discussion.title, discussion %></h3>
+      <% end %>
       <% unless current_page?(root_path) %>
         <% if current_page? discussion %>
           <p><%= discussion.content %></p>

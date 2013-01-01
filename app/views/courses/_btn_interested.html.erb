@@ -4,5 +4,5 @@
   <% else %>
     <a class="btn btn-small btn-enroll" href="#interested" data-toggle="modal">Interested</a>
   <% end %>
-    <%= render partial: 'courses/social_count', locals: { users: @course.interested_users } %>
+    <%= render partial: 'shared/social_count', locals: { users: @course.interested_users } %>
 </div>

@@ -40,6 +40,7 @@ class User < ActiveRecord::Base
   has_many :notes,          dependent: :destroy
   has_many :likes,          dependent: :destroy
   has_many :reviews,        dependent: :destroy
+  has_many :listings,       dependent: :destroy
 
   def enroll!(course, status, *arg)
     tag_list = arg[0] if arg

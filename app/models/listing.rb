@@ -17,6 +17,6 @@ class Listing < ActiveRecord::Base
 
   belongs_to :course
   belongs_to :list
-
+  belongs_to :user
 
 end

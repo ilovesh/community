@@ -2,6 +2,8 @@ class ListsController < ApplicationController
   before_filter :loggedin_user, only: [:new, :create, :destroy]
   before_filter :correct_user,  only: :destroy
 
+  respond_to :html, :json
+
   def new
     @list = List.new
   end
@@ -9,7 +11,6 @@ class ListsController < ApplicationController
   def create
   	@list = current_user.lists.build(params[:list])
     if @list.save
-      flash[:success] = "List created!"
       redirect_to @list
     else
       render 'new'
@@ -18,6 +19,7 @@ class ListsController < ApplicationController
 
   def show
     @list     = List.find(params[:id])
+    @courses  = @list.courses
     @comments = Comment.find_comments_for_commentable("List", @list.id)
   end
 
@@ -29,7 +31,7 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     if @list .update_attributes(params[:list])
       flash[:success] = "List updated"
-      redirect_to @list
+      respond_with @list
     else
       render 'edit'
     end

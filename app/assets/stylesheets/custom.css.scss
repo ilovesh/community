@@ -64,6 +64,8 @@ ul#top-nav {
 }
 
 /* list */
+ul, ol { margin: 0; }
+
 ul.inline,
 ol.inline {
   margin-left: 0;
@@ -85,8 +87,15 @@ ol.seperate > li {
   &:first-child { border: 0; }
 }
 
+ol > li {
+  padding: 5px 0;
+  border-top: 1px solid $grayLighter;
+}
+
 /* image */
 .img-small { height: 38.3px; }
+
+.img-medium-small { height: 60px; }
 
 .img-medium { height: 97px; }
 
@@ -261,6 +270,14 @@ ul.list-items {
 
 
 /* course show page */
+.list-course-item {
+  label { 
+    display: inline-block;
+    color: #777;
+  }
+}
+
+
 .course-info-container {
   margin: 5px 0;
   #details {
@@ -273,38 +290,6 @@ ul.list-items {
     display: inline-block;
     .btn-enroll { width: 55px }
     .btn-row { margin-bottom: 1px; }
-    .enroll-count {
-      font-weight: bold;
-      padding: 2px 5px;
-      margin-left: 5px;
-      position: relative;
-    }
-    .enroll-count::before {
-      content: "";
-      display: block;
-      width: 0;
-      height: 0;
-      border: 6px solid #D4D4D4;
-      border-color: transparent #D4D4D4 transparent transparent;
-      position: absolute;
-      right: 100%;
-      margin-right: 0;
-      top: 50%;
-      margin-top: -6px;
-    }
-    .enroll-count::after {
-      content: "";
-      display: block;
-      width: 0;
-      height: 0;
-      border: 6px solid #FAFAFA;
-      border-color: transparent #FAFAFA transparent transparent;
-      position: absolute;
-      right: 100%;
-      margin-right: -1px;
-      top: 50%;
-      margin-top: -6px;
-    }
   }
 }
 
@@ -333,6 +318,39 @@ ul.list-items {
 .icon-like { color: fireBrick;}//#BFA27E; }
 
 .icon-pre { color: grey; }
+
+.social-count {
+  font-weight: bold;
+  padding: 2px 5px;
+  margin-left: 5px;
+  position: relative;
+}
+.social-count::before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 6px solid #D4D4D4;
+  border-color: transparent #D4D4D4 transparent transparent;
+  position: absolute;
+  right: 100%;
+  margin-right: 0;
+  top: 50%;
+  margin-top: -6px;
+}
+.social-count::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: 6px solid #FAFAFA;
+  border-color: transparent #FAFAFA transparent transparent;
+  position: absolute;
+  right: 100%;
+  margin-right: -1px;
+  top: 50%;
+  margin-top: -6px;
+}
 
 /* notes */
 .note-info { margin-bottom: 5px; }
@@ -381,6 +399,14 @@ ul.list-items {
   cursor: pointer;
 }
 
+/* list */
+.list-course-comment {
+  margin-top: 10px;
+  label {
+    float: left;
+    margin-right: 5px;
+  }
+}
 
 /* miscellaneous */
 .debug_dump {

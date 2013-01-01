@@ -40,5 +40,13 @@ class List < ActiveRecord::Base
     self.save
   end
 
+  def fans
+    likes = self.likes
+    fans = [] if likes
+    likes.map(&:user_id).each do |id|
+      fans << User.find(id)
+    end
+    fans
+  end
 
 end
