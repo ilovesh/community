@@ -16,8 +16,8 @@
   </div>
 
   <div class="span11 comment-body">
-
-    <p><%= best_in_place_if current_user?(comment.user), [comment.commentable, comment], :body, 
+    
+    <p class="span10"><%= best_in_place_if current_user?(comment.user), [comment.commentable, comment], :body,
            type: :textarea, activator: "#edit-comment-#{comment.id}" %></p>
     <div class="pull-right">
       <%= render partial: 'shared/timestamp', locals: { post: comment } %>

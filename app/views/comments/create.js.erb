@@ -4,3 +4,4 @@ $("#<%=@commentable_type.downcase%>-<%=@commentable_id%>-comments").
 $(".comment-form").
          html("<%= escape_javascript(render(partial: 'comments/comment_form', 
 	                                        locals: { commentable: @commentable })) %>");
+$('.best_in_place').best_in_place();
