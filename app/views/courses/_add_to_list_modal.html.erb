@@ -1,0 +1,34 @@
+<div id="add-to-list" class="modal hide fade" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Add this course to your list</h3>
+  </div>
+
+  <%= form_for(Listing.new) do |f| %>
+    <% if current_user.lists.any? %>
+      <div class="modal-body">
+        <div>
+          <label for="current-lists"><strong>Add to your current list</strong></label>
+          <input name="course_id" type="hidden" value="<%= @course.id %>">
+          <%= render 'current_lists' %>
+          <label for="list-course-comment"><strong>Comment(optional)</strong></label>
+          <textarea class="list-course-comment-input" name="course_comment" placeholder="Compose a comment and it will be displayed on your list."></textarea>
+        </div>
+        <div>
+          <p><strong>Or create a new list</strong></p>
+          <%= render 'lists/btn_new_list' %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    <% else %>
+      <div class="modal-body">
+        <p>You don't have any list yet, create your first list right now!</p>
+        <%= render 'lists/btn_new_list' %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

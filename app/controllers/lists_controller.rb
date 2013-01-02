@@ -19,7 +19,7 @@ class ListsController < ApplicationController
 
   def show
     @list     = List.find(params[:id])
-    @courses  = @list.courses
+    @courses = @list.courses.sort_by {|c| Listing.find_by_list_id_and_course_id(@list.id, c.id).created_at }
     @comments = Comment.find_comments_for_commentable("List", @list.id)
   end
 

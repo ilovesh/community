@@ -1,0 +1,20 @@
+<div id="edit-listing-<%= id %>" class="modal hide fade" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Edit comment</h3>
+  </div>
+
+<%= form_for @listing do |f| %>
+  <div class="modal-body">
+    <label for="comment">Comment</label>
+    <%= f.text_area :description, class: "edit-comment" %>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+</div>

@@ -16,11 +16,12 @@ Dragon::Application.routes.draw do
   resources :notes, only: [:show, :edit, :update, :destroy]
 
   resources :lists do
-    resources :comments, only: [:create, :destroy]
+    resources :comments, only: [:create, :update, :destroy]
   end
 
   resources :likes, only: [:create, :destroy]
   resources :enrollments, only: [:create, :destroy]
+  resources :listings, only: [:create, :update, :destroy]
 
   resources :discussions do
     resources :comments, only: [:create, :update, :destroy]
@@ -31,8 +32,6 @@ Dragon::Application.routes.draw do
   match '/logout', to: 'sessions#destroy', via: :delete
   match '/search', to: 'basics#search'
 
-  get "votes/create"
-  get "votes/destroy"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

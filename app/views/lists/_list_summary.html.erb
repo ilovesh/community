@@ -2,8 +2,7 @@
       <h3><%= link_to truncate(list.title, length: 80), list %></h3>
       <div class="pull-right list-info">
         <p class="label label-inverse"><%= pluralize(list.courses.count, "course") %></p>
-        <p class="muted">created <%= render partial: 'shared/timestamp', locals: { post: list } %></p>
-        <p><%= link_to list.user.username, list.user %></p>
+        <p>by <%= link_to list.user.username, list.user %></p>
       </div>
       <% if current_user?(list.user) %>
       <p class="list-info">

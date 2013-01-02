@@ -17,11 +17,14 @@
     </div>
     <h3 class="span12"><%= @list.title %></h3>
 
-    <div class="span12">
+    <div class="span12 list-show-info">
       <%= gravatar_for @list.user, size: 20 %>
       <%= link_to @list.user.username, @list.user %>
-      created <%= render partial: 'shared/timestamp', locals: { post: @list } %>
+      <span class="muted">created</span> <%= render partial: 'shared/timestamp', locals: { post: @list } %>
       <% if current_user?(@list.user) %>
+        <a href="#" rel="tooltip" data-placement="top" data-html="true" title="Add course via the</br><a class='btn btn-medium btn-primary'><i class='icon-plus icon-white'></i> add to list</a></br>button on the course page.">
+          add course
+        </a>
         <%= link_to "edit",   edit_list_path(@list.id) %>
         <%= link_to "delete", @list,
                     method: :delete,

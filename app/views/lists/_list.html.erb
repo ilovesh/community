@@ -4,15 +4,4 @@
     <%= render partial: 'lists/list_image', locals: { list: list } %>
     <%= render partial: 'lists/list_summary', locals: { list: list } %>
   </div>
-
-  <% if current_page?(list) %>
-    <% if list.courses.any? %>
-      <h3>Courses:</h3>
-      <ul class="courses">
-        <%= render partial: 'shared/course', collection: list.courses %>
-      </ul>
-    <% else %>
-      <h3>No courses in this list</h3>
-    <% end %>
-  <% end %>
 </li>

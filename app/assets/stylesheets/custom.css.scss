@@ -275,6 +275,9 @@ ul.list-items {
     display: inline-block;
     color: #777;
   }
+  span {
+    margin-right: 5px;
+  }
 }
 
 
@@ -306,6 +309,11 @@ ul.list-items {
 .course-notes {
   border-bottom: 1px solid #cccccc;
   overflow: hidden;
+}
+
+.list-course-comment-input {
+  width: 400px;
+  height: 60px;
 }
 
 /* likes */
@@ -386,8 +394,9 @@ ul.list-items {
 
 /* comments */
 .comment-form {
+  margin-top: 5px;
   textarea {
-    width: 450px;
+    width: 600px;
     height: 80px;
     margin: 0;
     vertical-align: bottom;
@@ -395,7 +404,7 @@ ul.list-items {
   button { vertical-align: bottom; }
 }
 
-.edit-comment {
+.edit-comment, .edit-listing {
   cursor: pointer;
 }
 
@@ -406,6 +415,21 @@ ul.list-items {
     float: left;
     margin-right: 5px;
   }
+  textarea {
+    width: 450px;
+    height: 80px;
+    margin: 0;
+  }
+}
+
+.edit-comment {
+    width: 450px;
+    height: 80px;
+    margin: 0;
+}
+
+.list-show-info {
+  a {margin-left: 5px; }
 }
 
 /* miscellaneous */

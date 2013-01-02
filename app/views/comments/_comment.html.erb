@@ -1,3 +1,4 @@
+<% unless comment.blank? %>
 <li id="comment-<%= comment.id %>">
 
 <div class="row-fluid">
@@ -17,8 +18,10 @@
 
   <div class="span11 comment-body">
     
-    <p class="span10"><%= best_in_place_if current_user?(comment.user), [comment.commentable, comment], :body,
-           type: :textarea, activator: "#edit-comment-#{comment.id}" %></p>
+    <p class="span10">
+      <%= best_in_place_if current_user?(comment.user), [comment.commentable, comment], :body,
+          type: :textarea, activator: "#edit-comment-#{comment.id}" %>
+    </p>
     <div class="pull-right">
       <%= render partial: 'shared/timestamp', locals: { post: comment } %>
       <%= gravatar_for comment.user, size: 20 %>
@@ -35,3 +38,4 @@
   </div>
 </div>
 </li>
+<% end %>

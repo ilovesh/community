@@ -4,8 +4,10 @@
 <% content_for :left do %>
   <h2>Discussion</h2>
   <%= render partial: "discussions/discussion", locals: { discussion: @discussion } %>
-  <div class="comment-form">
-    <%= render partial: "comments/comment_form", locals: { commentable: @discussion } %>
+  <div class="comment-form row-fluid">
+    <div class="offset1">
+      <%= render partial: "comments/comment_form", locals: { commentable: @discussion } %>
+    </div>
   </div>
   <% if @comments.any? %>
     <ul class="unstyled seperate" id="discussion-<%=@discussion.id%>-comments">

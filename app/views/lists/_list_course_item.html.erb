@@ -38,13 +38,24 @@
       </div>
     <% end %>
 
-    <% comment = Listing.find_by_list_id_and_course_id(@list.id, course.id).description %>
-      <% unless comment.nil? %>
+    <% @listing = Listing.find_by_list_id_and_course_id(@list.id, course.id) %>
+    <% comment = @listing.description %>
+      <% unless comment.blank? %>
         <div class="list-course-comment">
           <label>Comment:</label>
-          <p ><%= comment %></p>
+          <p ><%= @listing.description %></p>
         </div>
       <% end %>
-
-  </div>     
+    <span class="muted">added <%= time_ago_in_words(@listing.created_at) %> ago</span>
+    <span>
+      <% if current_user?(@list.user) %>
+        <a href="#edit-listing-<%= @listing.id %>" data-toggle="modal">edit</a>
+        <%= link_to "delete", @list.listings.find_by_course_id(course.id),
+                      method: :delete,
+                      data: { confirm: "Are you sure to delete the course from this list?" },
+                      title: course.full_name %>
+      <% end %>
+    </span>
+  </div>
+  <%= render partial: 'comment_modal', locals: { id: @listing.id } %>
 </li>

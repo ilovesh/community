@@ -1,0 +1,16 @@
+        <ul id="current-lists">
+          <% current_user.lists.each_with_index do |list, index|%>
+            <label class="radio">
+              <% if list.listings.find_by_course_id(@course.id) %>
+                <input type="radio" name="list_id" id="options-radios-<%=index%>" value="<%=list.id%>" disabled><%= list.title %>
+                <span class="help-inline">
+                  <i class="icon-info-sign"></i>
+                  The course has already been added to this list.
+                </span>
+              <% else %>
+                <input type="radio" name="list_id" id="options-radios-<%=index%>" value="<%=list.id%>">
+                <%= list.title %>
+              <% end %>
+            </label>
+          <% end %>
+        </ul>
