@@ -1,7 +1,8 @@
 <% provide(:title, 'Reviews') %>
 <% content_for :left do %>
-  <%= link_to "<< go back to course: " + @course.full_name,  @course %>
-  <h2><%= pluralize(@reviews.count, 'review') %></h2>
+  <div class="block"><%= link_to "<< go back to course: " + @course.full_name,  @course %></div>
+  <h2 class="inline-header"><%= pluralize(@reviews.count, 'review') %></h2>
+  <div class="pull-right"><%= render 'btn_new_review' %></div>
   <div class="section-container">
     <ul class="unstyled seperate">
       <%= render @reviews %>
