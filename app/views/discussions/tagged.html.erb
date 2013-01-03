@@ -1,0 +1,23 @@
+<% provide(:title, 'Discussions') %>
+<% content_for :left do %>
+  <% if @discussions.any? %>
+    <h2 class="inline-header">Discussions Tagged with <em><%= params[:tag].capitalize if params[:tag] %></em></h2>
+    <div class="pull-right"><%= render 'btn_new_discussion' %></div>
+    <div class="section-container">
+      <ul class="thumbnails">
+        <%= render partial: 'discussions/discussion', collection: @discussions %>
+      </ul>
+      <%= will_paginate @discussions %>
+    </div>
+  <% else %>
+    <h2 class="inline-header">No Discussions Matched Tag <em><%= params[:tag].capitalize if params[:tag] %></em></h2>
+    <div class="pull-right"><%= render 'btn_new_discussion' %></div>
+  <% end %>  
+<% end %>
+
+<% content_for :right do %>
+  <h3 class="top-tags-header">Top tags:</h3>
+  <ul class="unstyled top-tags-list">
+    <%= render partial: 'discussions/filter_tag', collection: @tags, as: :tag %>
+  </ul>
+<% end %>

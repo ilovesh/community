@@ -1,6 +1,6 @@
 class DiscussionsController < ApplicationController
-  before_filter :loggedin_user, only: [:new, :create, :destroy]
-  before_filter :correct_user,  only: :destroy
+  before_filter :loggedin_user, only: [:new, :create]
+  before_filter :correct_user,  only: [:destroy, :update, :edit]
 
   def new
     @discussion = Discussion.new
@@ -39,6 +39,12 @@ class DiscussionsController < ApplicationController
     @newest = Discussion.paginate(page: params[:newest_page])
     @votes = Discussion.all.sort_by { |d| -d.likes.count }.paginate(page: params[:votes_page])
     @comments = Discussion.all.sort_by { |d| -d.comment_threads.count }.paginate(page: params[:comments_page])  
+    @tags = Discussion.tag_counts_on(:tags).order('count desc').map(&:name)[0...25]
+  end
+
+  def tagged
+    @tags = Discussion.tag_counts_on(:tags).order('count desc').map(&:name)[0...25]
+    @discussions = Discussion.tagged_with(params[:tag]).paginate(page: params[:page])    
   end
 
   def destroy

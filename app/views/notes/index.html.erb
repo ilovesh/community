@@ -1,15 +1,16 @@
 <% provide(:title, 'Notes') %>
 <% content_for :left do %>
-<div class="section-container">
   <%= link_to "<< go back to course: " + @course.full_name,  @course %>
-  <h1><%= pluralize(@notes.count, 'note') %></h1>
-  <ul class="unstyled seperate">
-    <%= render @notes %>
-  </ul>
-  <%= will_paginate @notes %>
+  <h2><%= pluralize(@notes.count, 'note') %></h2>
+  <div class="section-container">
+    <ul class="unstyled seperate">
+      <%= render @notes %>
+    </ul>
+    <%= will_paginate @notes %>
+  </div>  
 <% end %>
-</div>
+
 
 <% content_for :right do %>
-  place_holder
+  <%= render partial: 'courses/sidebar_course_item', locals: { course: @course } %>
 <% end %>

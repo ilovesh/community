@@ -1,9 +1,7 @@
 <% provide(:title, 'All discussions') %>
 <% content_for :left do %>
-  <div class="index-header">
-    <h2>All Discussions</h2>
-    <div class="pull-right"><%= render 'btn_create' %></div>
-  </div>
+  <h2 class="inline-header">All Discussions</h2>
+  <div class="pull-right"><%= render 'btn_new_discussion' %></div>
   <div class="section-container">
     <div class="tabbable">
       <%= render 'tabs' %>
@@ -15,5 +13,8 @@
 <% end %>
 
 <% content_for :right do %>
-  place_holder
+  <h3 class="top-tags-header">Top tags:</h3>
+  <ul class="unstyled top-tags-list">
+    <%= render partial: 'discussions/filter_tag', collection: @tags, as: :tag %>
+  </ul>
 <% end %>

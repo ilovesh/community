@@ -1,53 +1,6 @@
-
-  <div id="provider">
-    <label>Provider: </label>
-    <%= link_to @provider.name, @provider.website, target: "_blank" %>
-  </div>
-  <% if @course.universities.any? %>
-    <div id="university">
-      <label>University: </label>
-      <% if @course.universities.size == 1 %>
-      <span><%= @course.universities.first.name %></span>
-      <% else %>
-      <ul class="unstyled">
-        <% @course.universities.each do |u| %>
-          <li><%= u.name %></li>
-        <% end %>
-      </ul>
-      <% end %>
-    </div>
-  <% end %>
-  <% if @course.instructor %>
-    <div id="instructor">  
-      <label>Course Staff: </label>
-      <% if !@course.instructor.include?('|') %>
-      <span><%= @course.instructor %></span>
-      <% else %>
-      <ul class="unstyled">
-        <% @course.instructor.split('|').each do |person| %>
-          <li><%= person %></li>
-        <% end %>
-      </ul>
-      <% end %>
-    </div>
-  <% end %>
-  <% if @course.start_date && @course.duration != 0 && @course.duration != 99 %>
-    <div id="start">
-      <label>Classes Start: </label>
-      <span><%= @course.start_date.to_date.to_formatted_s(:long_ordinal) %></span>
-    </div>
-  <% end %>
-  <% if @course.final_date %>
-    <div id="final">
-      <label>Classes End: </label>
-      <span><%= @course.final_date.to_date.to_formatted_s(:long_ordinal) %></span>
-    </div>
-  <% end %>
-  <% if @course.duration && @course.duration != 0 && @course.duration != 99 %>
-    <div id="duration">
-      <label>Duration: </label>
-      <span><%= pluralize(@course.duration, "week") %></span>
-    </div>
-  <% end %>   
-
-
+  <%= render partial: 'courses/provider',   locals: { course: @course } %>
+  <%= render partial: 'courses/university', locals: { course: @course } %>
+  <%= render partial: 'courses/instructor', locals: { course: @course } %>
+  <%= render partial: 'courses/start_date', locals: { course: @course } %>
+  <%= render partial: 'courses/final_date', locals: { course: @course } %>
+  <%= render partial: 'courses/duration',   locals: { course: @course } %>

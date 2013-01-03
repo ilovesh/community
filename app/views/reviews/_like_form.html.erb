@@ -1,0 +1,9 @@
+<span class="like-form" id="like-form-review-<%=review.id%>">
+  <% if current_user && current_user.like?(review) %>
+    <%= render partial: 'likes/unlike', locals: { likeable: review,
+                                                  icon_name: VOTED } %>
+  <% else %>
+    <%= render partial: 'likes/like', locals: { likeable: review,
+                                                icon_name: VOTE_UP } %>
+  <% end %>
+</span>

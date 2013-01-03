@@ -11,7 +11,7 @@
 html { overflow-y: scroll; }
 
 body{
-  padding-top: 60px;
+  padding: 60px 0;
   background-color: #F1EEE5;
 }
 
@@ -23,13 +23,14 @@ h1, h2, h3, h4, h5, p { word-wrap: break-word; }
 
 span { text-align: center; }
 
+select { width: 100px; }
 
 .block { display: block; }
 
 /* container */
 .section-container{
   padding: 15px;
-  margin: 10px 0;
+  margin: 5px 0;
   border: 1px solid #DDDDDD;
   -moz-border-colors: none;
   border-radius: 10px;
@@ -92,6 +93,12 @@ ol > li {
   border-top: 1px solid $grayLighter;
 }
 
+.top-tags-list { 
+  margin-top: 23px;
+  li { margin-bottom: 3px; }
+}
+.top-tags-header { margin-top: 15px; }
+
 /* image */
 .img-small { height: 38.3px; }
 
@@ -144,7 +151,7 @@ h4 {
   margin-bottom: 10px;
 }
 
-.index-header > h2 { display: inline; }
+
 
 .view-all {
   font-weight: bold;
@@ -269,30 +276,24 @@ ul.list-items {
 }
 
 
-/* course show page */
+/* courses */
 .list-course-item {
-  label { 
-    display: inline-block;
-    color: #777;
-  }
-  span {
-    margin-right: 5px;
-  }
+  span { margin-right: 5px; }
 }
-
 
 .course-info-container {
   margin: 5px 0;
-  #details {
-    label { 
-      display: inline-block;
-      color: #777;
-    }
-  }
   #enrollment {
     display: inline-block;
     .btn-enroll { width: 55px }
     .btn-row { margin-bottom: 1px; }
+  }
+}
+
+.course-summary {
+  label { 
+    display: inline-block;
+    color: #777;
   }
 }
 
@@ -360,18 +361,27 @@ ul.list-items {
   margin-top: -6px;
 }
 
-/* notes */
-.note-info { margin-bottom: 5px; }
-.review-info { margin-bottom: 5px; }
-
-/* discussions */
-#discussion-vote-count {
-  font-color: grey;
-  text-shadow: 0 1px 0 white;
+.like-form {
+  form { 
+    display: inline-block;
+    float: left;
+  }
 }
 
+.likes-count {
+  color: #777;
+}
+
+/* notes & reviews */
+.note-info, .review-info { float: left; }
+.note-body, .review-body { margin: 0 36px; }
+.sidebar-course { margin-top: 40px; }
+
+
+/* discussions */
 .discussion-vote-container {
   font-size: 18px;
+  color: grey;
   margin-left: 0;
   position: absolute;
   text-align: center;
@@ -404,10 +414,6 @@ ul.list-items {
   button { vertical-align: bottom; }
 }
 
-.edit-comment, .edit-listing {
-  cursor: pointer;
-}
-
 /* list */
 .list-course-comment {
   margin-top: 10px;
@@ -423,13 +429,13 @@ ul.list-items {
 }
 
 .edit-comment {
-    width: 450px;
-    height: 80px;
-    margin: 0;
+  width: 450px;
+  height: 80px;
+  margin: 0;
 }
 
 .list-show-info {
-  a {margin-left: 5px; }
+  a { margin-left: 5px; }
 }
 
 /* miscellaneous */

@@ -1,0 +1,12 @@
+<div class="sidebar-course course-summary">  
+  <h4>Course</h4>
+  <%= link_to image_tag(course.image_link, class: "img-medium block"), course %>
+  <%= render partial: 'courses/course_status', locals: {course: course} %>  
+  <h5><%= link_to course.full_name, course %></h5>
+  <div id="provider">
+    <label>Provider: </label>
+    <%= course.provider.name %>
+  </div>
+  <%= render partial: 'courses/university', locals: { course: course } %>
+  <%= render partial: 'courses/instructor', locals: { course: course } %>
+</div>

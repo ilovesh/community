@@ -2,41 +2,36 @@
 <li id="review-<%= review.id %>">
 <% end %>
 
-<div class="review-info">
-<span id="like-form-review-<%=review.id%>">
-  <% if current_user && current_user.like?(review) %>
-    <%= render partial: 'likes/unlike', locals: { likeable: review,
-                                                  icon_name: VOTED } %>
-  <% else %>
-    <%= render partial: 'likes/like', locals: { likeable: review,
-                                                icon_name: VOTE_UP } %>
-  <% end %>
-</span>
-
-<%= render partial: 'shared/timestamp', locals: { post: review } %>
-<%= gravatar_for review.user, size: 20 %>
-<%= link_to review.user.username, review.user %>
-<% if current_user?(review.user) %>
-  <%= link_to "edit",   edit_review_path(review) %>
-  <%= link_to "delete", review,
-              method: :delete,
-              data: { confirm: "Are you sure to delete this review?" },
-              title: review.body %>
+<div class="row-fluid">
+<% if current_page? review.course %>
+  <%= render partial: 'reviews/like_form', locals: { review: review } %>
+  <%= render partial: 'reviews/review_info', locals: { review: review } %>
+<% else %>
+  <div class="review-info">
+    <%= render partial: 'reviews/review_info', locals: { review: review } %>
+  </div>
+  <div class="offset10">
+    <%= render partial: 'reviews/like_form', locals: { review: review } %>
+    <span class="likes-count" id="likes-count-review-<%= review.id %>">
+      <%= review.likes.count %>
+    </span>
+  </div>
 <% end %>
 </div>
 
-<% if review.title %>
-  <h5><%= review.title %></h5>
-<% end %>
-
-<% if current_page? review %>
-  <p><%= review.body %></p>
-<% else %>
-  <p><%= raw(truncate(h(review.body),
-             length: 280,
-             omission: link_to("...read more", review))) %>
-  </p>
-<% end %>
+<div class="review-body">
+  <% if review.title %>
+    <h5><%= review.title %></h5>
+  <% end %>
+  <% if current_page? review %>
+    <p><%= review.body %></p>
+  <% else %>
+    <p><%= raw(truncate(h(review.body),
+                 length: 280,
+                 omission: link_to("...read more", review))) %>
+    </p>
+  <% end %>
+</div>
 
 <% unless current_page? review %>
 </li>  

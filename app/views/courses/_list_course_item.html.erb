@@ -1,0 +1,20 @@
+<li id="course-<%=course.id%>" class="course-summary list-course-item row-fluid">
+  <div class="span3">
+    <%= link_to( image_tag(course.image_link, class: "img-medium"), course ) %>
+  </div>
+  <div class="span9">
+    <%= render partial: 'courses/course_status', locals: { course: course } %>  
+    <h5><%= link_to course.full_name, course %></h5>
+    <div id="provider">
+      <label>Provider: </label>
+      <%= course.provider.name %>
+    </div>
+    <%= render partial: 'courses/university', locals: { course: course } %>
+    <%= render partial: 'courses/instructor', locals: { course: course } %>
+
+    <% if params[:id] && current_page?(controller: "lists", action: "show", id: params[:id]) %>
+      <%= render partial: 'lists/course_item_comment_timestamp', locals: { course: course } %>
+    <% end %>
+
+  </div>
+</li>

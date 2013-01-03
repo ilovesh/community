@@ -1,0 +1,6 @@
+  <% if course.final_date %>
+    <div id="final">
+      <label>Classes End: </label>
+      <span><%= course.final_date.to_date.to_formatted_s(:long_ordinal) %></span>
+    </div>
+  <% end %>

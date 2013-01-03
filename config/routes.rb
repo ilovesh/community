@@ -4,9 +4,6 @@ Dragon::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :courses do
     collection do
-      get 'ongoing'
-      get 'upcoming'
-      get 'finished'
       get :autocomplete_name
     end
     resources :reviews,  only: [:new, :create, :index]
@@ -31,7 +28,9 @@ Dragon::Application.routes.draw do
   match '/login',  to: 'sessions#new'
   match '/logout', to: 'sessions#destroy', via: :delete
   match '/search', to: 'basics#search'
-
+  match '/courses/tagged/:tag', to: 'courses#tagged'
+  match '/lists/tagged/:tag',   to: 'lists#tagged'
+  match '/discussions/tagged/:tag',   to: 'discussions#tagged'  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

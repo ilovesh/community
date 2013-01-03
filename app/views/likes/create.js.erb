@@ -1,4 +1,6 @@
 $("#like-form-<%=@likeable.class.name.downcase%>-<%=@likeable.id%>").
          html("<%= escape_javascript(render(partial: 'likes/unlike', 
-	                                       locals: {likeable: @likeable,
-	                                                icon_name: @icon_name})) %>");
+	                                        locals: {likeable: @likeable,
+	                                                 icon_name: @icon_name})) %>");
+$("#likes-count-<%= @likeable.class.name.downcase %>-<%= @likeable.id %>").
+         html("<%= @likeable.likes.count %>");

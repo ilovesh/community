@@ -9,7 +9,10 @@
               <%= render partial: "likes/like",
                          locals: { likeable: discussion, icon_name: VOTE_UP } %>
             <% end %>
-          </span>    
+          </span>
+          <span class="likes-count" id="likes-count-discussion-<%=discussion.id%>">
+            <%= discussion.likes.count %>
+          </span>
         </div>
       <% else %>
         <div class="badge badge-important">

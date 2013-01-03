@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
-  before_filter :loggedin_user, only: [:new, :create, :destroy]
-  before_filter :correct_user,  only: :destroy
+  before_filter :loggedin_user, only: [:new, :create]
+  before_filter :correct_user,  only: [:destroy, :update, :edit]
 
   respond_to :html, :json
 
@@ -39,11 +39,17 @@ class ListsController < ApplicationController
 
   def index
     @lists = List.non_empty.paginate(page: params[:page])
+    @tags = List.tag_counts_on(:tags).order('count desc').map(&:name)[0...25] 
   end
 
   def destroy
     @list.destroy
     redirect_to lists_path
+  end
+
+  def tagged
+    @tags = List.tag_counts_on(:tags).order('count desc').map(&:name)[0...25]
+    @lists = List.tagged_with(params[:tag]).paginate(page: params[:page])
   end
 
 private
