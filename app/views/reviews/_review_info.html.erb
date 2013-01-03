@@ -1,0 +1,14 @@
+<% if current_page? review.course %>
+  <%= gravatar_for review.user, size: 20 %>
+<% else %>
+  <%= gravatar_for review.user, size: 30 %>
+<% end %>
+<%= link_to review.user.username, review.user %>
+<%= render partial: 'shared/timestamp', locals: { post: review } %>
+<% if current_user?(review.user) %>
+  <%= link_to "edit",   edit_review_path(review) %>
+  <%= link_to "delete", review,
+              method: :delete,
+              data: { confirm: "Are you sure to delete this review?" },
+              title: review.body %>
+<% end %>

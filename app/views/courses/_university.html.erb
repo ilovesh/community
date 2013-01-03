@@ -1,0 +1,14 @@
+  <% if course.universities.any? %>
+    <div id="university">
+      <label>University: </label>
+      <% if course.universities.size == 1 %>
+      <span><%= course.universities.first.name %></span>
+      <% else %>
+      <ul class="unstyled">
+        <% course.universities.each do |u| %>
+          <li><%= u.name %></li>
+        <% end %>
+      </ul>
+      <% end %>
+    </div>
+  <% end %>

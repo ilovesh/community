@@ -1,0 +1,6 @@
+  <% if course.start_date && course.duration != 0 && course.duration != 99 %>
+    <div id="start">
+      <label>Classes Start: </label>
+      <span><%= course.start_date.to_date.to_formatted_s(:long_ordinal) %></span>
+    </div>
+  <% end %>

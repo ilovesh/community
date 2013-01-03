@@ -1,11 +1,12 @@
 <% provide(:title, 'Note') %>
 <% content_for :left do %>
-<h2>Note</h2><%= link_to "<< go back to course: " + @course.full_name,  @course %>
+<%= link_to "<< view all notes",  course_notes_path(@course) %>
+<h2>Note</h2>
 <div class="section-container">
 <%= render 'note', note: @note %>
 </div>
 <% end %>
 
 <% content_for :right do %>
-  place_holder
+  <%= render partial: 'courses/sidebar_course_item', locals: { course: @course } %>
 <% end %>

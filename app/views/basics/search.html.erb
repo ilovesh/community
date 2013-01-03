@@ -1,5 +1,12 @@
+<% provide(:title, 'Search Courses') %>
 <% content_for :left do %>
   <div class="section-container">
-    <%= render partial: 'popular_course_list', locals: { courses: @courses } %>
+    <ul class="unstyled seperate">
+      <%= render partial: 'courses/list_course_item', collection: @courses, as: :course %>
+    </ul>
   </div>
+<% end %>
+
+<% content_for :right do %>
+  place_holder
 <% end %>

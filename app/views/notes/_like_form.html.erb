@@ -1,0 +1,9 @@
+  <span class="like-form" id="like-form-note-<%=note.id%>">
+    <% if current_user && current_user.like?(note) %>
+      <%= render partial: 'likes/unlike', locals: { likeable: note,
+                                                    icon_name: "star" } %>
+    <% else %>
+      <%= render partial: 'likes/like', locals: { likeable: note,
+                                                  icon_name: "star-empty" } %>
+    <% end %>
+  </span>

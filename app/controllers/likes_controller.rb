@@ -11,13 +11,14 @@ class LikesController < ApplicationController
       @icon_name = VOTED
     end
     respond_to do |format|
-      format.html { redirect_to root_url }
+      format.html { redirect_to @likeable }
       format.js
     end
   end
 
   def destroy
     @like = Like.find(params[:id])
+    @likeable = @like.find_likeable
     likeable_type = @like.likeable_type
     if likeable_type == "Note" || likeable_type == "List"
       @icon_name = LIKE
@@ -26,7 +27,7 @@ class LikesController < ApplicationController
     end
     @like.destroy
     respond_to do |format|
-      format.html { redirect_to root_url }
+      format.html { redirect_to @likeable }
       format.js
     end    
   end

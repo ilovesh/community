@@ -1,0 +1,30 @@
+<% provide(:title, 'Courses') %>
+<% content_for :left do %>
+  <% if @courses.any? %>
+  <div class="row-fluid">
+    <h2 class="inline-header">Courses Tagged with <em><%= params[:tag].capitalize if params[:tag] %></em></h2>
+    <%= render partial: 'tag_form', locals: { path: url_for(controller: 'courses', action: 'tagged') } %>
+  </div>
+
+  <div class="section-container">
+    <ul class="course-items thumbnails">
+      <%= render partial: 'courses/grid_course_item', collection: @courses, as: :course %>
+    </ul>
+    <%= will_paginate @courses %>
+  </div>
+  
+  <% else %>
+  <div class="row-fluid">
+    <h2 class="inline-header">No Courses Matched Tag <em><%= params[:tag].capitalize if params[:tag] %></em></h2>
+    <%= render partial: 'tag_form', locals: { path: url_for(controller: 'courses', action: 'tagged') } %>
+  </div>
+  <% end %>
+
+<% end %>
+
+<% content_for :right do %>
+  <h3>Top tags:</h3>
+  <ul class="unstyled top-tags-list">
+    <%= render partial: 'courses/filter_tag', collection: @tags, as: :tag %>
+  </ul>
+<% end %>

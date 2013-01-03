@@ -1,9 +1,7 @@
 <% provide(:title, 'All lists') %>
 <% content_for :left do %>
-  <div class="index-header">
-    <h2>All Lists</h2>
-    <%= render 'btn_new_list' %>
-  </div>
+  <h2 class="inline-header">All Lists</h2>
+  <div class="pull-right"><%= render 'btn_new_list' %></div>
   <div class="section-container">
     <ul class="list-items thumbnails">
       <%= render partial: 'lists/list', collection: @lists %>
@@ -13,5 +11,8 @@
 <% end %>
 
 <% content_for :right do %>
-  place_holder
+  <h3 class="top-tags-header">Top tags:</h3>
+  <ul class="unstyled top-tags-list">
+    <%= render partial: 'lists/filter_tag', collection: @tags, as: :tag %>
+  </ul>
 <% end %>

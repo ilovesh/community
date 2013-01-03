@@ -1,0 +1,5 @@
+    <div class="span2 pull-right">
+      <%= form_tag path, :method => "GET" do %>
+        <%= select_tag 'status', options_for_select([['All', 'all'],['Upcoming', 'upcoming'],['Ongoing', 'ongoing'],['Finished', 'finished'], ['Rolling', 'rolling']], params[:status] || -1) %>
+      <% end %>
+    </div>

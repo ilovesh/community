@@ -1,6 +1,6 @@
 <% if @reviews.any? %>
 <div class="row-fluid course-info-container">
-  <div class="span10">
+
     <h4 class="inline-header"><%= pluralize(@reviews.count, "review")%></h4>
     <% if @reviews.count > 10 %>
     <%= link_to "View all reviews »", course_reviews_path(@course), { class: "view-all view-all-inline" } %>
@@ -26,6 +26,6 @@
     <% if @reviews.count > 10 %>
     <%= link_to "View all reviews »", course_reviews_path(@course), { class: "view-all pull-right" } %>
     <% end %>
-  </div>
+
 </div>
 <% end %>

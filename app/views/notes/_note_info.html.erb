@@ -1,0 +1,14 @@
+<% if current_page? note.course %>
+  <%= gravatar_for note.user, size: 20 %>
+<% else %>
+  <%= gravatar_for note.user, size: 30 %>
+<% end %>
+<%= link_to note.user.username, note.user %>
+<%= render partial: 'shared/timestamp', locals: { post: note } %>
+<% if current_user?(note.user) %>
+  <%= link_to "edit",   edit_note_path(note) %>
+  <%= link_to "delete", note,
+              method: :delete,
+              data: { confirm: "Are you sure to delete this note?" },
+              title: note.body %>
+<% end %>

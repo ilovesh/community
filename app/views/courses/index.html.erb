@@ -1,6 +1,10 @@
 <% provide(:title, 'All courses') %>
 <% content_for :left do %>
-  <h2>All Courses</h2>
+  <div class="row-fluid">
+    <h2 class="inline-header">All <%= @title if @title %> Courses</h2>
+    <%= render partial: 'tag_form', locals: { path: courses_path } %>
+  </div>
+
   <div class="section-container">
     <ul class="course-items thumbnails">
       <%= render partial: 'courses/grid_course_item', collection: @courses, as: :course %>
@@ -10,5 +14,8 @@
 <% end %>
 
 <% content_for :right do %>
-  place_holder
+  <h3 class="top-tags-header">Top tags:</h3>
+  <ul class="unstyled top-tags-list">
+    <%= render partial: 'courses/filter_tag', collection: @tags, as: :tag %>
+  </ul>
 <% end %>

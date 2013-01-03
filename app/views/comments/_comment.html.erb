@@ -13,6 +13,9 @@
                                                       icon_name: VOTE_UP } %>
         <% end %>
       </span>
+      <span class="likes-count" id="likes-count-comment-<%= comment.id %>">
+        <%= comment.likes.count %>
+      </span>
     </div>
   </div>
 

@@ -18,27 +18,35 @@ $(document).ready(function(){
 
   // make input field in bootstrap-modal focused
 	$('.modal').on('shown', function() {
-    var input = $(this).find('form').find('.modal-body').find('input');
+    input = $(this).find('form').find('.modal-body').find('input');
     input.focus();
+    textarea = $(this).find('form').find('.modal-body').find('textarea');
+    textarea.focus();
 	});
 
-  $('.modal').ready(function() {
+  $('.enrollment-modal').ready(function() {
     // check if the tag is already used to toggle the btn color
     var modal = $(this).find('.modal');
     var input = modal.find('form').find('.modal-body').find('input');
-    var currentValue = input.val();
-    var currentTags = currentValue.split(',');
-    var spans = input.next().next().find('span');
-    spans.each(function(){
-      var span = $(this);
-      var tag = span.text().trim();
-      for (var i = 0; i < currentTags.length; i++) {
-        if(tag == currentTags[i].trim()){
-          span.removeClass('btn-info');
-          return;
-        };
-      };
-    });
+    if (input) {
+      var currentValue = input.val();
+      if (currentValue) {
+        var currentTags = currentValue.split(',');
+        var spans = input.next().next().find('span');
+        if (spans) {
+          spans.each(function(){
+            var span = $(this);
+            var tag = span.text().trim();
+            for (var i = 0; i < currentTags.length; i++) {
+              if(tag == currentTags[i].trim()){
+                span.removeClass('btn-info');
+                return;
+              };
+            };
+          }); 
+        }; 
+      };    
+    };
   });
 
 
@@ -67,7 +75,17 @@ $(document).ready(function(){
 	  };
   });
 
+  // best_in_place gem
   $('.best_in_place').best_in_place();
+
+  // bootstrap tooltip
   $("[rel=tooltip]").tooltip();
+
+
+  // submit form when select option is selected w/o a submit button
+  $('select').change(function() {
+    $(this).closest('form').submit();
+  });
+
 
 });

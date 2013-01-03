@@ -14,6 +14,9 @@
                                                       icon_name: LIKE } %>
         <% end %>
       </span>
+      <span id="likes-count-list-<%= @list.id %>">
+        <%= @list.likes.count %>
+      </span>
     </div>
     <h3 class="span12"><%= @list.title %></h3>
 
@@ -35,12 +38,17 @@
     <% if @list.description? %>
       <p class="span12"><%= @list.description %></p>
     <% end %>
+    <% if @list.tag_list.any? %>
+    <div class="span12">
+      <%= render partial: 'shared/tag_list', locals: { tag_list: @list.tag_list } %>
+    </div>
+    <% end %>
   </div>
 
   <% if @courses.any? %>
   <h4><%= pluralize(@courses.count, "course") %></h4>
   <ol>
-    <%= render partial: 'lists/list_course_item', collection: @courses, as: :course %>
+    <%= render partial: 'courses/list_course_item', collection: @courses, as: :course %>
   </ol>
   <% end %>
 

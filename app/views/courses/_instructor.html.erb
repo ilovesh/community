@@ -1,0 +1,11 @@
+  <% if course.instructor %>
+    <div id="instructor">  
+      <label>Course Staff: </label>
+      <% if !course.instructor.include?('|') %>
+        <span><%= course.instructor %></span>
+      <% else %>
+        <% staff = course.instructor.split('|').join(', ') %>
+        <span><%= staff %></span>
+      <% end %>
+    </div>
+  <% end %>
