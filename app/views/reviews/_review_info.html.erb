@@ -1,7 +1,7 @@
 <% if current_page? review.course %>
-  <%= gravatar_for review.user, size: 20 %>
+  <%= render partial: 'shared/small_gravatar', locals: { post: review } %>
 <% else %>
-  <%= gravatar_for review.user, size: 30 %>
+  <%= render partial: 'shared/large_gravatar', locals: { post: review } %>
 <% end %>
 <%= link_to review.user.username, review.user %>
 <%= render partial: 'shared/timestamp', locals: { post: review } %>

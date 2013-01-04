@@ -4,24 +4,16 @@
 <% content_for :left do %>
   <h2>List</h2>
   <div class="row-fluid">
-    <div class="span1 offset10">
-      <span id="like-form-list-<%=@list.id%>">
-        <% if current_user && current_user.like?(@list) %>
-          <%= render partial: 'likes/unlike', locals: { likeable: @list,
-                                                        icon_name: LIKED } %>
-        <% else %>
-          <%= render partial: 'likes/like', locals: { likeable: @list,
-                                                      icon_name: LIKE } %>
-        <% end %>
-      </span>
-      <span id="likes-count-list-<%= @list.id %>">
+    <div class="offset10">
+      <%= render partial: 'lists/like_form', locals: { list: @list } %>
+      <span class="likes-count" id="likes-count-list-<%= @list.id %>">
         <%= @list.likes.count %>
       </span>
     </div>
     <h3 class="span12"><%= @list.title %></h3>
 
     <div class="span12 list-show-info">
-      <%= gravatar_for @list.user, size: 20 %>
+      <%= render partial: 'shared/large_gravatar', locals: { post: @list } %>
       <%= link_to @list.user.username, @list.user %>
       <span class="muted">created</span> <%= render partial: 'shared/timestamp', locals: { post: @list } %>
       <% if current_user?(@list.user) %>

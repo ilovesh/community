@@ -1,4 +1,3 @@
-    <div class="span1">
       <% if current_page?(discussion) %>
         <div class="discussion-vote-container">
           <span id="like-form-discussion-<%=discussion.id%>" class="discussion-vote">
@@ -15,6 +14,7 @@
           </span>
         </div>
       <% else %>
+      <div class="discussion-count">
         <div class="badge badge-important">
           <i class="icon-<%= VOTE_UP %> icon-white icon-count"></i>
           <%= discussion.likes.count %>
@@ -23,5 +23,5 @@
           <i class="icon-comment icon-white icon-count"></i>
           <%= discussion.comment_threads.count %>
         </div>
-      <% end %>
-    </div>
+      </div>  
+      <% end %>   

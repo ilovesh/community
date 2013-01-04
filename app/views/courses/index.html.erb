@@ -2,19 +2,26 @@
 <% content_for :left do %>
   <div class="row-fluid">
     <h2 class="inline-header">All <%= @title if @title %> Courses</h2>
-    <%= render partial: 'tag_form', locals: { path: courses_path } %>
+    <%= render partial: 'status_select', locals: { path: courses_path(view: params[:view]) } %>
+    <%= render partial: 'courses_view_select' %>
   </div>
 
   <div class="section-container">
-    <ul class="course-items thumbnails">
-      <%= render partial: 'courses/grid_course_item', collection: @courses, as: :course %>
-    </ul>
+    <% if params[:view] == "list" %>
+      <ul class="unstyled seperate">
+        <%= render partial: 'courses/list_course_item', collection: @courses, as: :course %>
+      </ul>
+    <% else %>
+      <ul class="course-items thumbnails">
+        <%= render partial: 'courses/grid_course_item', collection: @courses, as: :course %>
+      </ul>
+    <% end %>
     <%= will_paginate @courses %>
   </div>
 <% end %>
 
 <% content_for :right do %>
-  <h3 class="top-tags-header">Top tags:</h3>
+  <h3>Top tags:</h3>
   <ul class="unstyled top-tags-list">
     <%= render partial: 'courses/filter_tag', collection: @tags, as: :tag %>
   </ul>

@@ -1,0 +1,33 @@
+
+      <% if current_page? discussion %>
+        <div class="discussion-body">
+        <h3><%= discussion.title %></h3>
+      <% else %>
+        <div class="span10 discussion-summary">
+        <h3><%= link_to discussion.title, discussion %></h3>
+      <% end %>
+      <% unless current_page?(root_path) %>
+        <% if current_page? discussion %>
+          <p><%= discussion.content %></p>
+        <% else %>
+          <p><%= truncate(discussion.content, length: 140) %></p>
+        <% end %>
+      <% end %>
+      <% if discussion.tag_list.any? %>
+      <%= render partial: 'shared/tag_list', locals: { tag_list: discussion.tag_list } %>
+      <% end %>
+      <div class="pull-right">
+        <%= render partial: 'shared/timestamp', locals: { post: discussion } %>
+        <% if current_page? discussion %>
+        <%= gravatar_for discussion.user, size: 20 %>
+        <% end %>
+        <%= link_to discussion.user.username, discussion.user %>
+        <% if current_user?(discussion.user) %>
+          <%= link_to "edit",   edit_discussion_path(discussion.id) %>
+          <%= link_to "delete", discussion,
+                      method: :delete,
+                      data: { confirm: "Are you sure to delete this post?" },
+                      title: discussion.title %>
+        <% end %>
+      </div>
+    </div>

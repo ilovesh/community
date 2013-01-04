@@ -87,5 +87,9 @@ $(document).ready(function(){
     $(this).closest('form').submit();
   });
 
+  $('.view-select').change(function() {
+    $(this).closest('form').submit();
+  });
+
 
 });

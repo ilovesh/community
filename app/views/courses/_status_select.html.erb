@@ -1,0 +1,8 @@
+    <div class="span2 pull-right status-select">
+      <%= form_tag path, :method => "GET" do |f| %>
+        <%= select_tag 'status', options_for_select([['All', 'all'],['Upcoming', 'upcoming'],['Ongoing', 'ongoing'],['Finished', 'finished'], ['Rolling', 'rolling']], params[:status] || -1) %>
+        <% if params[:view] %>
+          <input name="view" type="hidden" value=<%= params[:view] %>>
+        <% end %>
+      <% end %>
+    </div>
