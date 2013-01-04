@@ -13,8 +13,8 @@ class CoursesController < ApplicationController
     elsif params[:status] == "rolling"
       @courses = Course.of_status(:rolling).paginate(page: params[:page])
       @title = params[:status].capitalize
-    elsif params[:status] == "all"
-      redirect_to courses_path
+    elsif params[:status] == "all" && params[:view] == "list"
+      redirect_to courses_path(view: params[:view])
     else
       @courses = Course.paginate(page: params[:page])
     end
@@ -38,6 +38,8 @@ class CoursesController < ApplicationController
       courses.each { |c| @courses << c if c.status == :finished }    
     elsif params[:status] == "rolling"
       courses.each { |c| @courses << c if c.status == :rolling }
+    #elsif params[:status] == "all" && params[:view] == "list"
+      
     else
       @courses = courses
     end  

@@ -97,7 +97,7 @@ ol > li {
   margin-top: 23px;
   li { margin-bottom: 3px; }
 }
-.top-tags-header { margin-top: 15px; }
+
 
 /* image */
 .img-small { height: 38.3px; }
@@ -206,6 +206,7 @@ p.list_desp{
 aside {
   float: left;
   margin: 15px 10px 0 0;
+  overflow: auto;
 }
 
 ul.course-items {
@@ -277,6 +278,11 @@ ul.list-items {
 
 
 /* courses */
+.status-select {
+  select { margin: 0; }
+  form { margin: 0; }
+}
+
 .list-course-item {
   span { margin-right: 5px; }
 }
@@ -316,6 +322,7 @@ ul.list-items {
   width: 400px;
   height: 60px;
 }
+
 
 /* likes */
 .btn-like {
@@ -402,9 +409,25 @@ ul.list-items {
   font-size: 24px;
 }
 
+.discussion-count {
+  width: 60px;
+  float: left;
+}
+
+.discussion-summary {
+  margin-left: 20px;
+}
+
+.discussion-body {
+  h3 { color: black; }
+  p { margin-top: 15px; }
+  width: 650px;
+  margin-left: 65px;
+}
+
 /* comments */
 .comment-form {
-  margin-top: 5px;
+  margin-top: 15px;
   textarea {
     width: 600px;
     height: 80px;

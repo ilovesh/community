@@ -10,13 +10,16 @@
       <%= will_paginate @lists %>
     </div>
   <% else %>
-    <h2 class="inline-header">No Lists Matched Tag <em><%= params[:tag].capitalize if params[:tag] %></em></h2>
-    <div class="pull-right"><%= render 'btn_new_list' %></div>
+    <div class="row-fluid">
+      <h2 class="inline-header">No Lists Matched Tag <em><%= params[:tag].capitalize if params[:tag] %></em></h2>
+      <div class="pull-right"><%= render 'btn_new_list' %></div>
+    </div>
+    <%= link_to "Browse all lists", lists_path %>
   <% end %>
 <% end %>
 
 <% content_for :right do %>
-  <h3 class="top-tags-header">Top tags:</h3>
+  <h3>Top tags:</h3>
   <ul class="unstyled top-tags-list">
     <%= render partial: 'lists/filter_tag', collection: @tags, as: :tag %>
   </ul>

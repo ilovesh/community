@@ -1,7 +1,7 @@
 <% if current_page? note.course %>
-  <%= gravatar_for note.user, size: 20 %>
+  <%= render partial: 'shared/small_gravatar', locals: { post: note } %>
 <% else %>
-  <%= gravatar_for note.user, size: 30 %>
+  <%= render partial: 'shared/large_gravatar', locals: { post: note } %>  
 <% end %>
 <%= link_to note.user.username, note.user %>
 <%= render partial: 'shared/timestamp', locals: { post: note } %>

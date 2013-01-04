@@ -1,3 +1,4 @@
+<% if false %>
       <div class="tab-pane active" id="newest">
         <ul class="unstyled seperate">
           <%= render partial: 'discussions/discussion', collection: @newest %>
@@ -16,3 +17,10 @@
         </ul>
         <%= will_paginate @comments, param_name: 'comments_page' %>
       </div>
+<% end %>
+
+
+  <ul class="unstyled seperate">
+    <%= render partial: 'discussions/discussion', collection: @discussions %>
+  </ul>
+  <%= will_paginate @discussions %>

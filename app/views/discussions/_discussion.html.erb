@@ -4,7 +4,7 @@
 
   <div class="row-fluid"> 
     <%= render partial: 'discussions/discussion_count', locals: { discussion: discussion } %>
-    <%= render partial: 'discussions/discussion_summary', locals: { discussion: discussion } %>
+    <%= render partial: 'discussions/discussion_body', locals: { discussion: discussion } %>
   </div>
 
 <% unless current_page? discussion %>

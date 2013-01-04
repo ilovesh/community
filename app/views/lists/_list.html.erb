@@ -1,6 +1,8 @@
 <li class="span4 list-item" id="list_<%= list.id %>">
   <div class="thumbnail">
-    <%= render partial: 'lists/list_controll', locals: { list: list } %>
+    <div class="pull-right">
+      <%= render partial: 'lists/like_form', locals: { list: list } %>
+    </div>
     <%= render partial: 'lists/list_image', locals: { list: list } %>
     <%= render partial: 'lists/list_summary', locals: { list: list } %>
   </div>

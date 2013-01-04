@@ -1,3 +1,11 @@
 <li>
-  <a class="label label-info" href="/courses/tagged/<%= tag %>"><%= tag %></a>
+  <% if params[:view] && !params[:status] %>
+    <a class="label label-info" href="/courses/tagged/<%= tag %>?view=<%= params[:view] %>"><%= tag %></a>
+  <% elsif params[:status] && !params[:view] %>
+    <a class="label label-info" href="/courses/tagged/<%= tag %>?status=<%= params[:status] %>"><%= tag %></a>
+  <% elsif params[:status] && params[:view] %>
+    <a class="label label-info" href="/courses/tagged/<%= tag %>?status=<%= params[:status] %>&view=<%= params[:view] %>"><%= tag %></a>
+  <% else %>
+    <a class="label label-info" href="/courses/tagged/<%= tag %>"><%= tag %></a>
+  <% end %>
 </li>
