@@ -18,8 +18,8 @@ class LikesController < ApplicationController
 
   def destroy
     @like = Like.find(params[:id])
-    @likeable = @like.find_likeable
     likeable_type = @like.likeable_type
+    @likeable = likeable_type.constantize.find(@like.likeable_id)
     if likeable_type == "Note" || likeable_type == "List"
       @icon_name = LIKE
     elsif likeable_type == "Review" || likeable_type == "Discussion" || likeable_type == "Comment"

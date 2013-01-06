@@ -1,22 +1,42 @@
 <% provide(:title, "Discussion") %>
-<% provide(:background, 'no-bg') %>
+
 
 <% content_for :left do %>
   <h2>Discussion</h2>
-  <%= render partial: "discussions/discussion", locals: { discussion: @discussion } %>
-  <div class="comment-form row-fluid">
-    <div class="offset1">
-      <%= render partial: "comments/comment_form", locals: { commentable: @discussion } %>
+  <div class="section-container">
+    <%= render partial: "discussions/discussion", locals: { discussion: @discussion } %>
+    <div class="comment-form row-fluid">
+      <div class="offset1">
+        <%= render partial: "comments/comment_form", locals: { commentable: @discussion } %>
+      </div>
     </div>
+    <% if @comments.any? %>
+      <ul class="unstyled seperate" id="discussion-<%=@discussion.id%>-comments">
+        <%= render partial: "comments/comment", collection: @comments %>
+      </ul>
+    <% end %>
   </div>
-  <% if @comments.any? %>
-    <ul class="unstyled seperate" id="discussion-<%=@discussion.id%>-comments">
-      <%= render partial: "comments/comment", collection: @comments %>
-    </ul>
-  <% end %>
 <% end %>
 
 
 <% content_for :right do %>
-  <%= render 'btn_new_discussion' %>
+  <section>
+    <%= render 'btn_new_discussion' %>
+  </section>
+  <% if @posts.any? %>
+  <section>
+    <h3><%= @user.username %>'s Other Posts</h3>
+    <ul class="unstyled">
+      <%= render partial: 'shared/post_item', collection: @posts, as: :post %>
+    </ul>
+  </section>
+  <% end %>
+  <% if @related_discussions.any? %>
+  <section>
+    <h3>Related Discussions</h3>
+    <ul class="unstyled">
+      <%= render partial: 'shared/related_post_item', collection: @related_discussions, as: :post %>
+    </ul>
+  </section>
+  <% end %>  
 <% end %>

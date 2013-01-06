@@ -26,6 +26,13 @@ class CommentsController < ApplicationController
     respond_with @comment
   end
 
+  def index
+    @list = List.find(params[:list_id])
+    @comments = @list.comment_threads
+    @user = @list.user
+    @lists = @user.lists.delete_if { |l| l.id == @list.id }.sort_by(&:created_at).reverse[0..5]
+  end
+
   def destroy
   	@commentable = @comment.commentable
     @commentable_type = @comment.commentable_type

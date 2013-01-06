@@ -1,6 +1,6 @@
 <% provide(:title, 'Review') %>
 <% content_for :left do %>
-<%= link_to "<< view all reviews",  course_reviews_path(@course) %>
+<%= link_to "<< view all reviews",  course_reviews_path(@course), class: "view-all" %>
 <h2>Review</h2>
 <div class="section-container">
 <%= render 'review', review: @review %>

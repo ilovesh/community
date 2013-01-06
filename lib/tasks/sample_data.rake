@@ -6,11 +6,11 @@ namespace :db do
     #make_courses
     #make_users
     #make_enrollments
-    #make_discussions
-    #make_lists
+    make_discussions
+    make_lists
     #make_comments
     #make_notes
-    make_reviews
+    #make_reviews
   end
 end
 
@@ -92,28 +92,33 @@ def make_enrollments
 end
 
 def make_discussions
-  users = User.all(limit: 60)
+  users = User.all(limit: 6)
   users.each do |user|
-    title = Faker::Lorem.sentence
-    content = Faker::Lorem.paragraph
-    discussion = user.discussions.create!(title: title, content: content)
-    discussion.tag_list = "#{Faker::Lorem.word},#{Faker::Lorem.word},#{Faker::Lorem.word}"
-    discussion.save
+    10.times do 
+      title = Faker::Lorem.sentence
+      content = Faker::Lorem.paragraph
+      discussion = user.discussions.create!(title: title, content: content)
+      discussion.tag_list = "#{Faker::Lorem.word},#{Faker::Lorem.word},#{Faker::Lorem.word}"
+      discussion.save
+    end
   end
 end
 
 def make_lists
-  50.times do
-    user = User.all.sample
-    title = Faker::Lorem.sentence
-    description = Faker::Lorem.paragraph
-    list = user.lists.create!(title: title, description: description)
-    list.tag_list = "#{Faker::Lorem.word},#{Faker::Lorem.word},#{Faker::Lorem.word}"
-    list.save
-    5.times do |n|
-      course = Course.all.sample
-      description = Faker::Lorem.sentence
-      list.listings.create!(course_id: course.id, description: description)
+  users = User.all(limit: 6)
+  users.each do |user|
+    7.times do 
+      #user = User.all.sample
+      title = Faker::Lorem.sentence
+      description = Faker::Lorem.paragraph
+      list = user.lists.create!(title: title, description: description)
+      list.tag_list = "#{Faker::Lorem.word},#{Faker::Lorem.word},#{Faker::Lorem.word}"
+      list.save
+      5.times do |n|
+        course = Course.all.sample
+        description = Faker::Lorem.sentence
+        list.listings.create!(course_id: course.id, description: description)
+      end
     end
   end
 end

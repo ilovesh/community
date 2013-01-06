@@ -1,0 +1,21 @@
+    <div class="offset10">
+      <%= render partial: 'lists/like_form', locals: { list: @list } %>
+      <span class="likes-count likes-count-list-<%= @list.id %>"><%= @list.likes.count %></span>
+    </div>
+    <div class="span11 list-body">
+      <h4><%= @list.title %></h4>
+      <div>
+        <%= render partial: 'shared/large_gravatar', locals: { post: @list } %>
+        <%= link_to @list.user.username, @list.user %>
+        <span class="muted">created</span> <%= render partial: 'shared/timestamp', locals: { post: @list } %>
+        <%= render 'lists/edit_or_delete' %>
+      </div>
+      <% if @list.description? %>
+        <p><%= @list.description %></p>
+      <% end %>
+      <% if @list.tag_list.any? %>
+        <ul class="inline">
+          <%= render partial: 'lists/filter_tag', collection: @list.tag_list, as: :tag %>
+        </ul>
+      <% end %>
+    </div>

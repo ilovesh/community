@@ -37,9 +37,7 @@ class CoursesController < ApplicationController
     elsif params[:status] == "finished"
       courses.each { |c| @courses << c if c.status == :finished }    
     elsif params[:status] == "rolling"
-      courses.each { |c| @courses << c if c.status == :rolling }
-    #elsif params[:status] == "all" && params[:view] == "list"
-      
+      courses.each { |c| @courses << c if c.status == :rolling }     
     else
       @courses = courses
     end  
@@ -55,5 +53,7 @@ class CoursesController < ApplicationController
     @reviews_by_date = @reviews.limit(10)
     @reviews_by_vote = @reviews.sort_by { |r| -r.likes.count }[0..9]
     @top_tags = @course.tag_list[0..9]
+    @enrollments = @course.enrollments[0..8]
+    @lists = List.has(@course)[0..5]
   end
 end

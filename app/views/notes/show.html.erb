@@ -1,6 +1,6 @@
 <% provide(:title, 'Note') %>
 <% content_for :left do %>
-<%= link_to "<< view all notes",  course_notes_path(@course) %>
+<%= link_to "<< view all notes",  course_notes_path(@course), class: "view-all" %>
 <h2>Note</h2>
 <div class="section-container">
 <%= render 'note', note: @note %>

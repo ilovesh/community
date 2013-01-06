@@ -19,7 +19,12 @@ class NotesController < ApplicationController
 
   def index
     @course = Course.find(params[:course_id])
-    @notes = @course.notes.paginate(page: params[:page])
+    notes = @course.notes
+    if params[:tab] == "stars"
+      @notes = notes.sort_by { |n| -n.likes.count }.paginate(page: params[:page])
+    else
+      @notes = notes.paginate(page: params[:page])
+    end
   end
 
   def show

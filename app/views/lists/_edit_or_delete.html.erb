@@ -1,0 +1,10 @@
+        <% if current_user?(@list.user) %>
+          <a href="#" rel="tooltip" data-placement="top" data-html="true" title="Add course via the</br><a class='btn btn-medium btn-primary'><i class='icon-plus icon-white'></i> add to list</a></br>button on the course page.">
+            add course
+          </a>
+          <%= link_to "edit",   edit_list_path(@list.id) %>
+          <%= link_to "delete", @list,
+                      method: :delete,
+                      data: { confirm: "Are you sure to delete this list?" },
+                      title: @list.title %>
+        <% end %>

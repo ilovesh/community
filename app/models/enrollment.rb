@@ -24,4 +24,5 @@ class Enrollment < ActiveRecord::Base
   belongs_to :user
   belongs_to :course
 
+  default_scope order: 'enrollments.created_at DESC'
 end

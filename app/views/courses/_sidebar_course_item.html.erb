@@ -1,5 +1,5 @@
 <div class="sidebar-course course-summary">  
-  <h4>Course</h4>
+  <h3>Course</h3>
   <%= link_to image_tag(course.image_link, class: "img-medium block"), course %>
   <%= render partial: 'courses/course_status', locals: {course: course} %>  
   <h5><%= link_to course.full_name, course %></h5>

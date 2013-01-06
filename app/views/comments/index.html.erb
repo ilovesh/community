@@ -1,0 +1,35 @@
+<% provide(:title, 'List Comments') %>
+
+<% content_for :left do %>
+  <h2>List</h2>
+  <div class="section-container">
+    <div class="row-fluid">
+      <%= render 'lists/list_main' %>
+    </div>
+    <div class="list-comment-form row-fluid">
+      <%= render partial: "comments/comment_form", locals: { commentable: @list } %>
+    </div>
+    <% if @comments.any? %>
+    <div class="list-comments-container">
+      <h4><%= pluralize(@comments.count, "comment") %></h4>
+      <ul class="unstyled seperate" id="list-<%=@list.id%>-comments">
+        <%= render partial: "comments/comment_no_like", collection: @comments, as: :comment %>
+      </ul>
+    </div>
+    <% end %>
+  </div>
+<% end %>
+
+<% content_for :right do %>
+  <section>
+    <div class="go-back"><%= link_to "<< go back to the list page",  @list %></div>
+  </section>
+  <% if @lists.any? %>
+  <section>
+    <h3><%= @user.username %>'s Other Lists</h3>
+    <ul class="unstyled">
+      <%= render partial: 'shared/post_item', collection: @lists, as: :post %>
+    </ul>
+  </section>
+  <% end %> 
+<% end %>

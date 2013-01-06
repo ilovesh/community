@@ -2,7 +2,7 @@
 <li id="note-<%= note.id %>">
 <% end %>
 
-<div class="row-fluid">
+<div class="note-header">
 <% if current_page? note.course %>
   <%= render partial: 'notes/like_form', locals: { note: note } %>
   <%= render partial: 'notes/note_info', locals: { note: note } %>
@@ -12,7 +12,7 @@
   </div>
   <div class="offset10">
     <%= render partial: 'notes/like_form', locals: { note: note } %>
-    <span class="likes-count" id="likes-count-note-<%= note.id %>">
+    <span class="likes-count likes-count-note-<%= note.id %>">
       <%= note.likes.count %>
     </span>
   </div>

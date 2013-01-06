@@ -1,12 +1,16 @@
 <% provide(:title, 'All lists') %>
 <% content_for :left do %>
-  <h2 class="inline-header">All Lists</h2>
-  <div class="pull-right"><%= render 'btn_new_list' %></div>
+  <div class="row-fluid">
+    <h2 class="inline-header">All Lists</h2>
+    <div class="pull-right"><%= render 'btn_new_list' %></div>
+  </div>
   <div class="section-container">
-    <ul class="list-items thumbnails">
-      <%= render partial: 'lists/list', collection: @lists %>
-    </ul>
-    <%= will_paginate @lists %>
+    <div class="tabbable">
+      <%= render 'tabs' %>
+    </div>
+    <div class="tab-content">
+      <%= render 'tab_content' %>
+    </div>
   </div>
 <% end %>
 

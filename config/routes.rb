@@ -13,7 +13,7 @@ Dragon::Application.routes.draw do
   resources :notes, only: [:show, :edit, :update, :destroy]
 
   resources :lists do
-    resources :comments, only: [:create, :update, :destroy]
+    resources :comments, only: [:create, :index, :update, :destroy]
   end
 
   resources :likes, only: [:create, :destroy]

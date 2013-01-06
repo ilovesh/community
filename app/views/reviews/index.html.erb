@@ -1,16 +1,17 @@
 <% provide(:title, 'Reviews') %>
 <% content_for :left do %>
-  <div class="block"><%= link_to "<< go back to course: " + @course.full_name,  @course %></div>
+  <div class="block go-back"><%= link_to "<< go back to the course page",  @course %></div>
   <h2 class="inline-header"><%= pluralize(@reviews.count, 'review') %></h2>
   <div class="pull-right"><%= render 'btn_new_review' %></div>
   <div class="section-container">
-    <ul class="unstyled seperate">
-      <%= render @reviews %>
-    </ul>
-    <%= will_paginate @reviews %>
+    <div class="tabbable">
+      <%= render 'tabs' %>
+    </div>
+    <div class="tab-content">
+      <%= render 'tab_content' %>
+    </div>
   </div>  
 <% end %>
-
 
 <% content_for :right do %>
   <%= render partial: 'courses/sidebar_course_item', locals: { course: @course } %>

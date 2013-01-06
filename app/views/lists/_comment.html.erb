@@ -1,0 +1,8 @@
+<li>
+  <p><%= comment.body %></p>
+  <div>
+    <%= render partial: 'shared/small_gravatar', locals: { post: comment } %>
+    <%= link_to comment.user.username, comment.user %>
+  </div>
+  <div><%= render partial: 'shared/timestamp', locals: { post: comment } %></div>
+</li>

@@ -1,25 +1,3 @@
-<% if false %>
-      <div class="tab-pane active" id="newest">
-        <ul class="unstyled seperate">
-          <%= render partial: 'discussions/discussion', collection: @newest %>
-        </ul>
-        <%= will_paginate @newest, param_name: 'newest_page' %>
-      </div>
-      <div class="tab-pane" id="votes">
-        <ul class="unstyled seperate">
-          <%= render partial: 'discussions/discussion', collection: @votes %>
-        </ul>
-        <%= will_paginate @votes, param_name: 'votes_page' %>
-      </div>
-      <div class="tab-pane" id="comments">
-        <ul class="unstyled seperate">
-          <%= render partial: 'discussions/discussion', collection: @comments %>
-        </ul>
-        <%= will_paginate @comments, param_name: 'comments_page' %>
-      </div>
-<% end %>
-
-
   <ul class="unstyled seperate">
     <%= render partial: 'discussions/discussion', collection: @discussions %>
   </ul>

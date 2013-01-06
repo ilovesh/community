@@ -2,7 +2,7 @@
 <li id="review-<%= review.id %>">
 <% end %>
 
-<div class="row-fluid">
+<div class="review-header">
 <% if current_page? review.course %>
   <%= render partial: 'reviews/like_form', locals: { review: review } %>
   <%= render partial: 'reviews/review_info', locals: { review: review } %>
@@ -12,7 +12,7 @@
   </div>
   <div class="offset10">
     <%= render partial: 'reviews/like_form', locals: { review: review } %>
-    <span class="likes-count" id="likes-count-review-<%= review.id %>">
+    <span class="likes-count likes-count-review-<%= review.id %>">
       <%= review.likes.count %>
     </span>
   </div>

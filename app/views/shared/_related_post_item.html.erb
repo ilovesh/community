@@ -1,0 +1,8 @@
+<li>
+  <%= link_to post.title, post %>
+  <div>
+    <%= render partial: 'shared/small_gravatar', locals: { post: post } %>
+    <%= post.user.username %>
+  </div>
+  <div><%= render partial: 'shared/timestamp', locals: { post: post } %></div>
+</li>

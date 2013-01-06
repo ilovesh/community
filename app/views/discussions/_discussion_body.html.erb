@@ -1,7 +1,6 @@
-
       <% if current_page? discussion %>
         <div class="discussion-body">
-        <h3><%= discussion.title %></h3>
+        <h4><%= discussion.title %></h4>
       <% else %>
         <div class="span10 discussion-summary">
         <h3><%= link_to discussion.title, discussion %></h3>
@@ -14,12 +13,14 @@
         <% end %>
       <% end %>
       <% if discussion.tag_list.any? %>
-      <%= render partial: 'shared/tag_list', locals: { tag_list: discussion.tag_list } %>
+        <ul class="inline">
+          <%= render partial: 'discussions/filter_tag', collection: discussion.tag_list, as: :tag %>
+        </ul>
       <% end %>
       <div class="pull-right">
         <%= render partial: 'shared/timestamp', locals: { post: discussion } %>
-        <% if current_page? discussion %>
-        <%= gravatar_for discussion.user, size: 20 %>
+        <% unless current_page? root_path %>
+        <%= render partial: "shared/small_gravatar", locals: { post: discussion } %>
         <% end %>
         <%= link_to discussion.user.username, discussion.user %>
         <% if current_user?(discussion.user) %>

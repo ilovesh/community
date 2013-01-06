@@ -1,0 +1,19 @@
+<li>
+  <div>
+    <%= render partial: 'shared/small_gravatar', locals: { post: enrollment } %>
+    <span><%= link_to enrollment.user.username, enrollment.user %></span>
+  </div>
+  <div>
+    <% if enrollment.status == 1 %>
+    is interested in
+    <% elsif enrollment.status == 2 %>
+    is taking
+    <% else %>
+    has finished
+    <% end %>
+    this course
+  </div>
+  <div class="muted">
+    <%= render partial: 'shared/timestamp', locals: { post: enrollment }%>
+  </div>
+</li>

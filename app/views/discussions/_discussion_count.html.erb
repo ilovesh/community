@@ -1,6 +1,6 @@
       <% if current_page?(discussion) %>
         <div class="discussion-vote-container">
-          <span id="like-form-discussion-<%=discussion.id%>" class="discussion-vote">
+          <span class="discussion-vote like-form-discussion-<%=discussion.id%>" >
             <% if current_user && current_user.like?(discussion) %>
               <%= render partial: "likes/unlike",
                          locals: { likeable: discussion, icon_name: VOTED } %>
@@ -9,7 +9,7 @@
                          locals: { likeable: discussion, icon_name: VOTE_UP } %>
             <% end %>
           </span>
-          <span class="likes-count" id="likes-count-discussion-<%=discussion.id%>">
+          <span class="likes-count likes-count-discussion-<%=discussion.id%>">
             <%= discussion.likes.count %>
           </span>
         </div>

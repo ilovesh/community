@@ -4,16 +4,8 @@
 <div class="row-fluid">
   <div class="span1">
     <div class="comment-vote-container">
-      <span id="like-form-comment-<%=comment.id%>">
-        <% if current_user && current_user.like?(comment) %>
-          <%= render partial: 'likes/unlike', locals: { likeable: comment,
-                                                        icon_name: VOTED } %>
-        <% else %>
-          <%= render partial: 'likes/like', locals: { likeable: comment,
-                                                      icon_name: VOTE_UP } %>
-        <% end %>
-      </span>
-      <span class="likes-count" id="likes-count-comment-<%= comment.id %>">
+      <%= render partial: 'comments/like_form', locals: {comment: comment} %>
+      <span class="likes-count likes-count-comment-<%= comment.id %>">
         <%= comment.likes.count %>
       </span>
     </div>
@@ -21,14 +13,14 @@
 
   <div class="span11 comment-body">
     
-    <p class="span10">
+    <p class="span11">
       <%= best_in_place_if current_user?(comment.user), [comment.commentable, comment], :body,
           type: :textarea, activator: "#edit-comment-#{comment.id}" %>
     </p>
     <div class="pull-right">
-      <%= render partial: 'shared/timestamp', locals: { post: comment } %>
-      <%= gravatar_for comment.user, size: 20 %>
+      <%= render partial: 'shared/small_gravatar', locals: { post: comment } %>
       <%= link_to comment.user.username, comment.user %>
+      <%= render partial: 'shared/timestamp', locals: { post: comment } %>
       <% if current_user?(comment.user) %>
         <a class="edit-comment" id="edit-comment-<%= comment.id %>">edit</a>
         <%= link_to "delete", [comment.commentable, comment],

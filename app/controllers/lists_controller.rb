@@ -20,7 +20,18 @@ class ListsController < ApplicationController
   def show
     @list     = List.find(params[:id])
     @courses = @list.courses.sort_by {|c| Listing.find_by_list_id_and_course_id(@list.id, c.id).created_at }
-    @comments = Comment.find_comments_for_commentable("List", @list.id)
+    @comments = @list.comment_threads[0..2]
+    @user = @list.user
+    @lists = @user.lists.delete_if { |l| l.id == @list.id }.sort_by(&:created_at).reverse[0..2]
+    related_lists = []
+    tags = @list.tag_list
+    if tags
+      tags.each do |tag|
+        tagged_lists = List.tagged_with(tag)
+        related_lists += tagged_lists
+      end
+      @related_lists = related_lists.uniq.delete_if { |l| l.id == @list.id }.sort_by(&:created_at).reverse[0..2]
+    end    
   end
 
   def edit
@@ -38,8 +49,13 @@ class ListsController < ApplicationController
   end
 
   def index
-    @lists = List.non_empty.paginate(page: params[:page])
-    @tags = List.tag_counts_on(:tags).order('count desc').map(&:name)[0...25] 
+    @tags = List.tag_counts_on(:tags).order('count desc').map(&:name)[0...25]
+    lists = List.non_empty
+    if params[:tab] == "stars"
+      @lists =  by_stars(lists).paginate(page: params[:page])
+    else
+      @lists = lists.paginate(page: params[:page])
+    end
   end
 
   def destroy
@@ -48,8 +64,14 @@ class ListsController < ApplicationController
   end
 
   def tagged
+    @tag = params[:tag]
     @tags = List.tag_counts_on(:tags).order('count desc').map(&:name)[0...25]
-    @lists = List.tagged_with(params[:tag]).paginate(page: params[:page])
+    lists = List.tagged_with(params[:tag])
+    if params[:tab] == "stars"
+      @lists = by_stars(lists).paginate(page: params[:page])
+    else
+      @lists = lists.paginate(page: params[:page])
+    end
   end
 
 private
@@ -58,4 +80,7 @@ private
     redirect_to root_path if @list.nil?
   end
 
+  def by_stars(lists)
+    lists.sort_by { |l| -l.likes.count }
+  end
 end

@@ -1,0 +1,25 @@
+<% unless comment.blank? %>
+<li id="comment-<%= comment.id %>">
+  <div class="row-fluid">
+    <div class="span11 comment-body">  
+      <div>
+        <%= render partial: 'shared/small_gravatar', locals: { post: comment } %>
+        <%= link_to comment.user.username, comment.user %>
+        <%= render partial: 'shared/timestamp', locals: { post: comment } %>
+        <% if current_user?(comment.user) %>
+          <a class="edit-comment" id="edit-comment-<%= comment.id %>">edit</a>
+          <%= link_to "delete", [comment.commentable, comment],
+                      method: :delete,
+                      remote: true,
+                      data: { confirm: "Are you sure to delete this comment?" },
+                      title: comment.body %>
+        <% end %>
+      </div>
+      <p>
+        <%= best_in_place_if current_user?(comment.user), [comment.commentable, comment], :body,
+            type: :textarea, activator: "#edit-comment-#{comment.id}" %>
+      </p>
+    </div>
+  </div>
+</li>
+<% end %>

@@ -1,0 +1,4 @@
+  <ul class="list-items thumbnails">
+    <%= render partial: 'lists/list', collection: @lists %>
+  </ul>
+  <%= will_paginate @lists %>

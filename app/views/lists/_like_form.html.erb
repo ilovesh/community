@@ -1,4 +1,4 @@
-      <span id="like-form-list-<%=list.id%>">
+      <span class="like-form-list-<%=list.id%>">
       <% if current_user && current_user.like?(list) %>
         <%= render partial: 'likes/unlike', locals: { likeable: list,
                                                       icon_name: LIKED } %>

@@ -30,5 +30,20 @@
 <% end %>
 
 <% content_for :right do %>
-  place_holder
+  <% if @enrollments.any? %>
+  <section>
+    <h3>Recent Activities</h3>
+    <ul class="unstyled">
+      <%= render partial: 'enroll_news', collection: @enrollments, as: :enrollment %>
+    </ul>
+  </section>
+  <% end %>
+  <% if @lists.any? %>
+  <section>
+    <h3>Related Lists</h3>
+    <ul class="unstyled seperate">
+      <%= render partial: 'shared/related_post_item', collection: @lists, as: :post %>
+    </ul>
+  </section>
+  <% end %>
 <% end %>
