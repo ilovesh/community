@@ -6,7 +6,7 @@
   </div>
 
   <%= form_for(Listing.new) do |f| %>
-    <% if current_user.lists.any? %>
+    <% if current_user && current_user.lists.any? %>
       <div class="modal-body">
         <div>
           <label for="current-lists"><strong>Add to your current list</strong></label>

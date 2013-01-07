@@ -9,13 +9,13 @@
   <%= render partial: 'browse_all_courses' %>
 
   <div class="section-container">
-    <% if params[:view] == "list" %>
-      <ul class="unstyled seperate">
-        <%= render partial: 'courses/list_course_item', collection: @courses, as: :course %>
-      </ul>
-    <% else %>
+    <% if params[:view] == "grid" %>
       <ul class="course-items thumbnails">
         <%= render partial: 'courses/grid_course_item', collection: @courses, as: :course %>
+      </ul>
+    <% else %>
+      <ul class="unstyled seperate">
+        <%= render partial: 'courses/list_course_item', collection: @courses, as: :course %>
       </ul>
     <% end %>
     <%= will_paginate @courses %>
@@ -23,7 +23,7 @@
   
   <% else %>
   <div class="row-fluid">
-    <h2 class="inline-header">No Courses Matched Tag <em><%= params[:tag].capitalize if params[:tag] %></em></h2>
+    <h2 class="inline-header">No Courses Tagged With <em><%= params[:tag].capitalize if params[:tag] %></em></h2>
     <%= render partial: 'status_select', locals: { path: url_for(controller: 'courses', action: 'tagged') } %>
   </div>
   <%= render partial: 'browse_all_courses' %>

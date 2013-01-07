@@ -28,7 +28,8 @@
 class Course < ActiveRecord::Base
   attr_accessible :name, :code, :image_link, :url, 
                   :description, :subtitle, :start_date, :final_date,
-                  :instructor, :prerequisites, :duration
+                  :instructor, :prerequisites, :duration, :tag_list
+  acts_as_taggable
 
   include PgSearch
   pg_search_scope :search_by_full_name, against: [:code, :name], 
@@ -73,7 +74,7 @@ class Course < ActiveRecord::Base
   end
 
   # return an array
-  def tag_list
+  def top_tags
     Enrollment.where(course_id: id).tag_counts_on(:tags).order('count desc').map(&:name)
   end
 

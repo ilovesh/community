@@ -1,12 +1,38 @@
 <% provide(:title, 'Search Courses') %>
 <% content_for :left do %>
-  <div class="section-container">
-    <ul class="unstyled seperate">
-      <%= render partial: 'courses/list_course_item', collection: @courses, as: :course %>
-    </ul>
-  </div>
+  <% if @courses.any? %>
+    <div class="row-fluid">
+      <h2 class="inline-header">Courses Matching <em><%= params[:q].capitalize if params[:q] %></em></h2>
+      <%= render partial: 'courses/status_select', locals: { path: '/search?q=' } %>
+      <%= render partial: 'search_view_select' %>
+    </div>
+    <%= render partial: 'courses/browse_all_courses' %>
+
+    <div class="section-container">
+      <% if params[:view] == "grid" %>
+        <ul class="course-items thumbnails">  
+          <%= render partial: 'courses/grid_course_item', collection: @courses, as: :course %>
+        </ul>
+      <% else %>
+        <ul class="unstyled seperate">
+          <%= render partial: 'courses/list_course_item', collection: @courses, as: :course %>
+        </ul>
+      <% end %>
+      <%= will_paginate @courses %>
+    </div>
+  
+  <% else %>
+    <div class="row-fluid">
+      <h2 class="inline-header">No Courses Matching <em><%= params[:q].capitalize if params[:q] %></em></h2>
+      <%= render partial: 'courses/status_select', locals: { path: url_for(controller: 'basics', action: 'search') } %>
+    </div>
+    <%= render partial: 'courses/browse_all_courses' %>
+  <% end %>
 <% end %>
 
 <% content_for :right do %>
-  place_holder
+  <h3>Top tags:</h3>
+  <ul class="unstyled top-tags-list">
+    <%= render partial: 'courses/filter_tag', collection: @tags, as: :tag %>
+  </ul>
 <% end %>

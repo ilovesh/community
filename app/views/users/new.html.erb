@@ -1,9 +1,10 @@
 <% provide(:title, 'Sign up') %>
-<div class="row center">
-  <div class="span4 offset4">
+  <div class="form-login-signup">
     <%= form_for(@user) do |f| %>
+      <h2>Please sign up</h2>
       <%= render 'fields', f: f %>
-      <div><%= f.submit "Join", class: "btn btn-large btn-primary" %><div>
+      <%= f.submit "Join", class: "btn btn-medium btn-primary" %>
     <% end %>
+    <p>Already a member? Welcome back!</p>
+    <p>Please <%= link_to "log in here.", login_path %></p>
   </div>
-</div>

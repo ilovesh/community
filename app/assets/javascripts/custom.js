@@ -9,10 +9,8 @@ $(document).ready(function(){
 	//console.log(gon.global.courses_with_path);
 	
 	//call jQuery UI's auto-complete function
-	$( "#course_name" ).autocomplete({
-		//indicate that minimum input length should be 2
+	$("#q").autocomplete({
 		minLength: 2,
-		//the source of data
 		source: gon.global.courses
 	});
 
@@ -90,6 +88,20 @@ $(document).ready(function(){
   $('.view-select').change(function() {
     $(this).closest('form').submit();
   });
+
+
+/*
+$('.topnav-search-query').focus(function(){
+  $(this).animate({
+    width: '400px'
+  }, 400 )
+}); 
+
+$('.topnav-search-query').blur(function(){
+  $(this).animate({
+    width: '206px'
+  }, 500 )
+});*/
 
 
 });

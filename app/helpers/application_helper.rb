@@ -1,8 +1,8 @@
 module ApplicationHelper
   # Returns the full title on a per-page basis
   def full_title(page_title)
-  	welcome_title = "Welcome to Dragon!"
-    base_title    = "Dragon"
+  	welcome_title = "Welcome to #{NAME}!"
+    base_title    = NAME
     if page_title.empty?
       welcome_title
     else

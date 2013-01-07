@@ -1,8 +1,8 @@
-<% if current_user.interested?(@course) && title.include?('interested') %>
+<% if current_user && current_user.interested?(@course) && title.include?('interested') %>
 <% delete = true %>
-<% elsif current_user.taking?(@course) && title.include?('taking') %>
+<% elsif current_user && current_user.taking?(@course) && title.include?('taking') %>
 <% delete = true %>
-<% elsif current_user.taken?(@course) && title.include?('finished') %>
+<% elsif current_user && current_user.taken?(@course) && title.include?('finished') %>
 <% delete = true %>
 <% else %>
 <% delete = false %>

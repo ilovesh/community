@@ -5,9 +5,9 @@ namespace :db do
     #make_universities
     #make_courses
     #make_users
-    #make_enrollments
-    make_discussions
-    make_lists
+    make_enrollments
+    #make_discussions
+    #make_lists
     #make_comments
     #make_notes
     #make_reviews

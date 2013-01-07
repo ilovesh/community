@@ -4,5 +4,8 @@
         <% if params[:view] %>
           <input name="view" type="hidden" value=<%= params[:view] %>>
         <% end %>
+        <% if params[:q] %>
+          <input name="q" type="hidden" value=<%= params[:q] %>>
+        <% end %>        
       <% end %>
     </div>

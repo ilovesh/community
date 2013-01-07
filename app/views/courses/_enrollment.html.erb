@@ -1,9 +1,12 @@
   <%= render 'courses/btn_interested' %>
   <%= render 'courses/btn_taking' %>    
   <%= render 'courses/btn_taken' %>
+
+<% if current_user %>
   <%= render partial: 'courses/modal', locals: { status: "interested",
                                        title: "I'm interested in this course!" } %>
   <%= render partial: 'courses/modal', locals: { status: "taking",
                                        title: "I'm taking this course!" } %>
   <%= render partial: 'courses/modal', locals: { status: "taken",
                                        title: "I have finished this course!" } %>
+<% end %>

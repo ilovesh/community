@@ -16,6 +16,7 @@
 class Enrollment < ActiveRecord::Base
   attr_accessible :course_id, :status, :user_id, :tag_list
   acts_as_taggable
+  before_save :add_tags_to_course
 
   validates :course_id, presence: true, uniqueness: { scope: :user_id }
   validates :user_id,   presence: true
@@ -25,4 +26,15 @@ class Enrollment < ActiveRecord::Base
   belongs_to :course
 
   default_scope order: 'enrollments.created_at DESC'
+
+private
+  def add_tags_to_course
+    if self.tag_list.any?
+      course = Course.find(self.course_id)
+      tag_list.each do |tag|
+      	course.tag_list << tag
+      	course.save
+      end
+    end
+  end
 end

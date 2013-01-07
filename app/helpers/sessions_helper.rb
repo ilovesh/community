@@ -35,13 +35,21 @@ module SessionsHelper
   end
 
   def store_location
-    session[:return_to] = request.fullpath
+    if request.post? || request.put? #|| controller_name == "sessions"
+      session[:return_to] = request.env['HTTP_REFERER']
+    else
+      session[:return_to] = request.fullpath
+    end
   end
 
   def loggedin_user
     unless logged_in?
-      store_location  
-      redirect_to login_path, notice: "Please log in."
+      store_location
+      flash[:notice] = "Please log in."
+      respond_to do |format|
+        format.html { redirect_to login_path }
+        format.js { render js: %(window.location.pathname='#{login_path}') }
+      end      
     end
   end
 

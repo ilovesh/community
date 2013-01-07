@@ -10,7 +10,7 @@
       </a>
 
       <!-- Be sure to leave the brand out there if you want it shown -->
-      <%= link_to "Coursling", root_path, id: "logo" %>
+      <%= link_to "Courigin", root_path, id: "logo" %>
 
       <!-- Everything you want hidden at 940px or less, place within here -->
       <div class="nav-collapse collapse">
@@ -20,7 +20,8 @@
 					  <li><%= link_to "Discussions", discussions_path %></li>
 					  <li><%= link_to "Lists",       lists_path %></li>
 					</ul>
-					<ul class="nav pull-right">
+          <%= render 'layouts/search_form' %>
+					<ul class="nav login-signup">
 					  <% unless logged_in? %>
 							<li><%= link_to "Log in",  login_path %></li>
 							<li><%= link_to "Sign up", signup_path %></li>
@@ -28,7 +29,6 @@
 						  <li><%= link_to "Log out", logout_path, method: "delete" %></li>
 					  <% end %>
 					</ul>
-					<%= render 'layouts/search_form' %>
 			  </nav>
       </div>
 

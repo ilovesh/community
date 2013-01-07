@@ -1,5 +1,6 @@
 class LikesController < ApplicationController
-  before_filter :loggedin_user, only: [:create, :destroy]
+  before_filter :loggedin_user, only: [:create]
+  before_filter :correct_user,  only: [:destroy]
 
   def create
     likeable_type = params[:like][:likeable_type]
@@ -17,7 +18,6 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @like = Like.find(params[:id])
     likeable_type = @like.likeable_type
     @likeable = likeable_type.constantize.find(@like.likeable_id)
     if likeable_type == "Note" || likeable_type == "List"
@@ -31,4 +31,11 @@ class LikesController < ApplicationController
       format.js
     end    
   end
+
+private
+  def correct_user
+    @like = current_user.likes.find_by_id(params[:id])
+    redirect_to root_path if @like.nil?
+  end
+
 end

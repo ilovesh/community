@@ -1,8 +1,12 @@
 <div class="btn-row">
-  <% if current_user.interested?(@course) %>
-    <a class="btn btn-small btn-enroll btn-warning" href="#interested" data-toggle="modal">Interested</a>
+  <% if current_user %>
+    <% if current_user.interested?(@course) %>
+      <a class="btn btn-small btn-enroll btn-warning" href="#interested" data-toggle="modal">Interested</a>
+    <% else %>
+      <a class="btn btn-small btn-enroll" href="#interested" data-toggle="modal">Interested</a>
+    <% end %>
   <% else %>
-    <a class="btn btn-small btn-enroll" href="#interested" data-toggle="modal">Interested</a>
+    <%= link_to "Interested", enrollments_path, method: :post, class: "btn btn-small btn-enroll" %>
   <% end %>
-    <%= render partial: 'shared/social_count', locals: { users: @course.interested_users } %>
+  <%= render partial: 'shared/social_count', locals: { users: @course.interested_users } %>
 </div>

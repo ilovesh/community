@@ -19,9 +19,8 @@
       <% end %>
       <div class="pull-right">
         <%= render partial: 'shared/timestamp', locals: { post: discussion } %>
-        <% unless current_page? root_path %>
         <%= render partial: "shared/small_gravatar", locals: { post: discussion } %>
-        <% end %>
+
         <%= link_to discussion.user.username, discussion.user %>
         <% if current_user?(discussion.user) %>
           <%= link_to "edit",   edit_discussion_path(discussion.id) %>

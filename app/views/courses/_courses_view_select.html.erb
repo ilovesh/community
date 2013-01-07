@@ -1,17 +1,17 @@
 <div class="btn-group pull-right" data-toggle="buttons-radio">
-  <% if params[:view] == "list" %>
+  <% if params[:view] == "grid" %>
     <%= link_to courses_path(status: params[:status]), class: "btn" do %>
-      <i class=" icon-th-large"></i>
-    <% end %>  
-    <%= link_to courses_path(status: params[:status], view: "list"), class: "btn disabled" do %>
       <i class="icon-th-list"></i>
+    <% end %>
+    <%= link_to courses_path(status: params[:status], view: "grid"), class: "btn disabled" do %>
+      <i class=" icon-th-large"></i>
     <% end %>
   <% else %>
     <%= link_to courses_path(status: params[:status]), class: "btn disabled" do %>
-      <i class=" icon-th-large"></i>
-    <% end %>  
-    <%= link_to courses_path(status: params[:status], view: "list"), class: "btn" do %>
       <i class="icon-th-list"></i>
+    <% end %>
+    <%= link_to courses_path(status: params[:status], view: "grid"), class: "btn" do %>
+      <i class=" icon-th-large"></i>
     <% end %>
   <% end %>
 </div>

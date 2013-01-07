@@ -1,19 +1,19 @@
 <% provide(:title, 'All courses') %>
 <% content_for :left do %>
   <div class="row-fluid">
-    <h2 class="inline-header">All <%= @title if @title %> Courses</h2>
+    <h2 class="inline-header">All <%= params[:status].capitalize if params[:status] %> Courses</h2>
     <%= render partial: 'status_select', locals: { path: courses_path(view: params[:view]) } %>
     <%= render partial: 'courses_view_select' %>
   </div>
 
   <div class="section-container">
-    <% if params[:view] == "list" %>
-      <ul class="unstyled seperate">
-        <%= render partial: 'courses/list_course_item', collection: @courses, as: :course %>
-      </ul>
-    <% else %>
+    <% if params[:view] == "grid" %>
       <ul class="course-items thumbnails">
         <%= render partial: 'courses/grid_course_item', collection: @courses, as: :course %>
+      </ul>
+    <% else %>
+      <ul class="unstyled seperate">
+        <%= render partial: 'courses/list_course_item', collection: @courses, as: :course %>
       </ul>
     <% end %>
     <%= will_paginate @courses %>

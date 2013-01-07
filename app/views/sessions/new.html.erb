@@ -1,10 +1,11 @@
 <% provide(:title, "Log in") %>
-<div class="row center">
-  <div class="span4 offset4">
+  <div class="form-login-signup">
     <%= form_for(:session, url: sessions_path) do |f| %>
+      <h2>Please log in</h2>
       <%= f.text_field     :email,    placeholder: "Email" %>
       <%= f.password_field :password, placeholder: "Password" %>
-      <div><%= f.submit "Log in", class: "btn btn-large btn-primary" %></div>
+      <%= f.submit "Log in", class: "btn btn-medium btn-primary" %>
     <% end %>
+    <p>New to <%= NAME %>? <%= link_to "Join us right now!", signup_path %></p>
+    <p>Let's learn and share together!</p>
   </div>
-</div>
