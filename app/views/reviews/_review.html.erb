@@ -24,10 +24,10 @@
     <h5><%= review.title %></h5>
   <% end %>
   <% if current_page? review %>
-    <p><%= review.body %></p>
+    <p><%= simple_format(review.body) %></p>
   <% else %>
     <p><%= raw(truncate(h(review.body),
-                 length: 280,
+                 length: 200,
                  omission: link_to("...read more", review))) %>
     </p>
   <% end %>

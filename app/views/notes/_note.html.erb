@@ -24,9 +24,9 @@
     <h5><%= note.title %></h5>
   <% end %>
   <% if current_page? note %>
-    <p><%= note.body %></p>
+    <p><%= simple_format(note.body) %></p>
   <% else %>
-    <p><%= truncate(h(note.body), length: 280) %>
+    <p><%= truncate(h(note.body), length: 200) %>
      <%= link_to ' read this note', note %></p>
   <% end %>
 </div>

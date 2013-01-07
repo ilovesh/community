@@ -2,7 +2,7 @@
 <% content_for :left do %>
   <% if @courses.any? %>
     <div class="row-fluid">
-      <h2 class="inline-header">Courses Matching <em><%= params[:q].capitalize if params[:q] %></em></h2>
+      <h2 class="inline-header">Courses Matching <em><%= params[:q] if params[:q] %></em></h2>
       <%= render partial: 'courses/status_select', locals: { path: '/search?q=' } %>
       <%= render partial: 'search_view_select' %>
     </div>

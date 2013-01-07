@@ -12,10 +12,11 @@
   <body class="<%= body_bg(yield(:background)) %>">
     <%= render 'layouts/header' %>
     <div class="container-fluid">
-      <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>      
-      <% end %>
+      
       <div class="row-fluid">
+        <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>"><%= value %></div>      
+        <% end %>
         <%= yield %>
         <div class="left-column span7 offset1">
           <%= yield :left %>

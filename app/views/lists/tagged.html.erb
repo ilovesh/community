@@ -1,8 +1,11 @@
 <% provide(:title, 'Lists') %>
 <% content_for :left do %>
   <% if @lists.any? %>
+  <div class="row-fluid">
     <h2 class="inline-header">Lists Tagged with <em><%= params[:tag].capitalize if params[:tag] %></em></h2>
     <div class="pull-right"><%= render 'btn_new_list' %></div>
+  </div>
+  <%= render 'browse_all_lists' %>
     <div class="section-container">
       <div class="tabbable">
         <%= render 'tabs' %>
@@ -16,7 +19,7 @@
       <h2 class="inline-header">No Lists Matched Tag <em><%= params[:tag].capitalize if params[:tag] %></em></h2>
       <div class="pull-right"><%= render 'btn_new_list' %></div>
     </div>
-    <%= link_to "Browse all lists", lists_path %>
+    <%= render 'browse_all_lists' %>
   <% end %>
 <% end %>
 

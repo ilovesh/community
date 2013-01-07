@@ -1,8 +1,11 @@
 <% provide(:title, 'Discussions') %>
 <% content_for :left do %>
   <% if @discussions.any? %>
+  <div class="row-fluid">
     <h2 class="inline-header">Discussions Tagged with <em><%= params[:tag].capitalize if params[:tag] %></em></h2>
     <div class="pull-right"><%= render 'btn_new_discussion' %></div>
+  </div>
+    <%= render 'browse_all_discussions' %>
     <div class="section-container">
       <div class="tabbable">
         <%= render 'tabs' %>

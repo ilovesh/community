@@ -11,7 +11,7 @@
 #
 
 class Discussion < ActiveRecord::Base
-  attr_accessible :content, :title
+  attr_accessible :content, :title, :tag_list
   acts_as_commentable
   acts_as_taggable
   belongs_to :user

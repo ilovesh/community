@@ -11,7 +11,7 @@
         <%= render 'lists/edit_or_delete' %>
       </div>
       <% if @list.description? %>
-        <p><%= @list.description %></p>
+        <p><%= simple_format(@list.description) %></p>
       <% end %>
       <% if @list.tag_list.any? %>
         <ul class="inline">

@@ -33,10 +33,14 @@ span { text-align: center; }
 
 select { width: 100px; }
 
+.alert {
+  width: 280px;
+  margin: 0 auto;
+}
+
 .block { display: block; }
 
-.form-login-signup { 
-  max-width: 270px;
+.form-std {
   padding: 30px;
   margin: 0 auto 20px;
   background-color: white;
@@ -47,7 +51,7 @@ select { width: 100px; }
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
   -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
   box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
-  input { width: 255px; }
+  form { text-align: center; }
   h2 { 
     margin-bottom: 20px;
     text-align: center;
@@ -60,6 +64,20 @@ select { width: 100px; }
   p { 
     text-align: center;
     margin-bottom: 3px;
+  }
+}
+
+.form-login-signup { 
+  max-width: 270px;
+  input { width: 255px; }
+}
+
+.form-new-edit-post, .form-new-edit-list {
+  max-width: 370px;
+  input { width: 355px; }
+  textarea {
+    width: 355px;
+    height: 120px;
   }
 }
 

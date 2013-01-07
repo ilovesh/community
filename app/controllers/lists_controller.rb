@@ -22,7 +22,7 @@ class ListsController < ApplicationController
     @courses = @list.courses.sort_by {|c| Listing.find_by_list_id_and_course_id(@list.id, c.id).created_at }
     @comments = @list.comment_threads[0..2]
     @user = @list.user
-    @lists = @user.lists.delete_if { |l| l.id == @list.id }.sort_by(&:created_at).reverse[0..2]
+    @lists = @user.lists.non_empty.delete_if { |l| l.id == @list.id }.sort_by(&:created_at).reverse[0..2]
     related_lists = []
     tags = @list.tag_list
     if tags
@@ -66,7 +66,7 @@ class ListsController < ApplicationController
   def tagged
     @tag = params[:tag]
     @tags = List.tag_counts_on(:tags).order('count desc').map(&:name)[0...25]
-    lists = List.tagged_with(params[:tag])
+    lists = List.tagged_with(params[:tag]).non_empty
     if params[:tab] == "stars"
       @lists = by_stars(lists).paginate(page: params[:page])
     else

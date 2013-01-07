@@ -7,7 +7,7 @@
       <% end %>
       <% unless current_page?(root_path) %>
         <% if current_page? discussion %>
-          <p><%= discussion.content %></p>
+          <p><%= simple_format(discussion.content) %></p>
         <% else %>
           <p><%= truncate(discussion.content, length: 140) %></p>
         <% end %>

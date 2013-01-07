@@ -7,17 +7,15 @@
     <div class="row-fluid">
       <%= render 'list_main' %>
     </div>
-
     <% if @courses.any? %>
-    <div class="list-courses">
-      <h4><%= pluralize(@courses.count, "course") %></h4>
-      <ol>
-        <%= render partial: 'courses/list_course_item', collection: @courses, as: :course %>
-      </ol>
-    </div>
-  </div>
-  <% end %>
-          
+      <div class="list-courses">
+        <h4><%= pluralize(@courses.count, "course") %></h4>
+        <ol>
+          <%= render partial: 'courses/list_course_item', collection: @courses, as: :course %>
+        </ol>
+      </div>
+    <% end %>
+  </div>        
 <% end %>
 
 <% content_for :right do %>
