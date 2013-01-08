@@ -20,10 +20,10 @@ class ReviewsController < ApplicationController
   def index
     @course = Course.find(params[:course_id])
     reviews = @course.reviews
-    if params[:tab] == "stars"
-      @reviews = reviews.sort_by { |r| -r.likes.count }.paginate(page: params[:page])
-    else
+    if params[:tab] == "newest"
       @reviews = reviews.paginate(page: params[:page])
+    else
+      @reviews = reviews.sort_by { |r| -r.likes.count }.paginate(page: params[:page])
     end
   end
 

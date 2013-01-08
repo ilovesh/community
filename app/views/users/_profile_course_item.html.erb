@@ -1,0 +1,4 @@
+<li>
+  <span class="span2 muted profile-timestamp"><%= time_ago_in_words(@enrollments.find_by_course_id(course.id).created_at) %> ago</span>
+  <%= link_to course.name, course %>
+</li>

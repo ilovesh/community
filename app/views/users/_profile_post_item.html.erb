@@ -1,0 +1,12 @@
+<li>
+  <div class="span2 muted profile-timestamp"><%= time_ago_in_words(post.created_at) %> ago</div>
+  <div class="span1"><%= pluralize(post.likes.count, vote) %></div>
+  <div class="offset3 post-body">
+    <%= link_to post.title, post %>
+    <% if type == "list" %>
+      <span class="label"><%= pluralize(post.courses.count, "course") %></span>
+    <% else %>
+      <p>for <em><%= post.course.full_name %></em></p>
+    <% end %>
+  </div>
+</li>

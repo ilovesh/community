@@ -1,6 +1,6 @@
 <div class="sidebar-course course-summary">  
   <h3>Course</h3>
-  <%= link_to image_tag(course.image_link, class: "img-medium block"), course %>
+  <%= link_to image_tag(course.image_link, class: "img-medium block img-course"), course %>
   <%= render partial: 'courses/course_status', locals: {course: course} %>  
   <h5><%= link_to course.full_name, course %></h5>
   <div id="provider">
@@ -9,4 +9,7 @@
   </div>
   <%= render partial: 'courses/university', locals: { course: course } %>
   <%= render partial: 'courses/instructor', locals: { course: course } %>
+  <%= render partial: 'courses/start_date', locals: { course: @course } %>
+  <%= render partial: 'courses/final_date', locals: { course: @course } %>
+  <%= render partial: 'courses/duration',   locals: { course: @course } %>
 </div>

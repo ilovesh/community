@@ -34,5 +34,18 @@ class CoursesController < ApplicationController
     @top_tags = @course.top_tags[0..9]
     @enrollments = @course.enrollments[0..8]
     @lists = List.has(@course)[0..5]
+=begin
+    @related_courses = []
+    tags = @course.top_tags
+    if tags
+      tags.each do |tag|
+        tagged_courses = Course.tagged_with(tag)
+        @related_courses += tagged_courses
+      end
+      @related_courses = @related_courses.uniq.delete_if { |d| d.id == @course.id }.sort_by(&:created_at).reverse[0..4]
+    end
+=end
+
+
   end
 end

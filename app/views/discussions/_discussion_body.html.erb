@@ -5,7 +5,7 @@
         <div class="span10 discussion-summary">
         <h3><%= link_to discussion.title, discussion %></h3>
       <% end %>
-      <% unless current_page?(root_path) %>
+      <% if current_page?(discussions_path || discussion) %>
         <% if current_page? discussion %>
           <p><%= simple_format(discussion.content) %></p>
         <% else %>
@@ -19,15 +19,18 @@
       <% end %>
       <div class="pull-right">
         <%= render partial: 'shared/timestamp', locals: { post: discussion } %>
-        <%= render partial: "shared/small_gravatar", locals: { post: discussion } %>
 
-        <%= link_to discussion.user.username, discussion.user %>
-        <% if current_user?(discussion.user) %>
-          <%= link_to "edit",   edit_discussion_path(discussion.id) %>
-          <%= link_to "delete", discussion,
-                      method: :delete,
-                      data: { confirm: "Are you sure to delete this post?" },
-                      title: discussion.title %>
+        <% unless current_page?(discussion.user) %>
+          <%= render partial: "shared/small_gravatar", locals: { post: discussion } %>
+
+          <%= link_to discussion.user.username, discussion.user %>
+          <% if current_user?(discussion.user) %>
+            <%= link_to "edit",   edit_discussion_path(discussion.id) %>
+            <%= link_to "delete", discussion,
+                        method: :delete,
+                        data: { confirm: "Are you sure to delete this post?" },
+                        title: discussion.title %>
+          <% end %>
         <% end %>
       </div>
     </div>

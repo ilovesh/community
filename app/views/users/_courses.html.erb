@@ -1,0 +1,14 @@
+        <div class="tab-pane active" id="courses">
+          <h3>Interested (<%= @user.interested_courses.count %>)</h3>
+          <ul class="unstyled seperate">
+            <%= render partial: 'users/profile_course_item', collection: @user.interested_courses, as: :course %>
+          </ul>
+          <h3>Taking (<%= @user.taking_courses.count %>)</h3>
+          <ul class="unstyled seperate">
+            <%= render partial: 'users/profile_course_item', collection: @user.taking_courses, as: :course %>
+          </ul>
+          <h3>Finished (<%= @user.taken_courses.count %>)</h3>
+          <ul class="unstyled seperate">
+            <%= render partial: 'users/profile_course_item', collection: @user.taken_courses, as: :course %>
+          </ul>          
+        </div>

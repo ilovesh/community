@@ -1,0 +1,19 @@
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#note-likes">
+          <h3>Starred <%= pluralize(@liked_notes.count, 'note') %></h3>
+        </a>
+      </div>
+      <% if @liked_notes.count == 0 %>
+      <div id="note-likes" class="accordion-body collapse">
+      <% else %>
+      <div id="note-likes" class="accordion-body collapse in">
+      <% end %>
+        <div class="accordion-inner">         
+          <ul class="unstyled seperate">
+            <%= render partial: 'users/liked_item', collection: @liked_notes, as: :post,
+                       locals: { vote: "star", type: "post" } %>
+          </ul>
+        </div>
+      </div>
+    </div>

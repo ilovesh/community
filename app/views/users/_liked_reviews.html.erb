@@ -1,0 +1,15 @@
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#review-likes">
+          <h3>Voted for <%= pluralize(@liked_reviews.count, 'review') %></h3>
+        </a>
+      </div>
+      <div id="review-likes" class="accordion-body collapse">
+        <div class="accordion-inner">          
+          <ul class="unstyled seperate">
+            <%= render partial: 'users/liked_item', collection: @liked_reviews, as: :post,
+                       locals: { vote: "vote", type: "post" } %>
+          </ul>
+        </div>
+      </div>
+    </div>

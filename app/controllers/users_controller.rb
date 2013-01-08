@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, only: [:index, :edit, :update, :destroy, :following, :followers] 
-  before_filter :correct_user,   only: [:edit, :update, :destroy]
+  before_filter :logged_in_user, only: [:create] 
+  before_filter :correct_user,   only: [:edit, :update]
 
   def new
   	@user = User.new
@@ -23,6 +23,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    params[:user].delete(:password) if params[:user][:password].blank?
     if @user.update_attributes(params[:user])
       flash[:success] = "Profile updated"
       log_in @user
@@ -40,6 +41,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @liked_notes = @user.likes.where("likeable_type = 'Note'").map(&:likeable)
+    @liked_reviews = @user.likes.where("likeable_type = 'Review'").map(&:likeable)
+    @liked_discussions = @user.likes.where("likeable_type = 'Discussion'").map(&:likeable)
+    @liked_comments = @user.likes.where("likeable_type = 'Comment'").map(&:likeable)
+    @liked_lists = @user.likes.where("likeable_type = 'List'").map(&:likeable)
+    @enrollments = @user.enrollments
   end
 
 private

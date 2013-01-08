@@ -1,0 +1,7 @@
+        <div class="tab-pane" id="reviews">
+            <h3>Reviews (<%= @user.reviews.count %>)</h3>
+            <ul class="unstyled seperate">
+              <%= render partial: 'users/profile_post_item', collection: @user.reviews, as: :post,
+                         locals: { vote: "vote", type: "post" } %>
+            </ul>
+        </div>

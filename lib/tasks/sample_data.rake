@@ -5,7 +5,7 @@ namespace :db do
     #make_universities
     #make_courses
     #make_users
-    make_enrollments
+    #make_enrollments
     #make_discussions
     #make_lists
     #make_comments
@@ -18,7 +18,9 @@ end
 def make_users
   user = User.create!(username: "Example User",
                       email:    "example@gmail.com",
-                      password: "foobar")
+                      password: "foobar",
+                      location: "Shanghai, China",
+                      about: Faker::Lorem.paragraph)
   99.times do |n|
     username  = Faker::Internet.user_name + n.to_s
     email     = "example-#{n+1}@gmail.com"
@@ -144,7 +146,6 @@ def make_notes
   courses = Course.all(limit: 10)
   courses.each do |course|
     20.times do
-      User.all.sample.take_note!(course, Faker::Lorem.paragraph+Faker::Lorem.paragraph)
       User.all.sample.take_note!(course, Faker::Lorem.paragraph+Faker::Lorem.paragraph, Faker::Lorem.sentence)
     end
   end
@@ -154,7 +155,6 @@ def make_reviews
   courses = Course.all(limit: 10)
   courses.each do |course|
     20.times do
-      User.all.sample.review!(course, Faker::Lorem.paragraph)
       User.all.sample.review!(course, Faker::Lorem.paragraph+Faker::Lorem.paragraph, Faker::Lorem.sentence)
     end
   end

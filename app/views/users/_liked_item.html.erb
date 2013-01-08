@@ -1,0 +1,19 @@
+<li>
+  <div class="span2 muted profile-timestamp">
+    <%= time_ago_in_words(@user.likes.find_by_likeable_type_and_likeable_id(post.class.name, post.id).created_at) %> ago
+  </div>
+  <div class="span1"><%= pluralize(post.likes.count, vote) %></div>
+  <div class="offset3 post-body">
+    <% if type == "comment" %>
+      <%= link_to post.commentable.title, post.commentable %>
+      <p><span class="comment-user"><%= link_to post.user.username, post.user %>:</span><%= post.body %></p>
+    <% else %>
+      <%= link_to post.title, post %>
+    <% end %>
+    <% if type == "list" %>
+      <span class="label"><%= pluralize(post.courses.count, "course") %></span>
+    <% elsif type == "post" %>
+      <p>for <em><%= post.course.full_name %></em></p>
+    <% end %>
+  </div>
+</li>

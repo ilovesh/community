@@ -23,14 +23,14 @@ class ListsController < ApplicationController
     @comments = @list.comment_threads[0..2]
     @user = @list.user
     @lists = @user.lists.non_empty.delete_if { |l| l.id == @list.id }.sort_by(&:created_at).reverse[0..2]
-    related_lists = []
+    @related_lists = []
     tags = @list.tag_list
     if tags
       tags.each do |tag|
         tagged_lists = List.tagged_with(tag)
-        related_lists += tagged_lists
+        @related_lists += tagged_lists
       end
-      @related_lists = related_lists.uniq.delete_if { |l| l.id == @list.id }.sort_by(&:created_at).reverse[0..2]
+      @related_lists = @related_lists.uniq.delete_if { |l| l.id == @list.id }.sort_by(&:created_at).reverse[0..2]
     end    
   end
 

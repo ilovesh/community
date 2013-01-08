@@ -21,14 +21,14 @@ class DiscussionsController < ApplicationController
     @comments   = @discussion.comment_threads
     @user = @discussion.user
     @posts = @user.discussions.delete_if { |d| d.id == @discussion.id }.sort_by(&:created_at).reverse[0..4]
-    related_discussions = []
+    @related_discussions = []
     tags = @discussion.tag_list
     if tags
       tags.each do |tag|
         tagged_discussions = Discussion.tagged_with(tag)
-        related_discussions += tagged_discussions
+        @related_discussions += tagged_discussions
       end
-      @related_discussions = related_discussions.uniq.delete_if { |d| d.id == @discussion.id }.sort_by(&:created_at).reverse[0..4]
+      @related_discussions = @related_discussions.uniq.delete_if { |d| d.id == @discussion.id }.sort_by(&:created_at).reverse[0..4]
     end
   end
 

@@ -34,7 +34,7 @@ span { text-align: center; }
 select { width: 100px; }
 
 .alert {
-  width: 280px;
+  width: 380px;
   margin: 0 auto;
 }
 
@@ -72,7 +72,7 @@ select { width: 100px; }
   input { width: 255px; }
 }
 
-.form-new-edit-post, .form-new-edit-list {
+.form-new-edit {
   max-width: 370px;
   input { width: 355px; }
   textarea {
@@ -103,7 +103,9 @@ select { width: 100px; }
   overflow: hidden;
 }
 
-.timestamp { margin-right: 5px; }
+.timestamp { 
+  margin-right: 5px;
+}
 
 /* header */
 #logo{
@@ -175,6 +177,8 @@ ol > li {
 
 .img-large { height: 173px; }
 
+.img-course { margin-bottom: 10px; }
+
 .gravatar { margin-right: 5px; }
 
 .circle {
@@ -192,17 +196,17 @@ ol > li {
 .circle-finished { background-color: red; }
 
 /* typography */
+h2, h3 { color: DimGray; }
+
 h2 {
   font-size: 25px;
   line-height: 30px;
-  color: #777;
   margin: 5px 0;
 }
 
 h3 {
   font-size: 18px;
   line-height: 25px;
-  color: #777;
   margin: 0;
 }
 
@@ -473,6 +477,8 @@ ul.list-items {
   button { vertical-align: bottom; }
 }
 
+.discussion-comment-form { margin-left: 65px; }
+
 .list-comment-form {
   margin: 15px;
   textarea {
@@ -524,6 +530,62 @@ ul.list-items {
 .list-content { margin: 0 20px; }
 
 .list-courses { margin: 20px; }
+
+/* users */
+#user-page {
+  width: 960px;
+  margin: 0 auto;
+  .profile-tab-content { 
+    a { font-weight: bold; }
+    .comment-user {
+      a { font-weight: normal; }
+      margin-right: 6px;
+    }
+  }
+  h2 { 
+    margin-right: 10px;
+  }
+}
+
+.edit-profile {
+  img { margin-bottom: 15px; }
+  a { font-size: 18px; }
+  input { width: 255px; }
+  textarea {
+    width: 450px;
+    height: 150px;
+  }
+  .btn { width: 100px; }
+}
+
+.profile-gravatar {
+  float: left;
+  margin: 6px 0 0 32px;
+}
+
+.profile-table-header {
+  width: 80px;
+  vertical-align: top;
+}
+
+.profile-data {
+  min-height: 96px;
+  table {
+    text-align: left;
+  }
+}
+
+.user-tabs {
+  margin-top: 50px;
+}
+
+.profile-timestamp {
+  text-align: left;
+}
+
+.caret {
+  margin-right: 3px;
+}
 
 /* miscellaneous */
 .debug_dump {

@@ -1,0 +1,6 @@
+        <div class="tab-pane" id="discussions">
+          <h3>Discussions (<%= @user.discussions.count %>)</h3>
+          <ul class="unstyled seperate">
+            <%= render partial: 'discussions/discussion', collection: @user.discussions, as: :discussion %>
+          </ul>        
+        </div>

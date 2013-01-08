@@ -9,11 +9,13 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  remember_token  :string(255)
+#  location        :string(255)
+#  about           :text
 #
 
 class User < ActiveRecord::Base
-  attr_accessible :email, :username, :password
-  has_secure_password
+  attr_accessible :email, :username, :password, :location, :about
+  has_secure_password 
   acts_as_tagger
 
   before_save { |user| user.email = email.downcase }
@@ -24,10 +26,10 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
   					uniqueness: { case_sensitive: false }
-  validates :password,  length: { minimum: 6 }
+  validates :password,  length: { minimum: 6 }, if: :validate_password?
 
   has_many :enrollments, dependent: :destroy
-  has_many :will_take_courses, through: :enrollments,
+  has_many :interested_courses, through: :enrollments,
            source: :course,    conditions: ["enrollments.status = ?", 1]
   has_many :taking_courses,    through: :enrollments,
            source: :course,    conditions: ["enrollments.status = ?", 2]
@@ -165,5 +167,9 @@ class User < ActiveRecord::Base
 
     def find_enrollment(course)
       @enrollment = enrollments.find_by_course_id(course.id)
+    end
+
+    def validate_password?
+      password.present?
     end
 end

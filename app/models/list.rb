@@ -42,7 +42,9 @@ class List < ActiveRecord::Base
 
   def self.has(course)
     lists = []
-    lists << Listing.find_by_course_id(course.id).list
+    listing = Listing.find_by_course_id(course.id)
+    lists << listing.list if listing
+    lists
   end
 
 end

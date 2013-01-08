@@ -4,10 +4,8 @@
   <h2>Discussion</h2>
   <div class="section-container">
     <%= render partial: "discussions/discussion", locals: { discussion: @discussion } %>
-    <div class="offset1">
-      <div class="comment-form">
-        <%= render partial: "comments/comment_form", locals: { commentable: @discussion } %>
-      </div>
+    <div class="comment-form discussion-comment-form">
+      <%= render partial: "comments/comment_form", locals: { commentable: @discussion } %>
     </div>
     
     <ul class="unstyled seperate" id="discussion-<%=@discussion.id%>-comments">

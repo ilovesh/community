@@ -1,9 +1,29 @@
 <% provide(:title, @user.username) %>
-<% content_for :left do %>
-  <%= gravatar_for @user, size: 62 %>
-  <%= @user.username %>
-<% end %>
+<% provide(:background, 'no-bg') %>
+<div id="user-page">
+  <h2 class="inline-header"><%= @user.username %></h2>
+  <% if current_user?(@user) %>
+    <%= link_to "edit",   edit_user_path(@user) %>
+  <% end %>
+  <div class="row profile">
+    <div class="profile-gravatar">
+      <%= render partial: 'shared/profile_gravatar', locals: { user: @user } %>
+    </div>
+    <div class="span5 profile-data">   
+      <table>
+        <tr><th class="profile-table-header">location</th><td><%= @user.location if @user.location %></td></tr>
+        <tr><th class="profile-table-header">about me</th><td><%= @user.about if @user.about %></td></tr>    
+      </table>
+    </div>
+  </div>
+  <%= render 'tabs' %>
+  <div class="tab-content profile-tab-content">
+    <%= render 'courses' %>
+    <%= render 'notes' %>
+    <%= render 'reviews' %>
+    <%= render 'discussions' %>
+    <%= render 'lists' %>
+    <%= render 'votes' %>
+  </div>
 
-<% content_for :right do %>
-  place_holder
-<% end %>
+</div>

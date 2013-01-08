@@ -9,6 +9,8 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  remember_token  :string(255)
+#  location        :string(255)
+#  about           :text
 #
 
 require 'test_helper'
