@@ -9,7 +9,7 @@
     <div class="profile-gravatar">
       <%= render partial: 'shared/profile_gravatar', locals: { user: @user } %>
     </div>
-    <div class="span5 profile-data">   
+    <div class="span6 profile-data">   
       <table>
         <tr><th class="profile-table-header">location</th><td><%= @user.location if @user.location %></td></tr>
         <tr><th class="profile-table-header">about me</th><td><%= @user.about if @user.about %></td></tr>    

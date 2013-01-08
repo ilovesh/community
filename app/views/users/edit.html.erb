@@ -7,7 +7,7 @@
       <div><%= render partial: 'shared/profile_gravatar', locals: { user: @user } %></div>
       <%= link_to "change picture", "http://gravatar.com/emails", target: "_blank" %>
     </div>
-    <div class="span5 profile-data">   
+    <div class="span6 profile-data">   
       <%= form_for(@user) do |f| %>
         <%= render 'edit_fields', f: f %>
       <% end %>
