@@ -34,7 +34,7 @@ span { text-align: center; }
 select { width: 100px; }
 
 .alert {
-  width: 380px;
+  width: 220px;
   margin: 0 auto;
 }
 
@@ -109,7 +109,7 @@ select { width: 100px; }
 
 /* header */
 #logo{
-  color: fireBrick;//#B31B1B;
+  color: fireBrick;
   float: left;
   font-size: 2.3em;
   font-weight: bold;
@@ -125,7 +125,29 @@ ul#top-nav {
 
 .navbar-search { margin-left: 116px; }
 
-.login-signup { margin-left: 50px; }
+.nav.actions {
+  margin-left: 180px;
+  li > a {
+    margin: 8px 0 0 15px;
+    padding: 5px 10px;
+    border: 2px solid #DDD;
+    border-radius: 4px;
+    font-size: 11px;
+    line-height: 1;
+    color: #333;
+    text-transform: uppercase;
+    &:hover {
+      border-color: #777;
+    }
+  }
+  li:last-child a {
+    font-weight: bold;
+  }
+}
+
+.nav.account {
+  margin-left: 240px;
+}
 
 /* list */
 ul, ol { margin: 0; }

@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_filter :logged_in_user, only: [:create] 
   before_filter :correct_user,   only: [:edit, :update]
 
   def new
