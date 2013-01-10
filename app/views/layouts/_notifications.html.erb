@@ -14,7 +14,7 @@
             <i class="icon-bell"></i>
           </a>
           <ul class="dropdown-menu notification-dropdown">
-            <%= render partial: "layouts/notification", collection: current_user.notifications.limit(6), as: :notification %>
+            <%= render partial: "layouts/read_notification", collection: current_user.notifications.limit(6), as: :notification %>
           </ul>
         <% end %>
       <% end %>
