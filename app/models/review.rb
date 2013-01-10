@@ -18,5 +18,7 @@ class Review < ActiveRecord::Base
   belongs_to :user
   belongs_to :course
   has_many :likes, dependent: :destroy, as: :likeable
+  has_many :notifications, dependent: :destroy, as: :notifiable
+  
   default_scope order: 'reviews.created_at DESC' 
 end

@@ -1,6 +1,9 @@
 Dragon::Application.routes.draw do
   root to: 'basics#home'
-  resources :users, :votes
+  resources :users do
+    resources :notifications, only: [:index]
+  end
+  resources :votes
   resources :sessions, only: [:new, :create, :destroy]
   resources :courses do
     collection do
@@ -28,6 +31,7 @@ Dragon::Application.routes.draw do
   match '/login',  to: 'sessions#new'
   match '/logout', to: 'sessions#destroy', via: :delete
   match '/search', to: 'basics#search'
+  match '/read',   to: 'basics#read', via: :post  
   match '/courses/tagged/:tag', to: 'courses#tagged'
   match '/lists/tagged/:tag',   to: 'lists#tagged'
   match '/discussions/tagged/:tag',   to: 'discussions#tagged'  

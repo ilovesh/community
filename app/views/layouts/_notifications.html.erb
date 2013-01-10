@@ -1,0 +1,22 @@
+  <ul class="nav" id="notification">
+    <li id="fat-menu" class="dropdown">
+      <% if current_user.unread_notifications? %>
+        <form id="formRead" method="post" action="/read" data-remote="true"></form>
+        <a href="#" class="dropdown-toggle btn-notification" data-toggle="dropdown">
+          <i class="icon-bell icon-notify"></i>
+        </a>
+        <ul class="dropdown-menu notification-dropdown">
+          <%= render partial: "layouts/notification", collection: current_user.unread_notifications, as: :notification %>
+        </ul>
+      <% else %>
+        <% if current_user.notifications.any? %>
+          <a href="#" class="dropdown-toggle btn-notification" data-toggle="dropdown">
+            <i class="icon-bell"></i>
+          </a>
+          <ul class="dropdown-menu notification-dropdown">
+            <%= render partial: "layouts/notification", collection: current_user.notifications.limit(6), as: :notification %>
+          </ul>
+        <% end %>
+      <% end %>
+    </li>
+  </ul>

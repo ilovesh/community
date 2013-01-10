@@ -123,7 +123,9 @@ ul#top-nav {
   font-weight: bold;
 }
 
-.navbar-search { margin-left: 116px; }
+.navbar-search {
+  margin-left: 30px;
+}
 
 .nav.actions {
   margin-left: 180px;
@@ -146,7 +148,34 @@ ul#top-nav {
 }
 
 .nav.account {
-  margin-left: 240px;
+  margin-left: 200px;
+}
+
+.nav#notification {
+  margin-left: -1;
+  form {
+    margin: 0;
+    padding: 0;
+  }
+  li > a.notification-read {
+    color: #777;
+  }
+}
+
+.notification-dropdown {
+  font-size: 11px;
+  li {
+    padding: 0 5px;
+  }
+  li > a {
+    display: inline;
+    padding: 2px;
+    color: #08C;
+  }
+}
+
+.icon-notify {
+  color: red;
 }
 
 /* list */

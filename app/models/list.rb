@@ -22,7 +22,8 @@ class List < ActiveRecord::Base
   has_many :listings, dependent: :destroy
   has_many :courses,  through: :listings
   has_many :likes, dependent: :destroy, as: :likeable
-  
+  has_many :notifications, dependent: :destroy, as: :notifiable
+    
   scope :non_empty, lambda{ all.select{ |list| list.courses.any? } }
   default_scope order: 'lists.created_at DESC'
 

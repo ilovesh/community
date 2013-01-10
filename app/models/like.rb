@@ -14,6 +14,7 @@
 class Like < ActiveRecord::Base
   attr_accessible :like, :likeable_type, :likeable_id
   belongs_to :likeable, :polymorphic => true
+  belongs_to :user
 
   validates :like,   presence: true
   validates :likeable_type, presence: true

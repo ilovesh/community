@@ -21,15 +21,12 @@
 
 <div class="review-body">
   <% if review.title %>
-    <h5><%= review.title %></h5>
+    <h5><%= link_to review.title, review %></h5>
   <% end %>
   <% if current_page? review %>
     <p><%= simple_format(review.body) %></p>
   <% else %>
-    <p><%= raw(truncate(h(review.body),
-                 length: 200,
-                 omission: link_to("...read more", review))) %>
-    </p>
+    <p><%= truncate(h(review.body), length: 200) %></p>
   <% end %>
 </div>
 

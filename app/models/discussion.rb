@@ -16,6 +16,7 @@ class Discussion < ActiveRecord::Base
   acts_as_taggable
   belongs_to :user
   has_many :likes, dependent: :destroy, as: :likeable
+  has_many :notifications, dependent: :destroy, as: :notifiable
 
   validates :title,   presence: true
   validates :user_id, presence: true

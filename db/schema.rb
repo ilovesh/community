@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130108140717) do
+ActiveRecord::Schema.define(:version => 20130110170153) do
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",   :default => 0
@@ -98,6 +98,17 @@ ActiveRecord::Schema.define(:version => 20130108140717) do
     t.text     "body"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "notifications", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "notifiable_type"
+    t.integer  "notifiable_id"
+    t.string   "activity"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.boolean  "read",            :default => false
+    t.integer  "referrer_id"
   end
 
   create_table "providers", :force => true do |t|

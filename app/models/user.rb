@@ -43,6 +43,7 @@ class User < ActiveRecord::Base
   has_many :likes,          dependent: :destroy
   has_many :reviews,        dependent: :destroy
   has_many :listings,       dependent: :destroy
+  has_many :notifications,  dependent: :destroy
 
   def enroll!(course, status, *arg)
     tag_list = arg[0] if arg
@@ -143,6 +144,15 @@ class User < ActiveRecord::Base
     likeable_id = likeable.id
     likes.find_by_likeable_type_and_likeable_id(likeable_type, likeable_id)
   end
+
+  def unread_notifications?
+    !notifications.where("read = ?", false).blank?
+  end
+
+  def unread_notifications
+    notifications.where("read = ?", false)
+  end
+
 
   private
   	def create_remember_token

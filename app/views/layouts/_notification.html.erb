@@ -1,0 +1,13 @@
+<li>
+  <% if notification.activity == 'Comment' %>
+    1 new comment on <%= link_to notification.notifiable.title, notification.notifiable %>
+  <% elsif notification.activity == 'Like' %>    
+    <% if notification.notifiable_type == 'Discussion' || notification.notifiable_type == 'Review' %>      
+    1 new vote for <%= link_to notification.notifiable.title, notification.notifiable %>
+    <% elsif notification.notifiable_type == 'Comment' %>
+    1 new vote for <%= link_to truncate(notification.notifiable.body, length: 50), notification.notifiable.commentable %>
+    <% else %>
+    1 new star for <%= link_to notification.notifiable.title, notification.notifiable %>
+    <% end %>
+  <% end %>
+</li>

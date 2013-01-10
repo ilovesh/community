@@ -1,0 +1,28 @@
+# == Schema Information
+#
+# Table name: notifications
+#
+#  id              :integer          not null, primary key
+#  user_id         :integer
+#  notifiable_type :string(255)
+#  notifiable_id   :integer
+#  activity        :string(255)
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  read            :boolean          default(FALSE)
+#  referrer_id     :integer
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user_id: 1
+  notifiable_type: MyString
+  notifiable_id: 1
+  type: 
+
+two:
+  user_id: 1
+  notifiable_type: MyString
+  notifiable_id: 1
+  type: 

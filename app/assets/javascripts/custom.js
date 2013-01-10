@@ -89,6 +89,10 @@ $(document).ready(function(){
     $(this).closest('form').submit();
   });
 
+  $('.btn-notification').click(function() {
+    $(this).find('.icon-notify').removeClass('icon-notify');
+    $(this).prev('form').submit();
+  })
 
 /*
 $('.topnav-search-query').focus(function(){

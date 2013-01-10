@@ -11,6 +11,10 @@ class LikesController < ApplicationController
     elsif likeable_type == "Review" || likeable_type == "Discussion" || likeable_type == "Comment"
       @icon_name = VOTED
     end
+    @likeable.user.notifications.create!(notifiable_type: likeable_type,
+                                         notifiable_id: @likeable.id,
+                                         activity: "Like",
+                                         referrer_id: current_user.id)
     respond_to do |format|
       format.html { redirect_to @likeable }
       format.js

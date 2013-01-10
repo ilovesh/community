@@ -1,0 +1,9 @@
+<% provide(:title, "Notifications") %>
+<% provide(:background, 'no-bg') %>
+<div id="user-page">
+  <h2 class="inline-header"><%= pluralize(@notifications.count, 'new notification') %></h2>
+  <ul class="seperate">
+    <%= render partial: "layouts/notification", collection: @notifications, as: :notification %>
+  </ul>
+
+</div>

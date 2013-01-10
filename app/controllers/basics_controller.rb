@@ -1,4 +1,6 @@
 class BasicsController < ApplicationController
+  before_filter :loggedin_user, only: [:count]
+
   def home
     @ongoing = Course.of_status(:ongoing).sort_by{ |c| -c.users.count }[0..20].sample(6)
     @upcoming = Course.of_status(:upcoming).sort_by{ |c| -c.users.count }[0..20].sample(6)
@@ -32,6 +34,14 @@ class BasicsController < ApplicationController
       @courses = courses
     end
     @courses = @courses.paginate(page: params[:page])
-
   end
+
+  def read
+    current_user.unread_notifications.each {|n| n.toggle! :read }
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js
+    end 
+  end
+
 end

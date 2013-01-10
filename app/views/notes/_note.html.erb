@@ -21,13 +21,12 @@
 
 <div class="note-body">
   <% if note.title %>
-    <h5><%= note.title %></h5>
+    <h5><%= link_to note.title, note %></h5>
   <% end %>
   <% if current_page? note %>
     <p><%= simple_format(note.body) %></p>
   <% else %>
     <p><%= truncate(h(note.body), length: 200) %>
-     <%= link_to ' read this note', note %></p>
   <% end %>
 </div>
 
