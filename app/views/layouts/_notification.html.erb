@@ -1,13 +1,27 @@
 <li>
-  <% if notification.activity == 'Comment' %>
-    1 new comment on <%= link_to notification.notifiable.title, notification.notifiable %>
-  <% elsif notification.activity == 'Like' %>    
+  <% if notification.action_type == 'Comment' %>
+    1 <%= status %>comment on 
+      <% if notification.notifiable_type == 'Discussion' %>
+        <%= link_to notification.notifiable.title, 
+            "/discussions/#{notification.notifiable_id}#comment-#{notification.action_id}" %>
+      <% else %>
+        <%= link_to notification.notifiable.title,
+            "/lists/#{notification.notifiable_id}/comments#comment-#{notification.action_id}" %>
+      <% end %>
+  <% elsif notification.action_type == 'Like' %>    
     <% if notification.notifiable_type == 'Discussion' || notification.notifiable_type == 'Review' %>      
-    1 new vote for <%= link_to notification.notifiable.title, notification.notifiable %>
+    1 <%= status %>vote for <%= link_to notification.notifiable.title, notification.notifiable %>
     <% elsif notification.notifiable_type == 'Comment' %>
-    1 new vote for <%= link_to truncate(notification.notifiable.body, length: 50), notification.notifiable.commentable %>
+    1 <%= status %>vote for 
+      <% if notification.notifiable.commentable.class.name == 'Discussion' %>
+        <%= link_to truncate(notification.notifiable.body, length: 50), 
+            "/discussions/#{notification.notifiable.commentable.id}#comment-#{notification.notifiable.id}" %>
+      <% else %>
+        <%= link_to truncate(notification.notifiable.body, length: 50),
+            "/lists/#{notification.notifiable.commentable.id}/comments#comment-#{notification.notifiable.id}" %>
+      <% end %>
     <% else %>
-    1 new star for <%= link_to notification.notifiable.title, notification.notifiable %>
+    1 <%= status %>star for <%= link_to notification.notifiable.title, notification.notifiable %>
     <% end %>
   <% end %>
 </li>

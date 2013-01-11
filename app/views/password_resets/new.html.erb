@@ -1,0 +1,8 @@
+<% provide(:title, "Password reset") %>
+  <div class="form-std form-login-signup">
+    <%= form_tag password_resets_path, :method => :post do %>
+      <h2>Password Reset</h2>
+      <%= text_field_tag :email, params[:email], placeholder: "Email" %>
+      <%= submit_tag "Submit", class: "btn btn-medium btn-primary" %>
+    <% end %>
+  </div>

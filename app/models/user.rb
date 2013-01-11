@@ -2,15 +2,18 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  email           :string(255)
-#  password_digest :string(255)
-#  username        :string(255)
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  remember_token  :string(255)
-#  location        :string(255)
-#  about           :text
+#  id                     :integer          not null, primary key
+#  email                  :string(255)
+#  password_digest        :string(255)
+#  username               :string(255)
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  remember_token         :string(255)
+#  location               :string(255)
+#  about                  :text
+#  slug                   :string(255)
+#  password_reset_token   :string(255)
+#  password_reset_sent_at :datetime
 #
 
 class User < ActiveRecord::Base
@@ -148,6 +151,14 @@ class User < ActiveRecord::Base
     likes.find_by_likeable_type_and_likeable_id(likeable_type, likeable_id)
   end
 
+  def add_notification!(notifiable_obj, action_obj, user)
+    notifications.create!(notifiable_type: notifiable_obj.class.name,
+                          notifiable_id: notifiable_obj.id,
+                          action_type: action_obj.class.name,
+                          action_id: action_obj.id,
+                          action_user_id: user.id)
+  end
+
   def unread_notifications?
     !notifications.where("read = ?", false).blank?
   end
@@ -156,6 +167,12 @@ class User < ActiveRecord::Base
     notifications.where("read = ?", false)
   end
 
+  def send_password_reset
+    self.password_reset_token = SecureRandom.urlsafe_base64
+    self.password_reset_sent_at = Time.zone.now
+    save!
+    UserMailer.password_reset(self).deliver
+  end
 
   private
   	def create_remember_token

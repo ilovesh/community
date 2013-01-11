@@ -5,16 +5,13 @@ class LikesController < ApplicationController
   def create
     likeable_type = params[:like][:likeable_type]
     @likeable = likeable_type.constantize.find(params[:like][:likeable_id])
-    current_user.like!(@likeable)
+    @like = current_user.like!(@likeable)
     if likeable_type == "Note" || likeable_type == "List"
       @icon_name = LIKED
     elsif likeable_type == "Review" || likeable_type == "Discussion" || likeable_type == "Comment"
       @icon_name = VOTED
     end
-    @likeable.user.notifications.create!(notifiable_type: likeable_type,
-                                         notifiable_id: @likeable.id,
-                                         activity: "Like",
-                                         referrer_id: current_user.id)
+    @likeable.user.add_notification!(@likeable, @like, current_user)
     respond_to do |format|
       format.html { redirect_to @likeable }
       format.js

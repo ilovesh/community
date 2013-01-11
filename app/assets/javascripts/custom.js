@@ -7,6 +7,11 @@ $(document).ready(function(){
 	//print courses in the console window
 	//console.log(gon.global.courses);
 	//console.log(gon.global.courses_with_path);
+ 
+  var shiftWindow = function() { scrollBy(0, -150) };
+  if (location.hash) shiftWindow();
+  window.addEventListener("hashchange", shiftWindow);
+
 	
 	//call jQuery UI's auto-complete function
 	$("#q").autocomplete({
@@ -96,6 +101,7 @@ $(document).ready(function(){
       $(this).prev('form').submit();
     }
   })
+
 
 /*
 $('.topnav-search-query').focus(function(){

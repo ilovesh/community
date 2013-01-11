@@ -1,0 +1,11 @@
+<% provide(:title, "Password reset") %>
+  <div class="form-std form-login-signup">
+    <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
+      <h2>Password Reset</h2>
+      <%= f.password_field :password, placeholder: "New Password" %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.submit "Update Password", class: "btn btn-medium btn-primary" %>
+    <% end %>
+  </div>
+
+

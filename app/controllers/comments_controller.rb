@@ -12,10 +12,7 @@ class CommentsController < ApplicationController
     @commentable = @comment.commentable
     @comments = @commentable.comment_threads
     if @comment.save
-      @commentable.user.notifications.create!(notifiable_type: @commentable_type,
-                                              notifiable_id: @commentable_id,
-                                              activity: "Comment",
-                                              referrer_id: current_user.id)
+      @commentable.user.add_notification!(@commentable, @comment, current_user)
       respond_to do |format|
         format.html { redirect_to @commentable }
         format.js

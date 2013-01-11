@@ -6,7 +6,8 @@
           <i class="icon-volume-up"></i>
         </a>
         <ul class="dropdown-menu notification-dropdown">
-          <%= render partial: "layouts/notification", collection: current_user.unread_notifications, as: :notification %>
+          <%= render partial: "layouts/notification", collection: current_user.unread_notifications,
+                     as: :notification, locals: { status: 'new ' } %>
         </ul>
       <% else %>
         <% if current_user.notifications.any? %>
@@ -14,7 +15,8 @@
             <i class="icon-volume-down"></i>
           </a>
           <ul class="dropdown-menu notification-dropdown">
-            <%= render partial: "layouts/read_notification", collection: current_user.notifications.limit(6), as: :notification %>
+            <%= render partial: "layouts/notification", collection: current_user.notifications.limit(6),
+                as: :notification, locals: { status: '' } %>
           </ul>
         <% end %>
       <% end %>

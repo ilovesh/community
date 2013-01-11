@@ -6,11 +6,12 @@
 #  user_id         :integer
 #  notifiable_type :string(255)
 #  notifiable_id   :integer
-#  activity        :string(255)
+#  action_type     :string(255)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  read            :boolean          default(FALSE)
-#  referrer_id     :integer
+#  action_user_id  :integer
+#  action_id       :integer
 #
 
 require 'test_helper'

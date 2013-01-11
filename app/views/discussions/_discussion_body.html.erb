@@ -5,7 +5,7 @@
         <div class="span10 discussion-summary">
         <h3><%= link_to discussion.title, discussion %></h3>
       <% end %>
-      <% if current_page?(discussions_path || discussion) %>
+      <% if current_page?(discussions_path) || current_page?(discussion) %>
         <% if current_page? discussion %>
           <p><%= simple_format(discussion.content) %></p>
         <% else %>

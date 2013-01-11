@@ -1,8 +1,10 @@
 Dragon::Application.routes.draw do
+
   root to: 'basics#home'
   resources :users do
     resources :notifications, only: [:index]
   end
+  resources :password_resets
   resources :votes
   resources :sessions, only: [:new, :create, :destroy]
   resources :courses do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130111153354) do
+ActiveRecord::Schema.define(:version => 20130111202837) do
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",   :default => 0
@@ -104,11 +104,12 @@ ActiveRecord::Schema.define(:version => 20130111153354) do
     t.integer  "user_id"
     t.string   "notifiable_type"
     t.integer  "notifiable_id"
-    t.string   "activity"
+    t.string   "action_type"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
     t.boolean  "read",            :default => false
-    t.integer  "referrer_id"
+    t.integer  "action_user_id"
+    t.integer  "action_id"
   end
 
   create_table "providers", :force => true do |t|
@@ -165,12 +166,14 @@ ActiveRecord::Schema.define(:version => 20130111153354) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "username"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
     t.string   "remember_token"
     t.string   "location"
     t.text     "about"
     t.string   "slug"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
