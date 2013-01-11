@@ -157,8 +157,8 @@ ul#top-nav {
     margin: 0;
     padding: 0;
   }
-  li > a.notification-read {
-    color: #777;
+  li > a.btn-notification {
+    font-size: 20px;
   }
 }
 
@@ -174,8 +174,8 @@ ul#top-nav {
   }
 }
 
-.icon-notify {
-  color: red;
+.icon-volume-up {
+  color: fireBrick;
 }
 
 /* list */
@@ -230,7 +230,7 @@ ol > li {
 
 .img-course { margin-bottom: 10px; }
 
-.gravatar { margin-right: 5px; }
+.gravatar { margin-right: 2px; }
 
 .circle {
   -webkit-border-radius: 999px;

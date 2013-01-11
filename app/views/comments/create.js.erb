@@ -1,6 +1,14 @@
-$("#<%=@commentable_type.downcase%>-<%=@commentable_id%>-comments").
-         html("<%= escape_javascript(render(partial: 'comments/comment', 
-	                                        collection: @comments)) %>");
+<% if @commentable_type == 'List' %>
+	$("#<%=@commentable_type.downcase%>-<%=@commentable_id%>-comments").
+	         html("<%= escape_javascript(render(partial: 'comments/comment_no_like', 
+		                                        collection: @comments,
+		                                        as: :comment)) %>");
+<% else %>
+	$("#<%=@commentable_type.downcase%>-<%=@commentable_id%>-comments").
+	         html("<%= escape_javascript(render(partial: 'comments/comment', 
+		                                        collection: @comments)) %>");
+<% end %>
+
 $(".comment-form").
          html("<%= escape_javascript(render(partial: 'comments/comment_form', 
 	                                        locals: { commentable: @commentable })) %>");

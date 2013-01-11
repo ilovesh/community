@@ -3,7 +3,7 @@
       <% if current_user.unread_notifications? %>
         <form id="formRead" method="post" action="/read" data-remote="true"></form>
         <a href="#" class="dropdown-toggle btn-notification" data-toggle="dropdown">
-          <i class="icon-bell icon-notify"></i>
+          <i class="icon-volume-up"></i>
         </a>
         <ul class="dropdown-menu notification-dropdown">
           <%= render partial: "layouts/notification", collection: current_user.unread_notifications, as: :notification %>
@@ -11,7 +11,7 @@
       <% else %>
         <% if current_user.notifications.any? %>
           <a href="#" class="dropdown-toggle btn-notification" data-toggle="dropdown">
-            <i class="icon-bell"></i>
+            <i class="icon-volume-down"></i>
           </a>
           <ul class="dropdown-menu notification-dropdown">
             <%= render partial: "layouts/read_notification", collection: current_user.notifications.limit(6), as: :notification %>

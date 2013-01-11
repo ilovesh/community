@@ -7,7 +7,8 @@
       <div id="discussion-likes" class="accordion-body collapse">
         <div class="accordion-inner">         
           <ul class="unstyled seperate">
-            <%= render partial: 'discussions/discussion', collection: @liked_discussions, as: :discussion %>
+            <%= render partial: 'users/liked_item', collection: @liked_discussions, as: :post,
+                       locals: { vote: "vote", type: "discussion" } %>
           </ul>
         </div>
       </div>

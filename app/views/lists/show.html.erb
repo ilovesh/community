@@ -1,6 +1,5 @@
 <% provide(:title, 'List') %>
 
-
 <% content_for :left do %>
   <h2>List</h2>
   <div class="section-container">
@@ -25,7 +24,7 @@
   <section>
   <% if @comments.any? %>
     <h3>Recent Comments</h3>
-    <%= link_to "View all comments »", list_comments_path(@list), { class: "view-all" } %>
+    <%= link_to "View all or post a new comment »", list_comments_path(@list), { class: "view-all" } %>
     <ul class="unstyled">
       <%= render partial: 'lists/comment', collection: @comments %>
     </ul>

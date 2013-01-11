@@ -35,6 +35,8 @@ class CommentsController < ApplicationController
     @comments = @list.comment_threads
     @user = @list.user
     @lists = @user.lists.delete_if { |l| l.id == @list.id }.sort_by(&:created_at).reverse[0..5]
+    @commentable_type = "List"
+    @commentable_id = @list.id
   end
 
   def destroy

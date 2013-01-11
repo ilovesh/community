@@ -6,23 +6,19 @@
       <%= render partial: "basics/popular_course_list",
                  locals: { courses: @upcoming } %>
     </div>
-    <div class="tab-pane" id="et">  
+    <div class="tab-pane" id="<%= @first_tag %>">  
       <%= render partial: "basics/popular_course_list",
-                 locals: { courses: @et } %>
+                 locals: { courses: @first_tag_courses } %>
     </div>
-    <div class="tab-pane" id="ut">  
+    <div class="tab-pane" id="<%= @second_tag %>">  
       <%= render partial: "basics/popular_course_list",
-                 locals: { courses: @ut } %>
+                 locals: { courses: @second_tag_courses } %>
     </div>
-    <div class="tab-pane" id="aut"> 
+    <div class="tab-pane" id="<%= @third_tag %>"> 
       <%= render partial: "basics/popular_course_list",
-                 locals: { courses: @aut } %>
+                 locals: { courses: @third_tag_courses } %>
     </div>
-    <div class="tab-pane" id="voluptatem">  
+    <div class="tab-pane" id="<%= @fourth_tag %>">  
       <%= render partial: "basics/popular_course_list",
-                 locals: { courses: @voluptatem } %>
-    </div>
-    <div class="tab-pane" id="qui"> 
-      <%= render partial: "basics/popular_course_list",
-                 locals: { courses: @qui } %>
+                 locals: { courses: @fourth_tag_courses } %>
     </div>

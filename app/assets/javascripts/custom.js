@@ -90,8 +90,11 @@ $(document).ready(function(){
   });
 
   $('.btn-notification').click(function() {
-    $(this).find('.icon-notify').removeClass('icon-notify');
-    $(this).prev('form').submit();
+    var notifing = $(this).find('.icon-volume-up')
+    if(notifing != null) {
+      notifing.removeClass('icon-volume-up').addClass('icon-volume-down');
+      $(this).prev('form').submit();
+    }
   })
 
 /*

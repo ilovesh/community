@@ -18,9 +18,10 @@
         </ul>
       <% end %>
       <div class="pull-right">
-        <%= render partial: 'shared/timestamp', locals: { post: discussion } %>
-
-        <% unless current_page?(discussion.user) %>
+        <% if current_page? discussion.user %>
+          <%= render partial: 'shared/timestamp', locals: { post: discussion } %>
+        <% else %>
+          <%= render partial: 'shared/timestamp', locals: { post: discussion } %>
           <%= render partial: "shared/small_gravatar", locals: { post: discussion } %>
 
           <%= link_to discussion.user.username, discussion.user %>
