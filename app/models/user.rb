@@ -14,6 +14,9 @@
 #
 
 class User < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :username, use: :slugged
+
   attr_accessible :email, :username, :password, :location, :about
   has_secure_password 
   acts_as_tagger

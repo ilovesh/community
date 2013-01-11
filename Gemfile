@@ -11,6 +11,7 @@ gem 'pg_search'
 gem 'nokogiri'
 gem "ffaker", "~> 1.15.0"
 gem 'best_in_place'
+gem 'friendly_id'
 
 # front-end
 gem 'bootstrap-sass', '~> 2.2.2.0'

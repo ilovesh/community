@@ -23,7 +23,10 @@
     <%= render 'reviews' %>
     <%= render 'discussions' %>
     <%= render 'lists' %>
-    <%= render 'votes' %>
+    <%= render 'comments' %>
+    <% if current_user? @user %>
+      <%= render 'votes' %>
+    <% end %>
   </div>
 
 </div>

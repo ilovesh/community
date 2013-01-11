@@ -1,11 +1,22 @@
 <li>
   <div class="span2 muted profile-timestamp"><%= time_ago_in_words(post.created_at) %> ago</div>
-  <div class="span1"><%= pluralize(post.likes.count, vote) %></div>
+  <div class="span1">
+    <% if post.class.name == 'Comment' && post.commentable.class.name == 'List' %>
+      Comment
+    <% else %>
+      <%= pluralize(post.likes.count, vote) %>
+    <% end %>
+  </div>
   <div class="offset3 post-body">
-    <%= link_to post.title, post %>
+    <% if type == "comment" %>
+      <%= link_to post.commentable.title, post.commentable %>
+      <p><%= post.body %></p>
+    <% else %>
+      <%= link_to post.title, post %>
+    <% end %>
     <% if type == "list" %>
       <span class="label"><%= pluralize(post.courses.count, "course") %></span>
-    <% else %>
+    <% elsif type != "comment" %>
       <p>for <em><%= post.course.full_name %></em></p>
     <% end %>
   </div>

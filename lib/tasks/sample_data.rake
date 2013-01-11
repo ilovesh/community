@@ -8,7 +8,7 @@ namespace :db do
     #make_enrollments
     #make_discussions
     #make_lists
-    #make_comments
+    make_comments
     #make_notes
     #make_reviews
   end
@@ -126,17 +126,17 @@ def make_lists
 end
 
 def make_comments
-  discussions = Discussion.all(limit: 50)
+  discussions = Discussion.all(limit: 10)
   discussions.each do |discussion|
     5.times do
-      comment = User.all.sample.comment!(discussion, Faker::Lorem.sentence)
+      comment = User.all.sample.comment!('Discussion', discussion.id, Faker::Lorem.sentence)
       comment.save
     end
   end
-  lists = List.all(limit: 50)
+  lists = List.all(limit: 10)
   lists.each do |list|
     5.times do
-      comment = User.all.sample.comment!(list, Faker::Lorem.sentence)
+      comment = User.all.sample.comment!('List', list.id, Faker::Lorem.sentence)
       comment.save
     end
   end
