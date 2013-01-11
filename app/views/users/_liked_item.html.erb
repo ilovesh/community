@@ -4,7 +4,7 @@
   </div>
   <div class="span1"><%= pluralize(post.likes.count, vote) %></div>
   <div class="offset3 post-body">
-    <% if type == "comment" %>
+    <% if type == "comment" && post.commentable %>
       <%= link_to post.commentable.title, post.commentable %>
       <p><span class="comment-user"><%= link_to post.user.username, post.user %>:</span><%= post.body %></p>
     <% else %>

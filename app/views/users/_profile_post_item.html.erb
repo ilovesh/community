@@ -8,7 +8,7 @@
     <% end %>
   </div>
   <div class="offset3 post-body">
-    <% if type == "comment" %>
+    <% if type == "comment" && post.commentable %>
       <%= link_to post.commentable.title, post.commentable %>
       <p><%= post.body %></p>
     <% else %>
