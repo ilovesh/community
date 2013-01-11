@@ -3,6 +3,10 @@
             remote: true, 
             html: { method: :delete }) do |f| %>
   <%= button_tag(type: 'submit', class: 'btn-like') do %>
-    <i class="icon-<%=icon_name%> icon-large icon-like"></i>
+    <% if icon_name == LIKED %>
+      <i class="icon-<%=icon_name%> icon-large icon-liking"></i>
+    <% elsif icon_name == VOTED %>
+      <i class="icon-<%=icon_name%> icon-large icon-voting"></i>
+    <% end %>
   <% end %>
 <% end %>

@@ -1,11 +1,33 @@
 @import "bootstrap";
 @import 'font-awesome';
 
+$mainTheme: rgb(204,55,33); //rgb(188,33,11);
+$mainThemeLight: rgba(204,55,33,.7);
+
 @mixin box_sizing {
   -moz-box-sizing: border-box; 
   -webkit-box-sizing: border-box; 
   box-sizing: border-box;
 }
+
+@font-face {
+  font: {
+    family: 'HelveticaRounded';
+    weight: 'normal';
+    style: 'normal';
+  }
+  src: asset-url("/assets/fonts/helvetica-rounded.otf", font);
+}
+
+
+.test {
+  padding: 20px;
+  margin: 15px;
+  font-size: 28px;
+  background-color: $mainTheme;
+  color: white;
+  font-family: 'HelveticaRounded';
+};
 
 /* universal */
 html { overflow-y: scroll; }
@@ -112,10 +134,11 @@ select { width: 100px; }
 
 /* header */
 #logo{
-  color: fireBrick;
+  color: $mainTheme;
   float: left;
   font-size: 2.3em;
   font-weight: bold;
+  font-family: 'HelveticaRounded';
   letter-spacing: -1px;
   padding-top: 10px;
   text-decoration:none;
@@ -178,7 +201,7 @@ ul#top-nav {
 }
 
 .icon-volume-up {
-  color: fireBrick;
+  color: $mainTheme;
 }
 
 /* list */
@@ -415,9 +438,11 @@ ul.list-items {
   float: left;
 }
 
-.icon-like { color: fireBrick;}//#BFA27E; }
-
+.icon-liking { color: $mainThemeLight; }
+.icon-voting { color: $mainTheme; }
 .icon-pre { color: grey; }
+
+.badge-important { background-color: $mainTheme; }
 
 .social-count {
   font-weight: bold;
