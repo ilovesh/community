@@ -11,22 +11,20 @@ $mainThemeLight: rgba(204,55,33,.7);
 }
 
 @font-face {
-  font: {
-    family: 'HelveticaRounded';
-    weight: 'normal';
-    style: 'normal';
-  }
-  src: asset-url("/assets/fonts/helvetica-rounded.otf", font);
+  font-family: 'MuseoSlab500';
+  src: font-url("MuseoSlab500.ttf");
+  font-weight: normal;
+  font-style: normal;
 }
 
-
 .test {
+  font-weight: bold;
   padding: 20px;
   margin: 15px;
   font-size: 28px;
   background-color: $mainTheme;
   color: white;
-  font-family: 'HelveticaRounded';
+  font-family: 'MuseoSlab500';
 };
 
 /* universal */
@@ -137,10 +135,9 @@ select { width: 100px; }
   color: $mainTheme;
   float: left;
   font-size: 2.3em;
+  font-family: 'MuseoSlab500';
   font-weight: bold;
-  font-family: 'HelveticaRounded';
-  letter-spacing: -1px;
-  padding-top: 10px;
+  padding-top: 16px;
   text-decoration:none;
 }
 
