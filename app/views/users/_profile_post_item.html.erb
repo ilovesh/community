@@ -15,7 +15,7 @@
       <%= link_to post.title, post %>
     <% end %>
     <% if type == "list" %>
-      <span class="label"><%= pluralize(post.courses.count, "course") %></span>
+      <span class="label profile-list-courses-count"><%= pluralize(post.courses.count, "course") %></span>
     <% elsif type != "comment" %>
       <p>for <em><%= post.course.full_name %></em></p>
     <% end %>

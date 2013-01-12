@@ -1,8 +1,9 @@
 @import "bootstrap";
 @import 'font-awesome';
 
-$mainTheme: rgb(204,55,33); //rgb(188,33,11);
+$mainTheme: rgb(204,55,33);
 $mainThemeLight: rgba(204,55,33,.7);
+$mainThemeDeep: rgb(188,33,11);
 
 @mixin box_sizing {
   -moz-box-sizing: border-box; 
@@ -129,7 +130,7 @@ select { width: 100px; }
   font-weight: bold;
   padding-top: 9px;
   &:hover {
-    color: rgb(188,33,11);
+    color: $mainThemeDeep;
     text-decoration: none;
   }
 }
@@ -277,15 +278,14 @@ h3 {
   margin: 0;
 }
 
-h4 {
-  margin: 3px 0;
-}
+h4 { margin: 3px 0; }
 
 .inline-header { 
   display: inline-block; 
   margin-bottom: 10px;
 }
 
+/* anchor */
 .view-all, .go-back {
   font-weight: bold;
   font-size: 12px;
@@ -295,9 +295,7 @@ h4 {
 
 .view-all-inline { margin-left: 5px; }
 
-.label-info, .label-info[href] {
-  background-color: lightSlateGray;
-}
+.label-info, .label-info[href] { background-color: lightSlateGray; }
 
 
 /* homepage: course */
@@ -313,7 +311,7 @@ ul.course-items {
     margin-left: 0;
   }
   li.course-item > .thumbnail {
-    height: 147px;
+    height: 155px;
     legend {
       font-size: 12px;
       font-weight: bold;
@@ -491,9 +489,7 @@ ul.list-items {
 
 .sidebar-course { margin-top: 40px; }
 
-.course-reviews-container, .course-notes-container {
-  padding-right: 30px;
-}
+.course-reviews-container, .course-notes-container { padding-right: 30px; }
 
 
 /* discussions */
@@ -516,18 +512,14 @@ ul.list-items {
 }
 
 
-.discussion-vote {
-  font-size: 24px;
-}
+.discussion-vote { font-size: 24px; }
 
 .discussion-count {
   width: 60px;
   float: left;
 }
 
-.discussion-summary {
-  margin-left: 20px;
-}
+.discussion-summary { margin-left: 20px; }
 
 .discussion-body {
   p { margin-top: 10px; }
@@ -546,7 +538,7 @@ ul.list-items {
 .comment-form {
   margin-top: 15px;
   textarea {
-    width: 550px;
+    width: 500px;
     height: 80px;
     margin: 0;
     vertical-align: bottom;
@@ -567,9 +559,7 @@ ul.list-items {
   button { vertical-align: bottom; }  
 }
 
-.list-comments-container {
-  margin: 0 18px;
-}
+.list-comments-container { margin: 0 18px; }
 
 /* lists */
 .list-course-comment {
@@ -586,9 +576,7 @@ ul.list-items {
   p { display: inline; }
 }
 
-.edit-comment {
-  cursor: pointer;
-}
+.edit-comment { cursor: pointer; }
 
 .edit-comment-modal {
   width: 450px;
@@ -652,17 +640,13 @@ ul.list-items {
   }
 }
 
-.user-tabs {
-  margin-top: 50px;
-}
+.profile-list-courses-count { margin-left: 5px; }
 
-.profile-timestamp {
-  text-align: left;
-}
+.user-tabs { margin-top: 50px; }
 
-.caret {
-  margin-right: 3px;
-}
+.profile-timestamp { text-align: left; }
+
+.caret { margin-right: 3px; }
 
 /* miscellaneous */
 .debug_dump {
@@ -688,13 +672,6 @@ ul.list-items {
   @extend .control-group;
   @extend .error;
  }
-
-
-
-
-
-
-
 
 // load at last, otherwise body > padding-top still exists.
 @import "bootstrap-responsive";

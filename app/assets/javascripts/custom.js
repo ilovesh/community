@@ -3,15 +3,10 @@ $(document).ready(function(){
 	/*$("#logo").mouseenter(function(){
 		$("a").fadeOut('slow');
 	});   */
-	
-	//print courses in the console window
-	//console.log(gon.global.courses);
-	//console.log(gon.global.courses_with_path);
- 
-  var shiftWindow = function() { scrollBy(0, -150) };
+	 
+  var shiftWindow = function() { scrollBy(0, -40) };
   if (location.hash) shiftWindow();
   window.addEventListener("hashchange", shiftWindow);
-
 	
 	//call jQuery UI's auto-complete function
 	$("#q").autocomplete({
@@ -78,12 +73,11 @@ $(document).ready(function(){
 	  };
   });
 
-  // best_in_place gem
-  $('.best_in_place').best_in_place();
-
   // bootstrap tooltip
   $("[rel=tooltip]").tooltip();
 
+  // best_in_place gem
+  $('.best_in_place').best_in_place();
 
   // submit form when select option is selected w/o a submit button
   $('select').change(function() {
