@@ -21,7 +21,7 @@ namespace :db do
     fetch_from_edx
                           puts "edX: #{(Time.now - start3)/60}" + " minutes"
                           start4 = Time.now
-    #fetch_from_coursera
+    fetch_from_coursera
                           puts "Coursera: #{(Time.now - start3)/60}" + " minutes"    
   end
 end

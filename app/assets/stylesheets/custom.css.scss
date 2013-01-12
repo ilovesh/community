@@ -126,16 +126,8 @@ select { width: 100px; }
   float: left;
   font-size: 2.1em;
   font-family: 'MuseoSlab500';
-//font-family: 'Montserrat', sans-serif;
-//font-family: 'Nunito', sans-serif;
-  //font-family: 'Crete Round', serif;
-  //font-family: 'Monda', sans-serif;
-  //font-family: 'Merriweather', serif;
   font-weight: bold;
-  letter-spacing: -1px;
   padding-top: 9px;
-  text-shadow: 0 0 1px rgba(0,0,0,0.3);
-   -webkit-font-smoothing: antialiased;
   &:hover {
     color: rgb(188,33,11);
     text-decoration: none;
@@ -435,12 +427,6 @@ ul.list-items {
   background: none;
   float: left;
 }
-
-.icon-star, .icon-star-empty, .icon-liking, .icon-voting, .icon-pre {
-  text-shadow: 0 0 1px rgba(0,0,0,0.3);
-   -webkit-font-smoothing: antialiased;
-}
-
 
 .icon-liking { color: $mainThemeLight; }
 .icon-voting { color: $mainTheme; }
