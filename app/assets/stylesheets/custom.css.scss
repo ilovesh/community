@@ -17,16 +17,6 @@ $mainThemeLight: rgba(204,55,33,.7);
   font-style: normal;
 }
 
-.test {
-  font-weight: bold;
-  padding: 20px;
-  margin: 15px;
-  font-size: 28px;
-  background-color: $mainTheme;
-  color: white;
-  font-family: 'MuseoSlab500';
-};
-
 /* universal */
 html { overflow-y: scroll; }
 
@@ -134,11 +124,22 @@ select { width: 100px; }
 #logo{
   color: $mainTheme;
   float: left;
-  font-size: 2.3em;
+  font-size: 2.1em;
   font-family: 'MuseoSlab500';
+//font-family: 'Montserrat', sans-serif;
+//font-family: 'Nunito', sans-serif;
+  //font-family: 'Crete Round', serif;
+  //font-family: 'Monda', sans-serif;
+  //font-family: 'Merriweather', serif;
   font-weight: bold;
-  padding-top: 16px;
-  text-decoration:none;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  text-shadow: 0 0 1px rgba(0,0,0,0.3);
+   -webkit-font-smoothing: antialiased;
+  &:hover {
+    color: rgb(188,33,11);
+    text-decoration: none;
+  }
 }
 
 ul#top-nav {
@@ -434,6 +435,12 @@ ul.list-items {
   background: none;
   float: left;
 }
+
+.icon-star, .icon-star-empty, .icon-liking, .icon-voting, .icon-pre {
+  text-shadow: 0 0 1px rgba(0,0,0,0.3);
+   -webkit-font-smoothing: antialiased;
+}
+
 
 .icon-liking { color: $mainThemeLight; }
 .icon-voting { color: $mainTheme; }
