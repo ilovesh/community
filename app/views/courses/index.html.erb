@@ -1,7 +1,7 @@
 <% provide(:title, 'All courses') %>
 <% content_for :left do %>
   <div class="row-fluid">
-    <h2 class="inline-header">All <%= params[:status].capitalize if params[:status] %> Courses</h2>
+    <h2 class="inline-header">All <%= params[:status].capitalize if params[:status] %> Courses (<%= @count %>)</h2>
     <%= render partial: 'status_select', locals: { path: courses_path(view: params[:view]) } %>
     <%= render partial: 'courses_view_select' %>
   </div>

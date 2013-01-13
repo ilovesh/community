@@ -2,7 +2,7 @@
 <% content_for :left do %>
   <% if @courses.any? %>
   <div class="row-fluid">
-    <h2 class="inline-header">Courses Tagged with <em><%= params[:tag] if params[:tag] %></em></h2>
+    <h2 class="inline-header"><%= pluralize(@count, 'Course') %> Tagged with <em><%= params[:tag] if params[:tag] %></em></h2>
     <%= render partial: 'status_select', locals: { path: url_for(controller: 'courses', action: 'tagged') } %>
     <%= render partial: 'tagged_view_select' %>
   </div>

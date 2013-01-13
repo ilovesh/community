@@ -7,6 +7,7 @@ class CoursesController < ApplicationController
     else
       courses = Course.all
     end
+    @count = courses.count
     @courses = courses.paginate(page: params[:page])
   end
 
@@ -19,7 +20,8 @@ class CoursesController < ApplicationController
       courses = tagged_courses.select { |course| course.status == status.to_sym }
     else
       courses = tagged_courses
-    end  
+    end
+    @count = courses.count
     @courses = courses.paginate(page: params[:page])      
   end
 
