@@ -61,10 +61,6 @@ class Course < ActiveRecord::Base
   default_scope order: 'courses.start_date DESC'
   scope :of_status, lambda{ |status| all.select{ |course| course.status == status.to_sym } }
 
-  def self.tagged_with(tag)
-    Enrollment.tagged_with(tag).map(&:course).uniq
-  end
-
   def full_name
     full_name = code.nil? ? name : code + ' ' + name
   end
