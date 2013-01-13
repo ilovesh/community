@@ -73,9 +73,6 @@ $(document).ready(function(){
 	  };
   });
 
-  // bootstrap tooltip
-  $("[rel=tooltip]").tooltip();
-
   // best_in_place gem
   $('.best_in_place').best_in_place();
 

@@ -2,7 +2,7 @@
   <%= f.hidden_field :course_id, value: @course.id %>
   <%= f.hidden_field :status, value: status %>
   <div class="modal-body">
-    <label for="enrollment_tags">Tags</label>
+    <label for="enrollment_tags">Tags (optional) </label>
     <%= f.text_field :tags, value: current_user.my_tags(@course), class: "input-xlarge" %>
     <%= render partial: 'shared/tag_example', locals: { example: 'programming, beginner-level, interactive' } %> 
     <% if @top_tags.blank? %>

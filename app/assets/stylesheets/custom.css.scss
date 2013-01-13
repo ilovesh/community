@@ -1,9 +1,7 @@
-@import "bootstrap";
-@import 'font-awesome';
-
 $mainTheme: rgb(204,55,33);
 $mainThemeLight: rgba(204,55,33,.7);
 $mainThemeDeep: rgb(188,33,11);
+$grayLighter: #EEE;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box; 
@@ -24,6 +22,12 @@ html { overflow-y: scroll; }
 body{
   padding: 60px 0;
   background-color: #F1EEE5;
+}
+// clear the padding when collapsed
+@media (max-width: 979px){
+  body {
+    padding-top: 0;
+  }
 }
 
 body.no-bg { background-color: white; }
@@ -120,6 +124,8 @@ select { width: 100px; }
 .timestamp { 
   margin-right: 5px;
 }
+
+.modal { position: absolute; }
 
 /* header */
 #logo{
@@ -426,6 +432,8 @@ ul.list-items {
   float: left;
 }
 
+.icon-star, .icon-star-empty { font-size: 18px; }
+
 .icon-liking { color: $mainThemeLight; }
 .icon-voting { color: $mainTheme; }
 .icon-pre { color: grey; }
@@ -508,6 +516,7 @@ ul.list-items {
 .comment-vote-container {
   position: absolute;
   text-align: center;
+  width: 28px;
   form { margin: 0; }
 }
 
@@ -674,4 +683,4 @@ ul.list-items {
  }
 
 // load at last, otherwise body > padding-top still exists.
-@import "bootstrap-responsive";
+//@import "twitter/bootstrap/responsive";

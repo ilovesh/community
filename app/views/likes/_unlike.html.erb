@@ -4,9 +4,9 @@
             html: { method: :delete }) do |f| %>
   <%= button_tag(type: 'submit', class: 'btn-like') do %>
     <% if icon_name == LIKED %>
-      <i class="icon-<%=icon_name%> icon-large icon-liking"></i>
+      <i class="icon-<%=icon_name%> icon-liking"></i>
     <% elsif icon_name == VOTED %>
-      <i class="icon-<%=icon_name%> icon-large icon-voting"></i>
+      <i class="icon-<%=icon_name%> icon-voting"></i>
     <% end %>
   <% end %>
 <% end %>
