@@ -23,7 +23,7 @@
   
   <% else %>
     <div class="row-fluid">
-      <h2 class="inline-header">No Courses Matching <em><%= params[:q].capitalize if params[:q] %></em></h2>
+      <h2 class="inline-header">No Courses Matching <em><%= params[:q] if params[:q] %></em></h2>
       <%= render partial: 'courses/status_select', locals: { path: url_for(controller: 'basics', action: 'search') } %>
     </div>
     <%= render partial: 'courses/browse_all_courses' %>

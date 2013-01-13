@@ -48,7 +48,6 @@ class User < ActiveRecord::Base
   has_many :notes,          dependent: :destroy
   has_many :likes,          dependent: :destroy
   has_many :reviews,        dependent: :destroy
-  has_many :listings,       dependent: :destroy
   has_many :notifications,  dependent: :destroy
 
   def enroll!(course, status, *arg)

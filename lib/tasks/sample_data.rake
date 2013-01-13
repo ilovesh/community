@@ -9,8 +9,8 @@ namespace :db do
     #make_discussions
     #make_lists
     make_comments
-    #make_notes
-    #make_reviews
+    make_notes
+    make_reviews
   end
 end
 
@@ -116,11 +116,21 @@ def make_lists
       list = user.lists.create!(title: title, description: description)
       list.tag_list = "#{Faker::Lorem.word},#{Faker::Lorem.word},#{Faker::Lorem.word}"
       list.save
-      5.times do |n|
-        course = Course.all.sample
-        description = Faker::Lorem.sentence
-        list.listings.create!(course_id: course.id, description: description)
-      end
+      course1 = Course.all[0..50].sample
+      description = Faker::Lorem.sentence
+      list.listings.create!(course_id: course1.id, description: description)
+      course2 = Course.all[50..100].sample
+      description = Faker::Lorem.sentence
+      list.listings.create!(course_id: course2.id, description: description)
+      course3 = Course.all[100..150].sample
+      description = Faker::Lorem.sentence
+      list.listings.create!(course_id: course3.id, description: description)
+      course4 = Course.all[150..200].sample
+      description = Faker::Lorem.sentence
+      list.listings.create!(course_id: course4.id, description: description)
+      course5 = Course.all[200..220].sample
+      description = Faker::Lorem.sentence
+      list.listings.create!(course_id: course5.id, description: description)           
     end
   end
 end

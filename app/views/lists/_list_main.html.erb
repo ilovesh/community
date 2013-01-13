@@ -5,7 +5,7 @@
     <div class="span11 list-body">
       <h4><%= @list.title %></h4>
       <div>
-        <%= render partial: 'shared/large_gravatar', locals: { post: @list } %>
+        <%= render partial: 'shared/small_gravatar', locals: { post: @list } %>
         <%= link_to @list.user.username, @list.user %>
         <span class="muted">created</span> <%= render partial: 'shared/timestamp', locals: { post: @list } %>
         <%= render 'lists/edit_or_delete' %>
