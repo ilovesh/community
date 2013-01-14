@@ -1,0 +1,11 @@
+<li>
+<% enrollment = user.enrollments.find_by_course_id(params[:id]) %>
+<%= render partial: 'shared/large_gravatar', locals: { post: enrollment } %>
+<%= link_to user.username, user %>
+<% unless user.location.blank? %>
+  <span class="muted">(<%= user.location %>)</span>
+<% end %>
+<span class="pull-right">
+  <%= render partial: 'shared/timestamp', locals: { post: enrollment } %>
+</span>
+</li>

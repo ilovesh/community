@@ -48,6 +48,20 @@ class CoursesController < ApplicationController
     end
 =end
 
+  def interested
+    @course = Course.find(params[:id])
+    @users = @course.interested_users
+  end
+
+  def taking
+    @course = Course.find(params[:id])
+    @users = @course.taking_users
+  end
+
+  def finished
+    @course = Course.find(params[:id])
+    @users = @course.taken_users
+  end
 
   end
 end

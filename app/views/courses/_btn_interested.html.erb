@@ -8,5 +8,6 @@
   <% else %>
     <%= link_to "Interested", enrollments_path, method: :post, class: "btn btn-small btn-enroll" %>
   <% end %>
-  <%= render partial: 'shared/social_count', locals: { users: @course.interested_users } %>
+  <%= render partial: 'shared/social_count', locals: { users: @course.interested_users,
+                                                       path: request.fullpath + '/interested' } %>
 </div>

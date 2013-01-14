@@ -6,9 +6,10 @@
       <a class="btn btn-small btn-enroll" href="#taken" data-toggle="modal">Finished</a>
     <% end %>
   <% else %>
-    <%= link_to "Taken", enrollments_path, method: :post, class: "btn btn-small btn-enroll" %>
+    <%= link_to "Finished", enrollments_path, method: :post, class: "btn btn-small btn-enroll" %>
   <% end %>
-  <%= render partial: 'shared/social_count', locals: { users: @course.taken_users } %>
+  <%= render partial: 'shared/social_count', locals: { users: @course.taken_users,
+                                                       path: request.fullpath + '/finished' } %>
 </div>
 
 

@@ -1,3 +1,5 @@
+# coding: utf-8
+
 ### NOTE: 1 TODO; 1 SEMI-TODO ###
 # TODO: unknown characters in below courses' prerequisites:
 # Udacity: "Artificial Intelligence for Robotics"
@@ -18,10 +20,10 @@ namespace :db do
     #fetch_from_udacity
                           puts "Udacity: #{(Time.now - start2)/60}" + " minutes"
                           start3 = Time.now    
-    #fetch_from_edx
+    fetch_from_edx
                           puts "edX: #{(Time.now - start3)/60}" + " minutes"
                           start4 = Time.now
-    fetch_from_coursera
+    #fetch_from_coursera
                           puts "Coursera: #{(Time.now - start3)/60}" + " minutes"    
   end
 end
@@ -204,7 +206,7 @@ def fetch_from_coursera
       image_span       = page.at_css(".coursera-course-logo-no-video img") if image_span.nil?
       start_date_span  = page.at_css('.coursera-course-listing span:nth-child(1)')
       duration_span    = page.at_css(".coursera-course-listing span:nth-child(2)")
-
+      start_date_span  = page.at_css(".coursera-course-listing:nth-child(2) span:nth-child(1)") if start_date_span.nil?
       instructor_span.search('br').each {|br| br.replace("|")}
       instructor  = instructor_span.text.strip if instructor_span
       description = description_span.text.strip if description_span

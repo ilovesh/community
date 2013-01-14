@@ -1,8 +1,8 @@
-<% provide(:title, 'Finished') %>
+<% provide(:title, 'Taking') %>
 
 <% content_for :left do %>
 <div class="section-container">
-  <h2>Who has finished this course?</h2>
+  <h2>Who is taking this course?</h2>
   <ul class="unstyled seperate">
     <%= render partial: 'courses/enroll_user', collection: @users, as: :user %>
   </ul>

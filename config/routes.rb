@@ -33,7 +33,10 @@ Dragon::Application.routes.draw do
   match '/read',   to: 'basics#read', via: :post  
   match '/courses/tagged/:tag', to: 'courses#tagged'
   match '/lists/tagged/:tag',   to: 'lists#tagged'
-  match '/discussions/tagged/:tag',   to: 'discussions#tagged'  
+  match '/discussions/tagged/:tag',   to: 'discussions#tagged'
+  match '/courses/:id/interested', to: 'courses#interested'
+  match '/courses/:id/taking', to: 'courses#taking'
+  match '/courses/:id/finished', to: 'courses#finished'      
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
