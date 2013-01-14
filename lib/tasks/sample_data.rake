@@ -5,21 +5,21 @@ namespace :db do
     #make_universities
     #make_courses
     make_users
-    #make_enrollments
-    #make_discussions
-    #make_lists
-    #make_comments
-    #make_notes
-    #make_reviews
+    make_enrollments
+    make_discussions
+    make_lists
+    make_comments
+    make_notes
+    make_reviews
   end
 end
 
 
 def make_users
-  user = User.create!(username: "Example User",
-                      email:    "example@gmail.com",
+  user = User.create!(username: "zj",
+                      email:    "j@courigin.com",
                       password: "foobar",
-                      location: "Shanghai, China",
+                      location: "Austin, TX",
                       about: Faker::Lorem.paragraph)
   99.times do |n|
     username  = Faker::Internet.user_name + n.to_s
@@ -116,6 +116,16 @@ def make_lists
       list = user.lists.create!(title: title, description: description)
       list.tag_list = "#{Faker::Lorem.word},#{Faker::Lorem.word},#{Faker::Lorem.word}"
       list.save
+      course1 = Course.all[0..10].sample
+      description = Faker::Lorem.sentence
+      list.listings.create!(course_id: course1.id, description: description)
+      course1 = Course.all[11..20].sample
+      description = Faker::Lorem.sentence
+      list.listings.create!(course_id: course1.id, description: description)
+      course1 = Course.all[21..35].sample
+      description = Faker::Lorem.sentence
+      list.listings.create!(course_id: course1.id, description: description)
+=begin
       course1 = Course.all[0..50].sample
       description = Faker::Lorem.sentence
       list.listings.create!(course_id: course1.id, description: description)
@@ -130,7 +140,9 @@ def make_lists
       list.listings.create!(course_id: course4.id, description: description)
       course5 = Course.all[200..220].sample
       description = Faker::Lorem.sentence
-      list.listings.create!(course_id: course5.id, description: description)           
+      list.listings.create!(course_id: course5.id, description: description)  
+=end
+         
     end
   end
 end

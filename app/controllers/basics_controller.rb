@@ -16,6 +16,9 @@ class BasicsController < ApplicationController
     @fourth_tag_courses = top_tag_courses(@fourth_tag)
     @discussions = Discussion.all(limit: 3)
     @lists       = List.non_empty[0..5]
+    @admin = User.find_by_email("j@courigin.com")
+    @suggestion_discussion = Discussion.find(1)
+    @taken_list = List.find(1)
   end
 
   def search

@@ -5,7 +5,33 @@
   <% end %>
       
   <% content_for :right do %>
-    <section>
-      News
-    </section>
+    <h3>Bulletin</h3>
+      <div class="bulletin-post">
+        <p>Hi There! Welcome to Courigin!</p>
+        <p>A few months ago, I started to learn to program out of curiosity.
+           I feel amazed at 
+           <% if @taken_list %>
+           <%= link_to 'these courses', @taken_list %>
+           <% else %>
+           the courses
+           <% end %>
+            I've taken, and it's really fun to 
+           learn things together. So I build Courigin to collect the awesome resources 
+           and hope we learn and share together!</p>
+        <p>Currently I've added courses from Cousera, edX and Udacity, and I'll keep adding other resources.</p> 
+        <p>If you have any suggestion or encounter any bug, please 
+           <% if @suggestion_discussion %>
+           post a comment <%= link_to 'here', @suggestion_discussion %> or 
+           <% end %>
+           <%= link_to 'send me an email', 'mailto:contact@courigin.com' %>.
+           Let's improve Courigin together!</p>
+        <p>Cheers,</p>
+        
+        <div class="pull-right">
+          <%= link_to gravatar_for(@admin, size: 20), @admin %>
+          <%= link_to @admin.username, @admin %>
+          <div class="muted">Jan 12th 2013</div>
+        </div>
+      </div>
+      
   <% end %>

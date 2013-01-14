@@ -14,7 +14,7 @@ namespace :db do
     require 'open-uri'
     require 'watir-webdriver'
                           start1 = Time.now
-    #create_providers
+    create_providers
                           puts "Providers: #{(Time.now - start1)}" + " seconds"
                           start2 = Time.now
     fetch_from_udacity
