@@ -28,8 +28,12 @@
         <p>Cheers,</p>
         
         <div class="pull-right">
-          <%= link_to gravatar_for(@admin, size: 20), @admin %>
-          <%= link_to @admin.username, @admin %>
+          <% if @admin %>
+            <%= link_to gravatar_for(@admin, size: 20), @admin %>
+            <%= link_to @admin.username, @admin %>
+          <% else %>
+            zj
+          <% end %>
           <div class="muted">Jan 12th 2013</div>
         </div>
       </div>
