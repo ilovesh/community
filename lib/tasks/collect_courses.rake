@@ -17,13 +17,13 @@ namespace :db do
     #create_providers
                           puts "Providers: #{(Time.now - start1)}" + " seconds"
                           start2 = Time.now
-    #fetch_from_udacity
+    fetch_from_udacity
                           puts "Udacity: #{(Time.now - start2)/60}" + " minutes"
                           start3 = Time.now    
-    #fetch_from_edx
+    fetch_from_edx
                           puts "edX: #{(Time.now - start3)/60}" + " minutes"
                           start4 = Time.now
-    fetch_from_coursera
+    #fetch_from_coursera
                           puts "Coursera: #{(Time.now - start3)/60}" + " minutes"    
   end
 end

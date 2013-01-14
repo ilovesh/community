@@ -15,6 +15,8 @@
 class Session < ActiveRecord::Base
   attr_accessible :duration, :final_date, :start_date, :url
   belongs_to :course
+  validates :course_id, uniqueness: { scope: :start_date, case_sensitive: false }
+
   default_scope order: 'sessions.start_date DESC'
   scope :of_status, lambda{ |status| all.select{ |session| session.status == status.to_sym } }
 
