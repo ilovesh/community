@@ -2,10 +2,10 @@
       <%= form_tag path, :method => "GET" do |f| %>
         <%= select_tag 'status', options_for_select([['All', 'all'],['Upcoming', 'upcoming'],['Ongoing', 'ongoing'],['Finished', 'finished'], ['Rolling', 'rolling']], params[:status] || -1) %>
         <% if params[:view] %>
-          <input name="view" type="hidden" value=<%= params[:view] %>>
+          <input name="view" type="hidden" value="<%= params[:view] %>">
         <% end %>
         <% if params[:q] %>
-          <input name="q" type="hidden" value=<%= params[:q] %>>
+          <input name="q" type="hidden" value="<%= params[:q] %>">
         <% end %>        
       <% end %>
     </div>

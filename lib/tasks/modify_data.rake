@@ -5,11 +5,6 @@ namespace :db do
   task modify: :environment do
     Rails.env = 'development'
     
-
-    #https://www.coursera.org/course/cs101
-    #self paced + date to be announced
-
-=begin
     c = Course.find_by_url("http://www.udacity.com/overview/Course/cs373")
     c.prerequisites = "You should either already know Python, or have enough experience with another language to be confident you can pick up what you need on your own.Fortunately, Python was built to be easy to learn, read, and use. If you already know another programming language, you'll be coding in Python in less than an hour. Additionally, knowledge of probability and linear algebra will be helpful."
     c.save
@@ -25,17 +20,6 @@ namespace :db do
     c = Course.find_by_code("CS188.1x")
     c.description = "CS188.1x is a new online adaptation of the first half of UC Berkeley's CS188: Introduction to Artificial Intelligence. The on-campus version of this upper division computer science course draws about 600 Berkeley students each year."
     c.save
-=end    
-    c = Course.find_by_url("https://www.coursera.org/course/compinvesting1")
-    c.sessions.create!(start_date: "Feb 8th 2013" + START_TIME + PST,
-                       duration: 8, url: c.url)
-
-
-=begin
-
-  two sessions:
-  185
-=end
 
   end
 end
