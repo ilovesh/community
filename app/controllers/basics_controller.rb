@@ -17,8 +17,8 @@ class BasicsController < ApplicationController
     @discussions = Discussion.all(limit: 3)
     @lists       = List.non_empty[0..5]
     @admin = User.find_by_email("j@courigin.com")
-    @suggestion_discussion = @admin.discussions.last if @admin.discussions.any?
-    @taken_list = @admin.lists.last if @admin.lists.any?
+    @suggestion_discussion = @admin.discussions.last if @admin && @admin.discussions.any?
+    @taken_list = @admin.lists.last if @admin && @admin.lists.any?
   end
 
   def search
