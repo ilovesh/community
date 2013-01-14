@@ -20,7 +20,7 @@ class List < ActiveRecord::Base
 
   belongs_to :user
   has_many :listings, dependent: :destroy
-  has_many :courses,  through: :listings
+  #has_many :courses,  through: :listings
   has_many :likes, dependent: :destroy, as: :likeable
   has_many :notifications, dependent: :destroy, as: :notifiable
     
