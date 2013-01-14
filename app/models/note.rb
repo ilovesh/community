@@ -14,7 +14,7 @@
 class Note < ActiveRecord::Base
   attr_accessible :body, :course_id, :title
   validates :body, presence: true
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 140 }
   belongs_to :user
   belongs_to :course
   has_many :likes, dependent: :destroy, as: :likeable

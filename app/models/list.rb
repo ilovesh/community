@@ -15,7 +15,7 @@ class List < ActiveRecord::Base
   acts_as_taggable
   acts_as_commentable
 
-  validates :title,   presence: true
+  validates :title,   presence: true, length: { maximum: 140 }
   validates :user_id, presence: true
 
   belongs_to :user
