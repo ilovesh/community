@@ -3,7 +3,7 @@
     <%= link_to( image_tag(course.image_link, class: "img-medium"), course ) %>
   </div>
   <div class="span9">
-    <%= render partial: 'courses/course_status', locals: { course: course } %>  
+    <%= render partial: "courses/course_status_label", locals: { course: course } %>   
     <h5><%= link_to course.full_name, course %></h5>
     <div id="provider">
       <label>Provider: </label>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130111202837) do
+ActiveRecord::Schema.define(:version => 20130114034340) do
 
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id",   :default => 0
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(:version => 20130111202837) do
   create_table "courses", :force => true do |t|
     t.string   "name"
     t.integer  "provider_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.string   "code"
     t.string   "image_link"
     t.text     "description"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20130111202837) do
     t.datetime "start_date"
     t.datetime "final_date"
     t.integer  "duration"
+    t.boolean  "multi",         :default => false
   end
 
   add_index "courses", ["name"], :name => "index_courses_on_name"
@@ -128,6 +129,16 @@ ActiveRecord::Schema.define(:version => 20130111202837) do
     t.text     "body"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "sessions", :force => true do |t|
+    t.integer  "course_id"
+    t.datetime "start_date"
+    t.datetime "final_date"
+    t.integer  "duration"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "url"
   end
 
   create_table "taggings", :force => true do |t|

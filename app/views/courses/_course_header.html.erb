@@ -1,4 +1,4 @@
-  <%= render partial: 'course_status', locals: {course: @course} %>
+<%= render partial: "courses/course_status_label", locals: { course: @course } %> 
   <h2><%= @course.full_name %></h2>
   <% if @course.subtitle %>
     <h3><%= @course.subtitle %></h3>

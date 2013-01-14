@@ -22,19 +22,19 @@ namespace :db do
     c.prerequisites = "Knowing how to program in some language is all you'll need to get started. Some knowledge of JavaScript is useful later on if you wish to make your projects more interactive and engaging. Familiarity with vectors and matrices will ease your way but is not critical."
     c.save
 
-    cs = Course.find_all_by_code("CS188.1x")
-    cs.each do |c|
-      c.description = "CS188.1x is a new online adaptation of the first half of UC Berkeley's CS188: Introduction to Artificial Intelligence. The on-campus version of this upper division computer science course draws about 600 Berkeley students each year."
-      c.save
-    end
+    c = Course.find_by_code("CS188.1x")
+    c.description = "CS188.1x is a new online adaptation of the first half of UC Berkeley's CS188: Introduction to Artificial Intelligence. The on-campus version of this upper division computer science course draws about 600 Berkeley students each year."
+    c.save
+=end    
+    c = Course.find_by_url("https://www.coursera.org/course/compinvesting1")
+    c.sessions.create!(start_date: "Feb 8th 2013" + START_TIME + PST,
+                       duration: 8, url: c.url)
 
-=end
 
 =begin
 
   two sessions:
   185
-  34+26
 =end
 
   end

@@ -17,6 +17,7 @@
 #  start_date    :datetime
 #  final_date    :datetime
 #  duration      :integer
+#  multi         :boolean          default(FALSE)
 #
 
 # duration(week):
@@ -28,7 +29,7 @@
 class Course < ActiveRecord::Base
   attr_accessible :name, :code, :image_link, :url, 
                   :description, :subtitle, :start_date, :final_date,
-                  :instructor, :prerequisites, :duration, :tag_list
+                  :instructor, :prerequisites, :duration, :tag_list, :multi
   acts_as_taggable
 
   include PgSearch
@@ -36,7 +37,7 @@ class Course < ActiveRecord::Base
                   using: {tsearch: {prefix: true}}
 
   validates :name,         presence: true
-  #validates :code,         allow_blank: true, uniqueness: { scope: :provider_id, case_sensitive: false }
+  validates :code,         allow_blank: true, uniqueness: { scope: :provider_id, case_sensitive: false }
   validates :image_link,   presence: true
   validates :url,          presence: true
   validates :description,  presence: true
@@ -57,6 +58,7 @@ class Course < ActiveRecord::Base
   has_many :universities,    through: :teachings
   has_many :notes, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :sessions, dependent: :destroy
 
   default_scope order: 'courses.start_date DESC'
   scope :of_status, lambda{ |status| all.select{ |course| course.status == status.to_sym } }

@@ -20,10 +20,10 @@ namespace :db do
     #fetch_from_udacity
                           puts "Udacity: #{(Time.now - start2)/60}" + " minutes"
                           start3 = Time.now    
-    fetch_from_edx
+    #fetch_from_edx
                           puts "edX: #{(Time.now - start3)/60}" + " minutes"
                           start4 = Time.now
-    #fetch_from_coursera
+    fetch_from_coursera
                           puts "Coursera: #{(Time.now - start3)/60}" + " minutes"    
   end
 end
@@ -156,17 +156,27 @@ def fetch_from_edx
           end
         end
 
-        course = provider.courses.create!(url:           url,
-                                          name:          name,
-                                          code:          code,
-                                          instructor:    instructor,
-                                          description:   description,
-                                          image_link:    image_link,
-                                          prerequisites: prerequisites,
-                                          start_date:    start_date,
-                                          final_date:    final_date,
-                                          duration:      duration)
-        add_university_and_teaching!(university, course)
+        c = provider.courses.find_by_code(code)
+        if c
+          c.multi = true
+          c.save
+          c.sessions.create!(start_date: start_date,
+                             final_date: final_date,
+                             duration:   duration,
+                             url:        url)          
+        else
+          course = provider.courses.create!(url:           url,
+                                            name:          name,
+                                            code:          code,
+                                            instructor:    instructor,
+                                            description:   description,
+                                            image_link:    image_link,
+                                            prerequisites: prerequisites,
+                                            start_date:    start_date,
+                                            final_date:    final_date,
+                                            duration:      duration)
+          add_university_and_teaching!(university, course)
+        end # check multi sessions 
                                                                                       puts "FINISH"
       end # check duplication
   end # each course
@@ -195,7 +205,7 @@ def fetch_from_coursera
     c = provider.courses.find_by_url(url) # In case of any TimeoutError, check duplication before scraping.
     if c.nil?
       browser.goto url
-      sleep(10)
+      sleep(5)
       page      = Nokogiri::HTML.parse(browser.html)
       name_span = page.at_css("h1")
       name      = name_span.text.strip if name_span
@@ -204,17 +214,25 @@ def fetch_from_coursera
       description_span = page.at_css(".span6 p")
       image_span       = page.at_css(".coursera-course-logo img")
       image_span       = page.at_css(".coursera-course-logo-no-video img") if image_span.nil?
-      start_date_span  = page.at_css('.coursera-course-listing span:nth-child(1)')
-      duration_span    = page.at_css(".coursera-course-listing span:nth-child(2)")
+      start_date_span  = page.css('.coursera-course-listing span:nth-child(1)')
+      duration_span    = page.css(".coursera-course-listing span:nth-child(2)")
       start_date_span  = page.at_css(".coursera-course-listing:nth-child(2) span:nth-child(1)") if start_date_span.nil?
       instructor_span.search('br').each {|br| br.replace("|")}
       instructor  = instructor_span.text.strip if instructor_span
       description = description_span.text.strip if description_span
-      image_link  = image_span["src"] if image_span
-      duration    = duration_span.text[/[0-9\.]+/].strip if duration_span # format is like: " \n(10 weeks long)"
+      image_link  = image_span["src"] if image_span    
 
       unless start_date_span.nil?
-        start_date_span_text = start_date_span.text.strip
+        if start_date_span.count > 1
+          sd1 = start_date_span[0]
+          sd2 = start_date_span[1]
+          d1 = duration_span[0] if duration_span
+          d2 = duration_span[1] if duration_span
+        else
+          sd1 = start_date_span
+          d1 = duration_span if duration_span
+        end
+        start_date_span_text = sd1.text.strip
         start_date = nil
         if start_date_span_text == "Self study"
           duration = 0
@@ -226,6 +244,7 @@ def fetch_from_coursera
           rescue
             start_date = nil
           end
+          duration    = d1.text[/[0-9\.]+/].strip if d1.text[/[0-9\.]+/] # format is like: " \n(10 weeks long)"
         end
       end
 
@@ -237,7 +256,29 @@ def fetch_from_coursera
                                         start_date:  start_date,
                                         duration:    duration)
 
-      university_list.each {|university| add_university_and_teaching!(university, course)}     
+      university_list.each {|university| add_university_and_teaching!(university, course)}
+      
+      if sd2
+        course.multi = true
+        course.save
+        start_date_span_text = sd2.text.strip
+        start_date = nil
+        if start_date_span_text == "Self study"
+          duration = 0
+        elsif start_date_span_text == "Date to be announced"
+          duration = 99
+        else
+          begin
+            start_date = start_date_span_text + START_TIME + PST
+          rescue
+            start_date = nil
+          end
+          duration = d2.text[/[0-9\.]+/].strip if d2.text[/[0-9\.]+/]
+        end
+        course.sessions.create!(start_date: start_date,
+                                duration: duration,
+                                url: url)
+      end
                                                                                       puts "FINISH"
     end # check duplication
   end # each course in the list
@@ -266,6 +307,7 @@ private
     university = add_university!(university_name)
     university.teach!(course)
   end
+
 
 ################################
 # BACKUP: Fetch Coursera data from file

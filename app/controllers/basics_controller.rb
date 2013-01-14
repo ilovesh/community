@@ -24,14 +24,13 @@ class BasicsController < ApplicationController
     courses = Course.search_by_full_name(query)
     status = params[:status]
     @courses = []
-    if params[:status] == "upcoming"
-      courses.each { |c| @courses << c if c.status == :upcoming }
-    elsif params[:status] == "ongoing"
-      courses.each { |c| @courses << c if c.status == :ongoing }
-    elsif params[:status] == "finished"
-      courses.each { |c| @courses << c if c.status == :finished }    
-    elsif params[:status] == "rolling"
-      courses.each { |c| @courses << c if c.status == :rolling }     
+    if status && (status == 'upcoming' || status == 'ongoing' || status = 'finished' || status = 'rolling')
+      courses.each { |c| @courses << c if c.status == status.to_sym }
+      Session.all.each do |s|
+        if !@courses.include?(s.course) && courses.include?(s.course) && s.status == status.to_sym
+          @courses << s.course
+        end
+      end
     else
       @courses = courses
     end

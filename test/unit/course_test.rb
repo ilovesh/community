@@ -17,6 +17,7 @@
 #  start_date    :datetime
 #  final_date    :datetime
 #  duration      :integer
+#  multi         :boolean          default(FALSE)
 #
 
 require 'test_helper'

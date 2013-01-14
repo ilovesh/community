@@ -1,0 +1,27 @@
+# == Schema Information
+#
+# Table name: sessions
+#
+#  id         :integer          not null, primary key
+#  course_id  :integer
+#  start_date :datetime
+#  final_date :datetime
+#  duration   :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  url        :string(255)
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  course_id: 1
+  start_date: 2013-01-13 22:23:09
+  final_date: 2013-01-13 22:23:09
+  duration: 1
+
+two:
+  course_id: 1
+  start_date: 2013-01-13 22:23:09
+  final_date: 2013-01-13 22:23:09
+  duration: 1

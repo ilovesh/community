@@ -1,6 +1,46 @@
   <%= render partial: 'courses/provider',   locals: { course: @course } %>
   <%= render partial: 'courses/university', locals: { course: @course } %>
   <%= render partial: 'courses/instructor', locals: { course: @course } %>
+
+<% if @course.multi? %>
+<ul class="unstyled">
+<% @sessions.each do |s| %>
+<li>
+  <% if s.start_date && s.duration != 0 && s.duration != 99 %>
+    <div class="start">
+      <label>Session Starts: </label>
+      <% if @course.provider.name == "edX" %>
+      <span><%= s.start_date.in_time_zone("Eastern Time (US & Canada)").to_date.to_formatted_s(:long_ordinal) %></span>
+      <% else %>
+      <span><%= s.start_date.in_time_zone("Pacific Time (US & Canada)").to_date.to_formatted_s(:long_ordinal) %></span>
+      <% end %>
+    </div>
+  <% end %>
+  <% if s.final_date %>
+    <div class="final">
+      <label>Session Ends: </label>
+      <% if @course.provider.name == "edX" %>
+      <span><%= s.final_date.in_time_zone("Eastern Time (US & Canada)").to_date.to_formatted_s(:long_ordinal) %></span>
+      <% else %>
+      <span><%= s.final_date.in_time_zone("Pacific Time (US & Canada)").to_date.to_formatted_s(:long_ordinal) %></span>
+      <% end %>
+    </div>
+  <% end %>
+  <% if s.duration && s.duration != 0 && s.duration != 99 %>
+    <div class="duration">
+      <label>Duration: </label>
+      <span><%= pluralize(s.duration, "week") %></span>
+    </div>
+  <% end %>
+  <% if @course.provider_id == 3 %>
+    <%= link_to "Go to the course »", s.url, target: "_blank" %>
+  <% end %> 
+</li>
+<% end %>
+</ul>
+
+<% else %>  
   <%= render partial: 'courses/start_date', locals: { course: @course } %>
   <%= render partial: 'courses/final_date', locals: { course: @course } %>
   <%= render partial: 'courses/duration',   locals: { course: @course } %>
+<% end %>

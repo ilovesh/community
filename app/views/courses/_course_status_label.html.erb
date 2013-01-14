@@ -1,0 +1,10 @@
+<% if course.multi? %>
+  <% sessions = [] %>
+  <% sessions << course %>
+  <% sessions += course.sessions %>
+  <% sessions.each do |s| %>
+  <%= render partial: 'courses/course_status', locals: {course: s} %>
+  <% end %>
+<% else %>
+  <%= render partial: 'courses/course_status', locals: {course: course} %>
+<% end %> 

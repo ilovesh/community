@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
     @tags = Course.tag_counts_on(:tags).order('count desc').map(&:name)[0...25] 
     status = params[:status]
     if status == "upcoming" || status == "ongoing" || status == "finished" || status == "rolling"
-      courses = Course.of_status(status.to_sym)
+      courses = Course.of_status(status.to_sym) + Session.of_status(status.to_sym).map(&:course)
     else
       courses = Course.all
     end
@@ -18,6 +18,11 @@ class CoursesController < ApplicationController
     courses = []
     if status == "upcoming" || status == "ongoing" || status == "finished" || status == "rolling"
       courses = tagged_courses.select { |course| course.status == status.to_sym }
+      Session.all.each do |s|
+        if !courses.include?(s.course) && tagged_courses.include?(s.course) && s.status == status.to_sym
+          courses << s.course
+        end
+      end
     else
       courses = tagged_courses
     end
@@ -36,6 +41,12 @@ class CoursesController < ApplicationController
     @top_tags = @course.top_tags[0..9]
     @enrollments = @course.enrollments[0..8]
     @lists = List.has(@course)[0..5]
+    if @course.multi?
+      @sessions = []
+      @sessions << @course
+      @sessions += @course.sessions
+    end
+  end
 =begin
     @related_courses = []
     tags = @course.top_tags
@@ -63,5 +74,4 @@ class CoursesController < ApplicationController
     @users = @course.taken_users
   end
 
-  end
 end

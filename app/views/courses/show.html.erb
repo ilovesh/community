@@ -8,7 +8,9 @@
     <div class="course-info span8">
       <div class="span5">
         <%= image_tag @course.image_link, class: "block img-course" %>
-        <%= link_to "Go to the course »", @course.url, target: "_blank" %>        
+        <% unless @course.multi? && @course.provider_id == 3 %>
+          <%= link_to "Go to the course »", @course.url, target: "_blank" %>
+        <% end %>       
       </div>
       <div class="span7" id="details">
         <%= render 'course_details' %>
