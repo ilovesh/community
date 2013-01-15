@@ -11,7 +11,11 @@
     <% else %>
     has finished
     <% end %>
+    <% if current_page? root_path %>
+    <%= link_to enrollment.course.full_name, enrollment.course %>
+    <% else %>
     this course
+    <% end %>
   </div>
   <div class="muted">
     <%= render partial: 'shared/timestamp', locals: { post: enrollment }%>

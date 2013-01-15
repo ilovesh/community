@@ -19,6 +19,7 @@ class BasicsController < ApplicationController
     @admin = User.find_by_email("j@courigin.com")
     @suggestion_discussion = @admin.discussions.last if @admin && @admin.discussions.any?
     @taken_list = @admin.lists.last if @admin && @admin.lists.any?
+    @enrollments = Enrollment.all[0..15]
   end
 
   def search
