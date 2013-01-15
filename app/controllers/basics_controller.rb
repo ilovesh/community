@@ -4,7 +4,7 @@ class BasicsController < ApplicationController
   def home
     @ongoing = Course.of_status(:ongoing).sort_by{ |c| -c.users.count }[0..20].sample(6)
     @upcoming = Course.of_status(:upcoming).sort_by{ |c| -c.users.count }[0..20].sample(6)
-    tag_list = Course.tag_counts_on(:tags).order('count desc').map(&:name)
+    tag_list = Course.tag_list
     tags = tag_list[0..4]
     @first_tag = tags[0]
     @first_tag_courses = top_tag_courses(@first_tag)
@@ -23,7 +23,7 @@ class BasicsController < ApplicationController
 
   def search
   	query = params[:q]
-    @tags = Course.tag_counts_on(:tags).order('count desc').map(&:name)[0...25] 
+    @tags = Course.tag_list[0...25] 
     courses = Course.search_by_full_name(query)
     status = params[:status]
     @courses = []

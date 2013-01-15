@@ -30,7 +30,6 @@ class Course < ActiveRecord::Base
   attr_accessible :name, :code, :image_link, :url, 
                   :description, :subtitle, :start_date, :final_date,
                   :instructor, :prerequisites, :duration, :tag_list, :multi
-  acts_as_taggable
 
   include PgSearch
   pg_search_scope :search_by_full_name, against: [:code, :name], 
@@ -74,6 +73,23 @@ class Course < ActiveRecord::Base
   # return an array
   def top_tags
     Enrollment.where(course_id: id).tag_counts_on(:tags).order('count desc').map(&:name)
+  end
+
+  def self.tag_list
+    all_tags = []
+    Course.all.each do |c|
+      all_tags += c.top_tags
+    end
+    freq = all_tags.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+    all_tags.sort_by { |v| -freq[v] }.uniq
+  end
+
+  def self.tagged_with(tag)
+    courses = []
+    Course.all.each do |c|
+      courses << c if c.top_tags.include? tag
+    end
+    courses
   end
 
   def status

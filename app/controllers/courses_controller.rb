@@ -1,6 +1,6 @@
 class CoursesController < ApplicationController
   def index
-    @tags = Course.tag_counts_on(:tags).order('count desc').map(&:name)[0...25] 
+    @tags = Course.tag_list[0...25] 
     status = params[:status]
     if status == "upcoming" || status == "ongoing" || status == "finished" || status == "rolling"
       courses = Course.of_status(status.to_sym) + Session.of_status(status.to_sym).map(&:course)
@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
   end
 
   def tagged
-    @tags = Course.tag_counts_on(:tags).order('count desc').map(&:name)[0...25]
+    @tags = Course.tag_list[0...25]
     tagged_courses = Course.tagged_with(params[:tag])
     status = params[:status]
     courses = []
