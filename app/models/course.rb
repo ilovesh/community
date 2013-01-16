@@ -21,7 +21,7 @@
 #
 
 # duration(week):
-# 0 - rolling; 99 - N/A(upcoming);
+# 0 - rolling; 99 - N/A(upcoming); 50 - N/A with specific start_date
 # start_date.nil? && duration == 0  => Udacity rolling
 # start_date.nil? && (duration.nil? || duration != 0)  => Coursera upcoming
 

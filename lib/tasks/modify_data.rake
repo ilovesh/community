@@ -21,5 +21,8 @@ namespace :db do
     c.description = "CS188.1x is a new online adaptation of the first half of UC Berkeley's CS188: Introduction to Artificial Intelligence. The on-campus version of this upper division computer science course draws about 600 Berkeley students each year."
     c.save
 
+    # Course 149, 150, 151
+    # add start_date Jan.30, duration 50
+
   end
 end

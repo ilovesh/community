@@ -1,3 +1,5 @@
+# coding: utf-8
+
 class CoursesController < ApplicationController
   def index
     @tags = Course.tag_list[0...25] 

@@ -1,4 +1,4 @@
-  <% if course.duration && course.duration != 0 && course.duration != 99 %>
+  <% if course.duration && course.duration != 0 && course.duration != 99 && course.duration != 50 %>
     <div id="duration">
       <label>Duration: </label>
       <span><%= pluralize(course.duration, "week") %></span>
