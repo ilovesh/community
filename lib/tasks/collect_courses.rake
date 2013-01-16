@@ -9,18 +9,18 @@
 namespace :db do
   desc "Fetch source data"
   task fetch: :environment do
-    Rails.env = 'development'
+    #Rails.env = 'development'
     require 'nokogiri'
     require 'open-uri'
-    require 'watir-webdriver'
+    #require 'watir-webdriver'
                           start1 = Time.now
-    create_providers
+    #create_providers
                           puts "Providers: #{(Time.now - start1)}" + " seconds"
                           start2 = Time.now
     fetch_from_udacity
                           puts "Udacity: #{(Time.now - start2)/60}" + " minutes"
                           start3 = Time.now    
-    fetch_from_edx
+    #fetch_from_edx
                           puts "edX: #{(Time.now - start3)/60}" + " minutes"
                           start4 = Time.now
     #fetch_from_coursera
