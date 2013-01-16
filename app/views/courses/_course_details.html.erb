@@ -34,10 +34,14 @@
   <% end %>
   <% if @course.provider_id == 3 %>
     <% if s.start_date.nil? && s.final_date.nil? && s.duration.nil? %>
-      <label>Session Starts: </label>
-      <span>Spring 2013</span>
-      <label>Session Ends: </label>
-      <span>Spring 2013</span>      
+      <div>
+        <label>Session Starts: </label>
+        <span>Spring 2013</span>
+      </div>
+      <div>
+        <label>Session Ends: </label>
+        <span>Spring 2013</span>      
+      </div>
     <% end %>
     <%= link_to "Go to the course »", s.url, target: "_blank", class: "block" %>
   <% end %> 
