@@ -12,7 +12,14 @@ class CommentsController < ApplicationController
     @commentable = @comment.commentable
     @comments = @commentable.comment_threads
     if @comment.save
-      @commentable.user.add_notification!(@commentable, @comment, current_user)
+      users = []
+      users << @commentable.user
+      users += @commentable.comment_threads.map(&:user)
+      users.delete current_user
+      users = users.uniq
+      users.each do |u|
+        u.add_notification!(@commentable, @comment, current_user)
+      end
       respond_to do |format|
         format.html { redirect_to @commentable }
         format.js
