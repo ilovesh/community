@@ -121,6 +121,15 @@ select { width: 100px; }
   overflow: hidden;
 }
 
+.thumbnail-content {
+  margin-left: 0 auto;
+  margin-right: 0 auto;
+  a {
+    margin-left: 0 auto;
+    margin-right: 0 auto;    
+  }
+}
+
 .timestamp { 
   margin-right: 5px;
 }
