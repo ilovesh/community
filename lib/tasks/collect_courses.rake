@@ -57,14 +57,38 @@ def create_providers
   Provider.create!(name: "edX",      website: "http://www.edx.org")
 end
 
+
+
+def fetch_from_udacity
+  provider = Provider.find_by_name("Udacity")
+  website = "https://www.udacity.com"
+  courses_path = "/courses"
+  courses_url = website + courses_path
+  doc = Nokogiri::HTML(open(courses_url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))
+  doc.css('#unfiltered-class-list li').each do |course|
+    name_span = course.at_css('.crs-li-title')
+    name = name_span.text.strip if name_span
+    c = provider.courses.find_by_name(name)
+    unless c.nil?
+      url = website + course.at_css('a')['href']
+      image_span = course.at_css('img')
+      image_link = 'http:' + image_span['src'] if image_span
+      c.url = url
+      c.image_link = image_link
+      c.save
+    end
+  end
+end
+
+
 ###########################
 # Fetch Udacity data
 ###########################
-def fetch_from_udacity
+def fetch_from_udacity_backup
                                                                                       puts "*"*5 + "Udacity" + "*"*5
   provider = Provider.find_by_name("Udacity")
-  website = "http://www.udacity.com"
-  doc = Nokogiri::HTML(open(website))
+  website = "https://www.udacity.com"
+  doc = Nokogiri::HTML(open(website, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))
   doc.css(".crs-lst > a").each_with_index do |link, index|
     url = website + link['href']
     c = provider.courses.find_by_url(url) # In case of any TimeoutError, check duplication before scraping.
