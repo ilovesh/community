@@ -1,5 +1,5 @@
-[0.002][INFO]:      ChromeDriver 23.0.1240.0 /usr/bin/chromedriver
-[0.232][FINE]:      Initializing session with capabilities {
+[0.000][INFO]:      ChromeDriver 26.0.1383.0 /usr/bin/chromedriver
+[0.228][FINE]:      Initializing session with capabilities {
    "browserName": "chrome",
    "chrome.detach": true,
    "chromeOptions": {
@@ -14,789 +14,142 @@
    "version": ""
 }
 
-[0.257][INFO]:      Using named testing interface
-[13.096][INFO]:     Connected to Chrome successfully. Version: 19.0.1084.56
-[13.205][FINE]:     Command received (/session/1c7839b337d11c139229f02a367380ed)
-[13.205][FINE]:     Command finished (/session/1c7839b337d11c139229f02a367380ed) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
+[0.230][INFO]:      Using named testing interface
+[0.770][INFO]:      Connected to Chrome successfully. Version: 24.0.1312.56
+[0.786][FINE]:      Command received (/session/be4b9ef2129ba01a8dc4e2af9c902a25)
+[0.786][FINE]:      Command finished (/session/be4b9ef2129ba01a8dc4e2af9c902a25) with response {
+   "sessionId": "be4b9ef2129ba01a8dc4e2af9c902a25",
    "status": 0,
    "value": {
       "acceptSslCerts": false,
       "applicationCacheEnabled": false,
       "browserConnectionEnabled": false,
       "browserName": "chrome",
-      "chrome.chromedriverVersion": "23.0.1240.0",
-      "chrome.nativeEvents": false,
+      "chrome.chromedriverVersion": "26.0.1383.0",
       "cssSelectorsEnabled": true,
       "databaseEnabled": false,
       "handlesAlerts": true,
       "javascriptEnabled": true,
       "locationContextEnabled": false,
       "nativeEvents": true,
-      "platform": "linux",
+      "platform": "mac",
       "rotatable": false,
       "takesScreenshot": true,
-      "version": "19.0.1084.56",
+      "version": "24.0.1312.56",
       "webStorageEnabled": true
    }
 }
 
-[13.240][FINE]:     Command received (/session/1c7839b337d11c139229f02a367380ed/url) with params {
+[0.788][FINE]:      Command received (/session/be4b9ef2129ba01a8dc4e2af9c902a25/url) with params {
    "url": "https://www.coursera.org/courses"
 }
 
-[13.240][FINER]:    Waiting for all views to stop loading...
-[13.341][FINER]:    Done waiting for all views to stop loading
-[16.669][FINER]:    Waiting for all views to stop loading...
-[16.680][FINER]:    Done waiting for all views to stop loading
-[16.680][FINE]:     Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
+[0.788][FINER]:     Waiting for all views to stop loading...
+[0.789][FINER]:     Done waiting for all views to stop loading
+[2.142][FINER]:     Waiting for all views to stop loading...
+[2.150][FINER]:     Done waiting for all views to stop loading
+[2.150][FINE]:      Command finished (/session/be4b9ef2129ba01a8dc4e2af9c902a25/url) with response {
+   "sessionId": "be4b9ef2129ba01a8dc4e2af9c902a25",
    "status": 0,
    "value": {
 
    }
 }
 
-[16.695][FINE]:     Command received (/session/1c7839b337d11c139229f02a367380ed/url)
-[16.695][FINER]:    Waiting for all views to stop loading...
-[16.711][FINER]:    Done waiting for all views to stop loading
-[16.792][FINER]:    Waiting for all views to stop loading...
-[16.797][FINER]:    Done waiting for all views to stop loading
-[16.797][FINE]:     Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
+[2.151][FINE]:      Command received (/session/be4b9ef2129ba01a8dc4e2af9c902a25/url)
+[2.151][FINER]:     Waiting for all views to stop loading...
+[2.159][FINER]:     Done waiting for all views to stop loading
+[2.164][FINER]:     Waiting for all views to stop loading...
+[2.164][FINER]:     Done waiting for all views to stop loading
+[2.164][FINE]:      Command finished (/session/be4b9ef2129ba01a8dc4e2af9c902a25/url) with response {
+   "sessionId": "be4b9ef2129ba01a8dc4e2af9c902a25",
    "status": 0,
    "value": "https://www.coursera.org/courses"
 }
 
-[36.834][FINE]:     Command received (/session/1c7839b337d11c139229f02a367380ed/source)
-[36.835][FINER]:    Waiting for all views to stop loading...
-[36.838][FINER]:    Done waiting for all views to stop loading
-[37.140][FINER]:    Waiting for all views to stop loading...
-[37.142][FINER]:    Done waiting for all views to stop loading
-[37.146][FINE]:     Command finished (/session/1c7839b337d11c139229f02a367380ed/source) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
+[4.165][FINE]:      Command received (/session/be4b9ef2129ba01a8dc4e2af9c902a25/source)
+[4.165][FINER]:     Waiting for all views to stop loading...
+[4.166][FINER]:     Done waiting for all views to stop loading
+[5.214][FINER]:     Waiting for all views to stop loading...
+[5.215][FINER]:     Done waiting for all views to stop loading
+[5.215][FINE]:      Command finished (/session/be4b9ef2129ba01a8dc4e2af9c902a25/source) with response {
+   "sessionId": "be4b9ef2129ba01a8dc4e2af9c902a25",
    "status": 0,
    "value": "\u003C!DOCTYPE html\u003E\u003Chtml xmlns:fb=\"http://ogp.me/ns/fb#\" itemtype=\"http://schema.org\"\u003E\u003Chead\u003E\u003Cmeta htt..."
 }
 
-[40.165][FINE]:     Command received (/session/1c7839b337d11c139229f02a367380ed/url) with params {
-   "url": "https://www.coursera.org/course/mosfet"
+[5.492][FINE]:      Command received (/session/be4b9ef2129ba01a8dc4e2af9c902a25/url) with params {
+   "url": "https://www.coursera.org/course/cgt"
 }
 
-[40.165][FINER]:    Waiting for all views to stop loading...
-[40.166][FINER]:    Done waiting for all views to stop loading
-[41.032][FINER]:    Waiting for all views to stop loading...
-[41.034][FINER]:    Done waiting for all views to stop loading
-[41.034][FINE]:     Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
+[5.492][FINER]:     Waiting for all views to stop loading...
+[5.492][FINER]:     Done waiting for all views to stop loading
+[5.653][FINER]:     Waiting for all views to stop loading...
+[5.655][FINER]:     Done waiting for all views to stop loading
+[5.655][FINE]:      Command finished (/session/be4b9ef2129ba01a8dc4e2af9c902a25/url) with response {
+   "sessionId": "be4b9ef2129ba01a8dc4e2af9c902a25",
    "status": 0,
    "value": {
 
    }
 }
 
-[41.043][FINE]:     Command received (/session/1c7839b337d11c139229f02a367380ed/url)
-[41.044][FINER]:    Waiting for all views to stop loading...
-[41.048][FINER]:    Done waiting for all views to stop loading
-[41.114][FINER]:    Waiting for all views to stop loading...
-[41.117][FINER]:    Done waiting for all views to stop loading
-[41.118][FINE]:     Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
+[5.656][FINE]:      Command received (/session/be4b9ef2129ba01a8dc4e2af9c902a25/url)
+[5.656][FINER]:     Waiting for all views to stop loading...
+[5.680][FINER]:     Done waiting for all views to stop loading
+[5.710][FINER]:     Waiting for all views to stop loading...
+[5.711][FINER]:     Done waiting for all views to stop loading
+[5.711][FINE]:      Command finished (/session/be4b9ef2129ba01a8dc4e2af9c902a25/url) with response {
+   "sessionId": "be4b9ef2129ba01a8dc4e2af9c902a25",
    "status": 0,
-   "value": "https://www.coursera.org/course/mosfet"
+   "value": "https://www.coursera.org/course/cgt"
 }
 
-[46.122][FINE]:     Command received (/session/1c7839b337d11c139229f02a367380ed/source)
-[46.123][FINER]:    Waiting for all views to stop loading...
-[63.647][FINER]:    Done waiting for all views to stop loading
-[63.704][FINER]:    Waiting for all views to stop loading...
-[63.705][FINER]:    Done waiting for all views to stop loading
-[63.706][FINE]:     Command finished (/session/1c7839b337d11c139229f02a367380ed/source) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
+[7.713][FINE]:      Command received (/session/be4b9ef2129ba01a8dc4e2af9c902a25/source)
+[7.713][FINER]:     Waiting for all views to stop loading...
+[7.713][FINER]:     Done waiting for all views to stop loading
+[7.720][FINER]:     Waiting for all views to stop loading...
+[7.720][FINER]:     Done waiting for all views to stop loading
+[7.721][FINE]:      Command finished (/session/be4b9ef2129ba01a8dc4e2af9c902a25/source) with response {
+   "sessionId": "be4b9ef2129ba01a8dc4e2af9c902a25",
    "status": 0,
    "value": "\u003C!DOCTYPE html\u003E\u003Chtml xmlns:fb=\"http://ogp.me/ns/fb#\" itemtype=\"http://schema.org\"\u003E\u003Chead\u003E\u003Cmeta htt..."
 }
 
-[64.827][FINE]:     Command received (/session/1c7839b337d11c139229f02a367380ed/url) with params {
-   "url": "https://www.coursera.org/course/machlearning"
+[7.891][FINE]:      Command received (/session/be4b9ef2129ba01a8dc4e2af9c902a25/url) with params {
+   "url": "https://www.coursera.org/course/writing2"
 }
 
-[64.827][FINER]:    Waiting for all views to stop loading...
-[64.828][FINER]:    Done waiting for all views to stop loading
-[65.369][FINER]:    Waiting for all views to stop loading...
-[65.379][FINER]:    Done waiting for all views to stop loading
-[65.379][FINE]:     Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
+[7.891][FINER]:     Waiting for all views to stop loading...
+[7.892][FINER]:     Done waiting for all views to stop loading
+[8.037][FINER]:     Waiting for all views to stop loading...
+[8.038][FINER]:     Done waiting for all views to stop loading
+[8.038][FINE]:      Command finished (/session/be4b9ef2129ba01a8dc4e2af9c902a25/url) with response {
+   "sessionId": "be4b9ef2129ba01a8dc4e2af9c902a25",
    "status": 0,
    "value": {
 
    }
 }
 
-[65.381][FINE]:     Command received (/session/1c7839b337d11c139229f02a367380ed/url)
-[65.381][FINER]:    Waiting for all views to stop loading...
-[65.398][FINER]:    Done waiting for all views to stop loading
-[65.576][FINER]:    Waiting for all views to stop loading...
-[65.577][FINER]:    Done waiting for all views to stop loading
-[65.577][FINE]:     Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
+[8.039][FINE]:      Command received (/session/be4b9ef2129ba01a8dc4e2af9c902a25/url)
+[8.039][FINER]:     Waiting for all views to stop loading...
+[8.040][FINER]:     Done waiting for all views to stop loading
+[8.077][FINER]:     Waiting for all views to stop loading...
+[8.077][FINER]:     Done waiting for all views to stop loading
+[8.077][FINE]:      Command finished (/session/be4b9ef2129ba01a8dc4e2af9c902a25/url) with response {
+   "sessionId": "be4b9ef2129ba01a8dc4e2af9c902a25",
    "status": 0,
-   "value": "https://www.coursera.org/course/machlearning"
-}
-
-[70.581][FINE]:     Command received (/session/1c7839b337d11c139229f02a367380ed/source)
-[70.582][FINER]:    Waiting for all views to stop loading...
-[84.463][FINER]:    Done waiting for all views to stop loading
-[84.524][FINER]:    Waiting for all views to stop loading...
-[84.578][FINER]:    Done waiting for all views to stop loading
-[84.579][FINE]:     Command finished (/session/1c7839b337d11c139229f02a367380ed/source) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "\u003C!DOCTYPE html\u003E\u003Chtml xmlns:fb=\"http://ogp.me/ns/fb#\" itemtype=\"http://schema.org\"\u003E\u003Chead\u003E\u003Cmeta htt..."
-}
-
-[84.720][FINE]:     Command received (/session/1c7839b337d11c139229f02a367380ed/url) with params {
-   "url": "https://www.coursera.org/course/ml"
-}
-
-[84.720][FINER]:    Waiting for all views to stop loading...
-[84.721][FINER]:    Done waiting for all views to stop loading
-[85.090][FINER]:    Waiting for all views to stop loading...
-[85.091][FINER]:    Done waiting for all views to stop loading
-[85.091][FINE]:     Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": {
-
-   }
-}
-
-[85.094][FINE]:     Command received (/session/1c7839b337d11c139229f02a367380ed/url)
-[85.094][FINER]:    Waiting for all views to stop loading...
-[85.142][FINER]:    Done waiting for all views to stop loading
-[85.421][FINER]:    Waiting for all views to stop loading...
-[85.430][FINER]:    Done waiting for all views to stop loading
-[85.430][FINE]:     Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "https://www.coursera.org/course/ml"
-}
-
-[90.433][FINE]:     Command received (/session/1c7839b337d11c139229f02a367380ed/source)
-[90.433][FINER]:    Waiting for all views to stop loading...
-[105.550][FINER]:   Done waiting for all views to stop loading
-[105.608][FINER]:   Waiting for all views to stop loading...
-[105.651][FINER]:   Done waiting for all views to stop loading
-[105.657][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/source) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "\u003C!DOCTYPE html\u003E\u003Chtml xmlns:fb=\"http://ogp.me/ns/fb#\" itemtype=\"http://schema.org\"\u003E\u003Chead\u003E\u003Cmeta htt..."
-}
-
-[106.062][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url) with params {
-   "url": "https://www.coursera.org/course/automata"
-}
-
-[106.062][FINER]:   Waiting for all views to stop loading...
-[106.062][FINER]:   Done waiting for all views to stop loading
-[106.491][FINER]:   Waiting for all views to stop loading...
-[106.497][FINER]:   Done waiting for all views to stop loading
-[106.499][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": {
-
-   }
-}
-
-[106.505][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url)
-[106.506][FINER]:   Waiting for all views to stop loading...
-[106.530][FINER]:   Done waiting for all views to stop loading
-[106.763][FINER]:   Waiting for all views to stop loading...
-[106.763][FINER]:   Done waiting for all views to stop loading
-[106.771][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "https://www.coursera.org/course/automata"
-}
-
-[111.774][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/source)
-[111.775][FINER]:   Waiting for all views to stop loading...
-[168.827][FINER]:   Done waiting for all views to stop loading
-[168.868][FINER]:   Waiting for all views to stop loading...
-[168.869][FINER]:   Done waiting for all views to stop loading
-[168.869][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/source) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "\u003C!DOCTYPE html\u003E\u003Chtml xmlns:fb=\"http://ogp.me/ns/fb#\" itemtype=\"http://schema.org\"\u003E\u003Chead\u003E\u003Cmeta htt..."
-}
-
-[168.960][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url) with params {
-   "url": "https://www.coursera.org/course/neurobehavior"
-}
-
-[168.960][FINER]:   Waiting for all views to stop loading...
-[168.961][FINER]:   Done waiting for all views to stop loading
-[170.887][FINER]:   Waiting for all views to stop loading...
-[170.892][FINER]:   Done waiting for all views to stop loading
-[170.892][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": {
-
-   }
-}
-
-[170.897][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url)
-[170.898][FINER]:   Waiting for all views to stop loading...
-[170.930][FINER]:   Done waiting for all views to stop loading
-[171.140][FINER]:   Waiting for all views to stop loading...
-[171.141][FINER]:   Done waiting for all views to stop loading
-[171.141][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "https://www.coursera.org/course/neurobehavior"
-}
-
-[176.150][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/source)
-[176.150][FINER]:   Waiting for all views to stop loading...
-[231.919][FINER]:   Done waiting for all views to stop loading
-[232.073][FINER]:   Waiting for all views to stop loading...
-[232.076][FINER]:   Done waiting for all views to stop loading
-[232.076][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/source) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "\u003C!DOCTYPE html\u003E\u003Chtml xmlns:fb=\"http://ogp.me/ns/fb#\" itemtype=\"http://schema.org\"\u003E\u003Chead\u003E\u003Cmeta htt..."
-}
-
-[232.409][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url) with params {
-   "url": "https://www.coursera.org/course/introeulaw"
-}
-
-[232.409][FINER]:   Waiting for all views to stop loading...
-[232.444][FINER]:   Done waiting for all views to stop loading
-[234.418][FINER]:   Waiting for all views to stop loading...
-[234.440][FINER]:   Done waiting for all views to stop loading
-[234.440][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": {
-
-   }
-}
-
-[234.474][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url)
-[234.474][FINER]:   Waiting for all views to stop loading...
-[234.475][FINER]:   Done waiting for all views to stop loading
-[234.605][FINER]:   Waiting for all views to stop loading...
-[234.606][FINER]:   Done waiting for all views to stop loading
-[234.610][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "https://www.coursera.org/course/introeulaw"
-}
-
-[239.616][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/source)
-[239.616][FINER]:   Waiting for all views to stop loading...
-[261.894][FINER]:   Done waiting for all views to stop loading
-[261.926][FINER]:   Waiting for all views to stop loading...
-[261.927][FINER]:   Done waiting for all views to stop loading
-[261.927][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/source) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "\u003C!DOCTYPE html\u003E\u003Chtml xmlns:fb=\"http://ogp.me/ns/fb#\" itemtype=\"http://schema.org\"\u003E\u003Chead\u003E\u003Cmeta htt..."
-}
-
-[262.229][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url) with params {
-   "url": "https://www.coursera.org/course/humankind"
-}
-
-[262.230][FINER]:   Waiting for all views to stop loading...
-[262.232][FINER]:   Done waiting for all views to stop loading
-[262.753][FINER]:   Waiting for all views to stop loading...
-[262.769][FINER]:   Done waiting for all views to stop loading
-[262.769][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": {
-
-   }
-}
-
-[262.777][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url)
-[262.780][FINER]:   Waiting for all views to stop loading...
-[262.780][FINER]:   Done waiting for all views to stop loading
-[263.021][FINER]:   Waiting for all views to stop loading...
-[263.024][FINER]:   Done waiting for all views to stop loading
-[263.024][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "https://www.coursera.org/course/humankind"
-}
-
-[268.027][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/source)
-[268.027][FINER]:   Waiting for all views to stop loading...
-[292.382][FINER]:   Done waiting for all views to stop loading
-[292.459][FINER]:   Waiting for all views to stop loading...
-[292.459][FINER]:   Done waiting for all views to stop loading
-[292.459][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/source) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "\u003C!DOCTYPE html\u003E\u003Chtml xmlns:fb=\"http://ogp.me/ns/fb#\" itemtype=\"http://schema.org\"\u003E\u003Chead\u003E\u003Cmeta htt..."
-}
-
-[292.726][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url) with params {
-   "url": "https://www.coursera.org/course/accountabletalk"
-}
-
-[292.727][FINER]:   Waiting for all views to stop loading...
-[292.728][FINER]:   Done waiting for all views to stop loading
-[293.161][FINER]:   Waiting for all views to stop loading...
-[293.164][FINER]:   Done waiting for all views to stop loading
-[293.165][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": {
-
-   }
-}
-
-[293.166][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url)
-[293.167][FINER]:   Waiting for all views to stop loading...
-[293.179][FINER]:   Done waiting for all views to stop loading
-[293.461][FINER]:   Waiting for all views to stop loading...
-[293.466][FINER]:   Done waiting for all views to stop loading
-[293.466][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "https://www.coursera.org/course/accountabletalk"
-}
-
-[298.472][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/source)
-[298.473][FINER]:   Waiting for all views to stop loading...
-[322.988][FINER]:   Done waiting for all views to stop loading
-[323.082][FINER]:   Waiting for all views to stop loading...
-[323.091][FINER]:   Done waiting for all views to stop loading
-[323.092][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/source) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "\u003C!DOCTYPE html\u003E\u003Chtml xmlns:fb=\"http://ogp.me/ns/fb#\" itemtype=\"http://schema.org\"\u003E\u003Chead\u003E\u003Cmeta htt..."
-}
-
-[323.211][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url) with params {
-   "url": "https://www.coursera.org/course/scigast"
-}
-
-[323.211][FINER]:   Waiting for all views to stop loading...
-[323.212][FINER]:   Done waiting for all views to stop loading
-[323.590][FINER]:   Waiting for all views to stop loading...
-[323.592][FINER]:   Done waiting for all views to stop loading
-[323.592][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": {
-
-   }
-}
-
-[323.596][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url)
-[323.596][FINER]:   Waiting for all views to stop loading...
-[323.605][FINER]:   Done waiting for all views to stop loading
-[323.787][FINER]:   Waiting for all views to stop loading...
-[323.788][FINER]:   Done waiting for all views to stop loading
-[323.788][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "https://www.coursera.org/course/scigast"
-}
-
-[328.792][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/source)
-[328.793][FINER]:   Waiting for all views to stop loading...
-[353.418][FINER]:   Done waiting for all views to stop loading
-[353.882][FINER]:   Waiting for all views to stop loading...
-[365.557][FINER]:   Done waiting for all views to stop loading
-[365.557][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/source) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "\u003C!DOCTYPE html\u003E\u003Chtml xmlns:fb=\"http://ogp.me/ns/fb#\" itemtype=\"http://schema.org\"\u003E\u003Chead\u003E\u003Cmeta htt..."
-}
-
-[365.728][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url) with params {
-   "url": "https://www.coursera.org/course/analyticalchem"
-}
-
-[365.728][FINER]:   Waiting for all views to stop loading...
-[365.729][FINER]:   Done waiting for all views to stop loading
-[366.604][FINER]:   Waiting for all views to stop loading...
-[366.608][FINER]:   Done waiting for all views to stop loading
-[366.608][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": {
-
-   }
-}
-
-[366.613][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url)
-[366.614][FINER]:   Waiting for all views to stop loading...
-[366.621][FINER]:   Done waiting for all views to stop loading
-[366.914][FINER]:   Waiting for all views to stop loading...
-[366.916][FINER]:   Done waiting for all views to stop loading
-[366.919][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "https://www.coursera.org/course/analyticalchem"
-}
-
-[371.930][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/source)
-[371.931][FINER]:   Waiting for all views to stop loading...
-[383.515][FINER]:   Done waiting for all views to stop loading
-[383.596][FINER]:   Waiting for all views to stop loading...
-[383.597][FINER]:   Done waiting for all views to stop loading
-[383.597][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/source) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "\u003C!DOCTYPE html\u003E\u003Chtml xmlns:fb=\"http://ogp.me/ns/fb#\" itemtype=\"http://schema.org\"\u003E\u003Chead\u003E\u003Cmeta htt..."
-}
-
-[383.722][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url) with params {
-   "url": "https://www.coursera.org/course/orgchem2b"
-}
-
-[383.724][FINER]:   Waiting for all views to stop loading...
-[383.725][FINER]:   Done waiting for all views to stop loading
-[384.106][FINER]:   Waiting for all views to stop loading...
-[384.112][FINER]:   Done waiting for all views to stop loading
-[384.112][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": {
-
-   }
-}
-
-[384.114][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url)
-[384.114][FINER]:   Waiting for all views to stop loading...
-[384.126][FINER]:   Done waiting for all views to stop loading
-[384.298][FINER]:   Waiting for all views to stop loading...
-[384.301][FINER]:   Done waiting for all views to stop loading
-[384.302][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "https://www.coursera.org/course/orgchem2b"
-}
-
-[389.466][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/source)
-[389.466][FINER]:   Waiting for all views to stop loading...
-[395.914][FINER]:   Done waiting for all views to stop loading
-[395.979][FINER]:   Waiting for all views to stop loading...
-[395.984][FINER]:   Done waiting for all views to stop loading
-[395.984][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/source) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "\u003C!DOCTYPE html\u003E\u003Chtml xmlns:fb=\"http://ogp.me/ns/fb#\" itemtype=\"http://schema.org\"\u003E\u003Chead\u003E\u003Cmeta htt..."
-}
-
-[396.254][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url) with params {
-   "url": "https://www.coursera.org/course/newchinahistory1"
-}
-
-[396.254][FINER]:   Waiting for all views to stop loading...
-[396.254][FINER]:   Done waiting for all views to stop loading
-[396.713][FINER]:   Waiting for all views to stop loading...
-[396.714][FINER]:   Done waiting for all views to stop loading
-[396.714][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": {
-
-   }
-}
-
-[396.716][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url)
-[396.722][FINER]:   Waiting for all views to stop loading...
-[396.731][FINER]:   Done waiting for all views to stop loading
-[396.875][FINER]:   Waiting for all views to stop loading...
-[396.884][FINER]:   Done waiting for all views to stop loading
-[396.890][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "https://www.coursera.org/course/newchinahistory1"
-}
-
-[401.893][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/source)
-[401.893][FINER]:   Waiting for all views to stop loading...
-[413.840][FINER]:   Done waiting for all views to stop loading
-[413.890][FINER]:   Waiting for all views to stop loading...
-[413.895][FINER]:   Done waiting for all views to stop loading
-[413.895][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/source) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "\u003C!DOCTYPE html\u003E\u003Chtml xmlns:fb=\"http://ogp.me/ns/fb#\" itemtype=\"http://schema.org\"\u003E\u003Chead\u003E\u003Cmeta htt..."
-}
-
-[414.002][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url) with params {
-   "url": "https://www.coursera.org/course/vlsicad"
-}
-
-[414.002][FINER]:   Waiting for all views to stop loading...
-[414.003][FINER]:   Done waiting for all views to stop loading
-[414.392][FINER]:   Waiting for all views to stop loading...
-[414.396][FINER]:   Done waiting for all views to stop loading
-[414.396][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": {
-
-   }
-}
-
-[414.397][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url)
-[414.397][FINER]:   Waiting for all views to stop loading...
-[414.405][FINER]:   Done waiting for all views to stop loading
-[414.487][FINER]:   Waiting for all views to stop loading...
-[414.488][FINER]:   Done waiting for all views to stop loading
-[414.488][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "https://www.coursera.org/course/vlsicad"
-}
-
-[419.509][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/source)
-[419.510][FINER]:   Waiting for all views to stop loading...
-[425.919][FINER]:   Done waiting for all views to stop loading
-[425.970][FINER]:   Waiting for all views to stop loading...
-[425.970][FINER]:   Done waiting for all views to stop loading
-[425.971][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/source) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "\u003C!DOCTYPE html\u003E\u003Chtml xmlns:fb=\"http://ogp.me/ns/fb#\" itemtype=\"http://schema.org\"\u003E\u003Chead\u003E\u003Cmeta htt..."
-}
-
-[426.107][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url) with params {
-   "url": "https://www.coursera.org/course/vacctrials"
-}
-
-[426.108][FINER]:   Waiting for all views to stop loading...
-[426.108][FINER]:   Done waiting for all views to stop loading
-[426.561][FINER]:   Waiting for all views to stop loading...
-[426.577][FINER]:   Done waiting for all views to stop loading
-[426.578][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": {
-
-   }
-}
-
-[426.599][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url)
-[426.599][FINER]:   Waiting for all views to stop loading...
-[426.600][FINER]:   Done waiting for all views to stop loading
-[427.621][FINER]:   Waiting for all views to stop loading...
-[427.636][FINER]:   Done waiting for all views to stop loading
-[427.636][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "https://www.coursera.org/course/vacctrials"
-}
-
-[432.652][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/source)
-[432.652][FINER]:   Waiting for all views to stop loading...
-[435.194][FINER]:   Done waiting for all views to stop loading
-[435.227][FINER]:   Waiting for all views to stop loading...
-[435.228][FINER]:   Done waiting for all views to stop loading
-[435.228][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/source) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "\u003C!DOCTYPE html\u003E\u003Chtml xmlns:fb=\"http://ogp.me/ns/fb#\" itemtype=\"http://schema.org\"\u003E\u003Chead\u003E\u003Cmeta htt..."
-}
-
-[435.770][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url) with params {
-   "url": "https://www.coursera.org/course/vaccines"
-}
-
-[435.770][FINER]:   Waiting for all views to stop loading...
-[435.772][FINER]:   Done waiting for all views to stop loading
-[436.205][FINER]:   Waiting for all views to stop loading...
-[436.211][FINER]:   Done waiting for all views to stop loading
-[436.213][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": {
-
-   }
-}
-
-[436.215][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url)
-[436.215][FINER]:   Waiting for all views to stop loading...
-[436.225][FINER]:   Done waiting for all views to stop loading
-[436.357][FINER]:   Waiting for all views to stop loading...
-[436.357][FINER]:   Done waiting for all views to stop loading
-[436.357][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "https://www.coursera.org/course/vaccines"
-}
-
-[441.359][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/source)
-[441.360][FINER]:   Waiting for all views to stop loading...
-[447.183][FINER]:   Done waiting for all views to stop loading
-[447.234][FINER]:   Waiting for all views to stop loading...
-[447.235][FINER]:   Done waiting for all views to stop loading
-[447.235][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/source) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "\u003C!DOCTYPE html\u003E\u003Chtml xmlns:fb=\"http://ogp.me/ns/fb#\" itemtype=\"http://schema.org\"\u003E\u003Chead\u003E\u003Cmeta htt..."
-}
-
-[447.397][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url) with params {
-   "url": "https://www.coursera.org/course/bigdata"
-}
-
-[447.397][FINER]:   Waiting for all views to stop loading...
-[447.397][FINER]:   Done waiting for all views to stop loading
-[447.756][FINER]:   Waiting for all views to stop loading...
-[447.757][FINER]:   Done waiting for all views to stop loading
-[447.757][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": {
-
-   }
-}
-
-[447.759][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url)
-[447.759][FINER]:   Waiting for all views to stop loading...
-[447.769][FINER]:   Done waiting for all views to stop loading
-[447.951][FINER]:   Waiting for all views to stop loading...
-[447.971][FINER]:   Done waiting for all views to stop loading
-[447.971][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "https://www.coursera.org/course/bigdata"
-}
-
-[452.978][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/source)
-[452.979][FINER]:   Waiting for all views to stop loading...
-[452.981][FINER]:   Done waiting for all views to stop loading
-[453.003][FINER]:   Waiting for all views to stop loading...
-[453.004][FINER]:   Done waiting for all views to stop loading
-[453.005][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/source) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "\u003C!DOCTYPE html\u003E\u003Chtml xmlns:fb=\"http://ogp.me/ns/fb#\" itemtype=\"http://schema.org\"\u003E\u003Chead\u003E\u003Cmeta htt..."
-}
-
-[453.169][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url) with params {
-   "url": "https://www.coursera.org/course/mysticthought"
-}
-
-[453.169][FINER]:   Waiting for all views to stop loading...
-[453.170][FINER]:   Done waiting for all views to stop loading
-[453.603][FINER]:   Waiting for all views to stop loading...
-[453.610][FINER]:   Done waiting for all views to stop loading
-[453.610][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": {
-
-   }
-}
-
-[453.612][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url)
-[453.612][FINER]:   Waiting for all views to stop loading...
-[453.614][FINER]:   Done waiting for all views to stop loading
-[453.764][FINER]:   Waiting for all views to stop loading...
-[453.764][FINER]:   Done waiting for all views to stop loading
-[453.764][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "https://www.coursera.org/course/mysticthought"
-}
-
-[458.766][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/source)
-[458.766][FINER]:   Waiting for all views to stop loading...
-[458.767][FINER]:   Done waiting for all views to stop loading
-[458.780][FINER]:   Waiting for all views to stop loading...
-[458.781][FINER]:   Done waiting for all views to stop loading
-[458.781][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/source) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "\u003C!DOCTYPE html\u003E\u003Chtml xmlns:fb=\"http://ogp.me/ns/fb#\" itemtype=\"http://schema.org\"\u003E\u003Chead\u003E\u003Cmeta htt..."
-}
-
-[458.867][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url) with params {
-   "url": "https://www.coursera.org/course/nanotech"
-}
-
-[458.876][FINER]:   Waiting for all views to stop loading...
-[458.878][FINER]:   Done waiting for all views to stop loading
-[459.272][FINER]:   Waiting for all views to stop loading...
-[459.273][FINER]:   Done waiting for all views to stop loading
-[459.273][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": {
-
-   }
-}
-
-[459.275][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url)
-[459.275][FINER]:   Waiting for all views to stop loading...
-[459.276][FINER]:   Done waiting for all views to stop loading
-[459.493][FINER]:   Waiting for all views to stop loading...
-[459.494][FINER]:   Done waiting for all views to stop loading
-[459.494][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "https://www.coursera.org/course/nanotech"
-}
-
-[464.503][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/source)
-[464.503][FINER]:   Waiting for all views to stop loading...
-[468.089][FINER]:   Done waiting for all views to stop loading
-[468.139][FINER]:   Waiting for all views to stop loading...
-[468.139][FINER]:   Done waiting for all views to stop loading
-[468.140][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/source) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "\u003C!DOCTYPE html\u003E\u003Chtml xmlns:fb=\"http://ogp.me/ns/fb#\" itemtype=\"http://schema.org\"\u003E\u003Chead\u003E\u003Cmeta htt..."
-}
-
-[468.524][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url) with params {
-   "url": "https://www.coursera.org/course/orgchem2a"
-}
-
-[468.524][FINER]:   Waiting for all views to stop loading...
-[468.526][FINER]:   Done waiting for all views to stop loading
-[469.015][FINER]:   Waiting for all views to stop loading...
-[469.023][FINER]:   Done waiting for all views to stop loading
-[469.023][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": {
-
-   }
-}
-
-[469.025][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/url)
-[469.025][FINER]:   Waiting for all views to stop loading...
-[469.030][FINER]:   Done waiting for all views to stop loading
-[469.165][FINER]:   Waiting for all views to stop loading...
-[469.167][FINER]:   Done waiting for all views to stop loading
-[469.167][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/url) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
-   "status": 0,
-   "value": "https://www.coursera.org/course/orgchem2a"
-}
-
-[474.169][FINE]:    Command received (/session/1c7839b337d11c139229f02a367380ed/source)
-[474.169][FINER]:   Waiting for all views to stop loading...
-[474.169][FINER]:   Done waiting for all views to stop loading
-[474.208][FINER]:   Waiting for all views to stop loading...
-[474.210][FINER]:   Done waiting for all views to stop loading
-[474.211][FINE]:    Command finished (/session/1c7839b337d11c139229f02a367380ed/source) with response {
-   "sessionId": "1c7839b337d11c139229f02a367380ed",
+   "value": "https://www.coursera.org/course/writing2"
+}
+
+[10.080][FINE]:     Command received (/session/be4b9ef2129ba01a8dc4e2af9c902a25/source)
+[10.080][FINER]:    Waiting for all views to stop loading...
+[10.080][FINER]:    Done waiting for all views to stop loading
+[10.089][FINER]:    Waiting for all views to stop loading...
+[10.090][FINER]:    Done waiting for all views to stop loading
+[10.090][FINE]:     Command finished (/session/be4b9ef2129ba01a8dc4e2af9c902a25/source) with response {
+   "sessionId": "be4b9ef2129ba01a8dc4e2af9c902a25",
    "status": 0,
    "value": "\u003C!DOCTYPE html\u003E\u003Chtml xmlns:fb=\"http://ogp.me/ns/fb#\" itemtype=\"http://schema.org\"\u003E\u003Chead\u003E\u003Cmeta htt..."
 }

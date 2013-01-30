@@ -17,10 +17,10 @@ namespace :db do
     #create_providers
                           puts "Providers: #{(Time.now - start1)}" + " seconds"
                           start2 = Time.now
-    fetch_from_udacity
+    #fetch_from_udacity
                           puts "Udacity: #{(Time.now - start2)/60}" + " minutes"
                           start3 = Time.now    
-    #fetch_from_edx
+    fetch_from_edx
                           puts "edX: #{(Time.now - start3)/60}" + " minutes"
                           start4 = Time.now
     #fetch_from_coursera
@@ -110,7 +110,7 @@ def fetch_from_edx
                                                                                       puts "*"*5 + "#{index+1}: " + name
       
       c = provider.courses.find_by_url(url) # In case of any TimeoutError, check duplication before scraping.
-      if c.nil?
+      if c.nil?       
         page               = Nokogiri::HTML(open(url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))      
         code_span          = page.at_css("span.course-number")
         university_span    = page.at_css(".intro h1 a")
@@ -160,10 +160,13 @@ def fetch_from_edx
         if c
           c.multi = true
           c.save
-          c.sessions.create!(start_date: start_date,
-                             final_date: final_date,
-                             duration:   duration,
-                             url:        url)          
+          session = c.sessions.find_by_url(url)
+          if session.nil?
+            c.sessions.create!(start_date: start_date,
+                               final_date: final_date,
+                               duration:   duration,
+                               url:        url)          
+          end
         else
           course = provider.courses.create!(url:           url,
                                             name:          name,
@@ -194,7 +197,7 @@ def fetch_from_coursera
   courses_path = "/courses"
   courses_url = website + courses_path   
   browser.goto courses_url
-  sleep(20)
+  sleep(2)
   courses_page = Nokogiri::HTML.parse(browser.html)    
   courses_page.css(".coursera-course-listing-box-wide").each_with_index do |course, index|
     course_path_span = course.at_css(".coursera-course-listing-name .internal-home")
@@ -205,7 +208,7 @@ def fetch_from_coursera
     c = provider.courses.find_by_url(url) # In case of any TimeoutError, check duplication before scraping.
     if c.nil?
       browser.goto url
-      sleep(5)
+      sleep(2)
       page      = Nokogiri::HTML.parse(browser.html)
       name_span = page.at_css("h1")
       name      = name_span.text.strip if name_span

@@ -36,7 +36,7 @@ class Course < ActiveRecord::Base
                   using: {tsearch: {prefix: true}}
 
   validates :name,         presence: true
-  validates :code,         allow_blank: true, uniqueness: { scope: :provider_id, case_sensitive: false }
+  #validates :code,         allow_blank: true, uniqueness: { scope: :provider_id, case_sensitive: false }
   validates :image_link,   presence: true
   validates :url,          presence: true
   validates :description,  presence: true
