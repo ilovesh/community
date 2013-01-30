@@ -6,6 +6,10 @@
 # edX:     "Artificial Intelligence"
 # some descriptions/instructors, etc
 
+# pg_dump -Fc --no-acl --no-owner -h localhost -U zhangj community_development > localdb.dump
+# heroku pgbackups:restore DATABASE 'https://dl.dropbox.com/u/95316659/localdb.dump'
+
+
 namespace :db do
   desc "Create providers"
   task create_providers: :environment do
@@ -40,7 +44,7 @@ namespace :db do
   task fetch_from_coursera: :environment do
     require 'nokogiri'
     require 'open-uri'
-    #require 'watir-webdriver'
+    require 'watir-webdriver'
                           start = Time.now    
     fetch_from_coursera
                           puts "Coursera: #{(Time.now - start)/60}" + " minutes"    
@@ -129,7 +133,8 @@ def fetch_from_edx
                                                                                       puts "*"*5 + "#{index+1}: " + name
       
       c = provider.courses.find_by_url(url) # In case of any TimeoutError, check duplication before scraping.
-      if c.nil?       
+      if c.nil?
+                                                                                      puts "*"*5 + "new course"             
         page               = Nokogiri::HTML(open(url, ssl_verify_mode: OpenSSL::SSL::VERIFY_NONE))      
         code_span          = page.at_css("span.course-number")
         university_span    = page.at_css(".intro h1 a")
@@ -177,6 +182,7 @@ def fetch_from_edx
 
         c = provider.courses.find_by_code(code)
         if c
+                                                                                      puts "*"*5 + "multi sessions"          
           c.multi = true
           c.save
           session = c.sessions.find_by_url(url)
@@ -187,6 +193,7 @@ def fetch_from_edx
                                url:        url)          
           end
         else
+                                                                                      puts "*"*5 + "no multi"          
           course = provider.courses.create!(url:           url,
                                             name:          name,
                                             code:          code,

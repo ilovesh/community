@@ -15,10 +15,10 @@
 }
 
 [0.230][INFO]:      Using named testing interface
-[0.733][INFO]:      Connected to Chrome successfully. Version: 24.0.1312.56
-[0.754][FINE]:      Command received (/session/347a120df7ecc716525b5b2f47f9d44f)
-[0.755][FINE]:      Command finished (/session/347a120df7ecc716525b5b2f47f9d44f) with response {
-   "sessionId": "347a120df7ecc716525b5b2f47f9d44f",
+[0.769][INFO]:      Connected to Chrome successfully. Version: 24.0.1312.56
+[0.799][FINE]:      Command received (/session/5fd844fe318b27ff6a404f8a1416ccc4)
+[0.799][FINE]:      Command finished (/session/5fd844fe318b27ff6a404f8a1416ccc4) with response {
+   "sessionId": "5fd844fe318b27ff6a404f8a1416ccc4",
    "status": 0,
    "value": {
       "acceptSslCerts": false,
@@ -40,78 +40,40 @@
    }
 }
 
-[0.756][FINE]:      Command received (/session/347a120df7ecc716525b5b2f47f9d44f/url) with params {
+[0.801][FINE]:      Command received (/session/5fd844fe318b27ff6a404f8a1416ccc4/url) with params {
    "url": "https://www.coursera.org/courses"
 }
 
-[0.756][FINER]:     Waiting for all views to stop loading...
-[0.757][FINER]:     Done waiting for all views to stop loading
-[3.450][FINER]:     Waiting for all views to stop loading...
-[3.450][FINER]:     Done waiting for all views to stop loading
-[3.450][FINE]:      Command finished (/session/347a120df7ecc716525b5b2f47f9d44f/url) with response {
-   "sessionId": "347a120df7ecc716525b5b2f47f9d44f",
+[0.801][FINER]:     Waiting for all views to stop loading...
+[0.801][FINER]:     Done waiting for all views to stop loading
+[1.859][FINER]:     Waiting for all views to stop loading...
+[1.860][FINER]:     Done waiting for all views to stop loading
+[1.860][FINE]:      Command finished (/session/5fd844fe318b27ff6a404f8a1416ccc4/url) with response {
+   "sessionId": "5fd844fe318b27ff6a404f8a1416ccc4",
    "status": 0,
    "value": {
 
    }
 }
 
-[3.451][FINE]:      Command received (/session/347a120df7ecc716525b5b2f47f9d44f/url)
-[3.451][FINER]:     Waiting for all views to stop loading...
-[3.452][FINER]:     Done waiting for all views to stop loading
-[3.517][FINER]:     Waiting for all views to stop loading...
-[3.517][FINER]:     Done waiting for all views to stop loading
-[3.517][FINE]:      Command finished (/session/347a120df7ecc716525b5b2f47f9d44f/url) with response {
-   "sessionId": "347a120df7ecc716525b5b2f47f9d44f",
+[1.861][FINE]:      Command received (/session/5fd844fe318b27ff6a404f8a1416ccc4/url)
+[1.861][FINER]:     Waiting for all views to stop loading...
+[1.861][FINER]:     Done waiting for all views to stop loading
+[1.886][FINER]:     Waiting for all views to stop loading...
+[1.899][FINER]:     Done waiting for all views to stop loading
+[1.899][FINE]:      Command finished (/session/5fd844fe318b27ff6a404f8a1416ccc4/url) with response {
+   "sessionId": "5fd844fe318b27ff6a404f8a1416ccc4",
    "status": 0,
    "value": "https://www.coursera.org/courses"
 }
 
-[5.519][FINE]:      Command received (/session/347a120df7ecc716525b5b2f47f9d44f/source)
-[5.519][FINER]:     Waiting for all views to stop loading...
-[5.520][FINER]:     Done waiting for all views to stop loading
-[5.620][FINER]:     Waiting for all views to stop loading...
-[5.620][FINER]:     Done waiting for all views to stop loading
-[5.620][FINE]:      Command finished (/session/347a120df7ecc716525b5b2f47f9d44f/source) with response {
-   "sessionId": "347a120df7ecc716525b5b2f47f9d44f",
-   "status": 0,
-   "value": "\u003C!DOCTYPE html\u003E\u003Chtml xmlns:fb=\"http://ogp.me/ns/fb#\" itemtype=\"http://schema.org\"\u003E\u003Chead\u003E\u003Cmeta htt..."
-}
-
-[6.162][FINE]:      Command received (/session/347a120df7ecc716525b5b2f47f9d44f/url) with params {
-   "url": "https://www.coursera.org/course/cardiacarrest"
-}
-
-[6.162][FINER]:     Waiting for all views to stop loading...
-[6.162][FINER]:     Done waiting for all views to stop loading
-[6.961][FINER]:     Waiting for all views to stop loading...
-[6.963][FINER]:     Done waiting for all views to stop loading
-[6.963][FINE]:      Command finished (/session/347a120df7ecc716525b5b2f47f9d44f/url) with response {
-   "sessionId": "347a120df7ecc716525b5b2f47f9d44f",
-   "status": 0,
-   "value": {
-
-   }
-}
-
-[6.964][FINE]:      Command received (/session/347a120df7ecc716525b5b2f47f9d44f/url)
-[6.964][FINER]:     Waiting for all views to stop loading...
-[6.967][FINER]:     Done waiting for all views to stop loading
-[6.991][FINER]:     Waiting for all views to stop loading...
-[6.991][FINER]:     Done waiting for all views to stop loading
-[6.991][FINE]:      Command finished (/session/347a120df7ecc716525b5b2f47f9d44f/url) with response {
-   "sessionId": "347a120df7ecc716525b5b2f47f9d44f",
-   "status": 0,
-   "value": "https://www.coursera.org/course/cardiacarrest"
-}
-
-[8.993][FINE]:      Command received (/session/347a120df7ecc716525b5b2f47f9d44f/source)
-[8.993][FINER]:     Waiting for all views to stop loading...
-[10.213][FINER]:    Done waiting for all views to stop loading
-[10.235][FINER]:    Waiting for all views to stop loading...
-[10.235][FINER]:    Done waiting for all views to stop loading
-[10.235][FINE]:     Command finished (/session/347a120df7ecc716525b5b2f47f9d44f/source) with response {
-   "sessionId": "347a120df7ecc716525b5b2f47f9d44f",
+[3.902][FINE]:      Command received (/session/5fd844fe318b27ff6a404f8a1416ccc4/source)
+[3.902][FINER]:     Waiting for all views to stop loading...
+[3.902][FINER]:     Done waiting for all views to stop loading
+[4.185][FINER]:     Waiting for all views to stop loading...
+[4.185][FINER]:     Done waiting for all views to stop loading
+[4.185][FINE]:      Command finished (/session/5fd844fe318b27ff6a404f8a1416ccc4/source) with response {
+   "sessionId": "5fd844fe318b27ff6a404f8a1416ccc4",
    "status": 0,
    "value": "\u003C!DOCTYPE html\u003E\u003Chtml xmlns:fb=\"http://ogp.me/ns/fb#\" itemtype=\"http://schema.org\"\u003E\u003Chead\u003E\u003Cmeta htt..."
 }
