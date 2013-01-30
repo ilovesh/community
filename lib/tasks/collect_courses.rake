@@ -7,24 +7,43 @@
 # some descriptions/instructors, etc
 
 namespace :db do
+  desc "Create providers"
+  task create_providers: :environment do
+    create_providers
+  end
+end
+
+namespace :db do
+  desc "Fetch Udacity source data"
+  task fetch_from_udacity: :environment do
+    require 'nokogiri'
+    require 'open-uri'
+                          start = Time.now
+    fetch_from_udacity
+                          puts "Udacity: #{(Time.now - start)/60}" + " minutes"  
+  end
+end
+
+namespace :db do
+  desc "Fetch edX source data"
+  task fetch_from_edx: :environment do
+    require 'nokogiri'
+    require 'open-uri'
+                          start = Time.now
+    fetch_from_edx
+                          puts "edX: #{(Time.now - start)/60}" + " minutes"  
+  end
+end
+
+namespace :db do
   desc "Fetch source data"
-  task fetch: :environment do
-    #Rails.env = 'development'
+  task fetch_from_coursera: :environment do
     require 'nokogiri'
     require 'open-uri'
     #require 'watir-webdriver'
-                          start1 = Time.now
-    #create_providers
-                          puts "Providers: #{(Time.now - start1)}" + " seconds"
-                          start2 = Time.now
-    #fetch_from_udacity
-                          puts "Udacity: #{(Time.now - start2)/60}" + " minutes"
-                          start3 = Time.now    
-    fetch_from_edx
-                          puts "edX: #{(Time.now - start3)/60}" + " minutes"
-                          start4 = Time.now
-    #fetch_from_coursera
-                          puts "Coursera: #{(Time.now - start3)/60}" + " minutes"    
+                          start = Time.now    
+    fetch_from_coursera
+                          puts "Coursera: #{(Time.now - start)/60}" + " minutes"    
   end
 end
 
