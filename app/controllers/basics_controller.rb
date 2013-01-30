@@ -15,7 +15,7 @@ class BasicsController < ApplicationController
     @fourth_tag = tags[3]
     @fourth_tag_courses = top_tag_courses(@fourth_tag)
     @discussions = Discussion.all(limit: 3)
-    @lists       = List.non_empty[0..5]
+    @lists       = List.non_empty.sort_by{ |l| -l.likes.count }[0..5]
     @admin = User.find_by_email("j@courigin.com")
     @suggestion_discussion = @admin.discussions.last if @admin && @admin.discussions.any?
     @taken_list = @admin.lists.last if @admin && @admin.lists.any?
