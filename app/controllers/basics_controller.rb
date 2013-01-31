@@ -28,7 +28,7 @@ class BasicsController < ApplicationController
     courses = Course.search_by_full_name(query)
     status = params[:status]
     @courses = []
-    if status && (status == 'upcoming' || status == 'ongoing' || status = 'finished' || status = 'rolling')
+    if status && (status == 'upcoming' || status == 'ongoing' || status = 'finished' || status = 'self_paced')
       courses.each { |c| @courses << c if c.status == status.to_sym }
       Session.all.each do |s|
         if !@courses.include?(s.course) && courses.include?(s.course) && s.status == status.to_sym

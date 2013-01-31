@@ -103,10 +103,10 @@ class Course < ActiveRecord::Base
       end
       return :upcoming if start_date > time
       return :ongoing  if final_date && time > start_date && time < final_date
-      return :rolling  if final_date.nil? && time > start_date # in case of such a weird situation
+      return :self_paced  if final_date.nil? && time > start_date # in case of such a weird situation
       return :finished
     else
-      return :rolling if duration == 0
+      return :self_paced if duration == 0
       return :upcoming
     end
   end
