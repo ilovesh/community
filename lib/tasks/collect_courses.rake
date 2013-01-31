@@ -6,6 +6,12 @@
 # edX:     "Artificial Intelligence"
 # some descriptions/instructors, etc
 
+# pg import
+# heroku pgbackups:capture
+# curl -o latest.dump `heroku pgbackups:url`
+# pg_restore --verbose --clean --no-acl --no-owner -h localhost -U zhangj -d community_development latest.dump
+
+# pg export
 # pg_dump -Fc --no-acl --no-owner -h localhost -U zhangj community_development > localdb.dump
 # heroku pgbackups:restore DATABASE 'https://dl.dropbox.com/u/95316659/localdb.dump'
 
@@ -40,7 +46,7 @@ namespace :db do
 end
 
 namespace :db do
-  desc "Fetch source data"
+  desc "Fetch Cousera source data"
   task fetch_from_coursera: :environment do
     require 'nokogiri'
     require 'open-uri'
@@ -107,6 +113,7 @@ def fetch_from_udacity
                               prerequisites: prerequisites,
                               start_date:    start_date,
                               duration:      duration)
+      add_university_and_teaching!(university, course) if university
 
     else
                                                                                       puts "Update"      
@@ -119,7 +126,6 @@ def fetch_from_udacity
                           prerequisites: prerequisites,
                           start_date:    start_date,
                           duration:      duration)
-      add_university_and_teaching!(university, c) if university
     end # check duplication
                                                                                       puts "FINISH"    
   end # each course in the list
@@ -231,7 +237,7 @@ def fetch_from_coursera
   courses_path = "/courses"
   courses_url = website + courses_path   
   browser.goto courses_url
-  sleep(2)
+  sleep(10)
   courses_page = Nokogiri::HTML.parse(browser.html)    
   courses_page.css(".coursera-course-listing-box-wide").each_with_index do |course, index|
     course_path_span = course.at_css(".coursera-course-listing-name .internal-home")
@@ -250,26 +256,17 @@ def fetch_from_coursera
       description_span = page.at_css(".span6 p")
       image_span       = page.at_css(".coursera-course-logo img")
       image_span       = page.at_css(".coursera-course-logo-no-video img") if image_span.nil?
-      start_date_span  = page.css('.coursera-course-listing span:nth-child(1)')
-      duration_span    = page.css(".coursera-course-listing span:nth-child(2)")
-      start_date_span  = page.at_css(".coursera-course-listing:nth-child(2) span:nth-child(1)") if start_date_span.nil?
       instructor_span.search('br').each {|br| br.replace("|")}
       instructor  = instructor_span.text.strip if instructor_span
       description = description_span.text.strip if description_span
-      image_link  = image_span["src"] if image_span    
+      image_link  = image_span["src"] if image_span
 
-      unless start_date_span.nil?
-        if start_date_span.count > 1
-          sd1 = start_date_span[0]
-          sd2 = start_date_span[1]
-          d1 = duration_span[0] if duration_span
-          d2 = duration_span[1] if duration_span
-        else
-          sd1 = start_date_span
-          d1 = duration_span if duration_span
-        end
-        start_date_span_text = sd1.text.strip
-        start_date = nil
+      sessions_span = page.css('td:nth-child(1)')
+      sessions_span.each_with_index do |session_span, column|
+        spans = session_span.css('span')
+        start_date_span = spans[0]
+        duration_span = spans[1] if spans.count > 1
+        start_date_span_text = start_date_span.text.strip
         if start_date_span_text == "Self study"
           duration = 0
         elsif start_date_span_text == "Date to be announced"
@@ -280,55 +277,42 @@ def fetch_from_coursera
           rescue
             start_date = nil
           end
-          duration    = d1.text[/[0-9\.]+/].strip if d1.text[/[0-9\.]+/] # format is like: " \n(10 weeks long)"
+          duration    = duration_span.text[/[0-9\.]+/].strip if duration_span # format is like: " \n(10 weeks long)"
         end
-      end
-
-      course = provider.courses.find_by_url(url)
-      if course.nil?
-        course = provider.courses.create!(url:         url,
-                                        name:        name,
-                                        instructor:  instructor,
-                                        description: description,
-                                        image_link:  image_link,
-                                        start_date:  start_date,
-                                        duration:    duration)
-        university_list.each {|university| add_university_and_teaching!(university, course)}
-      else
-        course.update_attributes(url:         url,
-                                        name:        name,
-                                        instructor:  instructor,
-                                        description: description,
-                                        image_link:  image_link,
-                                        start_date:  start_date,
-                                        duration:    duration)
-
-      end
-
-      if sd2
-        course.multi = true
-        course.save
-        start_date_span_text = sd2.text.strip
-        start_date = nil
-        if start_date_span_text == "Self study"
-          duration = 0
-        elsif start_date_span_text == "Date to be announced"
-          duration = 99
-        else
-          begin
-            start_date = start_date_span_text + START_TIME + PST
-          rescue
-            start_date = nil
+        if column == 0
+          course = provider.courses.find_by_url(url)
+          if course.nil?
+                                                                puts 'New'
+            course = provider.courses.create!(url:         url,
+                                              name:        name,
+                                              instructor:  instructor,
+                                              description: description,
+                                              image_link:  image_link,
+                                              start_date:  start_date,
+                                              duration:    duration)
+            university_list.each {|university| add_university_and_teaching!(university, course)}
+          else
+                                                                puts 'Exists'
+            course.update_attributes(url:         url,
+                                     name:        name,
+                                     instructor:  instructor,
+                                     description: description,
+                                     image_link:  image_link,
+                                     start_date:  start_date,
+                                     duration:    duration)
+            if sessions_span.count > 1
+              course.sessions.each { |s| s.destroy }
+              course.multi = true
+              course.save
+            end
           end
-          duration = d2.text[/[0-9\.]+/].strip if d2.text[/[0-9\.]+/]
-        end
-        session = course.sessions.find_by_start_date(start_date)
-        if session.nil?
+        else
           course.sessions.create!(start_date: start_date,
-                                duration: duration,
-                                url: url)
+                                  duration: duration,
+                                  url: url)
         end
       end
+      #start_date_span  = page.at_css(".coursera-course-listing:nth-child(2) span:nth-child(1)") if start_date_span.nil?
                                                                                       puts "FINISH"
   end # each course in the list
 end
