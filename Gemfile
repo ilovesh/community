@@ -12,7 +12,6 @@ gem 'nokogiri'
 gem "ffaker", "~> 1.15.0"
 gem 'best_in_place'
 gem 'friendly_id'
-gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'figaro'
 
