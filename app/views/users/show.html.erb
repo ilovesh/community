@@ -2,11 +2,7 @@
 <% provide(:background, 'no-bg') %>
 <div id="user-page">
   <h2 class="inline-header">
-    <% if @user.realname %>
-      <%= @user.realname %>
-    <% else %>
-      <%= @user.username %>
-    <% end %>
+    <%= @user.username %>
   </h2>
   <% if current_user?(@user) %>
     <%= link_to "edit",   edit_user_path(@user) %>
