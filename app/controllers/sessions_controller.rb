@@ -12,7 +12,6 @@ class SessionsController < ApplicationController
       if provider == "facebook"
         email = auth_hash["info"]["email"] if auth_hash["info"]["email"]
         realname = auth_hash["info"]["name"] if auth_hash["info"]["name"]
-        username = auth_hash["info"]["username"] if auth_hash["info"]["username"]
         location = auth_hash[:extra][:raw_info][:location][:name] if auth_hash[:extra][:raw_info][:location] 
       end
       if @authentication
@@ -26,7 +25,7 @@ class SessionsController < ApplicationController
                                location: location)
       else
         user = User.create!(email: email,
-                            username: username,
+                            username: realname,
                             realname: realname,
                             location: location,
                             password: SecureRandom.urlsafe_base64)
