@@ -18,6 +18,6 @@
     <% end %>
   </div>
   <div class="muted">
-    <%= render partial: 'shared/timestamp', locals: { post: enrollment }%>
+    <span class="muted timestamp"><%= time_ago_in_words(enrollment.updated_at) %> ago</span>
   </div>
 </li>
