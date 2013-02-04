@@ -20,15 +20,14 @@ class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :username, use: :slugged
 
-  attr_accessible :email, :username, :password, :location, :about
+  attr_accessible :email, :username, :realname, :password, :location, :about
   has_secure_password 
   acts_as_tagger
 
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
 
-  validates :username, presence: true, length: { maximum: 25 },
-                       uniqueness: { case_sensitive: false }
+  validates :username, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
   					uniqueness: { case_sensitive: false }
@@ -49,6 +48,7 @@ class User < ActiveRecord::Base
   has_many :likes,          dependent: :destroy
   has_many :reviews,        dependent: :destroy
   has_many :notifications,  dependent: :destroy
+  has_many :authentications, dependent: :destroy
 
   def enroll!(course, status, *arg)
     tag_list = arg[0] if arg
@@ -199,6 +199,6 @@ class User < ActiveRecord::Base
     end
 
     def validate_password?
-      password.present?
+      password.present? 
     end
 end

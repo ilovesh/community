@@ -29,7 +29,8 @@
             <ul class="nav account">
               <li id="fat-menu" class="dropdown">
                 <a href="#" class="dropdown-toggle account-dropdown" data-toggle="dropdown">
-                  <b class="caret"></b><%= current_user.username %>
+                  <% name = current_user.username.blank? ? current_user.realname : current_user.username %>
+                  <b class="caret"></b><%= truncate(name, length: 19) %>
                 </a>
                 <ul class="dropdown-menu">
                   <li><%= link_to "<i class='icon-user'></i> Account".html_safe, current_user %></li>

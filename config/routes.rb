@@ -26,6 +26,9 @@ Dragon::Application.routes.draw do
     resources :comments, only: [:create, :update, :destroy]
   end
 
+  match 'auth/:provider/callback', to: 'sessions#create'
+  match 'auth/failure', to: redirect('/')
+
   match '/signup', to: 'users#new'
   match '/login',  to: 'sessions#new'
   match '/logout', to: 'sessions#destroy', via: :delete

@@ -1,6 +1,7 @@
 <table>
+  <tr><th class="profile-table-header">username</th><td><%= f.text_field :username %></td></tr>
   <tr><th class="profile-table-header">email</th><td><%= f.text_field :email %></td></tr>
-  <tr><th class="profile-table-header">username</th><td><%= f.text_field :username %></td></tr>  
+  <tr><th class="profile-table-header">real name</th><td><%= f.text_field :realname %></td></tr>  
   <tr><th class="profile-table-header">location</th><td><%= f.text_field :location %></td></tr> 
   <tr><th class="profile-table-header">about me</th><td><%= f.text_area :about %></td></tr> 
   <tr><th></th><td><%= f.submit "Save Profile", class: "btn btn-medium btn-primary" %></td></tr>

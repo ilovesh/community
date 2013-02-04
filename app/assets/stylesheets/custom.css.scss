@@ -54,6 +54,7 @@ select { width: 100px; }
 }
 
 .block { display: block; }
+.center { text-align: center; }
 
 .form-std {
   padding: 30px;
@@ -94,6 +95,20 @@ select { width: 100px; }
     width: 355px;
     height: 120px;
   }
+}
+
+.social-login {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #DDDDDD;
+}
+
+.btn-social-login {
+  width: 48px;
+}
+
+.login-header {
+  margin-bottom: 10px;
 }
 
 #password-help {
@@ -649,7 +664,7 @@ ul.list-items {
 }
 
 .profile-table-header {
-  width: 80px;
+  min-width: 100px;
   vertical-align: top;
 }
 

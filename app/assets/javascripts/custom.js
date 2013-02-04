@@ -93,6 +93,10 @@ $(document).ready(function(){
     }
   })
 
+  // remove hash '#_=_' after facebook redirect
+  if (window.location.href.indexOf('#_=_') > 0) {
+    window.location = window.location.href.replace(/#.*/, '');
+  }
 
 /*
 $('.topnav-search-query').focus(function(){

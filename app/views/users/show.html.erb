@@ -1,7 +1,13 @@
 <% provide(:title, @user.username) %>
 <% provide(:background, 'no-bg') %>
 <div id="user-page">
-  <h2 class="inline-header"><%= @user.username %></h2>
+  <h2 class="inline-header">
+    <% if @user.realname %>
+      <%= @user.realname %>
+    <% else %>
+      <%= @user.username %>
+    <% end %>
+  </h2>
   <% if current_user?(@user) %>
     <%= link_to "edit",   edit_user_path(@user) %>
   <% end %>
@@ -12,7 +18,8 @@
     <div class="span6 profile-data">   
       <table>
         <tr><th class="profile-table-header">location</th><td><%= @user.location if @user.location %></td></tr>
-        <tr><th class="profile-table-header">about me</th><td><%= @user.about if @user.about %></td></tr>    
+        <tr><th class="profile-table-header">real name</th><td><%= @user.realname if @user.realname %></td></tr>
+        <tr><th class="profile-table-header">about me</th><td><%= @user.about if @user.about %></td></tr>        
       </table>
     </div>
   </div>
