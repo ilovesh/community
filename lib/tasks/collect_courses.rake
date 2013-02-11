@@ -221,8 +221,7 @@ def fetch_from_edx
                                             final_date:    final_date,
                                             duration:      duration)
           add_university_and_teaching!(university, course)
-        end # check multi sessions 
-                                                                                      puts "FINISH"
+        end # check multi sessions                                                                                puts "FINISH"
       end # check duplication
   end # each course
 end
