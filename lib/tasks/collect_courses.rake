@@ -6,12 +6,12 @@
 # edX:     "Artificial Intelligence"
 # some descriptions/instructors, etc
 
-# pg import
+## pg import
 # heroku pgbackups:capture
 # curl -o latest.dump `heroku pgbackups:url`
 # pg_restore --verbose --clean --no-acl --no-owner -h localhost -U zhangj -d community_development latest.dump
 
-# pg export
+## pg export
 # pg_dump -Fc --no-acl --no-owner -h localhost -U zhangj community_development > localdb.dump
 # heroku pgbackups:restore DATABASE 'https://dl.dropbox.com/u/95316659/localdb.dump'
 
@@ -257,6 +257,11 @@ def fetch_from_coursera
       image_span       = page.at_css(".coursera-course-logo-no-video img") if image_span.nil?
       instructor_span.search('br').each {|br| br.replace("|")}
       instructor  = instructor_span.text.strip if instructor_span
+
+      if url = "https://www.coursera.org/course/intropsych"
+        instructor = "Steve Joordens"
+      end
+
       description = description_span.text.strip if description_span
       image_link  = image_span["src"] if image_span
 
